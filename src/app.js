@@ -10,8 +10,8 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 // rutas
-const rutaLogin = require('./src/routes/login');
-const rutaInicio = require('./src/routes/index');
+const rutaLogin = require('./routes/login');
+const rutaInicio = require('./routes/index');
 
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);

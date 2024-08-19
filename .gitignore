@@ -1,4 +1,6 @@
 # NO TOCAR LO QUE PUSE ACÁ!!!!!!!!
-# Para no subir los siguientes archivos o carpetas a github
+# Este archivo le dice a Git qué archivos o carpetas no deben ser incluidos 
+# en el control de versiones (repositorio). 
 # Ejemplo: todo lo que esté dentro de node_modules no se sube
 node_modules/
+info_leer.txt
