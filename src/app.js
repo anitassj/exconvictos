@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // rutas
 const rutaLogin = require('./routes/login');
-const rutaInicio = require('./routes/index');
+const rutaInicio = require('./routes/index.html');
 
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);

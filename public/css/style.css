@@ -1,1 +1,15 @@
-/* # Archivo CSS principal para estilos generales */
+/* CABECERA */
+body{
+    background-color: red;
+}
+
+header{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    
+}
