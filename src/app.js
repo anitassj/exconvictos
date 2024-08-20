@@ -10,11 +10,11 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static("../public"));
 
 // rutas
 const rutaLogin = require('./routes/login');
-const rutaInicio = require('./routes/index.html');
+const rutaInicio = require('./routes/index');
 
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
