@@ -32,9 +32,15 @@
 
         <label for="ciudad_prox">Ciudad de residencia:</label>
         <small class="form-text">Ingresa la ciudad en la que resides actualmente o la más cercana..</small>
-        <input type="text" id="ciudad_prox" name="ciudad_prox" required>
+        <input type="text" id="ciudad_prox" name="ciudad_prox" list="ciudades_alcanzadas" required>
 
-        <label for="num_causa">Número de Causa:</label>
+        <datalist id="ciudades_alcanzadas">
+            <option value="Chivilcoy">
+            <option value="Mercedes">
+            <option value="Luján">
+        </datalist>
+
+        <label for="num_causa">Número de causa:</label>
         <small class="form-text">Ingresa el número de causa tal como aparece en los documentos.</small>
         <input type="text" id="num_causa" name="num_causa" required>
 
