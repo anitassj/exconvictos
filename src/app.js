@@ -25,16 +25,17 @@ app.use('/public', express.static(path.join(__dirname, "public")));
 
 //para establecer ejs como el motor de plantillas ,INSTALAR NPM INSTALL EJS
 app.set("view engine", "ejs");
-app.set('views',path.join(__dirname,"public"));
+app.set('views',path.join(__dirname, 'views'));
 
 // rutas
 const rutaLogin = require('./routes/login');
 
 const rutaInicio = require('./routes/inicio');
-
+const rutaForm = require('./routes/form');
 
 app.use('/', rutaLogin);
-app.use('/inicio', rutaInicio);
+app.use('/', rutaInicio);
+app.use('/', rutaForm);
 
 //DEFINIENDO LA RUTA INICIO!!!!! IMPORTANTE
 /*app.get("/", (req, res) => {

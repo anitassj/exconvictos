@@ -2,15 +2,19 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../conexion'); //para importar la conexion a la db
+const path = require('path'); 
 
-  
+router.get('/form', (req, res) => {
+  res.render(path.join(__dirname, '..', 'views', 'form.ejs'));
+});
+
 //ruta formulario 
-/*app.get("/form", (req, res) => {
-    res.render("pages/form", {
-      rutaActual: "/form",
-    });
-});*/
-    app.post("/procesar-formulario", async (req, res) => {
+// app.get("/form", (req, res) => {
+//     res.render("pages/form", {
+//       rutaActual: "/form",
+//     });
+// });
+    router.post("/procesar-formulario", async (req, res) => {
         console.log(req.body);
         // Verificar campos vacíos
         for (const campo in req.body) {
@@ -49,3 +53,5 @@ const db = require('../conexion'); //para importar la conexion a la db
           res.send("Error al procesar el formulario");
         }
       });
+
+      module.exports = router;
