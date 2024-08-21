@@ -17,8 +17,8 @@ header .menu {
 
 header .icono-menu {
     position: fixed;
-    top: 10px;
-    right: 10px;
+    top: 18px;
+    right: 30px;
     cursor: pointer;
     font-size: 24px;
 }
@@ -39,8 +39,30 @@ header .logo img{
     height: 30%;
 }
 
+header .boton-donar a, .boton-contactar a{
+    text-decoration: none;
+    margin-left: 10px;
+    padding: 10px;
+    color: black;
+}
+
+header .boton-donar a{
+    background-color: rgb(30, 255, 0);
+    
+}
+
+header .boton-donar a:hover{
+    background-color: rgb(15, 59, 9);
+}
+
+header .boton-contactar a{
+    margin-right: 70px;
+    background-color: tomato;
+}
+
 /* CUERPO --------------------------------------------------------------------- */
 body{
     background-color: #f5dc96;
     margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
 }
