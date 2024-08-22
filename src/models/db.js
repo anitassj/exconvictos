@@ -14,7 +14,7 @@ conexion.connect((err) => {
     if(!err) { console.log('Conexion creada con exito');
     }
     else {
-        console.log('Hubo un error en la conexion');
+        console.log('Hubo un error en la conexion:', err.message);
     }
 });
 

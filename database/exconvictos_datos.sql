@@ -1,4 +1,4 @@
-create table expresos_datos (
+create table exconvictos_datos (
 id_preso int auto_increment,
 nombre varchar(30), 
 apellido varchar(30),
