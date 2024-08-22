@@ -1,1 +1,103 @@
-/* # Estilos específicos para la página de login */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #264653;
+    font-family: Rubik;
+}
+
+.login {
+    /* centrar el div */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* modificarlo */
+    width: 400px;
+    background-color: #E9C46A;
+    border-radius: 10px;
+    padding: 20px; /* -- */
+}
+
+/* se modifica el titulo "Iniciar Sesión" */
+.login h1 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* se modifica el formulario de iniciar sesión */
+.login form {
+    padding: 0 50px;
+    text-align: center;
+}
+
+.user-email, .user-password {
+    margin: 15px 0;
+}
+
+/* se modifican los inputs */
+.user-email input, .user-password input {
+    width: calc(100% - 10px); /* Ajusta el ancho para tener en cuenta el padding (recomendado por chat)*/
+    height: 25px;
+    padding: 0 5px;
+    margin-top: 10px;
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+    text-align: center;
+    font-size: 16px;
+}
+
+/* se modifican los labels */
+.user-email label, .user-password label {
+    border-bottom: 1px solid black;
+}
+
+/* se modifica el input de iniciar sesión */
+form .iniciar-sesion {
+    background-color: #F4A261;
+    padding: 8px 20px 8px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: Rubik;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+form .iniciar-sesion:hover {
+    cursor: pointer;
+}
+
+/* margen entre "¿Olvidaste tu contraseña?" y "Crear nuevo usuario" */
+form .recover-user {
+    margin-bottom: 15px;
+}
+
+/* DISEÑO RESPONSIVE */
+/*
+@media screen and (max-width: 768px) {
+    .login {
+        position: absolute;
+        width: 35%;
+        top: 190px;
+        left: 100px;
+        height: 22%;
+    }
+
+    .login h1 {
+        font-size: 20px;
+        position: absolute;
+        top: -20px;
+        left: 26px;
+    }
+
+    .user-email {
+        position: absolute;
+        top: 45px;
+        left: 0px;
+    }
+
+    .user-email label, .user-password label {
+        border-bottom: 1px solid black;
+        font-size: 13px;
+    }
+}
+*/
