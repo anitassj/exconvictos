@@ -2,7 +2,7 @@
   "name": "exconvictos-proyecto",
   "version": "1.0.0",
   "description": "Proyecto final para las materias Laboratorio IV y Metodología de Sistemas de la carrera Tecnicatura en Programación, Universidad Tecnológica Nacional. ",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js"
@@ -10,7 +10,9 @@
   "author": "Ana Luz Ulariaga, Juan Leiva, Clara Martínez, Benjamin Merchan, Katherine Videla.",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

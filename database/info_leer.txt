@@ -1,4 +1,0 @@
-database/
-Esta carpeta debe contener todos los archivos SQL relacionados con la creación, 
-manipulación y mantenimiento de la base de datos. Acá se define la estructura de 
-las tablas y los datos iniciales.
