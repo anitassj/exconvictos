@@ -22,4 +22,4 @@ routes/: Las rutas definen cómo se manejan las URL entrantes. Cada archivo
 
 app.js: es la entrada principal de la pág. Acá se configura el servidor web,
         se define middleware (como el manejo de errores o la autenticación) 
-        y se enlazan las rutas definidas en src/routes/.
+        y se enlazan las rutas definidas en src/routes/. 
