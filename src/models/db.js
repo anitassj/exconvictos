@@ -5,7 +5,7 @@ const mysql = require('mysql2'); //soy cat,yo uso mysql2 porque mysql no me func
 const conexion = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
-    password: 's3rver2224',
+    password: '',
     database: 'sistema_exconvictos'
 });
 
