@@ -4,7 +4,7 @@ const app = express();
 const path = require('path');
 const port = 3000;
 const bodyParser = require("body-parser");
-const conexion = require("./conexion"); //requerimos la ruta para manejar la conexion
+const conexion = require('./models/db'); //importo la conexion de la db
 
 // middleware 
 app.use(express.urlencoded({
@@ -22,9 +22,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // rutas
 const rutaLogin = require('./routes/login');
-const rutaInicio = require('./routes/index');
-const rutaForm = require('./routes/form');
-const conexion = require('./models/db'); //importo la conexion de la db
+const rutaInicio = require('./routes/inicio');
+const rutaForm = require('./routes/formulario');
 const rutaDatos = require('./routes/guardar_datos');
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);

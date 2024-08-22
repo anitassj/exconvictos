@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const conexion = require('../models/db');
 
 // Ruta para procesar el formulario
-router.post('/guardar_datos', (req, res) => {
+router.post('/guardar-datos', (req, res) => {
     const { nombre, apellido, dni, fecha_nac, ciudad_natal, ciudad_prox, num_causa, abogado, juzgado } = req.body;
 
     //hacemos una consulta para guardar los datos del formulario en la db, se coloca ? tantos datos haya para mas seguridad
