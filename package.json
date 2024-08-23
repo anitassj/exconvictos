@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "nodemon": "nodemon -r dotenv/config ./src/app.js"
   },
   "author": "Ana Luz Ulariaga, Juan Leiva, Clara Martínez, Benjamin Merchan, Katherine Videla.",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "mysql": "^2.18.1",
