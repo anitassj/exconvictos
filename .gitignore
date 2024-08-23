@@ -3,3 +3,4 @@
 # en el control de versiones (repositorio). 
 # Ejemplo: todo lo que esté dentro de node_modules no se sube
 node_modules/
+.env
