@@ -12,14 +12,14 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-
 // configuracion d middleware para analizar datos del formulario
 // NO TOCAR ESTA LINEA DE ABAJO, SIRVE PARA DECIR QUE LA CARPETA PUBLICA VA A SER /PUBLIC
 app.use('/public', express.static('../public'));//porque la carpeta public esta por encima de app.js y puede causar problemas
 // configuracion para usar ejs (motor de plantillas) para hacer html dinamico, necesitan instalar: npm install ejs
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); 
 
-// Esta linea de abajo no se utiliza
+// Esta linea de abajo no se utiliza-- profe  POR QUÉ NO? NO ME ANDA SIN ESTO. ANITA (preguntarle al profe)
 //app.set('views', path.join(__dirname, 'views')); 
 
 // rutas
@@ -31,14 +31,6 @@ app.use('/', rutaLogin);
 app.use('/', rutaInicio);
 app.use('/', rutaForm);
 app.use('/', rutaDatos);
-
-//DEFINIENDO LA RUTA INICIO!!!!! IMPORTANTE
-/*app.get("/", (req, res) => {
-    res.render("inicio", {
-      rutaActual: "/",
-    });
-  });*/
-  
 
 // levantar el servidor 
 app.listen(port, () => {
