@@ -19,7 +19,7 @@ app.use('/public', express.static('../public'));//porque la carpeta public esta 
 
 // configuracion para usar ejs (motor de plantillas) para hacer html dinamico, necesitan instalar: npm install ejs
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views')); 
+app.set('views', path.join(__dirname, 'views')); // LO VOLVÍ A PONER YO -- ANITA
 
 // Esta linea de abajo no se utiliza-- profe  POR QUÉ NO? NO ME ANDA SIN ESTO. ANITA (preguntarle al profe)
 //app.set('views', path.join(__dirname, 'views')); 
