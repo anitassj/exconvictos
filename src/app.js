@@ -14,7 +14,7 @@ app.use(express.json());
 
 // configuracion d middleware para analizar datos del formulario
 // NO TOCAR ESTA LINEA DE ABAJO, SIRVE PARA DECIR QUE LA CARPETA PUBLICA VA A SER /PUBLIC
-app.use('/public', express.static('../public'));//porque la carpeta public esta por encima de app.js y puede causar problemas
+app.use('/public', express.static('public'));//porque la carpeta public esta por encima de app.js y puede causar problemas
 // no me anda -- ANITA (preg. al profe)
 
 // configuracion para usar ejs (motor de plantillas) para hacer html dinamico, necesitan instalar: npm install ejs
