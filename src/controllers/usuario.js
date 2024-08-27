@@ -1,4 +1,4 @@
-const modelUsuario = require("../models/db.js"); /*se importa un módulo llamado usuario desde la carpeta models
+const modelUsuario = require("../models/usuario"); /*se importa un módulo llamado usuario desde la carpeta models
 que contiene la logica para interactuar con la base de datos de usuarios*/
 const usuarioModel = new modelUsuario();
 /*permite utilizar los métodos definidos en el modelo "usuario" */
