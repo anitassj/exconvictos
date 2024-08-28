@@ -1,5 +1,4 @@
 /* CABECERA -------------------------------------------------------------------*/
-
 header{
     background-color: #e7d3b0;
     display: flex;
@@ -11,6 +10,19 @@ header{
     z-index: 1;
 }
 
+/* Estilos del logo ------------------- */
+header .logo img{
+    width: 65%;
+    height: auto;
+}
+
+header .logo {
+    flex: 0 0 80%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilos del menu inactivo ---------- */
 header .menu {
     display: none; 
 }
@@ -19,9 +31,16 @@ header .icono-menu {
     flex: 0 0 20%;
     display: flex;
     justify-content: center;
-    position: relative;
     cursor: pointer;
     font-size: 24px;
+    position: fixed; 
+    top: 20px; 
+    right: 20px; 
+    z-index: 110;
+}
+
+.icono-menu i {
+    color: #2197a3; 
 }
 
 header .menu.activo {
@@ -35,17 +54,42 @@ header .menu.activo {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .logo img{
-    width: 65%;
-    height: auto;
+/* Estilos del menú activo ------------ */
+header .menu.activo {
+    display: block;
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    width: 70%; 
+    height: 100%; 
+    background-color: white; 
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
 }
 
-header .logo {
-    flex: 0 0 80%;
-    /* width: 70%; */
-    display: flex;
-    /* margin-left: 40%; */
-    justify-content: center;
+header .menu ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 0;
+}
+
+header .menu li {
+    margin-bottom: 15px; 
+    border-bottom: 1px solid #2197a3;
+}
+
+header .menu a {
+    text-decoration: none; 
+    color: #333333; 
+    font-size: 18px; 
+    display: block; 
+    padding: 10px; 
+}
+
+header .menu a.importante {
+    font-weight: bold;
+    color: #2197a3;
 }
 
 /* CUERPO --------------------------------------------------------------------- */
@@ -53,4 +97,8 @@ body{
     background-color: white;
     margin: 0 auto;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: "New Amsterdam", sans-serif;
 }
