@@ -104,7 +104,9 @@ h2 {
     font-weight: bold;
 }
 
-.inicio {
+/* Estilos formulario ----------------- */
+
+.form {
     display: flex;
     margin: 45px;
     text-align: center;
@@ -113,15 +115,44 @@ h2 {
     align-items: center;
 }
 
-.inicio-boton-form {
+.form .form-boton-cotizar {
     background-color: #2197a3;
     border-radius: 10px;
     padding: 10px;
     width: 35%;
 }
 
-.inicio-boton-form a{
+.form .form-boton-cotizar a{
     text-decoration: none;
     color: white;
     font-size: 15px;
+}
+
+/* Estilo coberturas ------------------ */
+
+.coberturas {
+    display: flex;
+    margin: 45px;
+    text-align: center;
+    padding: 10px;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.coberturas .tipo {
+    background-color: #2197a3;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.coberturas .tipo img{
+    width: 50%;
+}
+
+.coberturas .tipo h3{
+    font-size: 22px;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
