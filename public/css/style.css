@@ -76,7 +76,7 @@ header .menu ul {
 
 header .menu li {
     margin-bottom: 15px; 
-    border-bottom: 1px solid #2197a3;
+    border-bottom: 2px solid #2197a3;
 }
 
 header .menu a {
@@ -96,9 +96,32 @@ header .menu a.importante {
 body{
     background-color: white;
     margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Urbanist", sans-serif;
 }
 
 h2 {
-    font-family: "New Amsterdam", sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.inicio {
+    display: flex;
+    margin: 45px;
+    text-align: center;
+    padding: 10px;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.inicio-boton-form {
+    background-color: #2197a3;
+    border-radius: 10px;
+    padding: 10px;
+    width: 35%;
+}
+
+.inicio-boton-form a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
 }
