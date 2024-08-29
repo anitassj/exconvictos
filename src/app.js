@@ -25,6 +25,7 @@ app.set('views', path.join(__dirname, 'views')); // LO VOLVÍ A PONER YO -- ANIT
 //app.set('views', path.join(__dirname, 'views')); 
 
 // rutas
+const rutaRecover = require('./routes/recover');
 const rutaLogin = require('./routes/login');
 const rutaInicio = require('./routes/inicio');
 const rutaForm = require('./routes/solicitante_form'); 
@@ -33,6 +34,7 @@ app.use('/', rutaLogin);
 app.use('/', rutaInicio);
 app.use('/', rutaForm);
 app.use('/', rutaDatos);
+app.use('/', rutaRecover);
 
 // levantar el servidor 
 app.listen(port, () => {

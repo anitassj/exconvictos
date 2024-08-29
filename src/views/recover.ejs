@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Prisma Seguros</title>
-    <!-- <link rel="stylesheet" href="/public/css/login.css"> -->
-    <link rel="stylesheet" href="/public/css/login.css">
+    <title>Prisma Seguros | Recuperar Usuario</title>
+    <link rel="stylesheet" href="/public/css/recover.css">
+    <link rel="icon" type="image/jpg" href="/public/img/logo_con_fondo.ico"/>
 
     <!--FUENTE: Rubik -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,22 +19,20 @@
 <body>
     <div class="login">
         <form method="post"> <!-- metodo 'post' para enviar información al servidor -->
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            <div class="problema-sesion">
+                <p class="p1"><b>¿Problemas para iniciar sesión?</b></p>
+                <p class="p2">Ingresa tu correo y te enviaremos un enlace para que recuperes el acceso a tu cuenta.</p>
+            </div>
             <div class="user-email">
-                <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
             </div>
-            <div class="user-password">
-                <input type="password" id="password" name="contraseña" placeholder="Contraseña">
-            </div>
-            <input class="iniciar-sesion" type="submit" value="Iniciar Sesión"> <!-- iniciar sesión -->
-            <div class="recover-user"> <!-- si olvidó la contraseña (para futuro) -->
-                <a href="/recover">¿Olvidaste tu contraseña?</a>
-            </div>
+            <input class="iniciar-sesion" type="submit" value="Enviar enlace de inicio de sesión"> <!-- iniciar sesión -->
             <div class="imagen">
                 <img src="/public/img/logo_grande_fondo.png">
             </div>
         </form>
     </div>
-    <script src="/public/js/login.js" type="text/javascript"></script>
+    <script src="/public/js/recover.js" type="text/javascript"></script>
 </body>
 </html>
