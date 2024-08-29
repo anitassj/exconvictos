@@ -34,9 +34,9 @@ header .icono-menu {
     display: flex;
     justify-content: center;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 30px;
     position: fixed; 
-    top: 20px; 
+    top: 38px; 
     right: 20px; 
     z-index: 110;
 }
