@@ -1,17 +1,13 @@
-/* body {
-    margin: 0;
-    padding: 20px;
-} */
-
 h2 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
+    margin: 45px;
 }
 
 form {
     max-width: 400px;
-    margin: 0 auto;
+    margin: 45px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -23,6 +19,7 @@ label {
     display: block;
     margin-bottom: 5px;
     color: #555;
+    font-size: 19px;
 }
 
 input {
@@ -32,6 +29,7 @@ input {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    font-size: 19px;
 }
 
 button {
