@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #eeeeee;
+    background: linear-gradient(to right, #2197a3 50%, #ffffff 50%);
     font-family: Rubik;
     height: 100%;
 }
@@ -14,20 +14,24 @@ body {
     flex-direction: column;
 }
 
-.login h1 {
-    padding-bottom: 10px;
-    color: #303030;
-}
 
 form {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 10px;
     width: 300px;
     box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
+
+form i {
+    font-size: 70px !important; /*  */
+    color: #2197a3;
+    text-align: center;
+    padding-bottom: 15px;
+
+}   
 
 form .user-email, .user-password {
     display: flex;
@@ -36,42 +40,57 @@ form .user-email, .user-password {
 }
 
 .user-email input, .user-password input {
-    border-radius: 5px;
-    border: 1px solid rgb(141, 141, 141);
-    height: 18px;
-}
-
-.user-email label, .user-password label {
-    color: rgb(66, 66, 66);
+    background-color: #ebebeb;
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    padding-left: 10px;
 }
 
 .iniciar-sesion {
-    margin: 10px 70px 10px 70px;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid rgb(155, 155, 155);
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 30px;
+    border: none;
     font-family: Rubik;
-    font-size: 17px;
-    color: rgb(66, 66, 66);
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #2197a3;
 }
 
 .iniciar-sesion:hover {
-    background-color: rgb(196, 196, 196);
-    color: rgb(54, 54, 54);
+    background-color: #1b7d88;
+    color: #ffffff;
     cursor: pointer;
 }
 
 .recover-user {
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    font-size: 15px;
 }
 
-.create-user {
+.recover-user a {
+    font-size: 15px;
+    text-decoration: none;
+    color: #2197a3;
+}
+
+.recover-user a:hover {
+    color: #1b7d88;
+}
+
+.imagen {
     display: flex;
     justify-content: center;
-    padding-top: 10px;
-    font-size: 15px;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    padding-top: 40px;
 }
 
+.imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
