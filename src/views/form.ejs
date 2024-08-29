@@ -4,56 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/form.css" type="text/css">
+    <link rel="stylesheet" href="/public/css/style.css" type="text/css">
+    
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fuente del body -->
+    <link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <!-- ICONOS -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-brands/css/uicons-brands.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+
     <title>Formulario de contacto</title>
 </head>
 <body>
-    <h2>Formulario de contacto</h2>
+    <header>
+        <!-- Logo ------------------------------------- -->
+        <div class="logo">
+            <img src="/public/img/logo_grande_transparente.png" alt="logo">
+        </div>
+
+        <!-- Menú hamburguesa ------------------------- -->
+        <div class="icono-menu" id="icono-menu">
+            <i class="fi fi-rr-menu-burger"></i>
+        </div> 
+
+        <nav class="menu" id="menu">
+            <ul>
+                <li><a href="#titulo-1" class="importante">COTIZACIÓN ONLINE</a></li>
+                <li><a href="#titulo-2">Coberturas</a></li>
+                <li><a href="#titulo-3">Nosotros</a></li>
+                <li><a href="#titulo-4">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2>¿Qué seguro vamos a cotizar hoy?</h2>
 
     <form action="/guardar-datos" method="post">
-        <label for="nombre">Nombre/s:</label>
-        <small class="form-text">Ingresa todos tus nombres, incluyendo el segundo si tenés.</small>
-        <input type="text" id="nombre" name="nombre" required>
+        <label><input type="radio" name="opcion" value="opcion1">Auto</label>
+        <label><input type="radio" name="opcion" value="opcion2">Moto</label>
+        <label><input type="radio" name="opcion" value="opcion3">Bicicleta</label>
+        
+        <label for="apellido">Ingresá la patente</label>
+        <small class="form-text">Sin espacios ni guiones</small>
+        <input type="text" placeholder="Ej.: 123AAA" id="patente" name="patente" required>
 
-        <label for="apellido">Apellido:</label>
-        <small class="form-text">Ingresa todos tus appelidos, incluyendo el segundo si tenés.</small>
-        <input type="text" id="apellido" name="apellido" required>
+        <label for="date">Ingresá el año</label>
+        <input type="text" placeholder="Ej.: 2024" id="date" name="date" required>
 
-        <label for="dni">DNI:</label>
-        <small class="form-text">Ingresa tu número de DNI sin puntos ni espacios.</small>
-        <input type="text" id="dni" name="dni" required>
+        <label for="marca">Selecciona la marca</label>
+        <input type="text" id="marca" name="marca" list="marcas" required>
 
-        <label for="fecha_nac">Fecha de Nacimiento:</label>
-        <small class="form-text">Selecciona tu fecha de nacimiento usando el calendario.</small>
-        <input type="date" id="fecha_nac" name="fecha_nac" required>
-
-        <label for="ciudad_natal">Ciudad de nacimiento:</label>
-        <small class="form-text">Ingresa el nombre de la ciudad donde naciste.</small>
-        <input type="text" id="ciudad_natal" name="ciudad_natal" required>
-
-        <label for="ciudad_prox">Ciudad de residencia:</label>
-        <small class="form-text">Ingresa la ciudad en la que resides actualmente o la más cercana..</small>
-        <input type="text" id="ciudad_prox" name="ciudad_prox" list="ciudades_alcanzadas" required>
-
-        <!-- Desp. anotar sólo el ámbito de la ONG y válidar para que no se anoten de otro lugar -->
-        <datalist id="ciudades_alcanzadas">
-            <option value="Chivilcoy">
-            <option value="Mercedes">
-            <option value="Luján">
+        <datalist id="marcas">
+            <option value="Ford">
+            <option value="Toyota">
+            <option value="Volkswagen">
         </datalist>
 
-        <label for="num_causa">Número de causa:</label>
-        <small class="form-text">Ingresa el número de causa tal como aparece en los documentos.</small>
-        <input type="text" id="num_causa" name="num_causa" required>
+        <label for="modelo">Selecciona el modelo</label>
+        <input type="text" id="modelo" name="modelo" list="modelo" required>
 
-        <label for="abogado">Nombre del abogado:</label>
-        <small class="form-text">Ingresa el nombre completo de tu abogado.</small>
-        <input type="text" id="abogado" name="abogado" required>
+        <datalist id="modelo">
+            <option value="Fiesta">
+            <option value="A">
+            <option value="F">
+        </datalist>
 
-        <label for="juzgado">Juzgado:</label>
-        <small class="form-text">Especifica el nombre del juzgado relacionado con la causa.</small>
-        <input type="text" id="juzgado" name="juzgado" required>
-
-        <button type="submit">Enviar</button>
+        <button type="submit">Cotizar</button>
     </form>
+
+    <script src="/public/js/scripts.js" type="text/javascript"></script>
 </body>
 </html>

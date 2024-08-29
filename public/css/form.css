@@ -1,8 +1,12 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* body {
     margin: 0;
     padding: 20px;
+} */
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 form {
@@ -12,12 +16,6 @@ form {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-form h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
 }
 
 label {

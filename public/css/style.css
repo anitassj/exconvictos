@@ -1,12 +1,14 @@
 /* CABECERA -------------------------------------------------------------------*/
 header{
-    background-color: #e7d3b0;
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; 
-    height: 30%; 
-    position: relative; 
+    width: 100%;
+    height: 14%;
+    position: fixed;
+    top: 0;
+    /* right: 20px; */
     z-index: 1;
 }
 
@@ -96,6 +98,7 @@ header .menu a.importante {
 body{
     background-color: white;
     margin: 0 auto;
+    margin-top: 35%;
     font-family: "Urbanist", sans-serif;
 }
 
