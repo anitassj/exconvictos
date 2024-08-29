@@ -53,30 +53,41 @@
         <small class="form-text">Sin espacios ni guiones</small>
         <input type="text" placeholder="Ej.: 123AAA" id="patente" name="patente" required>
 
+        
         <label for="date">Ingresá el año</label>
         <input type="text" placeholder="Ej.: 2024" id="date" name="date" required>
-
+        
         <label for="marca">Selecciona la marca</label>
         <input type="text" id="marca" name="marca" list="marcas" required>
-
+        
         <datalist id="marcas">
             <option value="Ford">
-            <option value="Toyota">
-            <option value="Volkswagen">
-        </datalist>
-
-        <label for="modelo">Selecciona el modelo</label>
-        <input type="text" id="modelo" name="modelo" list="modelo" required>
-
-        <datalist id="modelo">
-            <option value="Fiesta">
-            <option value="A">
-            <option value="F">
-        </datalist>
-
-        <button type="submit">Cotizar</button>
-    </form>
-
-    <script src="/public/js/scripts.js" type="text/javascript"></script>
-</body>
-</html>
+                <option value="Toyota">
+                    <option value="Volkswagen">
+                    </datalist>
+                    
+                    <label for="modelo">Selecciona el modelo</label>
+                    <input type="text" id="modelo" name="modelo" list="modelo" required>
+                    
+                    <datalist id="modelo">
+                        <option value="Fiesta">
+                            <option value="A">
+                                <option value="F">
+                                </datalist>
+                                
+                                <button type="submit">Cotizar</button>
+                            </form>
+                            
+                            <label for="nombre">Ingresá tu nombre</label>
+                            <input type="text" placeholder="Ej.: Anita" id="nombre" name="nombre" required>
+                    
+                            <label for="apellido">Ingresá tu apellido</label>
+                            <input type="text" placeholder="Ej.: la + kpa" id="apellido" name="apellido" required>
+                            
+                            <label for="num">Ingresá tu celular</label>
+                            <small class="form-text">Código de área sin 0 + número sin el 15</small>
+                            <input type="number" placeholder="Ej.: 2346203040" id="num" name="num" required>
+                            
+                            <script src="/public/js/scripts.js" type="text/javascript"></script>
+                        </body>
+                        </html>
