@@ -27,7 +27,7 @@ app.set('views', path.join(__dirname, 'views')); // LO VOLVÍ A PONER YO -- ANIT
 // rutas
 const rutaLogin = require('./routes/login');
 const rutaInicio = require('./routes/inicio');
-const rutaForm = require('./routes/solicitante_form');
+const rutaForm = require('./routes/solicitante_form'); 
 const rutaDatos = require('./routes/guardar_datos');
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
