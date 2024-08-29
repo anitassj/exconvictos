@@ -1,1 +1,0 @@
--- # Archivo con las instrucciones SQL para crear tablas

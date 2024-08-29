@@ -1,1 +1,0 @@
--- # Archivo con instrucciones SQL para insertar datos 
