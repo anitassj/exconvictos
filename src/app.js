@@ -31,6 +31,8 @@ const rutaInicio = require('./routes/inicio');
 const rutaForm = require('./routes/solicitante_form'); 
 const rutaDatos = require('./routes/guardar_datos');
 const rutaPanel = require('./routes/panel');
+const authRoutes = require('./routes/ruta_de_autenticacion');
+app.use('/', authRoutes);
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
 app.use('/', rutaForm);

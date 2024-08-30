@@ -16,11 +16,11 @@ router.post('/panel', async (req, res) => {
             res.redirect('/panel'); // redirige a la página principal
         } else {
             // si las credenciales son inválidas, redirige al login con un mensaje de error
-            res.render('/panel', {error: 'Credenciales Inválidas'});
+            res.render('/login', {error: 'Credenciales Inválidas'});
         }
     } catch (error) {
         console.error('Error al validar usuario:', error);
-        res.render('/panel', {error: 'Ocurrió un error inesperado'});
+        res.render('/login', {error: 'Ocurrió un error inesperado'});
     }
 });
 
