@@ -30,11 +30,13 @@ const rutaLogin = require('./routes/login');
 const rutaInicio = require('./routes/inicio');
 const rutaForm = require('./routes/solicitante_form'); 
 const rutaDatos = require('./routes/guardar_datos');
+const rutaPanel = require('./routes/panel');
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
 app.use('/', rutaForm);
 app.use('/', rutaDatos);
 app.use('/', rutaRecover);
+app.use('/', rutaPanel);
 
 // levantar el servidor 
 app.listen(port, () => {
