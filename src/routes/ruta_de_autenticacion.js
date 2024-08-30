@@ -4,7 +4,7 @@ const UsuarioModel = require('../models/usuario_modelo'); // ajusta la ruta seg�
 
 const usuarioModel = new UsuarioModel();
 
-router.post('/login', async (req, res) => {
+router.post('/panel', async (req, res) => {
     const { email, clave } = req.body;
 
     try {
@@ -16,11 +16,11 @@ router.post('/login', async (req, res) => {
             res.redirect('/panel'); // redirige a la página principal
         } else {
             // si las credenciales son inválidas, redirige al login con un mensaje de error
-            res.redirect('/panel?error=Credenciales inválidas');
+            res.render('/panel', {error: 'Credenciales Inválidas'});
         }
     } catch (error) {
         console.error('Error al validar usuario:', error);
-        res.redirect('/panel?error=Ocurrió un error inesperado');
+        res.render('/panel', {error: 'Ocurrió un error inesperado'});
     }
 });
 
