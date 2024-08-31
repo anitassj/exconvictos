@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/public/css/form.css" type="text/css">
     <link rel="stylesheet" href="/public/css/style.css" type="text/css">
     
@@ -45,11 +47,6 @@
     <h2>¿Qué seguro vamos a cotizar hoy?</h2>
 
     <form action="/guardar-datos" method="post">
-        <!-- LO TUVE QUE COMENTAR PORQUE NO FUNCIONABA ASI, YA QUE NO ME TOMABA EL TIPO!
-         <label><input type="radio" name="opcion" value="opcion1">Auto</label>
-        <label><input type="radio" name="opcion" value="opcion2">Moto</label> -->
-        <!-- <label><input type="radio" name="opcion" value="opcion3">Bicicleta</label> -->
-        
         <label for="tipo">Tipo de Vehículo:</label>
         <select name="tipo" id="tipo">
             <option value="Auto">Auto</option>
@@ -98,7 +95,8 @@
         
         <button type="submit">Cotizar</button>
     </form>
-                            
+    
+    <!-- JS -->
     <script src="/public/js/scripts.js" type="text/javascript"></script>
 </body>
 </html>

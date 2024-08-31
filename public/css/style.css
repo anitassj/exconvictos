@@ -8,8 +8,7 @@ header{
     height: 14%;
     position: fixed;
     top: 0;
-    /* right: 20px; */
-    z-index: 1;
+    z-index: 1000;
 }
 
 /* Estilos del logo ------------------- */
@@ -38,7 +37,7 @@ header .icono-menu {
     position: fixed; 
     top: 38px; 
     right: 20px; 
-    z-index: 110;
+    z-index: 1100;
 }
 
 .icono-menu i {
@@ -109,7 +108,6 @@ h2 {
 }
 
 /* Estilos formulario ----------------- */
-
 .form {
     display: flex;
     margin: 45px;
@@ -132,8 +130,80 @@ h2 {
     font-size: 15px;
 }
 
-/* Estilo coberturas ------------------ */
+/* Estilo del carrusel ---------------- */
+.swiper-container {
+    --swiper-navigation-size: 16px; 
+    --swiper-navigation-sides-offset: -31px;
+    --swiper-pagination-bottom: auto;
+    --swiper-pagination-top: 105%;
+}
 
+.swiper-container {
+    width: 84%;
+    height: auto; 
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s ease-in-out;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide img {
+    width: 100%; 
+    height: auto;
+    border-radius: 10px;
+    filter: grayscale(100%); 
+    transition: filter 0.3s ease;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-active img {
+    filter: grayscale(0%); 
+}
+
+.swiper-container .swiper-pagination {
+    text-align: center;
+}
+
+.swiper-pagination-bullets {
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    background: rgba(0,0,0,0.5); 
+    width: 10px; 
+    height: 10px; 
+    margin: 0 20px; 
+    opacity: 0.7; 
+    transition: opacity 0.3s;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet-active {
+    background: #2197a3; 
+    opacity: 1; 
+}
+
+.swiper-container .swiper-button-prev { 
+    right: 120%;
+    color: black;
+    width: 30px;
+    top: 50%; 
+}
+
+.swiper-container .swiper-button-next {
+    left: 100%;
+    color: black;
+    width: 30px; 
+    top: 50%; 
+}
+
+/* Estilo coberturas ------------------ */
 .coberturas {
     display: flex;
     margin: 45px;
@@ -159,17 +229,4 @@ h2 {
     color: white;
     margin: 0;
     padding: 0;
-}
-
-.carrusel-marketing {
-    display: flex;
-    margin: 45px;
-    text-align: center;
-    padding: 10px;
-    flex-direction: column; 
-    align-items: center;
-}
-
-.carrusel-marketing .post img{
-    width: 100%;
 }

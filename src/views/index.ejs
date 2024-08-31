@@ -3,10 +3,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Compañia de Seguros ...">
-    <link rel="stylesheet" href="/public/css/style.css" type="text/css">
+
     <link rel="icon" type="image/jpg" href="/public/img/logo.ico"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/style.css" type="text/css">
+    <!-- CSS de la librería Swiper (carrusel) -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,13 +62,18 @@
         </div>
     </div>
 
-    <!-- Contenedor beneficios-marketing -------------- -->
-    <!-- ANITA: la idea sería hacer un carrusel con promociones/novedades -->
-    <div class="carrusel-marketing">
-        <div class="post">
-            <img src="/public/img/promo.png" alt="">
+    <!-- Contenedor carrusel con Swiper --------------- -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="/public/img/promo.png" alt="Promoción"></div>
+          <div class="swiper-slide"><img src="/public/img/promo2.png" alt="Promoción"></div>
         </div>
-    </div>
+        <!-- Paginación -->
+        <div class="swiper-pagination"></div>
+        <!-- Navigación -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>      
 
     <!-- Contenedor coberturas ------------------------ -->
     <div class="coberturas">
@@ -89,6 +99,9 @@
     <div>
 
     </div>
+    
+    <!-- JS de la libreria Swiper (carrusel) -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script src="/public/js/scripts.js" type="text/javascript"></script>
 </body>
