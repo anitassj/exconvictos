@@ -18,7 +18,8 @@ router.post('/ruta_de_autenticacion', async (req, res) => { /*cambio de ruta*/
             res.redirect('/panel'); // Redirige a la página principal
         } else {
             // si las credenciales son inválidas, redirige al login con un mensaje de error
-            res.render('login', {error: 'Credenciales Inválidas'});
+            res.render('login', {error: 'Usuario y/o contraseña incorrectos'});
+            
         }
     } catch (error) {
         console.error('Error al validar usuario:', error);

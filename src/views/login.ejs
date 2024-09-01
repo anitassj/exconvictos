@@ -21,6 +21,11 @@
     <div class="login">
         <form action="/ruta_de_autenticacion" method="POST"> <!-- metodo 'post' para enviar información al servidor,FALTABA LLAMAR -->
             <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <% if (typeof error !== 'undefined') { %>
+                <div style="color: red; font-weight: bold;">
+                    <%= error %>
+                </div>
+            <% } %>
             
             <div class="user-email">
                 <input type="email" id="email" name="email" placeholder="Correo electrónico">
