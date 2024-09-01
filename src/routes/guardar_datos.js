@@ -6,6 +6,10 @@ const conexion = require('../models/db');
 // Ruta para procesar el formulario
 router.post('/guardar-datos', (req, res) => {
     const { tipo, patente, anio, marca, modelo, nombre, apellido, celular, email } = req.body;
+    if (!tipo || !patente || !anio || !marca || !modelo || !nombre || !apellido || !celular || !email) {
+        return res.status(400).render('form', { error: 'Por favor, complete todos los campos.' });
+    } //VALIDACION PARA QUE COMPLETEN TODOS LOS CAMPOS
+
     //hacemos una consulta para guardar los datos del formulario en la db, se coloca ? tantos datos haya para mas seguridad
     console.log('Datos recibidos:', req.body); //para ver q me esta llegando pq no se guarda el anio
 
