@@ -7,7 +7,7 @@ const conexion = require('../models/db');
 router.post('/guardar-datos', (req, res) => {
     const { tipo, patente, anio, marca, modelo, nombre, apellido, celular, email } = req.body;
     if (!tipo || !patente || !anio || !marca || !modelo || !nombre || !apellido || !celular || !email) {
-        return res.status(400).render('form', { error: 'Por favor, complete todos los campos.' });
+        return res.status(400).json({ error: 'No se completaron todos los campos' });
     } //VALIDACION PARA QUE COMPLETEN TODOS LOS CAMPOS
 
     //hacemos una consulta para guardar los datos del formulario en la db, se coloca ? tantos datos haya para mas seguridad
@@ -27,7 +27,7 @@ router.post('/guardar-datos', (req, res) => {
             return res.status(400).json({ error: 'Error al procesar los datos.' }); //validacion
            
         } else { 
-            res.send('GUARDADO CON EXITO.');
+            res.send('Formulario completado con exito.');
         }
     });
 });
