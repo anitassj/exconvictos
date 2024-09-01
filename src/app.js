@@ -24,6 +24,20 @@ app.set('views', path.join(__dirname, 'views')); // LO VOLVÍ A PONER YO -- ANIT
 // Esta linea de abajo no se utiliza-- profe  POR QUÉ NO? NO ME ANDA SIN ESTO. ANITA (preguntarle al profe)
 //app.set('views', path.join(__dirname, 'views')); 
 
+const session = require('express-session');
+
+//se configura la sesion
+app.use(session({
+    secret: 'mi_secreto_seguro',
+    resave: false,
+    seUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: false, //cambia a true si se usa https
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
+
 // rutas
 const rutaRecover = require('./routes/recover');
 const rutaLogin = require('./routes/login');
