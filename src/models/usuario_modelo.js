@@ -1,5 +1,5 @@
-const conexion = require("../database/datos_usuarios"); //el código está importando la conexión a la base de datos desde un archivo llamado db que se encuentra en la carpeta database. esta conexion va a interactuar con la base de datos
-
+const express = require('express');
+const conexion = require('../models/db'); /*ESTABA MAL LA RUTA DE LA DB, NO TENES QUE LLAMAR A LA TABLA CLARI TENES Q LLAMAR A LA CONEXION*/
 class UsuarioModel {
 
 	validarUsuario(email, clave) {
