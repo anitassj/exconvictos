@@ -1,5 +1,5 @@
 const express = require('express');
-const conexion = require('../models/db'); /*ESTABA MAL LA RUTA DE LA DB, NO TENES QUE LLAMAR A LA TABLA CLARI TENES Q LLAMAR A LA CONEXION*/
+const conexion = require('../models/db'); /*ruta en la que se llama a la conexion*/
 class UsuarioModel {
 
 	validarUsuario(email, clave) {
