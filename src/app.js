@@ -30,7 +30,7 @@ const session = require('express-session');
 app.use(session({
     secret: 'mi_secreto_seguro',
     resave: false,
-    seUninitialized: false,
+    saveUninitialized: false,
     cookie: {
         httpOnly: true,
         secure: false, //cambia a true si se usa https
