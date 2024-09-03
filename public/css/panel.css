@@ -79,7 +79,7 @@ header {
 
 /* Estilos del contenedor de datos */
 .contenedor-datos {
-    width: 77.5%; /* Ancho total de 70% (100% - 20% - 10%) */
+    width: 76%; /* Ancho total de 70% (100% - 20% - 10%) */
     height: 74vh;
     margin: 20px auto; /* Espacio arriba y abajo */
     background-color: #f4f4f4;
