@@ -39,6 +39,7 @@ input, select {
 input::placeholder, select::placeholder{
     color: gray;
     font-style: italic;
+    font-size: 18px;
 }
 
 select:hover, select:focus, input:focus {
@@ -57,7 +58,7 @@ small.form-text {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #00ce99;
+    background-color: #2197a3;
     color: white;
     border: none;
     border-radius: 5px;
@@ -86,4 +87,9 @@ button:hover {
 .form-tipos select option {
     color: #333;
     background-color: white;
+}
+
+.form-tipos select option[disabled] {
+    color: gray;         
+    font-style: italic;  
 }
