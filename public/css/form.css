@@ -93,3 +93,9 @@ button:hover {
     color: gray;         
     font-style: italic;  
 }
+
+.swal2-confirm.btn-confirm {
+    background-color: #2197a3; 
+    color: white; 
+    font-size: 20px; 
+}

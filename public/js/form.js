@@ -79,7 +79,10 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
             icon: 'error',
             title: 'Errores la carga de datos',
             text: mensajesDeError.join(' '),
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                confirmButton: 'btn-confirm'
+            }
         });
     }
 });
