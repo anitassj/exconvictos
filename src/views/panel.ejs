@@ -5,33 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/panel.css">
     <title>Inicio</title>
-    <link rel="icon" href="">
+    <link rel="icon" href="/public/img/logo.ico">
 </head>
 <body>
 
     <header>
-        <button class="menu">☰ Menu</button>
-        <button class="usuario">Usuario</button>
+            <button class="menu">☰ Menu</button>
+            <div class="logo">
+                <img src="">
+            <button class="usuario">Usuario</button>
+        
+
+        <div class="menu-hamburguesa">
+            <a href="#" data-content="contenido1">Info 1</a>
+            <a href="#" data-content="contenido2">Info 2</a>
+            <a href="#" data-content="contenido3">Info 3</a>
+        </div>
+
+        <div class="menu-usuario">
+            <a href="#">Permisos</a>
+            <a href="#">Editar</a>
+            <a href="#">Cerrar sesion</a>
+        </div>
     </header>
 
-    <div class="menu-hamburguesa">
-        <a href="#" data-content="contenido1">Link 1</a>
-        <a href="#" data-content="contenido2">Link 2</a>
-        <a href="#" data-content="contenido3">Link 3</a>
-    </div>
-
-    <div class="menu-usuario">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
+     <!-- Contenedor para los filtros -->
+     <div class="filtros">
+        <div class="ordenar-menu">
+            <button class="ordenar">Ordenar por:</button>
+            <div class="ordenar-menu-oculto">
+                <a href="#" data-sort="nombre">Nombre</a>
+                <a href="#" data-sort="fecha">Fecha</a>
+            </div>
+        </div>
+        <div class="filtrar-menu">
+            <button class="filtrar">Filtrar:</button>
+            <div class="filtrar-menu-oculto">
+                <a href="#" data-filter="auto">Auto</a>
+                <a href="#" data-filter="moto">Moto</a>
+                <a href="#" data-filter="bicicleta">Bicicleta</a>
+            </div>
+        </div>
     </div>
 
     
     <div class="contenedor-datos">
-        <!-- contenido -->
+        
+        <!-- Contenidos -->
     </div>
 
-    <script src="/public/js/panel.css"></script>
+    <script src="/public/js/panel.js"></script>
 
 </body>
 </html>

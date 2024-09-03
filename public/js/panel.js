@@ -50,3 +50,27 @@ menuLinks.forEach(link => {
         contenedorDatos.innerHTML = contenido;
     });
 });
+
+// Toggle para el menú de ordenar
+document.querySelector(".ordenar").addEventListener("click", function() {
+    var menu = document.querySelector(".ordenar-menu-oculto");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Toggle para el menú de filtrar
+document.querySelector(".filtrar").addEventListener("click", function() {
+    var menu = document.querySelector(".filtrar-menu-oculto");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+document.addEventListener("click", function(event) {
+    var ordenarMenu = document.querySelector(".ordenar-menu-oculto");
+    var filtrarMenu = document.querySelector(".filtrar-menu-oculto");
+
+    if (!event.target.closest('.ordenar-menu') && !event.target.closest('.ordenar') && ordenarMenu.style.display === "block") {
+        ordenarMenu.style.display = "none";
+    }
+    if (!event.target.closest('.filtrar-menu') && !event.target.closest('.filtrar') && filtrarMenu.style.display === "block") {
+        filtrarMenu.style.display = "none";
+    }
+});

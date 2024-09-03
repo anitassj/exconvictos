@@ -3,14 +3,14 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* estilos de header */
+/* Estilos de header */
 header {
     display: flex;
     position: relative; /* Necesario para posicionar el menú de usuario relativo al header */
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #2197a3; /* Color principal del header */
     color: white;
 }
 
@@ -30,14 +30,15 @@ header {
 /* Estilos del menú de hamburguesa */
 .menu-hamburguesa {
     display: none;
-    position: absolute;
-    top: 50px; /* Ajusta según la altura del botón */
-    left: 20px;
-    background-color: #444;
-    border-radius: 5px;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background-color: #2197a3; /* Color del fondo del menú de hamburguesa */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    z-index: 1000;
 }
 
 .menu-hamburguesa a {
@@ -48,7 +49,7 @@ header {
 }
 
 .menu-hamburguesa a:hover {
-    background-color: #555;
+    background-color: #1b7d88; /* Color del hover en el menú de hamburguesa */
 }
 
 /* Estilos del menú de usuario */
@@ -57,7 +58,7 @@ header {
     position: absolute;
     top: 100%; /* Posiciona justo debajo del botón de usuario */
     right: 0; /* Alineado al lado derecho del contenedor header */
-    background-color: #444;
+    background-color: #2197a3; /* Color del fondo del menú de usuario */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
@@ -73,20 +74,20 @@ header {
 }
 
 .menu-usuario a:hover {
-    background-color: #555;
+    background-color: #1b7d88; /* Color del hover en el menú de usuario */
 }
 
 /* Estilos del contenedor de datos */
 .contenedor-datos {
-    width: 80%;
-    height: 80vh;
-    margin: 20px auto;
-    padding: 20px;
+    width: 77.5%; /* Ancho total de 70% (100% - 20% - 10%) */
+    height: 74vh;
+    margin: 20px auto; /* Espacio arriba y abajo */
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     position: relative;
     z-index: 1; /* Asegura que esté por debajo del menú de usuario */
+    margin-left: 20%; /* Margen izquierdo del 20% */
 }
 
 /* Otros estilos */
@@ -111,4 +112,40 @@ header {
 .mostrar {
     display: block;
 }
-        
+
+/* Filtros */
+.filtros {
+    display: flex;
+    justify-content: left;
+    padding-top: 5px;
+    padding-left: 20%;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+.ordenar-menu, .filtrar-menu {
+    position: relative;
+}
+
+.ordenar-menu-oculto, .filtrar-menu-oculto {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #2197a3; /* Color del fondo del menú oculto de ordenar y filtrar */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.ordenar-menu-oculto a, .filtrar-menu-oculto a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+.ordenar-menu-oculto a:hover, .filtrar-menu-oculto a:hover {
+    background-color: #1b7d88; /* Color del hover en los menús ocultos de ordenar y filtrar */
+}
