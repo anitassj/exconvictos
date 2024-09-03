@@ -94,6 +94,19 @@ header .menu a.importante {
     color: #2197a3;
 }
 
+header .menu a.inicio {
+    /* font-weight: bold; */
+    color: white;
+    background-color: #2197a3;
+    text-align: center;
+    border-radius: 5px;
+}
+
+header .menu li.inicio{
+    border-bottom: 0px;
+    /* display: flex; */
+}
+
 /* CUERPO --------------------------------------------------------------------- */
 body{
     background-color: white;
