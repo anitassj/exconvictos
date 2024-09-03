@@ -103,7 +103,7 @@ body{
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
 }
 
@@ -120,14 +120,15 @@ h2 {
 .form .form-boton-cotizar {
     background-color: #2197a3;
     border-radius: 10px;
-    padding: 10px;
+    padding: 12px;
     width: 35%;
+    font-weight: bold;
 }
 
 .form .form-boton-cotizar a{
     text-decoration: none;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 /* Estilo del carrusel ---------------- */
@@ -211,17 +212,31 @@ h2 {
     padding: 10px;
     flex-direction: column; 
     align-items: center;
+    gap: 20px;
 }
 
 .coberturas .tipo {
     background-color: #2197a3;
     border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 15px 30px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    margin: 0; 
+    width: 200px;
 }
 
-.coberturas .tipo img{
-    width: 50%;
+
+.coberturas .tipo a{
+    text-decoration: none;
+    flex-direction: column;
+    color: white;
+    gap: 10px;
+}
+
+.coberturas .tipo a i{
+    color: white;
+    font-size: 80px;
 }
 
 .coberturas .tipo h3{
@@ -229,4 +244,13 @@ h2 {
     color: white;
     margin: 0;
     padding: 0;
+}
+
+.coberturas .tipo:hover {
+    background-color: #1e8691;
+}
+
+.coberturas .tipo a:hover i {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease; 
 }
