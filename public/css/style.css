@@ -239,7 +239,6 @@ h2 {
     width: 200px;
 }
 
-
 .coberturas .tipo a{
     text-decoration: none;
     flex-direction: column;
@@ -266,4 +265,29 @@ h2 {
 .coberturas .tipo a:hover i {
     transform: scale(1.1); 
     transition: transform 0.3s ease; 
+}
+
+/* FOOTER ------------------------------------------------- */
+
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    justify-content: center;
+    text-align: center;
+}
+
+footer .contactos {
+    padding: 20px;
+}
+
+footer .contactos i{
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+}
+
+footer .contactos h4{
+    color: white;
+    font-size: 18px;
 }
