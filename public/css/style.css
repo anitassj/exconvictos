@@ -23,6 +23,12 @@ header .logo {
     justify-content: center;
 }
 
+header .logo a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
 /* Estilos del menu inactivo ---------- */
 header .menu {
     display: none; 
