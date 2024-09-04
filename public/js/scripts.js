@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Carrusel ----------------
+// Carrusel ---------------------------
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.swiper-container', {
     speed: 1000,
@@ -29,5 +29,24 @@ document.addEventListener('DOMContentLoaded', function () {
       type: 'bullets', 
       clickable: true,
     }
+  });
+});
+
+// preguntas frecuentes ---------------
+document.querySelectorAll('.pregunta').forEach(pregunta => {
+  pregunta.addEventListener('click', () => {
+      const respuesta = pregunta.nextElementSibling;
+      const icono = pregunta.querySelector('i');
+
+      // mostrar/ocultar la respuesta
+      if (respuesta.style.display === 'block') {
+          respuesta.style.display = 'none';
+          icono.classList.remove('fi-rr-angle-small-up');
+          icono.classList.add('fi-rr-angle-small-down');
+      } else {
+          respuesta.style.display = 'block';
+          icono.classList.remove('fi-rr-angle-small-down');
+          icono.classList.add('fi-rr-angle-small-up');
+      }
   });
 });

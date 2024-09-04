@@ -273,27 +273,96 @@ h2 {
     transition: transform 0.3s ease; 
 }
 
-/* FOOTER ------------------------------------------------- */
+/* FOOTER --------------------------------------------------------------------- */
 
 footer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: black;
     justify-content: center;
+    /* text-align: center; */
+}
+
+/* estilos titulos -------------------- */
+footer .contactos h4, footer .preguntas h4 {
+    color: #2197a3;
+    font-size: 22px;
+    margin-bottom: 20px; 
     text-align: center;
 }
 
-footer .contactos {
-    padding: 20px;
+/* estilo preguntas frecuentes -------- */
+footer .preguntas {
+    border-bottom: 3px solid #2197a3;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
 }
 
-footer .contactos i{
+footer .preguntas .pregunta-frecuente {
+    flex-direction: column;
+    color: white;
+    margin-bottom: 10px;
+}
+
+footer .preguntas .pregunta {
+    font-weight: bold;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .preguntas .pregunta i {
+    margin-left: 10px; 
+    color: #2197a3;
+}
+
+footer .preguntas .respuesta {
+    display: none;
+    padding: 10px;
+    color: #2197a3;
+}
+
+/* estilo contactos ------------------- */
+footer .contactos {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    border-bottom: 3px solid #2197a3;
+    margin: 15px;
+}
+
+
+footer .contactos .iconos {
+    display: flex;
+    flex-direction: row; 
+    margin-bottom: 30px;
+}
+
+footer .contactos i {
     color: white;
     font-size: 30px;
     margin: 10px;
 }
 
-footer .contactos h4{
+/* estilo copiright ------------------- */
+footer .copiright {
+    margin: 15px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+footer .copiright .texto-copi {
     color: white;
-    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+footer .copiright .img-copi img{
+    width: 20%;
+    height: auto;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
 }
