@@ -1,17 +1,29 @@
 use sistema_prismaseguros;
-create table solicitante_form (
-  id_solicitante int NOT NULL AUTO_INCREMENT,
-  tipo enum('Auto','Moto','Bicicleta') NOT NULL,
+CREATE TABLE solicitante_form (
+  id_solicitante int not null auto_increment primary key,
+  tipo enum('Auto', 'Moto') NOT NULL,
   patente varchar(10),
   anio int,
-  marca varchar(100),
-  modelo varchar(100),
+  id_marca int NOT NULL,
+  id_modelo int NOT NULL,
   nombre varchar(100),
   apellido varchar(100),
   email varchar(200),
-  celular varchar(13) ,
-  PRIMARY KEY (`id_solicitante`));
-  
-  insert into solicitante_form (tipo,patente,anio,marca,modelo,nombre,apellido,email,celular) value ('Auto','AB123CD','2018','Toyota','Corolla','Juan','Borja','solicitante@gmail.com','2345480654');
+  celular varchar(10),
+  foreign key (id_marca) references marcas(id_marcas),
+  foreign key (id_modelo) references modelos(id_modelos)
+); 
 
-	select * from solicitante_form;
+
+-- inserciones de prueba
+insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
+values ('Auto', 'ABC123', 2023, 1, 1, 'Juan', 'Pérez', 'juan.perez@icloud.com', '1234567890');
+
+insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
+values ('Moto', 'XYZ789', 2022, 2, 2, 'Ana', 'García', 'ana.garcia@gmail.com', '0987654321');
+
+insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
+values ('Auto', 'BI456ED', 2024, 10, 3, 'Carlos', 'Lopez', 'carlos.lopez@gmail.com', '1122334455');
+
+
+select * from solicitante_form;

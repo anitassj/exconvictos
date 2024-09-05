@@ -87,6 +87,23 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
     }
 });
 
+document.getElementById('tipo').addEventListener('change', async () => {
+    const ajax = await fetch('/obtener-marcas', {
+        headers: {
+            'content-type': 'application/json'
+        }
+    });
+    const resultado = await ajax.json();
+    const marca = document.getElementById('marca');
+    marca.innerHTML = "";
+    resultado.forEach((map) => {
+        marca.innerHTML += `<option value="${map.id_marcas}">${map.marca}</option>`
+    });
+    console.log(resultado);
+
+
+});
+
 // // AJAX con fetch- REVISAR PORQUE NO ANDA
 // fetch('/guardar-datos', {
 //     method: 'POST',
