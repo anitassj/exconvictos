@@ -25,6 +25,7 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-straight/css/uicons-bold-straight.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-thin-rounded/css/uicons-thin-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
     <title>Prisma Seguros</title>
 </head>
@@ -32,12 +33,15 @@
     <header>
         <!-- Logo ------------------------------------- -->
         <div class="logo">
-            <img src="/public/img/logo_grande_transparente.png" alt="logo">
+            <a href="/">
+                <img src="/public/img/logo_grande_transparente.png" alt="logo">
+            </a>
         </div>
 
         <!-- Menú hamburguesa ------------------------- -->
         <div class="icono-menu" id="icono-menu">
             <i class="fi fi-rr-menu-burger"></i>
+            <!-- <i class="fi fi-br-cross hidden"></i> PARA IMPLEMENTAR LA X -->
         </div> 
 
         <nav class="menu" id="menu">
@@ -45,12 +49,12 @@
                 <li><a href="/solicitante_form" class="importante">COTIZACIÓN ONLINE</a></li>
                 <li><a href="#titulo-2">Coberturas</a></li>
                 <li><a href="#titulo-3">Nosotros</a></li>
-                <li><a href="#titulo-4">Contactos</a></li>
+                <li><a href="#titulo-4">Preguntas Frecuentes</a></li>
+                <li><a href="#titulo-5">Contactos</a></li>
+                <li class="inicio"><a href="/login" class="inicio">Iniciar sesión</a></li>
             </ul>
         </nav>
         
-        <!-- # dimensiones movile -->
-        <!-- # max: 400 x 800 -->
     </header>
 
     <!-- Contenedor formulario ------------------------ -->
@@ -82,17 +86,155 @@
             <h2>¡Elegí tu seguro con Prisma!</h2>
         </div>
         <div class="tipo">
-            <a href="/solicitante_form">
+            <div class="icono">
                 <i class="fi fi-tr-moped"></i>
-                <h3>Moto</h3>
-            </a>
+            </div>
+            <h3>Moto</h3>
+    
+            <div class="swiper-container carrusel-planes" id="carrusel-planes">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Básico</h3>
+                                <p>Desde $10.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil</li>
+                                    <li>Robo Total</li>
+                                    <li>Asistencia en Ruta</li>
+                                    <li>Asistencia en Infracciones</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Estándar</h3>
+                                <p>Desde $20.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil</li>
+                                    <li>Robo Total y Parcial</li>
+                                    <li>Daños por Accidentes</li>
+                                    <li>Asistencia en Ruta Mejorada</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Premium</h3>
+                                <p>Desde $30.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil Ampliada</li>
+                                    <li>Robo Total, Parcial y Daños por Intento de Robo</li>
+                                    <li>Daños por Accidentes Completos</li>
+                                    <li>Asistencia en Ruta Completa</li>
+                                    <li>Cobertura por Eventos Climáticos</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- paginación -->
+                <div class="swiper-pagination"></div>
+                <!-- navigación -->
+                <!-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> -->
+            </div> 
         </div>
+
         <div class="tipo">
-            <a href="/solicitante_form">
+            <div class="icono">
                 <i class="fi fi-tr-car-alt"></i>
                 <h3>Auto</h3>
-            </a>
+            </div>
+
+            <div class="swiper-container carrusel-planes" id="carrusel-planes">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Básico</h3>
+                                <p>Desde $10.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil</li>
+                                    <li>Robo Total</li>
+                                    <li>Asistencia en Ruta</li>
+                                    <li>Asistencia en Infracciones</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Estándar</h3>
+                                <p>Desde $20.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil</li>
+                                    <li>Robo Total y Parcial</li>
+                                    <li>Daños por Accidentes</li>
+                                    <li>Asistencia en Ruta Mejorada</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="tarjeta">
+                            <div class="tarjeta-header">
+                                <h3>Plan Premium</h3>
+                                <p>Desde $30.000/mes</p>
+                            </div>
+                            <div class="tarjeta-body">
+                                <ul>
+                                    <li>Responsabilidad Civil Ampliada</li>
+                                    <li>Robo Total, Parcial y Daños por Intento de Robo</li>
+                                    <li>Daños por Accidentes Completos</li>
+                                    <li>Asistencia en Ruta Completa</li>
+                                    <li>Cobertura por Eventos Climáticos</li>
+                                </ul>
+                            </div>
+                            <div class="tarjeta-footer">
+                                <a href="/solicitante_form">COTIZAR</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- paginación -->
+                <div class="swiper-pagination"></div>
+                <!-- navigación -->
+                <!-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> -->
+            </div> 
         </div>
+        <!-- ANITA: BICI SI O NO?? -->
         <!-- <div class="tipo">
             <a href="/solicitante_form">
                 <i class="fi fi-tr-biking"></i>
@@ -101,10 +243,128 @@
         </div> -->
     </div>
 
-    <!-- Contenedor "" -->
-    <div>
-
+    <div class="nosotros">
+        <div class="contenedor">
+            <h2>Quiénes Somos</h2>
+            <div class="introduccion">
+                <p>En <strong>Prisma Seguros</strong>, no solo aseguramos vehículos, aseguramos tranquilidad. Somos una empresa apasionada por la protección, con el compromiso de ofrecer seguros que se ajusten a cada ruta y a cada estilo de vida.</p>
+            </div>
+            <div class="filosofia">
+                <h3>Nuestra Filosofía</h3>
+                <p><em>"Viajar seguro es viajar feliz."</em></p>
+                <p>Creemos que cada viaje es una aventura, y que cada aventura merece la mejor protección. Es por eso que, en Prisma Seguros, cada póliza está diseñada para brindar no solo cobertura, sino también confianza y tranquilidad.</p>
+            </div>
+            <div class="equipo">
+                <h3>Nuestro Equipo</h3>
+                <p><strong>¡Somos un equipo de apasionados de la seguridad y la tecnología!</strong></p>
+                <p>Cada miembro de nuestro equipo comparte una visión común: proteger lo que más valoras con la máxima dedicación. Con años de experiencia en el sector y una constante búsqueda de la excelencia, nuestro equipo está siempre listo para asistirte.</p>
+            </div>
+            <div class="innovacion">
+                <h3>Innovación y Compromiso</h3>
+                <p><strong>La tecnología está en nuestro ADN.</strong></p>
+                <p>Nos enorgullece estar a la vanguardia, utilizando las últimas tecnologías para ofrecerte seguros más personalizados y eficientes. Con herramientas digitales intuitivas, te brindamos acceso rápido y sencillo a tu información, cotizaciones en tiempo real y un soporte continuo.</p>
+            </div>
+            <div class="porque-elegirnos">
+                <h3>¿Por Qué Elegirnos?</h3>
+                <ul>
+                    <li><strong>Cobertura Integral:</strong> Protegemos cada aspecto de tu vehículo, desde robos hasta daños por accidentes, con planes diseñados a medida.</li>
+                    <li><strong>Asistencia 24/7:</strong> Siempre estamos aquí cuando más nos necesitas, con un servicio de asistencia en ruta disponible en todo momento.</li>
+                    <li><strong>Transparencia y Confianza:</strong> Sin letras pequeñas ni sorpresas, nuestro compromiso es brindarte seguridad y claridad en cada paso.</li>
+                </ul>
+            </div>
+            <div class="mensaje-cotiza">
+                <h3>Tu Viaje Comienza Aquí</h3>
+                <p>¿Listo para rodar con la seguridad que mereces? Únete a <strong>Prisma Seguros</strong> y deja que te acompañemos en cada trayecto, desde el momento en que pones el motor en marcha hasta que llegas a tu destino.</p>
+                <a href="/solicitante_form" class="boton-form">¡Conoce más sobre nuestros planes y empieza a viajar con confianza hoy mismo!</a>
+                <!-- <div class="gif-indicador">
+                    <img src="/public/img/hacer-clic.gif" alt="Haga clic aquí">
+                </div> -->
+            </div>
+        </div>
     </div>
+    
+
+    <footer>
+        <div class="preguntas" id="titulo-4">
+            <h4>Preguntas frecuentes</h4>
+            <div class="pregunta-frecuente">
+                <div class="pregunta">¿Qué tipos de seguros ofrecen?
+                    <i class="fi fi-rr-angle-small-down"></i>
+                </div>
+                <div class="respuesta">Ofrecemos seguros para ... </div>
+            </div>
+
+            <div class="pregunta-frecuente">
+                <div class="pregunta">¿Cómo puedo obtener una cotización para un seguro?
+                    <i class="fi fi-rr-angle-small-down"></i>
+                </div>
+                <div class="respuesta">Ofrecemos seguros para ... </div>
+            </div>
+
+            <div class="pregunta-frecuente">
+                <div class="pregunta">¿Qué hacer si necesito asistencia en carretera o en emergencias?
+                    <i class="fi fi-rr-angle-small-down"></i>
+                </div>
+                <div class="respuesta">Ofrecemos seguros para ... </div>
+            </div>
+
+            <div class="pregunta-frecuente">
+                <div class="pregunta">¿Cómo puedo contactar al servicio al cliente?
+                    <i class="fi fi-rr-angle-small-down"></i>
+                </div>
+                <div class="respuesta">Ofrecemos seguros para ... </div>
+            </div>
+
+            <div class="pregunta-frecuente">
+                <div class="pregunta">¿Dónde se encuentran las oficinas de la aseguradora?
+                    <i class="fi fi-rr-angle-small-down"></i>
+                </div>
+                <div class="respuesta">Ofrecemos seguros para ... </div>
+            </div>
+        </div>
+
+        <div class="ubicacion">
+            <h4>¿Dónde estamos?</h4>
+            <div>
+                <p>
+                    Estamos ubicados en Av. Calixto Calderón 424, Chivilcoy, Buenos Aires, Argentina.
+                </p>
+                <a href="https://www.google.com/maps?q=Av.+Calixto+Calderon+424" target="_blank">
+                    Ver ubicación en Google Maps
+                </a>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.8868352851337!2d-60.037367222795744!3d-34.909289313672005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bebad1ec1085b7%3A0x9506a5a7861386c2!2sAv.%20C.%20Calder%C3%B3n%20424%2C%20Chivilcoy%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1725477621545!5m2!1ses-419!2sar" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>        
+
+        <div class="contactos" id="titulo-5">
+            <h4>¡Seguinos!</h4>
+            <div class="iconos">
+                <i class="fi fi-brands-instagram"></i>
+                <i class="fi fi-brands-whatsapp"></i>
+                <i class="fi fi-brands-facebook"></i>
+            </div>
+        </div>
+
+        <div class="copiright">
+            <div class="texto-copi">
+                <p>
+                    Copiright 2024. Todos los derechos reservados | Prisma S.A., CUIT 30-12123123-7, Av. Calixto Calderon 424, Chivilcoy, Buenos Aires.
+                    Las fotos son a modo ilustrativo. La venta de cualquiera de los servicios publicados está sujeta a la verificación de los términos y condiciones.
+                </p>
+            </div>
+            <div class="img-copi">
+                <img src="/public/img/footer_fiscal.jpeg" alt="">
+            </div>
+        </div>
+    </footer>
     
     <!-- JS de la libreria Swiper (carrusel) -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Favicon
-    <link rel="icon" type="image/png" sizes="16x16"  href="/favicons/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff"> -->
+    <link rel="icon" type="image/jpg" href="/public/img/logo.ico"/>
 
     <!-- Librería Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -34,20 +31,25 @@
     <header>
         <!-- Logo ------------------------------------- -->
         <div class="logo">
-            <img src="/public/img/logo_grande_transparente.png" alt="logo">
+            <a href="/">
+                <img src="/public/img/logo_grande_transparente.png" alt="logo">
+            </a>
         </div>
 
         <!-- Menú hamburguesa ------------------------- -->
         <div class="icono-menu" id="icono-menu">
             <i class="fi fi-rr-menu-burger"></i>
+            <!-- <i class="fi fi-br-cross hidden"></i> PARA IMPLEMENTAR LA X -->
         </div> 
 
         <nav class="menu" id="menu">
             <ul>
-                <li><a href="#titulo-1" class="importante">COTIZACIÓN ONLINE</a></li>
+                <li><a href="/solicitante_form" class="importante">COTIZACIÓN ONLINE</a></li>
                 <li><a href="#titulo-2">Coberturas</a></li>
                 <li><a href="#titulo-3">Nosotros</a></li>
-                <li><a href="#titulo-4">Contactos</a></li>
+                <li><a href="#titulo-4">Preguntas Frecuentes</a></li>
+                <li><a href="#titulo-5">Contactos</a></li>
+                <li class="inicio"><a href="/login" class="inicio">Iniciar sesión</a></li>
             </ul>
         </nav>
     </header>
@@ -64,6 +66,17 @@
                 <!--<option value="Bicicleta">Bicicleta</option> -->
             </select>
         </div>
+
+        <!-- ANITA: PREG SI LO IMPLEMENTAMOS? -->
+        <!-- <div class="form-tipos">
+            <label for="tipo">Tipo de Vehículo:</label>
+            <select name="tipo" id="tipo">
+                <option value="" disabled selected>Selecciona el plan deseado</option>
+                <option value="basico">Básico</option>
+                <option value="estandar">Estándar</option>
+                <option value="premium">Premium</option>
+            </select>
+        </div> -->
 
         <label for="apellido">Ingresá la patente</label>
         <small class="form-text">Sin espacios ni guiones</small>
