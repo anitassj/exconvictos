@@ -21,7 +21,7 @@ router.post('/guardar-datos', (req, res) => {
     
     conexion.query(
          'INSERT INTO  solicitante_form (tipo, patente, anio, marca, modelo,nombre,apellido,celular,email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-         [tipo,patente,anio,marca,modelo,nombre,apellido,celular,email],
+         [tipo,patente,anio,marca,modelo,nombre,apellido,celular,email], 
         (error, results) => {
         if (error) { //si existe un error
             return res.status(400).json({ error: 'Error al procesar los datos.' }); //validacion
