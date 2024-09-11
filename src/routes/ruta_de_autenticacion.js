@@ -4,6 +4,10 @@ const UsuarioModel = require('../models/usuario_modelo'); // ajusta la ruta segÃ
 
 const usuarioModel = new UsuarioModel();
 
+router.get('/login', (req, res) => {
+    res.render('login', { error: null }); // Se pasa el error aunque no haya para que el login funcione correctamente y asi evitar el ReferenceError
+});
+
 router.post('/ruta_de_autenticacion', async (req, res) => { /*cambio de ruta*/
     const { email, clave } = req.body;
 

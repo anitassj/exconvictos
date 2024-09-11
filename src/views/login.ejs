@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prisma Seguros | Iniciar Sesión</title>
-    <!-- <link rel="stylesheet" href="/public/css/login.css"> -->
     <link rel="stylesheet" href="/public/css/login.css">
     <link rel="icon" type="image/jpg" href="/public/img/design3.png"/>
 
@@ -16,25 +15,24 @@
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Librería Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="login">
-        <form action="/ruta_de_autenticacion" method="POST"> <!-- metodo 'post' para enviar información al servidor,FALTABA LLAMAR -->
+        <form action="/ruta_de_autenticacion" method="POST">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
-            <% if (typeof error !== 'undefined') { %>
-                <div style="color: red; font-weight: bold;">
-                    <%= error %>
-                </div>
-            <% } %>
-            
+
+            <div id="error-message" data-error="<%= error ? error : '' %>"></div>
+
             <div class="user-email">
                 <input type="email" id="email" name="email" placeholder="Correo electrónico">
             </div>
             <div class="user-password">
-                <input type="password" id="clave" name="clave" placeholder="Contraseña"> <!--EL CAMPO NO COINCIDIA CON LA TABLA DE LA DB Y LA VARIABLE solucionado-->
+                <input type="password" id="clave" name="clave" placeholder="Contraseña">
             </div>
-            <input class="iniciar-sesion" type="submit" value="Iniciar Sesión"> <!-- iniciar sesión -->
-            <div class="recover-user"> <!-- si olvidó la contraseña (para futuro) -->
+            <input class="iniciar-sesion" type="submit" value="Iniciar Sesión">
+            <div class="recover-user">
                 <a href="/recover">¿Olvidaste tu contraseña?</a>
             </div>
             <div class="imagen">
@@ -42,6 +40,7 @@
             </div>
         </form>
     </div>
+    
     <script src="/public/js/login.js" type="text/javascript"></script>
     <script src="/src/models/usuario_modelo.js" type="text/javascript"></script>
     <script src="/src/routes/ruta_de_autenticacion.js" type="text/javascript"></script>
