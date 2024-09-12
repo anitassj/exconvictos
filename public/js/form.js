@@ -1,3 +1,4 @@
+// validación de errores del form
 document.getElementById('formCotizacion').addEventListener('submit', function(event) {
     let esValido = true;
     let mensajesDeError = [];
@@ -87,22 +88,39 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
     }
 });
 
+// carga de campo marca con datos precargados en la DB 
 document.getElementById('tipo').addEventListener('change', async () => {
-    const ajax = await fetch('/obtener-marcas', {
-        headers: {
-            'content-type': 'application/json'
+    try {
+        const ajax = await fetch('/obtener-marcas', {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!ajax.ok) {
+            throw new Error('Error al obtener las marcas');
         }
-    });
-    const resultado = await ajax.json();
-    const marca = document.getElementById('marca');
-    marca.innerHTML = "";
-    resultado.forEach((map) => {
-        marca.innerHTML += `<option value="${map.id_marcas}">${map.marca}</option>`
-    });
-    console.log(resultado);
 
+        const resultado = await ajax.json();
 
+        const marca = document.getElementById('marca');
+        marca.innerHTML = ""; 
+
+        resultado.forEach((map) => {
+            marca.innerHTML += `<option value="${map.id_marcas}">${map.marca}</option>`;
+        });
+
+        console.log(resultado); 
+
+    } catch (error) {
+        console.error('Hubo un error con la solicitud AJAX: ', error);
+    }
 });
+
+// carga de campo marca con datos precargados en la DB 
+// poner cod. anita
+
 
 // // AJAX con fetch- REVISAR PORQUE NO ANDA
 // fetch('/guardar-datos', {
