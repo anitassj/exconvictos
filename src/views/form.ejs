@@ -6,9 +6,6 @@
 
     <link rel="icon" type="image/jpg" href="/public/img/logo.ico"/>
 
-    <!-- Librería Sweet Alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <!-- CSS -->
     <link rel="stylesheet" href="/public/css/form.css" type="text/css">
     <link rel="stylesheet" href="/public/css/style.css" type="text/css">
@@ -92,7 +89,9 @@
         </select>
                     
         <label for="modelo">Selecciona el modelo</label>
-        <input type="text" id="modelo" name="modelo" list="modelo" required>
+        <select id="modelo" name="modelo" required>
+            <option value="" disabled selected>Selecciona un modelo</option>
+        </select>
                           
         <label for="nombre">Ingresá tu nombre</label>
         <input type="text" placeholder="Anita" id="nombre" name="nombre" required>
@@ -113,5 +112,7 @@
     <!-- JS -->
     <script src="/public/js/form.js" type="text/javascript"></script>
     <script src="/public/js/scripts.js" type="text/javascript"></script>
+    <!-- Librería Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -1,11 +1,9 @@
-const express = require('express');
-const conexion = require('../models/db'); /*ruta en la que se llama a la conexion*/
+const conexion = require('../models/db');
 
 class marcasModel {
-
     obtenerTodos(){
         return new Promise((resolve, reject) => {
-            let sql = `SELECT * FROM marcas`;
+            let sql = `SELECT * FROM marcas WHERE tipo = 'Auto'`;
 
             conexion.query(sql, [], (err, results) => {
                 try{

@@ -110,3 +110,36 @@ document.getElementById('tipo').addEventListener('change', async () => {
 
 
 // carga de campo modelo con datos precargados en la DB 
+document.getElementById('tipo').addEventListener('change', async (event) => {
+    const idMarca = event.target.value; // Obtener el id_marca de la opción seleccionada
+
+    try {
+        const ajax = await fetch(`/obtener-modelos/${idMarca}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!ajax.ok) {
+            throw new Error('Error al obtener los modelos');
+        }
+
+        const resultado = await ajax.json();
+        const modeloSelect = document.getElementById('modelo');
+
+        modeloSelect.innerHTML = "";
+
+        if (Array.isArray(resultado)) {
+            resultado.forEach((map) => {
+                modeloSelect.innerHTML += `<option value="${map.id_modelos}">${map.nombre}</option>`;
+            });
+        } else {
+            console.error('El resultado no es un array:', resultado);
+        }
+
+        console.log(resultado);
+    } catch (error) {
+        console.error('Hubo un error con la solicitud AJAX:', error);
+    }
+});
+

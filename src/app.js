@@ -12,17 +12,11 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
-// configuracion d middleware para analizar datos del formulario
-// NO TOCAR ESTA LINEA DE ABAJO, SIRVE PARA DECIR QUE LA CARPETA PUBLICA VA A SER /PUBLIC
-app.use('/public', express.static('public'));//porque la carpeta public esta por encima de app.js y puede causar problemas
-// no me anda -- ANITA (preg. al profe)
+app.use('/public', express.static('public'));
 
 // configuracion para usar ejs (motor de plantillas) para hacer html dinamico, necesitan instalar: npm install ejs
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views')); // LO VOLVÍ A PONER YO -- ANITA
-
-// Esta linea de abajo no se utiliza-- profe  POR QUÉ NO? NO ME ANDA SIN ESTO. ANITA (preguntarle al profe)
-//app.set('views', path.join(__dirname, 'views')); 
+app.set('views', path.join(__dirname, 'views'));
 
 const session = require('express-session');
 
@@ -47,6 +41,7 @@ const rutaDatos = require('./routes/guardar_datos');
 const rutaPanel = require('./routes/panel');
 const authRoutes = require('./routes/ruta_de_autenticacion');
 const marcasRoutes = require('./routes/marcas'); 
+const modelosRoutes = require('./routes/modelos'); 
 
 app.use('/', authRoutes);
 app.use('/', rutaLogin);
@@ -56,6 +51,7 @@ app.use('/', rutaDatos);
 app.use('/', rutaRecover);
 app.use('/', rutaPanel);
 app.use('/', marcasRoutes);  
+app.use('/', modelosRoutes);  
 
 // levantar el servidor 
 app.listen(port, () => {
