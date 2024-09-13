@@ -34,7 +34,7 @@ const contenedorDatos = document.querySelector(".contenedor-datos");
 
 // Define los contenidos para cada enlace
 const contenidos = {
-    contenido1: "<h2>Contenido para Link 1</h2><p>Aquí está el contenido para el primer enlace.</p>",
+    contenido1: "<ul><li>ID</li><li>nombre</li><li>vehiculos</li><li>email</li><li>celular</li></ul>",
     contenido2: "<h2>Contenido para Link 2</h2><p>Aquí está el contenido para el segundo enlace.</p>",
     contenido3: "<h2>Contenido para Link 3</h2><p>Aquí está el contenido para el tercer enlace.</p>"
 };
