@@ -1,6 +1,2 @@
-# NO TOCAR LO QUE PUSE ACÁ!!!!!!!!
-# Este archivo le dice a Git qué archivos o carpetas no deben ser incluidos 
-# en el control de versiones (repositorio). 
-# Ejemplo: todo lo que esté dentro de node_modules no se sube
 node_modules/
 .env

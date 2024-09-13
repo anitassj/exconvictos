@@ -90,79 +90,23 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
 
 // carga de campo marca con datos precargados en la DB 
 document.getElementById('tipo').addEventListener('change', async () => {
-    try {
-        const ajax = await fetch('/obtener-marcas', {
-            method: 'GET', 
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (!ajax.ok) {
-            throw new Error('Error al obtener las marcas');
+    const ajax = await fetch('/obtener-marcas',{
+        headers: {
+            'content-type': 'application/json'
         }
+    });
 
-        const resultado = await ajax.json();
+    const resultado = await ajax.json();
+    const marca = document.getElementById('marca');
 
-        const marca = document.getElementById('marca');
-        marca.innerHTML = ""; 
+    marca.innerHTML = "";
 
-        resultado.forEach((map) => {
-            marca.innerHTML += `<option value="${map.id_marcas}">${map.marca}</option>`;
-        });
+    resultado.forEach((map) => {
+        marca.innerHTML += `<option value="${map.id_marcas}">${map.nombre}</option>`
+    });
 
-        console.log(resultado); 
-
-    } catch (error) {
-        console.error('Hubo un error con la solicitud AJAX: ', error);
-    }
+    console.log(resultado);
 });
 
-// carga de campo marca con datos precargados en la DB 
-// poner cod. anita
 
-
-// // AJAX con fetch- REVISAR PORQUE NO ANDA
-// fetch('/guardar-datos', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//         tipo: tipo,
-//         patente: patente,
-//         anio: anio,
-//         marca: marca,
-//         modelo: modelo,
-//         nombre: nombre,
-//         apellido: apellido,
-//         celular: celular,
-//         email: email
-//     })
-// })
-// .then(response => response.json())
-// .then(data => {
-//     if (data.error) {
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Errores en la carga de datos',
-//             text: data.error,
-//             confirmButtonText: 'Aceptar'
-//         });
-//     } else {
-//         Swal.fire({
-//             icon: 'success',
-//             title: 'Éxito',
-//             text: 'Formulario completado con éxito.',
-//             confirmButtonText: 'Aceptar'
-//         });
-//     }
-// })
-// .catch(error => {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Error',
-//         text: 'Hubo un problema con la solicitud.',
-//         confirmButtonText: 'Aceptar'
-//     });
-// });
+// carga de campo modelo con datos precargados en la DB 
