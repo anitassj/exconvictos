@@ -89,57 +89,47 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
 });
 
 // carga de campo marca con datos precargados en la DB 
-document.getElementById('tipo').addEventListener('change', async () => {
-    const ajax = await fetch('/obtener-marcas',{
-        headers: {
-            'content-type': 'application/json'
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    const tipoSelect = document.getElementById('tipo');
+  
+    tipoSelect.addEventListener('change', async () => {
+      const tipo = tipoSelect.value;
+      const response = await fetch(`/obtener-marcas?tipo=${tipo}`);
+      const data = await response.json();
+  
+      if (data.error) {
+        console.error(data.error);
+        return;
+      }
+  
+      const marcaSelect = document.getElementById('marca');
+      marcaSelect.innerHTML = '';
+  
+      data.forEach(marca => {
+        marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
+      });
     });
-
-    const resultado = await ajax.json();
-    const marca = document.getElementById('marca');
-
-    marca.innerHTML = "";
-
-    resultado.forEach((map) => {
-        marca.innerHTML += `<option value="${map.id_marcas}">${map.nombre}</option>`
-    });
-
-    console.log(resultado);
-});
+  });
 
 
 // carga de campo modelo con datos precargados en la DB 
 document.getElementById('tipo').addEventListener('change', async (event) => {
     const idMarca = event.target.value; // Obtener el id_marca de la opción seleccionada
 
-    try {
-        const ajax = await fetch(`/obtener-modelos/${idMarca}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        if (!ajax.ok) {
-            throw new Error('Error al obtener los modelos');
+    const ajax = await fetch(`/obtener-modelos/${idMarca}`, {
+        headers: {
+            'Content-Type': 'application/json'
         }
+    });
 
-        const resultado = await ajax.json();
-        const modeloSelect = document.getElementById('modelo');
+    const resultado = await ajax.json();
+    const modeloSelect = document.getElementById('modelo');
 
-        modeloSelect.innerHTML = "";
+    modeloSelect.innerHTML = "";
 
-        if (Array.isArray(resultado)) {
-            resultado.forEach((map) => {
-                modeloSelect.innerHTML += `<option value="${map.id_modelos}">${map.nombre}</option>`;
-            });
-        } else {
-            console.error('El resultado no es un array:', resultado);
-        }
+    resultado.forEach((map) => {
+        modeloSelect.innerHTML += `<option value="${map.id_modelos}">${map.nombre}</option>`;
+    });
 
-        console.log(resultado);
-    } catch (error) {
-        console.error('Hubo un error con la solicitud AJAX:', error);
-    }
+    console.log(resultado);
 });
-

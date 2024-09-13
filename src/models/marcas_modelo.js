@@ -1,20 +1,22 @@
 const conexion = require('../models/db');
 
 class marcasModel {
-    obtenerTodos(){
+    obtenerTodos(tipo){
         return new Promise((resolve, reject) => {
-            let sql = `SELECT * FROM marcas WHERE tipo = 'Auto'`;
+            tipo = conexion.escape(tipo);
+
+            const sql = `SELECT * FROM marcas WHERE tipo = ${tipo}`;
 
             conexion.query(sql, [], (err, results) => {
-                try{
-                    if (results.length == 0){
-                        resolve(null);
-                    }
-
-                    resolve(results);
-                } catch (error){
-                    reject(error)
+                if (err) {
+                    return reject(err);
                 }
+
+                if (results.length === 0) {
+                    return resolve([]);
+                }
+
+                resolve(results);
             });
         });
     }
