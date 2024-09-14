@@ -1,4 +1,4 @@
-// validación de errores del form ---------------------------------------------
+// validación de errores del form -----------------------------------------------------------------
 document.getElementById('formCotizacion').addEventListener('submit', function(event) {
     let esValido = true;
     let mensajesDeError = [];
@@ -88,52 +88,54 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
     }
 });
 
-// carga de campo MARCA con datos precargados en la DB ------------------------
+// mostrar datos precargados al cliente desde el servidor (marca y modelo del vehículo) -----------
 document.addEventListener('DOMContentLoaded', () => {
-    const tipoSelect = document.getElementById('tipo');
-    
-    tipoSelect.addEventListener('change', async () => {
+  const tipoSelect = document.getElementById('tipo');
+  const marcaSelect = document.getElementById('marca');
+  const modeloSelect = document.getElementById('modelo');
+
+  // carga de marcas cuando se selecciona un tipo de vehículo --
+  tipoSelect.addEventListener('change', async () => {
       const tipo = tipoSelect.value;
+
+      // solicitar marcas según el tipo seleccionado
       const solicitudServer = await fetch(`/obtener-marcas?tipo=${tipo}`);
       const respServer = await solicitudServer.json();
-  
-      // verificar si la resp del servidor tiene un error
-      if (respServer.error) {
-        console.error(respServer.error);
-        return;
-      }
-  
-      const marcaSelect = document.getElementById('marca');
 
-      marcaSelect.innerHTML = ''; //limpiar pq sino se sobrecargan las marcas
-  
+      if (respServer.error) {
+          console.error(respServer.error);
+          return;
+      }
+
+      // reiniciar las opciones del campo marca
+      marcaSelect.innerHTML = '<option value="">Seleccione una marca</option>'; 
+
       respServer.forEach(marca => {
-        marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
+          marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
       });
-    });
+
+      // reiniciar las opciones del campo modelo
+      modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>';
   });
 
+  // carga de modelos cuando se selecciona una marca --
+  marcaSelect.addEventListener('change', async () => {
+      const idMarca = marcaSelect.value;
 
-// carga de campo MODELO con datos precargados en la DB -----------------------
-document.addEventListener('DOMContentLoaded', () => {
-    const tipo = document.getElementById('marca');
-  
-    tipo.addEventListener('change', async () => {
-      const idMarca = tipo.value;
+      // solicitar modelos según la marca seleccionada
       const solicitudServer = await fetch(`/obtener-modelos/${idMarca}`);
       const respServer = await solicitudServer.json();
-  
-      if (respServer.error) {
-        console.error(respServer.error);
-        return;
-      }
-  
-      const modeloSelect = document.getElementById('modelo');
 
-      modeloSelect.innerHTML = ''; 
-  
+      if (respServer.error) {
+          console.error(respServer.error);
+          return;
+      }
+
+      // reiniciar las opciones del campo modelo
+      modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>'; 
+
       respServer.forEach(modelo => {
-        modeloSelect.innerHTML += `<option value="${modelo.id_modelo}">${modelo.nombre}</option>`;
+          modeloSelect.innerHTML += `<option value="${modelo.id_modelo}">${modelo.nombre}</option>`;
       });
-    });
   });
+});
