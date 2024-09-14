@@ -20,4 +20,3 @@ router.get('/obtener-marcas', async (req, res) => {
 });
   
 module.exports = router;
-

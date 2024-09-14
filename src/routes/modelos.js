@@ -1,13 +1,15 @@
+// ruta para obtener modelos según el id de la marca seleccionada
 const express = require('express');
 const router = express.Router();
 const ModelosModel = require('../models/modelos_models');
 
 const modelosModel = new ModelosModel();
 
-router.get('/obtener-modelos/:idMarca', async (req, res) => {
-    const { idMarca } = req.params; // Obtener id_marca de los parámetros de la ruta
-    const datos = await modelosModel.obtenerPorMarca(idMarca);
-    res.json(datos);
+router.get('/obtener-modelos/:id_marca', async (req, res) => {
+    const { id_marca } = req.params; 
+    const consultaModelos = await modelosModel.obtenerPorMarca(id_marca);
+    console.log(consultaModelos);
+    res.json(consultaModelos);
 });
   
 module.exports = router;
