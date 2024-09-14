@@ -108,14 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // reiniciar las opciones del campo marca
-      marcaSelect.innerHTML = '<option value="">Seleccione una marca</option>'; 
+      marcaSelect.innerHTML = '<option value="" disabled selected>Seleccione una marca</option>'; 
 
       respServer.forEach(marca => {
           marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
       });
 
       // reiniciar las opciones del campo modelo
-      modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>';
+      modeloSelect.innerHTML = '<option value="" disabled selected>Seleccione un modelo</option>';
   });
 
   // carga de modelos cuando se selecciona una marca --
