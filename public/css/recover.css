@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, #2197a3 50%, #ffffff 50%);
-    font-family: Rubik;
+    font-family: "Urbanist", sans-serif;
     height: 100%;
 }
 

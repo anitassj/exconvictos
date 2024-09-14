@@ -116,10 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // carga de campo MODELO con datos precargados en la DB -----------------------
 document.addEventListener('DOMContentLoaded', () => {
-    const tipoModSelect = document.getElementById('modelo');
+    const tipo = document.getElementById('marca');
   
-    tipoModSelect.addEventListener('change', async () => {
-      const modelo = tipoModSelect.value;
+    tipo.addEventListener('change', async () => {
+      const idMarca = tipo.value;
       const solicitudServer = await fetch(`/obtener-modelos/${idMarca}`);
       const respServer = await solicitudServer.json();
   

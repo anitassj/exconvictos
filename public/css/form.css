@@ -83,17 +83,6 @@ button:hover {
     margin-bottom: 8px; 
 }
 
-/* ANITA: pq no se aplican?? */
-.form-tipos select option {
-    color: #333;
-    background-color: white;
-}
-
-.form-tipos select option[disabled] {
-    color: gray;         
-    font-style: italic;  
-}
-
 .swal2-confirm.btn-confirm {
     background-color: #2197a3; 
     color: white; 
