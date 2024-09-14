@@ -36,7 +36,7 @@ input, select {
     color: #333;
 }
 
-input::placeholder, select::placeholder{
+input::placeholder{
     color: gray;
     font-style: italic;
     font-size: 18px;

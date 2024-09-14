@@ -159,7 +159,7 @@ h2 {
 }
 
 .swiper-container {
-    width: 84%;
+    /* width: 84%; */
     height: auto; 
     max-width: 600px;
     margin: 20px auto;
@@ -176,7 +176,7 @@ h2 {
 .swiper-container .swiper-wrapper .swiper-slide img {
     width: 100%; 
     height: auto;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     filter: grayscale(100%); 
     transition: filter 0.3s ease;
 }
@@ -209,7 +209,7 @@ h2 {
     opacity: 1; 
 }
 
-.swiper-container .swiper-button-prev { 
+/* .swiper-container .swiper-button-prev { 
     right: 120%;
     color: black;
     width: 30px;
@@ -221,7 +221,7 @@ h2 {
     color: black;
     width: 30px; 
     top: 50%; 
-}
+} */
 
 /* Estilo coberturas ------------------ */
 .coberturas {
@@ -379,15 +379,16 @@ h2 {
     font-size: 26px;
     color: #2197a3;
     margin-bottom: 15px;
+    text-align: center;
 }
 
-.nosotros p,
-.nosotros ul {
-    font-size: 18px;
+.nosotros p {
+    font-size: 22px;
     line-height: 1.6;
+    text-align: center;
 }
 
-.nosotros ul {
+/* .nosotros ul {
     list-style-type: none;
     padding: 0;
 }
@@ -395,7 +396,7 @@ h2 {
 .nosotros ul li {
     padding-left: 30px;
     margin-bottom: 10px;
-}
+} */
 
 .nosotros .boton-form {
     display: inline-block;
@@ -405,7 +406,7 @@ h2 {
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 27px;
     text-align: center;
 }
 
@@ -471,6 +472,12 @@ footer .preguntas .respuesta {
     display: none;
     padding: 10px;
     color: #2197a3;
+}
+
+footer .preguntas .pregunta-frecuente .respuesta .linkC{
+    text-decoration: none;
+    font-weight: bold;
+    color: #ebb970;
 }
 
 /* estilo ubicacion ------------------- */
