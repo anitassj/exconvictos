@@ -2,11 +2,16 @@
 const conexion = require('../models/db');
 
 class ModelosModel {
-    obtenerPorMarca(id_marca) {
+    obtenerPorMarcaYTipo(id_marca, tipo) {
         return new Promise((resolve, reject) => {
-            let sql = 'SELECT * FROM modelos WHERE id_marca = ?';
+            const sql = `
+                SELECT modelos.id_modelos, modelos.nombre
+                FROM modelos
+                INNER JOIN marcas ON modelos.id_marca = marcas.id_marcas
+                WHERE modelos.id_marca = ? AND marcas.tipo = ?
+            `;
 
-            conexion.query(sql, [id_marca], (err, results) => {
+            conexion.query(sql, [id_marca, tipo], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {

@@ -7,8 +7,9 @@ const modelosModel = new ModelosModel();
 
 router.get('/obtener-modelos/:id_marca', async (req, res) => {
     const { id_marca } = req.params; 
-    const consultaModelos = await modelosModel.obtenerPorMarca(id_marca);
-    console.log(consultaModelos);
+    const tipo = req.query.tipo;
+
+    const consultaModelos = await modelosModel.obtenerPorMarcaYTipo(id_marca, tipo);
     res.json(consultaModelos);
 });
   

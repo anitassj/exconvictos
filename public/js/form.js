@@ -121,9 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // carga de modelos cuando se selecciona una marca --
   marcaSelect.addEventListener('change', async () => {
       const idMarca = marcaSelect.value;
+      const tipo = tipoSelect.value;
+
+      if (!idMarca || !tipo) {
+        // si no hay marca seleccionada, limpiar el campo modelo
+        modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>';
+        return;
+      }
 
       // solicitar modelos según la marca seleccionada
-      const solicitudServer = await fetch(`/obtener-modelos/${idMarca}`);
+      const solicitudServer = await fetch(`/obtener-modelos/${idMarca}?tipo=${tipo}`);
       const respServer = await solicitudServer.json();
 
       if (respServer.error) {
