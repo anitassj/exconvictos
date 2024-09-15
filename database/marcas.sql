@@ -1,10 +1,14 @@
-use sistema_prismaseguros;
+USE sistema_prismaseguros;
+-- Borrar la tabla marcas
+DROP TABLE IF EXISTS marcas;
+-- Crear la tabla marcas
 
-create table marcas (
-id_marcas int auto_increment primary key,
-tipo ENUM('Auto', 'Moto', 'Bicicleta') NOT NULL,
-nombre VARCHAR(100) NOT NULL
+CREATE TABLE marcas (
+    id_marcas INT AUTO_INCREMENT PRIMARY KEY,
+    tipo ENUM('Auto', 'Moto') NOT NULL,
+    nombre VARCHAR(100) NOT NULL
 );
+
 -- Inserciones para la tabla de marcas de autos
 insert into marcas (tipo, nombre) values ('Auto', 'Toyota');
 insert into marcas (tipo, nombre) values ('Auto', 'Volkswagen');

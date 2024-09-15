@@ -6,9 +6,16 @@ const conexion = require('../models/db');
 // Ruta para procesar el formulario
 router.post('/guardar-datos', (req, res) => {
     const { tipo, patente, anio, id_marca, id_modelo, nombre, apellido, celular, email } = req.body;
-    if (!tipo || !patente || !anio || !id_marca || !id_modelo || !nombre || !apellido || !celular || !email) {
-        return res.status(400).json({ error: 'No se completaron todos los campos' });
-    }//VALIDACION PARA QUE COMPLETEN TODOS LOS CAMPOS
+    if (!tipo) return res.status(400).json({ error: 'El campo "tipo" es obligatorio.' });
+    if (!patente) return res.status(400).json({ error: 'El campo "patente" es obligatorio.' });
+    if (!anio) return res.status(400).json({ error: 'El campo "año" es obligatorio.' });
+    if (!id_marca) return res.status(400).json({ error: 'El campo "marca" es obligatorio.' });
+    if (!id_modelo) return res.status(400).json({ error: 'El campo "modelo" es obligatorio.' });
+    if (!nombre) return res.status(400).json({ error: 'El campo "nombre" es obligatorio.' });
+    if (!apellido) return res.status(400).json({ error: 'El campo "apellido" es obligatorio.' });
+    if (!celular) return res.status(400).json({ error: 'El campo "celular" es obligatorio.' });
+    if (!email) return res.status(400).json({ error: 'El campo "email" es obligatorio.' });
+    //VALIDACION PARA QUE COMPLETEN TODOS LOS CAMPOS
 
     //hacemos una consulta para guardar los datos del formulario en la db, se coloca ? tantos datos haya para mas seguridad
     console.log('Datos recibidos:', req.body); //para ver q me esta llegando pq no se guarda el anio
