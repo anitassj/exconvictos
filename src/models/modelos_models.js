@@ -8,7 +8,7 @@ class ModelosModel {
                 SELECT modelos.id_modelos, modelos.nombre
                 FROM modelos
                 INNER JOIN marcas ON modelos.id_marca = marcas.id_marcas
-                WHERE modelos.id_marca = ? AND marcas.tipo = ?
+                WHERE modelos.id_marcas = ? AND marcas.tipo = ?
             `;
 
             conexion.query(sql, [id_marca, tipo], (err, results) => {

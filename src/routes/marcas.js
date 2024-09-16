@@ -5,7 +5,7 @@ const MarcasModel = require('../models/marcas_modelo');
 const marcasModel = new MarcasModel();
 
 router.get('/obtener-marcas', async (req, res) => {
-  const tipo = req.query.tipo; 
+    const tipo = req.query.tipo; 
 
     if (!tipo) {
         return res.status(400).json({ error: 'Tipo de vehículo es requerido' });
@@ -18,5 +18,4 @@ router.get('/obtener-marcas', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-  
 module.exports = router;
