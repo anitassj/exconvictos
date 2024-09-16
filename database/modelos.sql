@@ -1,7 +1,6 @@
 USE sistema_prismaseguros;
 -- Borrar la tabla modelos
-DROP TABLE IF EXISTS modelos;
--- Crear la tabla modelos
+
 CREATE TABLE modelos(
     id_modelos INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_marcas INT NOT NULL, -- Cambie id_marca por id_marcas

@@ -7,8 +7,8 @@ class ModelosModel {
             const sql = `
                 SELECT modelos.id_modelos, modelos.nombre
                 FROM modelos
-                INNER JOIN marcas ON modelos.id_marca = marcas.id_marcas
-                WHERE modelos.id_marcas = ? AND marcas.tipo = ?
+                INNER JOIN marcas ON modelos.id_marcas = marcas.id_marcas
+                WHERE modelos.id_modelos = ? AND marcas.tipo = ?
             `;
 
             conexion.query(sql, [id_marca, tipo], (err, results) => {

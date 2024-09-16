@@ -1,7 +1,6 @@
 USE sistema_prismaseguros;
 -- Borrar la tabla marcas
-DROP TABLE IF EXISTS marcas;
--- Crear la tabla marcas
+
 
 CREATE TABLE marcas (
     id_marcas INT AUTO_INCREMENT PRIMARY KEY,
