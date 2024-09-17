@@ -61,6 +61,14 @@ header .menu.activo {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.oculto{
+    display: none;
+}
+
+.x-rojo {
+    color: red!important; 
+}
+
 /* Estilos del menú activo ------------ */
 header .menu.activo {
     display: block;
@@ -90,7 +98,7 @@ header .menu li {
 header .menu a {
     text-decoration: none; 
     color: #333333; 
-    font-size: 18px; 
+    font-size: 20px; 
     display: block; 
     padding: 10px; 
 }
@@ -101,7 +109,7 @@ header .menu a.importante {
 }
 
 header .menu a.inicio {
-    /* font-weight: bold; */
+    font-size: 20px; 
     color: white;
     background-color: #2197a3;
     text-align: center;
@@ -110,7 +118,6 @@ header .menu a.inicio {
 
 header .menu li.inicio{
     border-bottom: 0px;
-    /* display: flex; */
 }
 
 /* CUERPO --------------------------------------------------------------------- */
@@ -159,7 +166,6 @@ h2 {
 }
 
 .swiper-container {
-    /* width: 84%; */
     height: auto; 
     max-width: 600px;
     margin: 20px auto;
@@ -176,7 +182,6 @@ h2 {
 .swiper-container .swiper-wrapper .swiper-slide img {
     width: 100%; 
     height: auto;
-    /* border-radius: 10px; */
     filter: grayscale(100%); 
     transition: filter 0.3s ease;
 }
@@ -257,12 +262,6 @@ h2 {
     margin: 0;
     padding: 0;
 }
-
-/*  ANITA: NO ANDA PREG PORQ
-.coberturas .tipo .swiper-container .carrusel-planes .swiper-button-next, 
-.coberturas .tipo .swiper-container .carrusel-planes .swiper-button-prev {
-    display: none;
-} */
 
 .carrusel-planes {
     display: none;
@@ -388,16 +387,6 @@ h2 {
     text-align: center;
 }
 
-/* .nosotros ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.nosotros ul li {
-    padding-left: 30px;
-    margin-bottom: 10px;
-} */
-
 .nosotros .boton-form {
     display: inline-block;
     background-color: #2197a3;
@@ -410,18 +399,11 @@ h2 {
     text-align: center;
 }
 
-/* ANITA: DEJAR COMENTADO HASTA DECIDIR SI LO DEJO O LO SACO */
-/* .nosotros .gif-indicador {
-    margin-top: 20px; 
+.nosotros .contenedor .icono-info{
+    text-align: center;
+    font-size: 60px;
+    color: #2197a3;
 }
-
-.nosotros .gif-indicador img {
-    max-width: 100px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-} */
-
 
 /* FOOTER --------------------------------------------------------------------- */
 
@@ -430,7 +412,6 @@ footer{
     flex-direction: column;
     background-color: black;
     justify-content: center;
-    /* text-align: center; */
 }
 
 /* estilos titulos -------------------- */
@@ -447,7 +428,7 @@ footer .preguntas {
     margin: 15px;
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 footer .preguntas .pregunta-frecuente {
@@ -489,7 +470,7 @@ footer .ubicacion {
 }
 
 footer .ubicacion p {
-    font-size: 20px;
+    font-size: 22px;
     color: white;
     margin-bottom: 15px;
 }
@@ -498,6 +479,7 @@ footer .ubicacion a {
     color: #2196F3;
     text-decoration: none;
     font-weight: bold;
+    font-size: 19px;
 }
 
 footer .ubicacion a:hover {
@@ -519,7 +501,6 @@ footer .contactos {
     border-bottom: 3px solid #2197a3;
     margin: 15px;
 }
-
 
 footer .contactos .iconos {
     display: flex;

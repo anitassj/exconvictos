@@ -1,14 +1,29 @@
-// Menú responsive --------------------
+// funcion p menú responsive --------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
-    const iconoMenuResponsive = document.querySelector(".icono-menu");
-    const menuResponsive = document.querySelector(".menu");
-    
-    iconoMenuResponsive.addEventListener("click", function() {
-        menuResponsive.classList.toggle("activo");
-    });
+  const iconoMenuResponsive = document.querySelector(".fi-rr-menu-burger");
+  const menuResponsive = document.querySelector(".menu");
+  const iconoCerrar = document.querySelector(".fi-br-cross");
+
+  function toggleMenu() {
+    menuResponsive.classList.toggle("activo");
+
+    if (menuResponsive.classList.contains("activo")) {
+        iconoMenuResponsive.classList.add("oculto");  
+        iconoCerrar.classList.remove("oculto");    
+        iconoCerrar.classList.add("x-rojo");   
+    } else {
+        iconoMenuResponsive.classList.remove("oculto"); 
+        iconoCerrar.classList.add("oculto");   
+        iconoCerrar.classList.remove("x-rojo");        
+    }
+  }
+
+  iconoMenuResponsive.addEventListener("click", toggleMenu);
+  iconoCerrar.addEventListener("click", toggleMenu);
 });
 
-// Carrusel promos --------------------
+
+// función de carrusel promos -------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.swiper-container', {
     speed: 1000,
@@ -32,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// carrusel planes --------------------
+// función de carrusel planes -------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
   const iconoContainer = document.querySelector('.icono');
   const carrusel = document.getElementById('carrusel-planes');
@@ -65,7 +80,7 @@ const carruselPlanes = new Swiper('carrusel-planes', {
   // },
 });
 
-// preguntas frecuentes ---------------
+// función sw preguntas frecuentes --------------------------------------------
 document.querySelectorAll('.pregunta').forEach(pregunta => {
   pregunta.addEventListener('click', () => {
       const respuesta = pregunta.nextElementSibling;
