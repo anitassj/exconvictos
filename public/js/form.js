@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // carga de modelos cuando se selecciona una marca --
   marcaSelect.addEventListener('change', async () => {
       const idMarca = marcaSelect.value;
-
+      const tipo = tipoSelect.value;
       // solicitar modelos según la marca seleccionada
-      const solicitudServer = await fetch(`/obtener-modelos/${idMarca}`);
+      const solicitudServer = await fetch(`/obtener-modelos/${idMarca}?tipo=${tipo}`);
       const respServer = await solicitudServer.json();
 
       // reiniciar las opciones del campo modelo

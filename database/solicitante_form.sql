@@ -4,7 +4,7 @@ CREATE TABLE solicitante_form (
   tipo enum('Auto', 'Moto') NOT NULL,
   patente varchar(10),
   anio int,
-  id_marca int NOT NULL,
+  id_marca int NOT NULL, 
   id_modelo int NOT NULL,
   nombre varchar(100),
   apellido varchar(100),
