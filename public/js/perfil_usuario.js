@@ -105,3 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     obtenerDatosPerfil();
 });
+
+
+// Llevar devuelta a la pagina panel --------------------------------------
+document.addEventListener("DOMContentLoaded", function() {
+    const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
+
+    menuLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            const contenidoId = link.getAttribute("data-content");
+
+            if (contenidoId === "Clientes") {
+                window.location.href = "/panel";
+            } else if (contenidoId === "Solicitudes") {
+                window.location.href = "/panel#";
+            }
+        });
+    });
+});

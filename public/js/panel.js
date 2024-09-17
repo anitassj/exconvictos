@@ -26,12 +26,9 @@ document.addEventListener("click", function(event) {
 });
 
 /* boton menu mostrar o no */
-const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
-const contenedorDatos = document.querySelector(".contenedor-datos");
-
 document.addEventListener("DOMContentLoaded", function() {
     // Cargar la tabla principal cuando inicia la página
-    cargarTabla("clientes");
+    cargarTabla("Clientes");
 
     // Escuchar clics en los enlaces del menú hamburguesa
     const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
@@ -39,17 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
     menuLinks.forEach(link => {
         link.addEventListener("click", function(event) {
             event.preventDefault();
-
             const contenidoId = link.getAttribute("data-content");
 
-            if (contenidoId === "contenido1") {
-                cargarTabla("lista");
-            } else if (contenidoId === "contenido2") {
-                cargarTabla("facturas");
-            } else if (contenidoId === "contenido3") {
-                cargarTabla("polizas");
-            } else if (contenidoId === "contenido4") {
-                cargarTabla("clientes");
+            if (contenidoId === "Clientes") {
+                cargarTabla("Clientes");
+            } else if (contenidoId === "Solicitudes") {
+                cargarTabla("Solicitudes");
             }
         });
     });
@@ -59,23 +51,35 @@ document.addEventListener("DOMContentLoaded", function() {
 function cargarTabla(tipo) {
     // Simulación de llamada a API con datos ficticios
     let datos;
-    if (tipo === "Clientes") {
-        datos = [
-            { id: 1, nombre: "Juan ", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
-            { id: 2, nombre: "Ana ", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
-            { id: 3, nombre: "Benjamin ", vehiculos: "Bici", email: "benja@gmail.com", celular: "123456789" },
-            { id: 4, nombre: "Clara ", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Catherine ", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-        ];
-
-
-    } else {
+    if (tipo === "Solicitudes") {
         datos = [
             { id: 1, nombre: "Solicitante_1", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 2, nombre: "Solicitante_2", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 3, nombre: "Solicitante_3", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 4, nombre: "Solicitante_4", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 5, nombre: "Solicitante_5", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+        ];
+
+    } else {
+        datos = [
+            { id: 1, nombre: "Juan", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
+            { id: 2, nombre: "Ana", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
+            { id: 3, nombre: "Benjamin", vehiculos: "Bicicleta", email: "benja@gmail.com", celular: "123456789" },
+            { id: 4, nombre: "Clara", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            
         ];
     }
 
@@ -92,7 +96,7 @@ function cargarTabla(tipo) {
     datos.forEach(dato => {
         tablaHTML += `<tr>
                         <td>${dato.id}</td>
-                        <td>${dato.nombre}</td>
+                        <td><a href="/perfil_usuario/">${dato.nombre}</a></td>
                         <td>${dato.vehiculos}</td>
                         <td>${dato.email}</td>
                         <td>${dato.celular}</td>

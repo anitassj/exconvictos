@@ -11,6 +11,7 @@ header {
     padding: 10px 20px;
     background-color: #2197a3; 
     color: white;
+    position: relative;
 }
 
 /* Estilos del logo */
@@ -61,7 +62,7 @@ header .menu:hover, .usuario:hover {
 header .menu-hamburguesa {
     display: none;
     position: fixed;
-    top: 45px;
+    top: 82px;
     left: 0;
     width: 15%;
     height: 100%;
@@ -84,15 +85,15 @@ header .menu-hamburguesa a:hover {
 /* Estilos del menú de usuario */
 header .menu-usuario {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: absolute; /* Posiciona el menú absolutamente en relación al header */
+    top: 100%; /* Posición justo debajo del header */
     right: 0;
     background-color: #2197a3;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     padding: 10px;
     z-index: 1000;
-    margin-top: 5px;
+    margin-top: 5px; /* Espacio entre el header y el menú */
 }
 
 header .menu-usuario a {
@@ -112,24 +113,10 @@ header .menu-usuario a:hover {
     height: 74vh;
     margin: 20px auto;
     background-color: #f4f4f4;
-    box-shadow: 0 0 10px grey;
     position: relative;
     z-index: 1;
     margin-left: 20%;
-}
-
-/* Otros estilos */
-.lista-datos {
-    list-style-type: none;
-    padding: 0;
-}
-
-.lista-datos li {
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow: auto;
 }
 
 /* Clases para ocultar y mostrar */
@@ -142,12 +129,9 @@ header .menu-usuario a:hover {
 }
 
 /* Filtros */
-.filtros {
+.contenedor-datos .filtros {
     display: flex;
     justify-content: left;
-    padding-top: 5px;
-    padding-left: 20%;
-    background-color: #f4f4f4;
     border-bottom: 1px solid #ddd;
 }
 
@@ -181,26 +165,26 @@ header .menu-usuario a:hover {
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Quita los espacios entre las celdas */
+    border-collapse: collapse;
   }
   
   th, td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Agrega una línea debajo de cada fila */
+    border-bottom: 1px solid #ddd;
   }
   
   th {
-    background-color: #2197a3; /* Color de fondo para el encabezado */
-    color: white; /* Color del texto del encabezado */
+    background-color: #2197a3;
+    color: white;
   }
   
   tr:hover {
-    background-color: #f5f5f5; /* Cambia el fondo cuando pasás el mouse por encima */
+    background-color: #f5f5f5;
   }
   
   td {
-    color: #333; /* Color del texto en las celdas de datos */
+    color: #333;
   }
   
   
