@@ -23,19 +23,18 @@
         <button class="usuario">Usuario</button>
         
         <div class="menu-hamburguesa">
-            <a href="#" data-content="contenido1">Lista</a>
-            <a href="#" data-content="contenido2">Facturas</a>
-            <a href="#" data-content="contenido3">Polizas</a>
-            <a href="#" data-content="contenido4">Clientes</a>
+            <a href="#" data-content="Clientes">Clientes</a>
+            <a href="#" data-content="Solicitudes">Solicitudes</a>
+
         </div>
 
         <div class="menu-usuario">
-            <a href="#">Permisos</a>
-            <a href="#">Editar</a>
-            <a href="#">Cerrar sesión</a>
+            <a href="#" id="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
+    
+    <div class="contenedor-datos">
      <!-- Contenedor para los filtros -->
      <div class="filtros">
         <div class="ordenar-menu">
@@ -50,14 +49,21 @@
             <div class="filtrar-menu-oculto">
                 <a href="#" data-filter="auto">Auto</a>
                 <a href="#" data-filter="moto">Moto</a>
-                <!-- <a href="#" data-filter="bicicleta">Bicicleta</a> -->
+                <a href="#" data-filter="bicicleta">Bicicleta</a>
             </div>
         </div>
     </div>
-
-    
-    <div class="contenedor-datos">
-        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Vehiculos</th>
+                    <th>Email</th>
+                    <th>Celular</th>
+                </tr>
+            </thead>
+        </table>
 
     </div>
 

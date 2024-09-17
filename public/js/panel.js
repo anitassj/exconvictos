@@ -18,6 +18,7 @@ document.querySelector(".menu").addEventListener("click", function() {
     }
 });
 
+
 /* Cerrar el menú de usuario si se hace clic fuera */
 document.addEventListener("click", function(event) {
     if (!event.target.matches('.usuario') && !event.target.closest('.menu-usuario')) {
@@ -25,29 +26,134 @@ document.addEventListener("click", function(event) {
     }
 });
 
-/* boton menu mostrar o no */
-const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
-const contenedorDatos = document.querySelector(".contenedor-datos");
 
-// Define los contenidos para cada enlace
-const contenidos = {
-    contenido1: "<ul><li>ID</li><li>nombre</li><li>vehiculos</li><li>email</li><li>celular</li></ul>",
-    contenido2: "<h2>Contenido para Link 2</h2><p>Aquí está el contenido para el segundo enlace.</p>",
-    contenido3: "<h2>Contenido para Link 3</h2><p>Aquí está el contenido para el tercer enlace.</p>",
-    contenido4: "<a href='/perfil_usuario'>ver perfil</a>"
-};
+document.addEventListener("DOMContentLoaded", function() {
+    // Cargar la tabla principal cuando inicia la página
+    cargarTabla("Clientes");
 
-// Añade un evento click a cada enlace del menú
-menuLinks.forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();  
-        
-        const contenidoId = link.getAttribute("data-content");
-        const contenido = contenidos[contenidoId] || "<p>Contenido no disponible.</p>";
+    const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
 
-        contenedorDatos.innerHTML = contenido;
+    menuLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            const contenidoId = link.getAttribute("data-content");
+
+            if (contenidoId === "Clientes") {
+                cargarTabla("Clientes");
+            } else if (contenidoId === "Solicitudes") {
+                cargarTabla("Solicitudes");
+            }
+        });
     });
 });
+
+// Función para cargar la tabla
+function cargarTabla(tipo) {
+    // Simulación con datos ficticios
+    let datos;
+    if (tipo === "Solicitudes") {
+        datos = [
+            { id: 1, nombre: "Solicitante 1", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 2, nombre: "Solicitante 2", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 3, nombre: "Solicitante 3", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 4, nombre: "Solicitante 4", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Solicitante 5", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+        ];
+        
+
+    } else {
+        datos = [
+            { id: 1, nombre: "Juan", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
+            { id: 2, nombre: "Ana", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
+            { id: 3, nombre: "Benjamin", vehiculos: "Bicicleta", email: "benja@gmail.com", celular: "123456789" },
+            { id: 4, nombre: "Clara", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+        ];
+    }
+
+    // Generar el HTML de la tabla
+    let tablaHTML = `<thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Vehículos</th>
+                            <th>Email</th>
+                            <th>Celular</th>
+                        </tr>
+                    </thead><tbody>`;
+    datos.forEach(dato => {
+        tablaHTML += `<tr>
+                        <td>${dato.id}</td>
+                        <td><a href="/perfil_usuario/">${dato.nombre}</a></td>
+                        <td>${dato.vehiculos}</td>
+                        <td>${dato.email}</td>
+                        <td>${dato.celular}</td>
+                    </tr>`;
+    });
+    tablaHTML += `</tbody>`;
+
+    // Insertar el contenido en la tabla
+    document.querySelector(".contenedor-datos table").innerHTML = tablaHTML;
+}
+
+//--------------------------------------------------------------------------------------------------------------------------//
+// Función para cargar la tabla con datos desde una API
+//--------------------------------------------------------------------------------------------------------------------------//
+
+async function cargarDatosSolicitantes() {
+    try {
+        const respuesta = await fetch('api/solicitante');
+        if (!response.ok) {
+            throw new Error('Error al obtener datos');
+        }
+        const datos = await response.json();
+        mostrarDatosEnTabla(datos);
+    } catch (error) {
+        console.error('Error al cargar los datos:', error);
+    }
+}
+
+function mostrarDatosEnTabla(datos) {
+    const tabla = document.querySelector('#tabla-solicitantes');
+
+    tabla.innerHTML = `
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Vehículos</th>
+                <th>Email</th>
+                <th>Celular</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${datos.map(solicitante => `
+                <tr>
+                    <td>${solicitante.id}</td>
+                    <td><a href="/detalles/${solicitante.id}">${solicitante.nombre}</a></td>
+                    <td>${solicitante.vehiculos}</td>
+                    <td>${solicitante.email}</td>
+                    <td>${solicitante.celular}</td>
+                </tr>
+            `).join('')}
+        </tbody>
+    `;
+}
+
+document.addEventListener('DOMContentLoaded', cargarDatosSolicitantes);
+//--------------------------------------------------------------------------------------------------------------------//
 
 // Toggle para el menú de ordenar
 document.querySelector(".ordenar").addEventListener("click", function() {
@@ -73,3 +179,15 @@ document.addEventListener("click", function(event) {
     }
 });
 
+
+// Cerrar sesion--------------------------------//
+document.addEventListener("DOMContentLoaded", function() {
+    const cerrarSesionLink = document.getElementById("cerrar-sesion");
+
+    if (cerrarSesionLink) {
+        cerrarSesionLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "/cerrar-sesion";
+        });
+    }
+});

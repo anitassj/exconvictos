@@ -105,3 +105,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     obtenerDatosPerfil();
 });
+
+
+// Redireccionar al hacer clic en el botón de menú hamburguesa
+document.addEventListener("DOMContentLoaded", function() {
+    const menuButton = document.querySelector(".menu");
+    menuButton.addEventListener("click", function() {
+        // Redirecciona a la página deseada
+        window.location.href = "/panel";
+    });
+       // Obtén los enlaces del menú hamburguesa
+       const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
+
+       // Añade el listener de clic a cada enlace
+       menuLinks.forEach(link => {
+           link.addEventListener("click", function(event) {
+               event.preventDefault();
+           });
+       });
+   });
+
+   // Cerrar sesion--------------------------------//
+document.addEventListener("DOMContentLoaded", function() {
+    const cerrarSesionLink = document.getElementById("cerrar-sesion");
+
+    if (cerrarSesionLink) {
+        cerrarSesionLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "/cerrar-sesion";
+        });
+    }
+});
