@@ -85,6 +85,7 @@ select:focus {
     outline: none;
 }
 
+/* NO ANDA NO SE PQ */
 /* icono info. personal */
 /* .fi-sr-user {
     font-size: 24px;   
@@ -110,7 +111,7 @@ select:focus {
 
 .perfil .vehiculo label {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 17px;
     color: #444;
 }
 
@@ -131,12 +132,14 @@ select:focus {
 
 .perfil .guardar {
     background-color: #6c757d; 
-}
-
-.perfil .guardar:hover {
-    background-color: #5a6268;
+    cursor: default;
 }
 
 .perfil .editar:hover {
     background-color: #0056b3;
+}
+
+.perfil .guardar.editar-modo {
+    background-color: #2197a3; 
+    cursor: pointer;
 }
