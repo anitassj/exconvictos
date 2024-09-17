@@ -107,21 +107,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Llevar devuelta a la pagina panel --------------------------------------
+// Redireccionar al hacer clic en el botón de menú hamburguesa
 document.addEventListener("DOMContentLoaded", function() {
-    const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
-
-    menuLinks.forEach(link => {
-        link.addEventListener("click", function(event) {
-            event.preventDefault();
-
-            const contenidoId = link.getAttribute("data-content");
-
-            if (contenidoId === "Clientes") {
-                window.location.href = "/panel";
-            } else if (contenidoId === "Solicitudes") {
-                window.location.href = "/panel#";
-            }
-        });
+    const menuButton = document.querySelector(".menu");
+    menuButton.addEventListener("click", function() {
+        // Redirecciona a la página deseada
+        window.location.href = "/panel";
     });
-});
+       // Obtén los enlaces del menú hamburguesa
+       const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
+
+       // Añade el listener de clic a cada enlace
+       menuLinks.forEach(link => {
+           link.addEventListener("click", function(event) {
+               event.preventDefault();
+           });
+       });
+   });

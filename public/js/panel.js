@@ -18,6 +18,7 @@ document.querySelector(".menu").addEventListener("click", function() {
     }
 });
 
+
 /* Cerrar el menú de usuario si se hace clic fuera */
 document.addEventListener("click", function(event) {
     if (!event.target.matches('.usuario') && !event.target.closest('.menu-usuario')) {
@@ -25,12 +26,11 @@ document.addEventListener("click", function(event) {
     }
 });
 
-/* boton menu mostrar o no */
+
 document.addEventListener("DOMContentLoaded", function() {
     // Cargar la tabla principal cuando inicia la página
     cargarTabla("Clientes");
 
-    // Escuchar clics en los enlaces del menú hamburguesa
     const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
 
     menuLinks.forEach(link => {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Función para cargar la tabla
 function cargarTabla(tipo) {
-    // Simulación de llamada a API con datos ficticios
+    // Simulación con datos ficticios
     let datos;
     if (tipo === "Solicitudes") {
         datos = [
