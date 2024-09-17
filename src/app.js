@@ -42,6 +42,7 @@ const rutaPanel = require('./routes/panel');
 const authRoutes = require('./routes/ruta_de_autenticacion');
 const marcasRoutes = require('./routes/marcas'); 
 const modelosRoutes = require('./routes/modelos'); 
+const rutaPerfil = require('./routes/perfil_usuario'); 
 
 app.use('/', authRoutes);
 app.use('/', rutaLogin);
@@ -52,6 +53,7 @@ app.use('/', rutaRecover);
 app.use('/', rutaPanel);
 app.use('/', marcasRoutes);  
 app.use('/', modelosRoutes);  
+app.use('/', rutaPerfil);  
 
 // levantar el servidor 
 app.listen(port, () => {

@@ -17,6 +17,7 @@ document.querySelector(".menu").addEventListener("click", function() {
         menu.style.display = "none";
     }
 });
+
 /* Cerrar el menú de usuario si se hace clic fuera */
 document.addEventListener("click", function(event) {
     if (!event.target.matches('.usuario') && !event.target.closest('.menu-usuario')) {
@@ -24,19 +25,16 @@ document.addEventListener("click", function(event) {
     }
 });
 
-
-
 /* boton menu mostrar o no */
-
 const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
-
 const contenedorDatos = document.querySelector(".contenedor-datos");
 
 // Define los contenidos para cada enlace
 const contenidos = {
     contenido1: "<ul><li>ID</li><li>nombre</li><li>vehiculos</li><li>email</li><li>celular</li></ul>",
     contenido2: "<h2>Contenido para Link 2</h2><p>Aquí está el contenido para el segundo enlace.</p>",
-    contenido3: "<h2>Contenido para Link 3</h2><p>Aquí está el contenido para el tercer enlace.</p>"
+    contenido3: "<h2>Contenido para Link 3</h2><p>Aquí está el contenido para el tercer enlace.</p>",
+    contenido4: "<a href='/perfil_usuario'>ver perfil</a>"
 };
 
 // Añade un evento click a cada enlace del menú
@@ -74,3 +72,4 @@ document.addEventListener("click", function(event) {
         filtrarMenu.style.display = "none";
     }
 });
+
