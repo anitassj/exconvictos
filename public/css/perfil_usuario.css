@@ -6,6 +6,27 @@ body {
     padding: 0;
 }
 
+/* Estilos del buscador */
+header .buscador {
+    flex: 2; 
+    display: flex;
+    align-items: left;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 20%;
+
+}
+
+header .buscador input {
+    padding: 10px;
+    width: 100%; 
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+}
+
 .perfil {
     background-color: #fff;
     padding: 30px;

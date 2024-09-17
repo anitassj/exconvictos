@@ -124,3 +124,15 @@ document.addEventListener("DOMContentLoaded", function() {
            });
        });
    });
+
+   // Cerrar sesion--------------------------------//
+document.addEventListener("DOMContentLoaded", function() {
+    const cerrarSesionLink = document.getElementById("cerrar-sesion");
+
+    if (cerrarSesionLink) {
+        cerrarSesionLink.addEventListener("click", function(event) {
+            event.preventDefault();
+            window.location.href = "/cerrar-sesion";
+        });
+    }
+});

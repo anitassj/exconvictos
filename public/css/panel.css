@@ -19,7 +19,7 @@ header {
 header .logo {
     flex: 1; 
     display: flex;
-    justify-content: flex-end; 
+    justify-content: right; 
 }
 
 header .logo img {
@@ -31,10 +31,12 @@ header .logo img {
 header .buscador {
     flex: 2; 
     display: flex;
-    align-items: center;
+    align-items: left;
     background-color: #ffffff;
     border-radius: 5px;
     padding: 5px;
+    margin-right: 20%;
+
 }
 
 header .buscador input {
@@ -106,12 +108,12 @@ header .menu-usuario a {
     text-decoration: none;
     display: block;
     padding: 12px;
-    border-radius: 5px; /* Bordes redondeados para los enlaces */
+    border-radius: 5px; 
     transition: background-color 0.3s;
 }
 
 header .menu-usuario a:hover {
-    background-color: #1b7d88; /* Mismo color de hover */
+    background-color: #1b7d88;
 }
 
 /* Estilos del contenedor de datos */
