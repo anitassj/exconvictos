@@ -1,21 +1,51 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Estilos de header */
 header {
     display: flex;
-    position: relative; 
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
     padding: 10px 20px;
     background-color: #2197a3; 
     color: white;
 }
 
+/* Estilos del logo */
+header .logo {
+    flex: 1; 
+    display: flex;
+    justify-content: end; 
+}
+
+header .logo img {
+    width: 14%; 
+    margin-right: 18px;
+}
+
+/* Estilos del buscador */
+header .buscador {
+    flex: 2; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+header .buscador input {
+    padding: 10px;
+    width: 60%; 
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    box-sizing: border-box;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
 /* Estilos de botones */
-.menu, .usuario {
+header .menu, .usuario {
     background-color: transparent;
     border: none;
     color: white;
@@ -23,12 +53,12 @@ header {
     cursor: pointer;
 }
 
-.menu:hover, .usuario:hover {
+header .menu:hover, .usuario:hover {
     color: #ddd;
 }
 
 /* Estilos del menú de hamburguesa */
-.menu-hamburguesa {
+header .menu-hamburguesa {
     display: none;
     position: fixed;
     top: 45px;
@@ -40,19 +70,19 @@ header {
     z-index: 1000;
 }
 
-.menu-hamburguesa a {
+header .menu-hamburguesa a {
     color: white;
     text-decoration: none;
     display: block;
     padding: 10px;
 }
 
-.menu-hamburguesa a:hover {
+header .menu-hamburguesa a:hover {
     background-color: #1b7d88; 
 }
 
 /* Estilos del menú de usuario */
-.menu-usuario {
+header .menu-usuario {
     display: none;
     position: absolute;
     top: 100%;
@@ -65,14 +95,14 @@ header {
     margin-top: 5px;
 }
 
-.menu-usuario a {
+header .menu-usuario a {
     color: white;
     text-decoration: none;
     display: block;
     padding: 10px;
 }
 
-.menu-usuario a:hover {
+header .menu-usuario a:hover {
     background-color: #1b7d88; 
 }
 
