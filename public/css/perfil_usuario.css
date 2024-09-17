@@ -1,34 +1,61 @@
+/* ESTILOS GENERALES ---------------------------------------------------------- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
 }
 
 .perfil {
     background-color: #fff;
-    padding: 20px;
-    max-width: 90%;
-    margin: 0 auto;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 80%;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 h2, h3 {
-    color: #333;
+    color: #444;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
 }
 
 label {
-    font-weight: bold;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 17px;
 }
 
-/* secciones info. y vehículos -------- */
+.perfil input, 
+.perfil select {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.perfil input:hover,
+.perfil select:hover {
+    border-color: #0056b3;
+}
+
+.perfil input:focus,
+.perfil select:focus {
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+/* secciones de info personal y vehículos -------------------------------------*/
 .perfil .info-personal,
 .perfil .vehiculos-asegurados {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.info-grid{
+.info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px; 
+    margin-bottom: 30px;
 }
 
 .info-grid .colum1, 
@@ -37,31 +64,77 @@ label {
     flex-direction: column;
 }
 
-/* sección info. personal ------------- */
-
-/* sección vehiculo/s -----------------*/
-.perfil .vehiculo {
-    background-color: #e9ecef;
-    padding: 10px;
-    margin-bottom: 10px;
+/* inputs de los campos -------------------------------------------------------*/
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    padding: 12px;
+    border: 1px solid #ddd;
     border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
 }
 
-/* botones: editar datos y guardar ----*/
+input:focus, 
+select:focus {
+    border-color: #2197a3;
+    outline: none;
+}
+
+/* icono info. personal */
+/* .fi-sr-user {
+    font-size: 24px;   
+    color: #007bff;    
+    margin-right: 10px; 
+    vertical-align: middle; 
+} */
+
+/* sección de vehículos -------------------------------------------------------*/
+.perfil .vehiculo {
+    background-color: #f7f9fc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #2197a3;
+}
+
+.perfil .vehiculo h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.perfil .vehiculo label {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* botones de guardar y editar ------------------------------------------------*/
 .perfil .guardar,
 .perfil .editar {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    padding: 12px 30px;
+    background-color: #2197a3;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
 .perfil .guardar {
-    background-color: rgb(187, 186, 186);
+    background-color: #6c757d; 
+}
+
+.perfil .guardar:hover {
+    background-color: #5a6268;
 }
 
 .perfil .editar:hover {
