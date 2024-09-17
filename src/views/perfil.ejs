@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Perfil Asegurado</title>
+    <link rel="icon" href="/public/img/logo.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/panel.css">
+    <link rel="stylesheet" href="/public/css/perfil_usuario.css">
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fuente del body -->
+    <link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    hola
+    <header>
+        <button class="menu">☰ Menu</button>
+        <div class="logo">
+            <img src="">
+        <button class="usuario">Usuario</button>
+        
+        <div class="menu-hamburguesa">
+            <a href="#" data-content="contenido1">Lista</a>
+            <a href="#" data-content="contenido2">Facturas</a>
+            <a href="#" data-content="contenido3">Polizas</a>
+            <a href="#" data-content="contenido4">Clientes</a>
+        </div>
+
+        <div class="menu-usuario">
+            <a href="#">Permisos</a>
+            <a href="#">Editar</a>
+            <a href="#">Cerrar sesion</a>
+        </div>
+    </header>
+
+    <div class="perfil">
+
+        <!-- sección de información personal ---------------------------------- -->
+        <div class="info-personal">
+            <h2>Información Personal</h2>
+            <div class="info-grid">
+                <!-- primer colum -->
+                <div class="colum1">
+                    <label for="nombre">Nombre: </label><input type="text" id="nombre">
+                    <label for="apellido">Apellido: </label><input type="text" id="apellido">
+                    <label for="email">Email: </label><input type="email" id="email">
+                    <label for="celular">Celular: </label><input type="text" id="celular"><br>
+                </div>
+                
+                <!-- segunda colum -->
+                 <div class="colum2">
+                    <label for="direccion">Dirección: </label><input type="text" id="direccion">
+                    <label for="ciudad">Ciudad: </label><input type="text" id="ciudad">
+                    <label for="provincia">Provincia: </label><input type="text" id="provincia">
+                 </div>
+            </div>
+        </div>
+
+        <!-- sección de vehículos asegurados ---------------------------------- -->
+        <div class="vehiculos-asegurados">
+            <h2>Vehículos Asegurados</h2>
+
+            <!-- ejemplo de un vehículo -->
+            <div class="vehiculo">
+                <div class="info-grid">
+                    <div class="colum1">
+                        <label for="tipo-vehiculo">Tipo de Vehículo </label><select id="tipo-vehiculo">
+                            <option value="auto">Auto</option>
+                            <option value="moto">Moto</option>
+                        </select>
+                        <label for="patente">Patente </label><input type="text" id="patente">
+                        <label for="anio-vehiculo">Año </label><input type="number" id="anio-vehiculo">
+                    </div>
+
+                    <div class="colum2">
+                        <label>Fotos: </label><button onclick="verFotos('vehiculo1')">Ver Fotos</button>
+                        <label for="tipo-seguro">Tipo de Seguro </label><select id="tipo-seguro">
+                            <option value="basico">Básico</option>
+                            <option value="intermedio">Intermedio</option>
+                            <option value="premiun">Premiun</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- botón de editar perfil y guardar cambios -->
+        <button class="editar" onclick="editarPerfil()">Editar perfil</button>
+        <button class="guardar" onclick="guardarCambios()">Guardar</button>
+    </div>
+
+    <script src="/public/js/panel.js"></script>
+    <script src="/public/js/perfil_usuario.js"></script>
+
 </body>
 </html>
