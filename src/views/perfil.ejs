@@ -50,17 +50,17 @@
             <div class="info-grid">
                 <!-- primer colum -->
                 <div class="colum1">
-                    <label for="nombre">Nombre </label><input type="text" id="nombre">
-                    <label for="apellido">Apellido </label><input type="text" id="apellido">
-                    <label for="email">Email </label><input type="email" id="email">
-                    <label for="celular">Celular </label><input type="text" id="celular"><br>
+                    <label for="nombre">Nombre </label><input type="text" id="nombre" placeholder="Anita">
+                    <label for="apellido">Apellido </label><input type="text" id="apellido" placeholder="Luz">
+                    <label for="email">Email </label><input type="email" id="email" placeholder="anita@gmail.com">
+                    <label for="celular">Celular </label><input type="text" id="celular" placeholder="2346303040"> 
                 </div>
                 
                 <!-- segunda colum -->
                  <div class="colum2">
-                    <label for="direccion">Dirección </label><input type="text" id="direccion">
-                    <label for="ciudad">Ciudad </label><input type="text" id="ciudad">
-                    <label for="provincia">Provincia </label><input type="text" id="provincia">
+                    <label for="direccion">Dirección </label><input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
+                    <label for="ciudad">Ciudad </label><input type="text" id="ciudad" placeholder="Chivilcoy">
+                    <label for="provincia">Provincia </label><input type="text" id="provincia" placeholder="Buenos Aires">
                  </div>
             </div>
         </div>
@@ -77,8 +77,8 @@
                             <option value="auto">Auto</option>
                             <option value="moto">Moto</option>
                         </select>
-                        <label for="patente">Patente </label><input type="text" id="patente">
-                        <label for="anio-vehiculo">Año </label><input type="number" id="anio-vehiculo">
+                        <label for="patente">Patente </label><input type="text" id="patente" placeholder="123AAA">
+                        <label for="anio-vehiculo">Año </label><input type="number" id="anio-vehiculo" placeholder="2024">
                     </div>
 
                     <div class="colum2">
@@ -95,8 +95,11 @@
         </div>
 
         <!-- botón de editar perfil y guardar cambios -->
-        <button class="editar" onclick="editarPerfil()">Editar perfil</button>
+         <!-- FIJARSE PQ NO SE GUARDAN LOS ICONOS -->
+        <button class="activo" onclick="emitirPoliza()">Emitir póliza</button>
+        <button class="activo" onclick="editarPerfil()" >Editar perfil</button>
         <button class="guardar" onclick="guardarCambios()">Guardar</button>
+        <button class="activo" onclick="editarPerfil()">Volver a inicio</button>
     </div>
 
     <script src="/public/js/panel.js"></script>

@@ -117,7 +117,7 @@ select:focus {
 
 /* botones de guardar y editar ------------------------------------------------*/
 .perfil .guardar,
-.perfil .editar {
+.perfil .activo {
     display: inline-block;
     padding: 12px 30px;
     background-color: #2197a3;
@@ -135,7 +135,7 @@ select:focus {
     cursor: default;
 }
 
-.perfil .editar:hover {
+.perfil .activo:hover {
     background-color: #0056b3;
 }
 
