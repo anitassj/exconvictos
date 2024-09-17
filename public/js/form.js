@@ -37,7 +37,7 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
     }
 
     // validación de modelo
-    const modelo = document.getElementById('modelo').value;
+    const modelo = document.getElementById('idModelo').value;
     if (!modelo) {
         mensajesDeError.push('Selecciona un modelo.');
         esValido = false;
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>'; 
 
       respServer.forEach(modelo => {
-          modeloSelect.innerHTML += `<option value="${modelo.id_modelo}">${modelo.nombre}</option>`;
+          modeloSelect.innerHTML += `<option value="${modelo.id_modelos}">${modelo.nombre}</option>`;
         });
     });
 });
