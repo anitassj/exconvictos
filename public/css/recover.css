@@ -34,7 +34,7 @@ form {
 }
 
 form i {
-    font-size: 90px !important; /*  */
+    font-size: 90px !important;
     color: #2197a3;
     text-align: center;
 }   
@@ -84,4 +84,18 @@ form .user-email {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.volver {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.volver i {
+    font-size: 30px !important;
+}
+
+.volver i:hover {
+    color: #1b7d88;
+    cursor: pointer;
 }
