@@ -112,8 +112,7 @@ header .menu-usuario a:hover {
     height: 74vh;
     margin: 20px auto;
     background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 10px grey;
     position: relative;
     z-index: 1;
     margin-left: 20%;
@@ -178,3 +177,30 @@ header .menu-usuario a:hover {
 .ordenar-menu-oculto a:hover, .filtrar-menu-oculto a:hover {
     background-color: #1b7d88; 
 }
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Quita los espacios entre las celdas */
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Agrega una línea debajo de cada fila */
+  }
+  
+  th {
+    background-color: #2197a3; /* Color de fondo para el encabezado */
+    color: white; /* Color del texto del encabezado */
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5; /* Cambia el fondo cuando pasás el mouse por encima */
+  }
+  
+  td {
+    color: #333; /* Color del texto en las celdas de datos */
+  }
+  
+  

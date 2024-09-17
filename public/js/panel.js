@@ -29,25 +29,81 @@ document.addEventListener("click", function(event) {
 const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
 const contenedorDatos = document.querySelector(".contenedor-datos");
 
-// Define los contenidos para cada enlace
-const contenidos = {
-    contenido1: "<ul><li>ID</li><li>nombre</li><li>vehiculos</li><li>email</li><li>celular</li></ul>",
-    contenido2: "<h2>Contenido para Link 2</h2><p>Aquí está el contenido para el segundo enlace.</p>",
-    contenido3: "<h2>Contenido para Link 3</h2><p>Aquí está el contenido para el tercer enlace.</p>",
-    contenido4: "<a href='/perfil_usuario'>ver perfil</a>"
-};
+document.addEventListener("DOMContentLoaded", function() {
+    // Cargar la tabla principal cuando inicia la página
+    cargarTabla("clientes");
 
-// Añade un evento click a cada enlace del menú
-menuLinks.forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();  
-        
-        const contenidoId = link.getAttribute("data-content");
-        const contenido = contenidos[contenidoId] || "<p>Contenido no disponible.</p>";
+    // Escuchar clics en los enlaces del menú hamburguesa
+    const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
 
-        contenedorDatos.innerHTML = contenido;
+    menuLinks.forEach(link => {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            const contenidoId = link.getAttribute("data-content");
+
+            if (contenidoId === "contenido1") {
+                cargarTabla("lista");
+            } else if (contenidoId === "contenido2") {
+                cargarTabla("facturas");
+            } else if (contenidoId === "contenido3") {
+                cargarTabla("polizas");
+            } else if (contenidoId === "contenido4") {
+                cargarTabla("clientes");
+            }
+        });
     });
 });
+
+// Función para cargar la tabla
+function cargarTabla(tipo) {
+    // Simulación de llamada a API con datos ficticios
+    let datos;
+    if (tipo === "Clientes") {
+        datos = [
+            { id: 1, nombre: "Juan ", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
+            { id: 2, nombre: "Ana ", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
+            { id: 3, nombre: "Benjamin ", vehiculos: "Bici", email: "benja@gmail.com", celular: "123456789" },
+            { id: 4, nombre: "Clara ", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Catherine ", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+        ];
+
+
+    } else {
+        datos = [
+            { id: 1, nombre: "Solicitante_1", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 2, nombre: "Solicitante_2", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 3, nombre: "Solicitante_3", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 4, nombre: "Solicitante_4", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Solicitante_5", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
+        ];
+    }
+
+    // Generar el HTML de la tabla
+    let tablaHTML = `<thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Vehículos</th>
+                            <th>Email</th>
+                            <th>Celular</th>
+                        </tr>
+                    </thead><tbody>`;
+    datos.forEach(dato => {
+        tablaHTML += `<tr>
+                        <td>${dato.id}</td>
+                        <td>${dato.nombre}</td>
+                        <td>${dato.vehiculos}</td>
+                        <td>${dato.email}</td>
+                        <td>${dato.celular}</td>
+                    </tr>`;
+    });
+    tablaHTML += `</tbody>`;
+
+    // Insertar el contenido en la tabla
+    document.querySelector(".contenedor-datos table").innerHTML = tablaHTML;
+}
+
 
 // Toggle para el menú de ordenar
 document.querySelector(".ordenar").addEventListener("click", function() {
