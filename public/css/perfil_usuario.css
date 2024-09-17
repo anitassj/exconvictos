@@ -115,6 +115,32 @@ select:focus {
     color: #444;
 }
 
+.perfil .vehiculo .ver-fotos {
+    width: 20%;
+    font-size: 17px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #2197a3;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+input[type="date" i] {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-inline-start: 1px;
+    cursor: default;
+    padding: 9px;
+    overflow: hidden;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
 /* botones de guardar y editar ------------------------------------------------*/
 .perfil .guardar,
 .perfil .activo {
