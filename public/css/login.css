@@ -53,7 +53,6 @@ form .user-email, .user-password {
     margin-bottom: 20px;
     height: 30px;
     border: none;
-    font-family: Rubik;
     font-size: 15px;
     color: #ffffff;
     background-color: #2197a3;
@@ -77,7 +76,7 @@ form .user-email, .user-password {
 }
 
 .recover-user a:hover {
-    color: #1b7d88;
+    color: #196c75;
 }
 
 .imagen {
@@ -95,21 +94,5 @@ form .user-email, .user-password {
     object-fit: cover;
 }
 
-.volver-inicio {
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
 
-.volver-inicio a {
-    font-size: 13px;
-    color: #2197a3;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.volver-inicio a:hover {
-    color: #1b7d88;
-    border-bottom: 1px solid #1b7d88;
-}
 
