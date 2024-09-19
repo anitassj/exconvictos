@@ -43,6 +43,7 @@ const authRoutes = require('./routes/ruta_de_autenticacion');
 const marcasRoutes = require('./routes/marcas'); 
 const modelosRoutes = require('./routes/modelos'); 
 const rutaPerfil = require('./routes/perfil_usuario'); 
+const rutaPoliza = require('./routes/poliza');
 
 app.use('/', authRoutes);
 app.use('/', rutaLogin);
@@ -54,6 +55,7 @@ app.use('/', rutaPanel);
 app.use('/', marcasRoutes);  
 app.use('/', modelosRoutes);  
 app.use('/', rutaPerfil);  
+app.use('/', rutaPoliza);
 
 // levantar el servidor 
 app.listen(port, () => {
