@@ -3,6 +3,7 @@ create table perfil_usuario(
 idPerfilUsuario int auto_increment primary key,
 nombre varchar(100),
 apellido varchar(100),
+dni varchar(9),
 email varchar(200),
 celular varchar(10),
 direccion varchar(100),
@@ -20,6 +21,6 @@ suma_asegurada varchar(100),
 uso_vehiculo varchar(100)
 );
 
-insert into perfil_usuario(nombre, apellido, email, celular, direccion, ciudad, provincia, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, fotos, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo)values("Clara", "Martínez", "cm@mail.com", 0303456, "Pellegrini 7", "Chivilcoy", "Buenos Aires", "Auto", "cc777cc", 2007, "07/05/2024", "07/05/2025", "www.google.com", "premium", 777777, 7777777, "personal");
+insert into perfil_usuario(nombre, apellido, dni, email, celular, direccion, ciudad, provincia, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, fotos, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo)values("Clara", "Martínez", 07777777, "cm@mail.com", 0303456, "Pellegrini 7", "Chivilcoy", "Buenos Aires", "Auto", "cc777cc", 2007, "07/05/2024", "07/05/2025", "www.google.com", "premium", 777777, 7777777, "personal");
 
 select * from perfil_usuario;
