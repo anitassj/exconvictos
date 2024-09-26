@@ -263,7 +263,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
                         <div class="colum2">
                             <label>Fotos del vehículo</label>
-                            <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
+                            <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none"><button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
                             <label for="tipo-seguro">Tipo de Seguro </label>
                             <select id="tipo-seguro">
                                 <option value="basico">Básico</option>
@@ -319,7 +319,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                 </div>
                 <div class="colum2">
                     <label>Fotos del vehículo</label>
-                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">Subir</button>
+                    <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none"><button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
                     <label for="tipo-seguro">Tipo de Seguro </label>
                     <select id="tipo-seguro">
                         <option value="basico">Básico</option>
@@ -338,7 +338,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                 </div>
             </div>
             
-            <button class="activo eliminar-vehiculo configBotones">Eliminar</button>
+            <button class="activo eliminar-vehiculo configBotones"><span class="material-symbols-outlined botones">delete</span>Eliminar</button>
         `;
 
         // agregar nuevo vehículo al contenedor
@@ -464,3 +464,35 @@ document.querySelector('guardarCambios').addEventListener('click', function() {
     }
 });
         
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA CARGAR FOTOS --------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
+function cargarFotos(vehiculoId) {
+    const inputFile = document.getElementById(`foto-${vehiculoId}`);
+    
+    inputFile.click();
+
+    inputFile.onchange = () => {
+        const file = inputFile.files[0]; 
+        if (file) {
+            const formData = new FormData();
+            formData.append('foto', file); 
+
+            fetch('/ruta', { // cambiar a la ruta !!!!!!!!!!!!!!!
+                method: 'POST',
+                body: formData 
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Foto subida con éxito');
+                } else {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+            })
+            .catch(error => {
+                alert('Error al subir la foto: ' + error);
+            });
+        }
+    };
+}
