@@ -300,46 +300,45 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
         const nuevoVehiculo = document.createElement('div');
         nuevoVehiculo.classList.add('vehiculo');
         nuevoVehiculo.innerHTML = `
-        <h2>Ingresar el vehículo asegurado</h2>
+            <h2>Ingresar el vehículo asegurado</h2>
             <div class="info-grid">
                 <div class="colum1">
                     <label for="tipo-vehiculo">Tipo de Vehículo </label>
-                    <select>
+                    <select id="tipo-vehiculo">
                         <option value="auto">Auto</option>
                         <option value="moto">Moto</option>
                     </select>
                     <label for="patente">Patente </label>
-                    <input type="text" placeholder="123AAA">
+                    <input type="text" id="patente">
                     <label for="anio-vehiculo">Año </label>
-                    <input type="number" placeholder="2024">
+                    <input type="number" id="anio-vehiculo">
                     <label for="vigencia-desde">Vigencia Desde </label>
-                    <input type="date">
+                    <input type="date" id="vigencia-desde">
                     <label for="vigencia-hasta">Vigencia Hasta </label>
-                    <input type="date">
+                    <input type="date" id="vigencia-hasta">
                 </div>
-
                 <div class="colum2">
                     <label>Fotos del vehículo</label>
-                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
+                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">Subir</button>
                     <label for="tipo-seguro">Tipo de Seguro </label>
-                    <select>
+                    <select id="tipo-seguro">
                         <option value="basico">Básico</option>
                         <option value="intermedio">Intermedio</option>
                         <option value="premiun">Premiun</option>
                     </select>
                     <label for="premio-total">Premio Total (en pesos) </label>
-                    <input type="number" placeholder="$10.000,00">
+                    <input type="number" id="premio-total">
                     <label for="suma-asegurada">Suma Asegurada </label>
-                    <input type="number" placeholder="$1.000.000,00">
+                    <input type="number" id="suma-asegurada">
                     <label for="uso-vehiculo">Uso del Vehículo </label>
-                    <select>
+                    <select id="uso-vehiculo">
                         <option value="particular">Particular</option>
                         <option value="profesional">Profesional</option>
                     </select>
                 </div>
             </div>
             
-            <button class="activo eliminar-vehiculo configBotones"><span class="material-symbols-outlined botones">delete</span>Eliminar</button>
+            <button class="activo eliminar-vehiculo configBotones">Eliminar</button>
         `;
 
         // agregar nuevo vehículo al contenedor
@@ -357,43 +356,111 @@ function cancelarCambios() {
     window.location.href = '/panel'; 
 }
 
-// Función para manejar el guardado del cliente -------------------------------
-document.getElementById('guardar-datos').addEventListener('click', function() {
-    const datos = {
-        nombre: document.getElementById('nombre').value,
-        apellido: document.getElementById('apellido').value,
-        dni: document.getElementById('dni').value,
-        email: document.getElementById('email').value,
-        direccion: document.getElementById('direccion').value,
-        celular: document.getElementById('celular').value,
-        ciudad: document.getElementById('ciudad').value,
-        provincia: document.getElementById('provincia').value,
-        tipoVehiculo: document.getElementById('tipo-vehiculo').value,
-        patente: document.getElementById('patente').value,
-        anioVehiculo: document.getElementById('anio-vehiculo').value,
-        vigenciaDesde: document.getElementById('vigencia-desde').value,
-        vigenciaHasta: document.getElementById('vigencia-hasta').value,
-        tipoSeguro: document.getElementById('tipo-seguro').value,
-        premioTotal: document.getElementById('premio-total').value,
-        sumaAsegurada: document.getElementById('suma-asegurada').value,
-        usoVehiculo: document.getElementById('uso-vehiculo').value
-    };
+// función para verificar si todos los campos están completos -----------------
+function verificarCamposCompletos() {
+    const campos = [
+        document.getElementById('nombre'),
+        document.getElementById('apellido'),
+        document.getElementById('dni'),
+        document.getElementById('email'),
+        document.getElementById('direccion'),
+        document.getElementById('celular'),
+        document.getElementById('ciudad'),
+        document.getElementById('provincia'),
+    ];
 
-    fetch('/ruta', { // cambiar URL por la ruta del servidor
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(datos)
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Datos guardados con éxito');
-        } else {
-            throw new Error('Error en la respuesta del servidor');
+    const todosCompletos = campos.every(campo => campo.value.trim() !== '');
+
+    const vehiculos = document.querySelectorAll('.vehiculo');
+    let vehiculosCompletos = true;
+
+    vehiculos.forEach(vehiculo => {
+        const tipoVehiculo = vehiculo.querySelector('#tipo-vehiculo');
+        const patente = vehiculo.querySelector('#patente');
+        const anioVehiculo = vehiculo.querySelector('#anio-vehiculo');
+        const vigenciaDesde = vehiculo.querySelector('#vigencia-desde');
+        const vigenciaHasta = vehiculo.querySelector('#vigencia-hasta');
+        const tipoSeguro = vehiculo.querySelector('#tipo-seguro');
+        const premioTotal = vehiculo.querySelector('#premio-total');
+        const sumaAsegurada = vehiculo.querySelector('#suma-asegurada');
+        const usoVehiculo = vehiculo.querySelector('#uso-vehiculo');
+
+        if (
+            tipoVehiculo.value.trim() === '' ||
+            patente.value.trim() === '' ||
+            anioVehiculo.value.trim() === '' ||
+            vigenciaDesde.value.trim() === '' ||
+            vigenciaHasta.value.trim() === '' ||
+            tipoSeguro.value.trim() === '' ||
+            premioTotal.value.trim() === '' ||
+            sumaAsegurada.value.trim() === '' ||
+            usoVehiculo.value.trim() === ''
+        ) {
+            vehiculosCompletos = false;
         }
-    })
-    .catch(error => {
-        alert('Error al guardar datos: ' + error);
     });
+
+    const botonGuardar = document.querySelector('guardarCambios');
+    if (todosCompletos && vehiculosCompletos) {
+        botonGuardar.classList.add('activo');
+        botonGuardar.classList.remove('desactivado');
+    } else {
+        botonGuardar.classList.remove('activo');
+        botonGuardar.classList.add('desactivado');
+    }
+}
+
+document.querySelectorAll('input, select').forEach(input => {
+    input.addEventListener('input', verificarCamposCompletos);
 });
+
+// función para manejar el guardado del cliente -------------------------------
+document.querySelector('guardarCambios').addEventListener('click', function() {
+    if (this.classList.contains('activo')) {
+        const datos = {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            dni: document.getElementById('dni').value,
+            email: document.getElementById('email').value,
+            direccion: document.getElementById('direccion').value,
+            celular: document.getElementById('celular').value,
+            ciudad: document.getElementById('ciudad').value,
+            provincia: document.getElementById('provincia').value,
+        };
+    
+        const vehiculosArray = Array.from(document.querySelectorAll('.vehiculo')).map(vehiculo => {
+            return {
+                tipoVehiculo: vehiculo.querySelector('#tipo-vehiculo').value,
+                patente: vehiculo.querySelector('#patente').value,
+                anioVehiculo: vehiculo.querySelector('#anio-vehiculo').value,
+                vigenciaDesde: vehiculo.querySelector('#vigencia-desde').value,
+                vigenciaHasta: vehiculo.querySelector('#vigencia-hasta').value,
+                tipoSeguro: vehiculo.querySelector('#tipo-seguro').value,
+                premioTotal: vehiculo.querySelector('#premio-total').value,
+                sumaAsegurada: vehiculo.querySelector('#suma-asegurada').value,
+                usoVehiculo: vehiculo.querySelector('#uso-vehiculo').value
+            };
+        });
+    
+        datos.vehiculos = vehiculosArray;
+    
+        fetch('/ruta', { // cambiar URL por la ruta del servidor !!!!!!!!!!!
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Datos guardados con éxito');
+            } else {
+                throw new Error('Error en la respuesta del servidor');
+            }
+        })
+        .catch(error => {
+            alert('Error al guardar datos: ' + error);
+        });
+    }
+});
+        
