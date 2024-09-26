@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/public/css/panel.css">
+    <link rel="stylesheet" href="/public/css/perfil_usuario.css">
+
     <title>Inicio Prisma Seguros</title>
     <link rel="icon" href="/public/img/logo.ico">
 </head>
@@ -25,7 +29,7 @@
         <div class="menu-hamburguesa">
             <a href="#" data-content="Clientes">Clientes</a>
             <a href="#" data-content="Solicitudes">Solicitudes</a>
-
+            <a href="#" data-content="addCliente">Cargar Cliente</a>
         </div>
 
         <div class="menu-usuario">
@@ -52,6 +56,8 @@
                 <a href="#" data-filter="bicicleta">Bicicleta</a>
             </div>
         </div>
+        <!-- Enlace para cargar nuevo cliente -->
+        <a href="#" data-content="addCliente" id="cargar-cliente">Cargar Cliente</a>
     </div>
         <table>
             <thead>

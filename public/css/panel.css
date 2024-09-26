@@ -23,7 +23,7 @@ header .logo {
 }
 
 header .logo img {
-    width: 12%; 
+    width: 18%; 
     margin-right: 20px;
 }
 
@@ -34,7 +34,7 @@ header .buscador {
     align-items: left;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 5px;
+    /* padding: 5px; */
     margin-right: 20%;
 
 }
@@ -46,6 +46,7 @@ header .buscador input {
     border-radius: 4px;
     outline: none;
     box-sizing: border-box;
+    margin-bottom: 0px !important;
 }
 
 /* Estilos de botones */
