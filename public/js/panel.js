@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // FUNCIONES PARA TRABAJAR NUEVOS CLIENTES --------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
-// función para mostrar el form cuando se apreta el botón 'agregar cliente'
+// función para mostrar el form cuando se apreta el botón 'agregar cliente' ---
 // (dentro de ésta función, se encuentran las funciones'agregar otro vehículo' y 'eliminar vehículo')
 
 document.getElementById('cargar-cliente').addEventListener('click', function(event) {
@@ -358,19 +358,42 @@ function cancelarCambios() {
 }
 
 // Función para manejar el guardado del cliente -------------------------------
-function guardarCliente() {
-    const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value;
-    const dni = document.getElementById('dni').value;
-    const email = document.getElementById('email').value;
-    const direccion = document.getElementById('direccion').value;
-    const celular = document.getElementById('celular').value;
-    const ciudad = document.getElementById('ciudad').value;
-    const provincia = document.getElementById('provincia').value;
+document.getElementById('guardar-datos').addEventListener('click', function() {
+    const datos = {
+        nombre: document.getElementById('nombre').value,
+        apellido: document.getElementById('apellido').value,
+        dni: document.getElementById('dni').value,
+        email: document.getElementById('email').value,
+        direccion: document.getElementById('direccion').value,
+        celular: document.getElementById('celular').value,
+        ciudad: document.getElementById('ciudad').value,
+        provincia: document.getElementById('provincia').value,
+        tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+        patente: document.getElementById('patente').value,
+        anioVehiculo: document.getElementById('anio-vehiculo').value,
+        vigenciaDesde: document.getElementById('vigencia-desde').value,
+        vigenciaHasta: document.getElementById('vigencia-hasta').value,
+        tipoSeguro: document.getElementById('tipo-seguro').value,
+        premioTotal: document.getElementById('premio-total').value,
+        sumaAsegurada: document.getElementById('suma-asegurada').value,
+        usoVehiculo: document.getElementById('uso-vehiculo').value
+    };
 
-    //  envío de los datos al servidor
-    // falta --
-    
-    //petición AJAX o redirigir HACER
-    // falta --
-}
+    fetch('/ruta', { // cambiar URL por la ruta del servidor
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Datos guardados con éxito');
+        } else {
+            throw new Error('Error en la respuesta del servidor');
+        }
+    })
+    .catch(error => {
+        alert('Error al guardar datos: ' + error);
+    });
+});
