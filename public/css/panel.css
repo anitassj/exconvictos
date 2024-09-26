@@ -147,6 +147,25 @@ header .menu-usuario a:hover {
     margin-bottom: 10px;
 }
 
+.addCliente,
+.filtrar,
+.ordenar {
+    text-decoration: none;
+    background-color: #2197a3;
+    border: 1px solid rgb(89, 89, 89);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.filtrar,
+.ordenar{
+    background-color: #5d5959;
+    padding: 7px;
+}
+
 .ordenar-menu, .filtrar-menu {
     position: relative;
     margin-right: 20px;
