@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/public/css/panel.css">
     <link rel="stylesheet" href="/public/css/perfil_usuario.css">
 
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
     <title>Inicio Prisma Seguros</title>
     <link rel="icon" href="/public/img/logo.ico">
 </head>
@@ -21,7 +24,6 @@
             <input type="text" placeholder="Buscar asegurado...">
             <!-- por qué no carga?? ANITA -->
             <div class="icono-busc">
-                <i class="fi fi-rc-search"></i>
             </div>
         </div>
         <button class="usuario">Usuario</button>
@@ -31,33 +33,33 @@
             <a href="#" data-content="Solicitudes">Solicitudes</a>
             <a href="#" data-content="addCliente">Cargar Cliente</a>
         </div>
-
+        
         <div class="menu-usuario">
             <a href="#" id="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
-
+    
     
     <div class="contenedor-datos">
-     <!-- Contenedor para los filtros -->
-     <div class="filtros">
-        <div class="ordenar-menu">
-            <button class="ordenar">Ordenar por:</button>
-            <div class="ordenar-menu-oculto">
-                <a href="#" data-sort="nombre">Nombre</a>
-                <a href="#" data-sort="fecha">Fecha</a>
+        <!-- Contenedor para los filtros -->
+        <div class="filtros">
+            <div class="ordenar-menu">
+                <button class="ordenar">Ordenar por:</button>
+                <div class="ordenar-menu-oculto">
+                    <a href="#" data-sort="nombre">Nombre</a>
+                    <a href="#" data-sort="fecha">Fecha</a>
+                </div>
             </div>
-        </div>
-        <div class="filtrar-menu">
-            <button class="filtrar">Filtrar:</button>
-            <div class="filtrar-menu-oculto">
-                <a href="#" data-filter="auto">Auto</a>
-                <a href="#" data-filter="moto">Moto</a>
-                <a href="#" data-filter="bicicleta">Bicicleta</a>
+            <div class="filtrar-menu">
+                <button class="filtrar">Filtrar:</button>
+                <div class="filtrar-menu-oculto">
+                    <a href="#" data-filter="auto">Auto</a>
+                    <a href="#" data-filter="moto">Moto</a>
+                    <a href="#" data-filter="bicicleta">Bicicleta</a>
+                </div>
             </div>
-        </div>
-        <!-- Enlace para cargar nuevo cliente -->
-        <a href="#" data-content="addCliente" id="cargar-cliente">Cargar Cliente</a>
+            <!-- Enlace para cargar nuevo cliente -->
+            <a href="#" data-content="addCliente" id="cargar-cliente">Cargar Cliente</a>
     </div>
         <table>
             <thead>

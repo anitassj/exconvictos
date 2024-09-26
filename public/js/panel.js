@@ -207,7 +207,8 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
     const formCliente = `
         <!-- sección de información personal ---------------------------------- -->
         <div class="info-personal">
-            <h2><i class="fi fi-sc-user"></i>Ingresar Información Personal</h2>
+        <div class="logos"><span class="material-symbols-outlined">person</span></div>
+            <h2>Ingresar Información Personal</h2>
             <div class="info-grid">
                 <!-- primer colum -->
                 <div class="colum1">
@@ -237,11 +238,11 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
         <!-- sección de vehículos asegurados ---------------------------------- -->
         <div class="vehiculos-asegurados">
-            <h2>Ingresar los vehículos asegurados</h2>
+        <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
+            <h2>Ingresar el vehículo asegurado</h2>
 
             <!-- Contenedor para agregar vehículos -->
             <div id="vehiculos-container">
-                <!-- ejemplo de un vehículo -->
                 <div class="vehiculo">
                     <div class="info-grid">
                         <div class="colum1">
@@ -262,17 +263,17 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
                         <div class="colum2">
                             <label>Fotos del vehículo</label>
-                            <button onclick="cargarFotos('vehiculo1')" class="ver-fotos">Subir</button>
+                            <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
                             <label for="tipo-seguro">Tipo de Seguro </label>
                             <select id="tipo-seguro">
                                 <option value="basico">Básico</option>
                                 <option value="intermedio">Intermedio</option>
                                 <option value="premiun">Premiun</option>
                             </select>
-                            <label for="premio-total">Premio Total (en pesos) </label>
-                            <input type="number" id="premio-total" placeholder="$10.000,00">
-                            <label for="suma-asegurada">Suma Asegurada </label>
-                            <input type="number" id="suma-asegurada" placeholder="$1.000.000,00">
+                            <label for="premio-total">Premio Total en pesos </label>
+                            <input type="number" id="premio-total" placeholder="10.000,00">
+                            <label for="suma-asegurada">Suma Asegurada en pesos </label>
+                            <input type="number" id="suma-asegurada" placeholder="1.000.000,00">
                             <label for="uso-vehiculo">Uso del Vehículo </label>
                             <select id="uso-vehiculo">
                                 <option value="particular">Particular</option>
@@ -283,10 +284,10 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                 </div>
             </div>
 
-            <button id="agregar-vehiculo" class="activo agregar-vehiculo">Agregar otro vehículo</button>
+            <button id="agregar-vehiculo" class="activo agregar-vehiculo configBotones"><span class="material-symbols-outlined botones">add_box</span>Agregar otro vehículo</button>
 
-            <button class="guardar" onclick="guardarCambios()">Guardar</button>
-            <button class="activo" onclick="cancelarCambios()">Cancelar</button>
+            <button class="desactivado configBotones" onclick="guardarCambios()"><span class="material-symbols-outlined botones">check_small</span>Guardar</button>
+            <button class="activo cancelar configBotones" onclick="cancelarCambios()"><span class="material-symbols-outlined botones">close</span>Cancelar</button>
         </div>
     `;
 
@@ -299,6 +300,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
         const nuevoVehiculo = document.createElement('div');
         nuevoVehiculo.classList.add('vehiculo');
         nuevoVehiculo.innerHTML = `
+        <h2>Ingresar el vehículo asegurado</h2>
             <div class="info-grid">
                 <div class="colum1">
                     <label for="tipo-vehiculo">Tipo de Vehículo </label>
@@ -318,7 +320,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
                 <div class="colum2">
                     <label>Fotos del vehículo</label>
-                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos">Subir</button>
+                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
                     <label for="tipo-seguro">Tipo de Seguro </label>
                     <select>
                         <option value="basico">Básico</option>
@@ -337,7 +339,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                 </div>
             </div>
             
-            <button class="activo eliminar-vehiculo">Eliminar vehículo</button>
+            <button class="activo eliminar-vehiculo configBotones"><span class="material-symbols-outlined botones">delete</span>Eliminar</button>
         `;
 
         // agregar nuevo vehículo al contenedor
@@ -345,14 +347,17 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
         // eliminar el nuevo vehículo del contenedor
         nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', function() {
-            vehiculosContainer.remove
-            Child(nuevoVehiculo);
+            vehiculosContainer.removeChild(nuevoVehiculo);
         });
     });
 });
 
+// función para redirigir al panel principal ----------------------------------
+function cancelarCambios() {
+    window.location.href = '/panel'; 
+}
 
-// Función para manejar el guardado del cliente --------------
+// Función para manejar el guardado del cliente -------------------------------
 function guardarCliente() {
     const nombre = document.getElementById('nombre').value;
     const apellido = document.getElementById('apellido').value;

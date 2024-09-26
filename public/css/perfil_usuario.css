@@ -85,14 +85,33 @@ select:focus {
     outline: none;
 }
 
-/* NO ANDA NO SE PQ */
-/* icono info. personal */
-/* .fi-sr-user {
-    font-size: 24px;   
-    color: #007bff;    
-    margin-right: 10px; 
-    vertical-align: middle; 
-} */
+.logos,
+.material-symbols-outlined {
+    text-align: center;
+    color: #2197a3;    
+    font-size: 50px !important;
+}
+
+.material-symbols-outlined {
+    border-radius: 50%;
+    border: 4px solid #2197a3;   
+    padding: 5px; 
+    margin-right: 8px;
+}
+
+.configBotones{
+    line-height: 0;
+}
+
+.material-symbols-outlined.botones {
+    color: white;    
+    font-size: 19px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;     
+    margin-right: 8px;
+}
 
 /* sección de vehículos -------------------------------------------------------*/
 .perfil .vehiculo {
@@ -142,7 +161,7 @@ input[type="date" i] {
 }
 
 /* botones de guardar y editar ------------------------------------------------*/
-.guardar,
+.desactivado,
 .activo {
     display: inline-block;
     padding: 12px 30px;
@@ -156,7 +175,7 @@ input[type="date" i] {
     text-align: center;
 }
 
-.guardar {
+.desactivado {
     background-color: #6c757d; 
     cursor: default;
 }
@@ -165,7 +184,7 @@ input[type="date" i] {
     background-color: #0056b3;
 }
 
-.guardar.editar-modo {
+.desactivado.editar-modo {
     background-color: #2197a3; 
     cursor: pointer;
 }
@@ -173,5 +192,9 @@ input[type="date" i] {
 .eliminar-vehiculo{
     margin-bottom: 30px;
     background-color: red;
-    margin-left: 82%;    
+    margin-left: 85%;    
+}
+
+.cancelar {
+    background-color: red;
 }
