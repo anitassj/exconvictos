@@ -184,6 +184,11 @@ input[type="date" i] {
     text-align: center;
 }
 
+.poliza{
+    text-decoration: none;
+    
+}
+
 .desactivado {
     background-color: #6c757d; 
     cursor: default;
