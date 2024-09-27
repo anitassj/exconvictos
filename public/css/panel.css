@@ -70,10 +70,9 @@ header .menu-hamburguesa {
     top: 100%;
     left: 0;
     background-color: #2197a3;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 15px;
     z-index: 1000;
+    height: 580px;
 }
 
 /* Estilos de los enlaces del menú hamburguesa */
@@ -98,8 +97,6 @@ header .menu-usuario {
     top: 100%;
     right: 0;
     background-color: #2197a3;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 15px;
     z-index: 1000;
 }
@@ -149,20 +146,18 @@ header .menu-usuario a:hover {
 
 .filtrar,
 .ordenar {
-    text-decoration: none;
-    background-color: #2197a3;
-    border: 1px solid rgb(89, 89, 89);
+    border: 1px solid #7c7b7b;
     color: white;
-    padding: 5px;
     cursor: pointer;
     font-size: 15px;
     border-radius: 5px;
+    background-color: #5d5959;
+    padding: 10px 20px;
 }
 
-.filtrar,
-.ordenar{
-    background-color: #5d5959;
-    padding: 7px;
+.filtrar:hover,
+.ordenar:hover{
+    background-color: #7c7b7b;
 }
 
 .ordenar-menu, .filtrar-menu {
@@ -176,8 +171,6 @@ header .menu-usuario a:hover {
     top: 100%;
     left: 0;
     background-color: #2197a3;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     padding: 10px;
     z-index: 1000;
 }
