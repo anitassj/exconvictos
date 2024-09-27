@@ -248,6 +248,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                         <div class="colum1">
                             <label for="tipo-vehiculo">Tipo de Vehículo </label>
                             <select id="tipo-vehiculo">
+                                <option value="" disabled selected>Selecciona un tipo de vehículo</option>
                                 <option value="auto">Auto</option>
                                 <option value="moto">Moto</option>
                             </select>
@@ -266,6 +267,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                             <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none"><button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
                             <label for="tipo-seguro">Tipo de Seguro </label>
                             <select id="tipo-seguro">
+                                <option value="" disabled selected>Selecciona un tipo de plan</option>
                                 <option value="basico">Básico</option>
                                 <option value="intermedio">Intermedio</option>
                                 <option value="premiun">Premiun</option>
@@ -276,6 +278,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                             <input type="number" id="suma-asegurada" placeholder="1.000.000,00">
                             <label for="uso-vehiculo">Uso del Vehículo </label>
                             <select id="uso-vehiculo">
+                                <option value="" disabled selected>Selecciona un tipo de uso</option>
                                 <option value="particular">Particular</option>
                                 <option value="profesional">Profesional</option>
                             </select>
