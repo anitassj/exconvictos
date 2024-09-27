@@ -27,27 +27,11 @@ header .logo img {
     margin-right: 20px;
 }
 
-/* Estilos del buscador */
-/* header .buscador {
-    flex: 2; 
-    display: flex;
-    align-items: left;
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 5px;
-    margin-right: 20%;
-
-}
-
-header .buscador input {
-    padding: 10px;
-    width: 100%; 
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-    box-sizing: border-box;
-    margin-bottom: 0px !important;
-} */
+.buscador {
+    display: flex;          
+    align-items: center;
+    margin-left: auto;  
+    } 
 
 /* Estilos de botones */
 header .menu, .usuario {
@@ -69,10 +53,10 @@ header .menu-hamburguesa {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #2197a3;
+    background-color: #5d5959;
     padding: 15px;
     z-index: 1000;
-    height: 580px;
+    height: 885%;
 }
 
 /* Estilos de los enlaces del menú hamburguesa */
@@ -96,9 +80,10 @@ header .menu-usuario {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #2197a3;
+    background-color: #5d5959;
     padding: 15px;
     z-index: 1000;
+    width: 10%;
 }
 
 header .menu-usuario a {
@@ -116,7 +101,7 @@ header .menu-usuario a:hover {
 
 /* Estilos del contenedor de datos */
 .contenedor-datos {
-    width: 76%;
+    width: 70%;
     height: 74vh;
     margin: 20px auto;
     background-color: #ffffff;
