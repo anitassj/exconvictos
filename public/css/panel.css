@@ -28,13 +28,13 @@ header .logo img {
 }
 
 /* Estilos del buscador */
-header .buscador {
+/* header .buscador {
     flex: 2; 
     display: flex;
     align-items: left;
     background-color: #ffffff;
     border-radius: 5px;
-    /* padding: 5px; */
+    padding: 5px;
     margin-right: 20%;
 
 }
@@ -47,7 +47,7 @@ header .buscador input {
     outline: none;
     box-sizing: border-box;
     margin-bottom: 0px !important;
-}
+} */
 
 /* Estilos de botones */
 header .menu, .usuario {
@@ -56,7 +56,7 @@ header .menu, .usuario {
     color: white;
     font-size: 18px;
     cursor: pointer;
-    margin: 0 10px;
+    margin: 0;
 }
 
 header .menu:hover, .usuario:hover {
