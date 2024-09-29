@@ -186,7 +186,6 @@ input[type="date" i] {
 
 .poliza{
     text-decoration: none;
-    
 }
 
 .desactivado {
@@ -206,7 +205,7 @@ input[type="date" i] {
 .eliminar-vehiculo{
     margin-bottom: 30px;
     background-color: red;
-    margin-left: 85%;    
+    margin-left: 84%;    
 }
 
 .cancelar {

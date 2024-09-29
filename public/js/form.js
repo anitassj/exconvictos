@@ -1,4 +1,7 @@
+// ------------------------------------------------------------------------------------------------
 // validación de errores del form -----------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
 document.getElementById('formCotizacion').addEventListener('submit', function(event) {
     let esValido = true;
     let mensajesDeError = [];
@@ -88,13 +91,16 @@ document.getElementById('formCotizacion').addEventListener('submit', function(ev
     }
 });
 
+// ------------------------------------------------------------------------------------------------
 // mostrar datos precargados al cliente desde el servidor (marca y modelo del vehículo) -----------
+// ------------------------------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', () => {
   const tipoSelect = document.getElementById('tipo');
   const marcaSelect = document.getElementById('idMarca');
   const modeloSelect = document.getElementById('idModelo');
 
-  // carga de marcas cuando se selecciona un tipo de vehículo --
+  // carga de marcas cuando se selecciona un tipo de vehículo 
   tipoSelect.addEventListener('change', async () => {
       const tipo = tipoSelect.value;
 
@@ -118,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modeloSelect.innerHTML = '<option value="">Seleccione un modelo</option>';
   });
 
-  // carga de modelos cuando se selecciona una marca --
+  // carga de modelos cuando se selecciona una marca 
   marcaSelect.addEventListener('change', async () => {
       const idMarca = marcaSelect.value;
       const tipo = tipoSelect.value;
@@ -131,6 +137,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
       respServer.forEach(modelo => {
           modeloSelect.innerHTML += `<option value="${modelo.id_modelos}">${modelo.nombre}</option>`;
+        });
+    });
+});
+
+// ------------------------------------------------------------------------------------------------
+// Enviar el form sin recargar la pág. y mostrar msj de éxito  ------------------------------------
+// ------------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('formCotizacion');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const formData = {
+            tipo: document.getElementById('tipo').value,
+            patente: document.getElementById('patente').value,
+            anio: document.getElementById('anio').value,
+            idMarca: document.getElementById('idMarca').value,
+            idModelo: document.getElementById('idModelo').value,
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            celular: document.getElementById('celular').value,
+            email: document.getElementById('email').value
+        };
+
+        fetch('/guardar-datos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData) 
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            Swal.fire({
+                title: '¡Cotización enviada!',
+                text: 'Tu cotización ha sido enviada correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                window.location.href = '/';
+            });
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un error al enviar la cotización.',
+                icon: 'error',
+                confirmButtonText: 'Reintentar'
+            });
+            console.error('Error:', error);
         });
     });
 });
