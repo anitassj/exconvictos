@@ -74,7 +74,7 @@ header .icon-menu #icono-x:hover {
 
 header .menu {
     display: none;
-    background: linear-gradient(to bottom, #ffffff 0%, #ffffff 70%, #2197a3 100%);
+    background-color: #2197a3;
     position: fixed;
     top: 106px;
     right: 0;
@@ -93,7 +93,6 @@ header .menu.mostrar {
 }
 
 .menu ul li {
-    border-bottom: 2px solid #2197a3;
     margin: 0 10px 20px 10px;
     transition: all 0.2s;
 }
@@ -103,30 +102,30 @@ header .menu.mostrar {
     cursor: pointer;
     text-decoration: none;
     border: none;
-    color: rgb(90, 90, 90);
-    transition: all 0.2s;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 15px;
 }
 
 .menu ul li a:hover {
     color: #2197a3;
+    background-color: #ffffff;
+    border-radius: 15px;
 }
 
 .menu ul li:last-child a{
-    color: #ffffff;
-}
-
-.menu ul li:last-child {
-    background-color: #2197a3;
-    padding: 10px;
-    border-radius: 10px;
-    color: #ffffff;
+    color: #2197a3;
+    background-color: #ffffff;
     text-align: center;
-    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.menu ul li:last-child:hover {
-    background-color: #26a9b8;
-    transform: scale(1.01);
+.menu ul li:last-child a:hover {
+    background-color: #2197a3;
+    color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 .fondo {
@@ -152,6 +151,8 @@ header .menu.mostrar {
     padding: 100px 0 0 0;
 }
 
+/* Datos Personales */
+
 .contenedor .datos-personales {
     display: flex;
     flex-direction: column;
@@ -159,6 +160,13 @@ header .menu.mostrar {
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    display: none;
+}
+
+.datos-personales.mostrar {
+    display: block;
 }
 
 .datos-personales h3 {
@@ -201,6 +209,88 @@ header .menu.mostrar {
     background-color: #f5f5f5;
     padding: 0 10px 0 10px;
     color: rgb(90, 90, 90);
+}
+
+/* Vehículos Asegurados */
+
+.contenedor .vehiculos-asegurados {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.vehiculos-asegurados.ocultar {
+    display: none;
+}
+
+.vehiculos-asegurados h3 {
+    font-size: 25px;
+    text-align: center;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    background-color: #2197a3;
+    padding: 10px 0 10px 0;
+}
+
+.vehiculos-asegurados .datos-cuerpo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.datos-cuerpo .datos1, .datos-cuerpo .datos1 {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.vehiculos-asegurados .datos1 label, .vehiculos-asegurados .datos2 label {
+    margin-top: 30px;
+    font-size: 18px;
+    color: rgb(90, 90, 90);
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+
+.vehiculos-asegurados .datos1 .dato1, .vehiculos-asegurados .datos2 .dato1 {
+    width: 530px;
+    height: 35px;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid #f5f5f5;
+    background-color: #f5f5f5;
+    padding: 0 10px 0 10px;
+    color: rgb(90, 90, 90);
+}
+
+.vehiculos-asegurados .datos2 .dato-submit {
+    background-color: #2197a3;
+    font-size: 17px;
+    border: none;
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #ffffff;
+}
+
+.vehiculos-asegurados .datos2 .dato-submit:hover {
+    transform: scale(1.05);
+    background-color: #26a9b8;
+}
+
+.limite {
+    border: none;
+    border-top: 4px solid #2197a3;
+    margin: 20px 10px;
+    border-radius: 5px;
 }
 
 /* edicion de datos */
