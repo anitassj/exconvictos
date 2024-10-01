@@ -292,7 +292,6 @@ function FormularioCargarCliente() {
 }
 
     contenedorDatos.innerHTML = formCliente;
-});
 
 // función para redirigir al panel principal ----------------------------------
 function cancelarCambios() {
