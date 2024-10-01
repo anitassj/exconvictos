@@ -1,25 +1,33 @@
 const express = require('express');
 const router = express.Router();
-const agregarClienteModel = require('../models/cargar-clienteModel');
+const upload = require('../middleware/upload'); //middleware para manejar la imagen
+//const upload = multer({ dest: 'uploads/' }); // Configuración para guardar archivos en la carpeta 'uploads'
+const cargarClienteController = require('../controllers/cargar-clienteController');
 
-router.post('/cargar_cliente', async (req, res) => {
-    const { nombre, apellido, dni, email, direccion, celular, ciudad, provincia, vehiculo } = req.body;
-
+//siempre en la ruta nunca en el controlador el middleware
+router.post('/guardarDatos', upload.single('foto'), async (req, res) => {
     try {
-        //inserto datos del cliente
-        const cliente_id = await agregarClienteModel.insertarCliente(nombre, apellido, dni, email, direccion, celular, ciudad, provincia);
 
-        //se usa el array echo en el front para insertar todos los vehiculos que agregue el cliente
-        if (Array.isArray(vehiculo)) {
-            for (const vehiculo of vehiculo) {
-                await cargar-clienteModel.insertarVehiculo(cliente_id);
-            }
-        }
+        const {nombre, apellido, dni, email, celular, direccion, ciudad, provincia, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo} = req.body;
+        
+        //para obtener la ruta de la imagen subida por multer
+        const foto = req.file ? `/public/uploads/${req.file.filename}` : null; 
+        
+        //objeto cliente con los datos recibidos
+        const clienteData = {nombre,apellido,dni,email,celular,direccion,ciudad,provincia,tipo_vehiculo,patente,anio,vigencia_desde,vigencia_hasta,foto,tipo_seguro,premio_total,suma_asegurada,uso_vehiculo
+        };
+        
+        //llamo al método del modelo para guardar los datos
+        const results = await cargarClienteController.guardarDatos(clienteData);
 
-        res.status(201).json({ message: 'Cliente y vehículos agregados con éxito.' });
+        res.json({
+            message: 'Datos guardados exitosamente.',
+            data: results
+        });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error al agregar el cliente y los vehículos.' });
+        console.error('Error al guardar los datos:', error);
+        res.status(500).json({ error: 'Hubo un error al guardar los datos.' });
     }
 });
+
 module.exports = router;

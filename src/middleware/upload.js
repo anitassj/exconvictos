@@ -1,4 +1,4 @@
-const multer = require("multer");
+const multer = require('multer');
 const path = require('path');
 
 //configuracion de guardado de la imagen

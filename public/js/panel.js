@@ -419,7 +419,7 @@ function cargarFotos(vehiculoId) {
             const formData = new FormData();
             formData.append('foto', file); 
 
-            fetch('/ruta', { // cambiar a la ruta !!!!!!!!!!!!!!!
+            fetch('/guardarDatos', { // cambiar a la ruta !!!!!!!!!!!!!!!
                 method: 'POST',
                 body: formData 
             })
