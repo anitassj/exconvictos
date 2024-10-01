@@ -6,6 +6,9 @@ const port = 3000;
 const bodyParser = require("body-parser");
 const conexion = require('./models/db'); //importo la conexion de la db
 
+const morgan = require('morgan');
+app.use(morgan('dev'));
+
 // middleware 
 app.use(express.urlencoded({
     extended: false,
