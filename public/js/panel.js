@@ -206,7 +206,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
     const formCliente = `
         <!-- sección de información personal ---------------------------------- -->
         <div class="info-personal">
-        <div class="logos"><span class="material-symbols-outlined">person</span></div>
+            <div class="logos"><span class="material-symbols-outlined">person</span></div>
             <h2>Ingresar Información Personal</h2>
             <div class="info-grid">
                 <!-- primer colum -->
@@ -223,7 +223,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
                 <!-- segunda colum -->
                 <div class="colum2">
-                <label for="direccion">Dirección </label>
+                    <label for="direccion">Dirección </label>
                     <input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
                     <label for="celular">Celular </label>
                     <input type="text" id="celular" placeholder="2346303040">
@@ -237,7 +237,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
         <!-- sección de vehículos asegurados ---------------------------------- -->
         <div class="vehiculos-asegurados">
-        <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
+            <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
             <h2>Ingresar el vehículo asegurado</h2>
 
             <!-- Contenedor para agregar vehículos -->
@@ -259,11 +259,14 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                             <input type="date" id="vigencia-desde">
                             <label for="vigencia-hasta">Vigencia Hasta </label>
                             <input type="date" id="vigencia-hasta">
-                            </div>
+                        </div>
 
                         <div class="colum2">
                             <label>Fotos del vehículo</label>
-                            <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none"><button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
+                            <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none">
+                            <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">
+                                <span class="material-symbols-outlined botones">upload</span>Subir
+                            </button>
                             <label for="tipo-seguro">Tipo de Seguro </label>
                             <select id="tipo-seguro">
                                 <option value="" disabled selected>Selecciona un tipo de plan</option>
@@ -284,15 +287,64 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
-            <button class="activo configBotones" onclick="guardarCambios()"><span class="material-symbols-outlined botones">check_small</span>Guardar</button>
-            <button class="activo cancelar configBotones" onclick="cancelarCambios()"><span class="material-symbols-outlined botones">close</span>Cancelar</button>
+            <button id="guardarCambios" class="activo configBotones">
+                <span class="material-symbols-outlined botones">check_small</span>Guardar
+            </button>
+            <button class="activo cancelar configBotones" onclick="cancelarCambios()">
+                <span class="material-symbols-outlined botones">close</span>Cancelar
+            </button>
         </div>
     `;
 
     contenedorDatos.innerHTML = formCliente;
+
+    document.getElementById('guardarCambios').addEventListener('click', function() {
+        const datosPersonales = {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            dni: document.getElementById('dni').value,
+            email: document.getElementById('email').value,
+            direccion: document.getElementById('direccion').value,
+            celular: document.getElementById('celular').value,
+            ciudad: document.getElementById('ciudad').value,
+            provincia: document.getElementById('provincia').value
+        };
+
+        const datosVehiculo = {
+            tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+            patente: document.getElementById('patente').value,
+            anioVehiculo: document.getElementById('anio-vehiculo').value,
+            vigenciaDesde: document.getElementById('vigencia-desde').value,
+            vigenciaHasta: document.getElementById('vigencia-hasta').value,
+            tipoSeguro: document.getElementById('tipo-seguro').value,
+            premioTotal: document.getElementById('premio-total').value,
+            sumaAsegurada: document.getElementById('suma-asegurada').value,
+            usoVehiculo: document.getElementById('uso-vehiculo').value
+        };
+
+        fetch('/cargar-cliente', {  // VER RUTA ???!!!!!!
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ datosPersonales, datosVehiculo })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Datos guardados con éxito');
+            } else {
+                throw new Error('Error al guardar datos');
+            }
+        })
+        .catch(error => {
+            alert('Error al guardar datos: ' + error);
+        });
+    });
 });
+
 
 // función para redirigir al panel principal ----------------------------------
 function cancelarCambios() {
@@ -355,53 +407,6 @@ function verificarCamposCompletos() {
 
 document.querySelectorAll('input, select').forEach(input => {
     input.addEventListener('input', verificarCamposCompletos);
-});
-
-// función para manejar el guardado del cliente -------------------------------
-document.getElementById('guardarCambios').addEventListener('click', function() {
-    if (this.classList.contains('activo')) {
-        const datosPersonales = {
-            nombre: document.getElementById('nombre').value,
-            apellido: document.getElementById('apellido').value,
-            dni: document.getElementById('dni').value,
-            email: document.getElementById('email').value,
-            direccion: document.getElementById('direccion').value,
-            celular: document.getElementById('celular').value,
-            ciudad: document.getElementById('ciudad').value,
-            provincia: document.getElementById('provincia').value
-        };
-
-        const datosVehiculo = {
-            tipoVehiculo: document.getElementById('tipo-vehiculo').value,
-            patente: document.getElementById('patente').value,
-            anioVehiculo: document.getElementById('anio-vehiculo').value,
-            vigenciaDesde: document.getElementById('vigencia-desde').value,
-            vigenciaHasta: document.getElementById('vigencia-hasta').value,
-            tipoSeguro: document.getElementById('tipo-seguro').value,
-            premioTotal: document.getElementById('premio-total').value,
-            sumaAsegurada: document.getElementById('suma-asegurada').value,
-            usoVehiculo: document.getElementById('uso-vehiculo').value
-        };
-
-        fetch('/guardarDatos', { // CAMBIAR LA RUTA !!!!!!!!!!!!!!!
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ datosPersonales, datosVehiculo })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Datos guardados con éxito');
-            } else {
-                throw new Error('Error al guardar datos');
-            }
-        })
-        .catch(error => {
-            alert('Error al guardar datos: ' + error);
-        });
-    }
 });
         
 // ------------------------------------------------------------------------------------------------
