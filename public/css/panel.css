@@ -150,14 +150,25 @@ header .menu-usuario a:hover {
     margin-right: 20px;
 }
 
-.ordenar-menu-oculto, .filtrar-menu-oculto {
+.ordenar-menu-oculto {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 63%;
     left: 0;
-    background-color: #2197a3;
-    padding: 10px;
+    background-color: #5d5959;
     z-index: 1000;
+    width: 149px;
+    border-radius: 0px 0px 5px 5px;
+}
+.filtrar-menu-oculto {
+    display: none;
+    position: absolute;
+    top: 63%;
+    left: 0;
+    background-color: #5d5959;
+    z-index: 1000;
+    width: 107px;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .ordenar-menu-oculto a, .filtrar-menu-oculto a {
@@ -170,7 +181,7 @@ header .menu-usuario a:hover {
 }
 
 .ordenar-menu-oculto a:hover, .filtrar-menu-oculto a:hover {
-    background-color: #1b7d88; 
+    background-color: #7c7b7b; 
 }
 
 /* Estilos de la tabla */
