@@ -2,10 +2,10 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const port = 3000;
+const port = 3001;
 const bodyParser = require("body-parser");
 const conexion = require('./models/db'); //importo la conexion de la db
-
+const mysql = require('mysql2');
 const morgan = require('morgan');
 app.use(morgan('dev'));
 
@@ -48,7 +48,7 @@ const modelosRoutes = require('./routes/modelos');
 const rutaPerfil = require('./routes/perfil_usuario');
 const rutaPoliza = require('./routes/poliza');
 const rutaUsuario = require('./routes/usuario');
-
+const cargarCliente = require('./routes/cargar-cliente');
 app.use('/', authRoutes);
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
@@ -61,7 +61,7 @@ app.use('/', modelosRoutes);
 app.use('/', rutaPerfil);
 app.use('/', rutaPoliza);
 app.use('/', rutaUsuario);
-
+app.use('/', cargarCliente);
 // levantar el servidor 
 app.listen(port, () => {
     console.log(`El servidor corre en el puerto ${port}`);
