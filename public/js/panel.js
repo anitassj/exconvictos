@@ -192,9 +192,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA TRABAJAR NUEVOS CLIENTES --------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
 
 // función para mostrar el form cuando se apreta el botón 'agregar cliente' ---
-// (dentro de ésta función, se encuentran las funciones'agregar otro vehículo' y 'eliminar vehículo')
 
 document.getElementById('cargar-cliente').addEventListener('click', function(event) {
     event.preventDefault(); 
@@ -283,72 +285,13 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                     </div>
                 </div>
                 </div>
-                
-            <button id="agregar-vehiculo" class="activo agregar-vehiculo configBotones"><span class="material-symbols-outlined botones">add_box</span>Agregar otro vehículo</button>
 
-            <button class="desactivado configBotones" onclick="guardarCambios()"><span class="material-symbols-outlined botones">check_small</span>Guardar</button>
+            <button class="activo configBotones" onclick="guardarCambios()"><span class="material-symbols-outlined botones">check_small</span>Guardar</button>
             <button class="activo cancelar configBotones" onclick="cancelarCambios()"><span class="material-symbols-outlined botones">close</span>Cancelar</button>
         </div>
     `;
 
     contenedorDatos.innerHTML = formCliente;
-
-    // función para agregar y eliminar un nuevo vehículo ----------------------
-    document.getElementById('agregar-vehiculo').addEventListener('click', function() {
-        const vehiculosContainer = document.getElementById('vehiculos-container');
-
-        const nuevoVehiculo = document.createElement('div');
-        nuevoVehiculo.classList.add('vehiculo');
-        nuevoVehiculo.innerHTML = `
-            <h2>Ingresar el vehículo asegurado</h2>
-            <div class="info-grid">
-                <div class="colum1">
-                <label for="tipo-vehiculo">Tipo de Vehículo </label>
-                <select id="tipo-vehiculo">
-                        <option value="auto">Auto</option>
-                        <option value="moto">Moto</option>
-                    </select>
-                    <label for="patente">Patente </label>
-                    <input type="text" id="patente">
-                    <label for="anio-vehiculo">Año </label>
-                    <input type="number" id="anio-vehiculo">
-                    <label for="vigencia-desde">Vigencia Desde </label>
-                    <input type="date" id="vigencia-desde">
-                    <label for="vigencia-hasta">Vigencia Hasta </label>
-                    <input type="date" id="vigencia-hasta">
-                </div>
-                <div class="colum2">
-                    <label>Fotos del vehículo</label>
-                    <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none"><button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">upload</span>Subir</button>
-                    <label for="tipo-seguro">Tipo de Seguro </label>
-                    <select id="tipo-seguro">
-                        <option value="basico">Básico</option>
-                        <option value="intermedio">Intermedio</option>
-                        <option value="premiun">Premiun</option>
-                    </select>
-                    <label for="premio-total">Premio Total (en pesos) </label>
-                    <input type="number" id="premio-total">
-                    <label for="suma-asegurada">Suma Asegurada </label>
-                    <input type="number" id="suma-asegurada">
-                    <label for="uso-vehiculo">Uso del Vehículo </label>
-                    <select id="uso-vehiculo">
-                        <option value="particular">Particular</option>
-                        <option value="profesional">Profesional</option>
-                    </select>
-                </div>
-            </div>
-            
-            <button class="activo eliminar-vehiculo configBotones"><span class="material-symbols-outlined botones">delete</span>Eliminar</button>
-        `;
-
-        // agregar nuevo vehículo al contenedor
-        vehiculosContainer.appendChild(nuevoVehiculo);
-
-        // eliminar el nuevo vehículo del contenedor
-        nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', function() {
-            vehiculosContainer.removeChild(nuevoVehiculo);
-        });
-    });
 });
 
 // función para redirigir al panel principal ----------------------------------
@@ -413,10 +356,6 @@ function verificarCamposCompletos() {
 document.querySelectorAll('input, select').forEach(input => {
     input.addEventListener('input', verificarCamposCompletos);
 });
-
-// ------------------------------------------------------------------------------------------------
-// FUNCIONES PARA TRABAJAR NUEVOS CLIENTES --------------------------------------------------------
-// ------------------------------------------------------------------------------------------------
 
 // función para manejar el guardado del cliente -------------------------------
 document.getElementById('guardarCambios').addEventListener('click', function() {
