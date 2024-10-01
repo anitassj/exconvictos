@@ -192,9 +192,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ------------------------------------------------------------------------------------------------
-// FUNCIONES PARA TRABAJAR NUEVOS CLIENTES --------------------------------------------------------
-// ------------------------------------------------------------------------------------------------
 
 // función para mostrar el form cuando se apreta el botón 'agregar cliente' ---
 // (dentro de ésta función, se encuentran las funciones'agregar otro vehículo' y 'eliminar vehículo')
@@ -224,7 +221,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
 
                 <!-- segunda colum -->
                 <div class="colum2">
-                    <label for="direccion">Dirección </label>
+                <label for="direccion">Dirección </label>
                     <input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
                     <label for="celular">Celular </label>
                     <input type="text" id="celular" placeholder="2346303040">
@@ -260,7 +257,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                             <input type="date" id="vigencia-desde">
                             <label for="vigencia-hasta">Vigencia Hasta </label>
                             <input type="date" id="vigencia-hasta">
-                        </div>
+                            </div>
 
                         <div class="colum2">
                             <label>Fotos del vehículo</label>
@@ -285,8 +282,8 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
                         </div>
                     </div>
                 </div>
-            </div>
-
+                </div>
+                
             <button id="agregar-vehiculo" class="activo agregar-vehiculo configBotones"><span class="material-symbols-outlined botones">add_box</span>Agregar otro vehículo</button>
 
             <button class="desactivado configBotones" onclick="guardarCambios()"><span class="material-symbols-outlined botones">check_small</span>Guardar</button>
@@ -306,8 +303,8 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
             <h2>Ingresar el vehículo asegurado</h2>
             <div class="info-grid">
                 <div class="colum1">
-                    <label for="tipo-vehiculo">Tipo de Vehículo </label>
-                    <select id="tipo-vehiculo">
+                <label for="tipo-vehiculo">Tipo de Vehículo </label>
+                <select id="tipo-vehiculo">
                         <option value="auto">Auto</option>
                         <option value="moto">Moto</option>
                     </select>
@@ -417,55 +414,56 @@ document.querySelectorAll('input, select').forEach(input => {
     input.addEventListener('input', verificarCamposCompletos);
 });
 
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA TRABAJAR NUEVOS CLIENTES --------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
 // función para manejar el guardado del cliente -------------------------------
-// document.querySelector('guardarCambios').addEventListener('click', function() {
-//     if (this.classList.contains('activo')) {
-//         const datos = {
-//             nombre: document.getElementById('nombre').value,
-//             apellido: document.getElementById('apellido').value,
-//             dni: document.getElementById('dni').value,
-//             email: document.getElementById('email').value,
-//             direccion: document.getElementById('direccion').value,
-//             celular: document.getElementById('celular').value,
-//             ciudad: document.getElementById('ciudad').value,
-//             provincia: document.getElementById('provincia').value,
-//         };
-    
-//         const vehiculosArray = Array.from(document.querySelectorAll('.vehiculo')).map(vehiculo => {
-//             return {
-//                 tipoVehiculo: vehiculo.querySelector('#tipo-vehiculo').value,
-//                 patente: vehiculo.querySelector('#patente').value,
-//                 anioVehiculo: vehiculo.querySelector('#anio-vehiculo').value,
-//                 vigenciaDesde: vehiculo.querySelector('#vigencia-desde').value,
-//                 vigenciaHasta: vehiculo.querySelector('#vigencia-hasta').value,
-//                 tipoSeguro: vehiculo.querySelector('#tipo-seguro').value,
-//                 premioTotal: vehiculo.querySelector('#premio-total').value,
-//                 sumaAsegurada: vehiculo.querySelector('#suma-asegurada').value,
-//                 usoVehiculo: vehiculo.querySelector('#uso-vehiculo').value
-//             };
-//         });
-    
-//         datos.vehiculos = vehiculosArray;
-    
-//         fetch('/ruta', { // cambiar URL por la ruta del servidor !!!!!!!!!!!
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify(datos)
-//         })
-//         .then(response => {
-//             if (response.ok) {
-//                 alert('Datos guardados con éxito');
-//             } else {
-//                 throw new Error('Error en la respuesta del servidor');
-//             }
-//         })
-//         .catch(error => {
-//             alert('Error al guardar datos: ' + error);
-//         });
-//     }
-// });
+document.getElementById('guardarCambios').addEventListener('click', function() {
+    if (this.classList.contains('activo')) {
+        const datosPersonales = {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            dni: document.getElementById('dni').value,
+            email: document.getElementById('email').value,
+            direccion: document.getElementById('direccion').value,
+            celular: document.getElementById('celular').value,
+            ciudad: document.getElementById('ciudad').value,
+            provincia: document.getElementById('provincia').value
+        };
+
+        const datosVehiculo = {
+            tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+            patente: document.getElementById('patente').value,
+            anioVehiculo: document.getElementById('anio-vehiculo').value,
+            vigenciaDesde: document.getElementById('vigencia-desde').value,
+            vigenciaHasta: document.getElementById('vigencia-hasta').value,
+            tipoSeguro: document.getElementById('tipo-seguro').value,
+            premioTotal: document.getElementById('premio-total').value,
+            sumaAsegurada: document.getElementById('suma-asegurada').value,
+            usoVehiculo: document.getElementById('uso-vehiculo').value
+        };
+
+        fetch('/guardarDatos', { // CAMBIAR LA RUTA !!!!!!!!!!!!!!!
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ datosPersonales, datosVehiculo })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Datos guardados con éxito');
+            } else {
+                throw new Error('Error al guardar datos');
+            }
+        })
+        .catch(error => {
+            alert('Error al guardar datos: ' + error);
+        });
+    }
+});
         
 // ------------------------------------------------------------------------------------------------
 // FUNCIONES PARA CARGAR FOTOS --------------------------------------------------------------------
