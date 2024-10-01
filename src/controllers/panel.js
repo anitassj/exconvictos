@@ -2,7 +2,7 @@ class PanelController { //clase que actúa como controlador
 //los controladores manejan las solicitudes (requests) de los usuarios y
 // devuelven las respuestas (responses)
 	mostrarListado (req, res) { //método de la clase que es una función. recibe dos parámetros req y res
-		res.render('panel/listado'); //para randerizar una vista; cuando se llama a un metodo se genera una pagina html usando una plantilla llamada "panel/listado"
+		res.render('panel'); //para randerizar una vista; cuando se llama a un metodo se genera una pagina html usando una plantilla llamada "panel/listado"
 	}
 
 }

@@ -418,54 +418,54 @@ document.querySelectorAll('input, select').forEach(input => {
 });
 
 // función para manejar el guardado del cliente -------------------------------
-document.querySelector('guardarCambios').addEventListener('click', function() {
-    if (this.classList.contains('activo')) {
-        const datos = {
-            nombre: document.getElementById('nombre').value,
-            apellido: document.getElementById('apellido').value,
-            dni: document.getElementById('dni').value,
-            email: document.getElementById('email').value,
-            direccion: document.getElementById('direccion').value,
-            celular: document.getElementById('celular').value,
-            ciudad: document.getElementById('ciudad').value,
-            provincia: document.getElementById('provincia').value,
-        };
+// document.querySelector('guardarCambios').addEventListener('click', function() {
+//     if (this.classList.contains('activo')) {
+//         const datos = {
+//             nombre: document.getElementById('nombre').value,
+//             apellido: document.getElementById('apellido').value,
+//             dni: document.getElementById('dni').value,
+//             email: document.getElementById('email').value,
+//             direccion: document.getElementById('direccion').value,
+//             celular: document.getElementById('celular').value,
+//             ciudad: document.getElementById('ciudad').value,
+//             provincia: document.getElementById('provincia').value,
+//         };
     
-        const vehiculosArray = Array.from(document.querySelectorAll('.vehiculo')).map(vehiculo => {
-            return {
-                tipoVehiculo: vehiculo.querySelector('#tipo-vehiculo').value,
-                patente: vehiculo.querySelector('#patente').value,
-                anioVehiculo: vehiculo.querySelector('#anio-vehiculo').value,
-                vigenciaDesde: vehiculo.querySelector('#vigencia-desde').value,
-                vigenciaHasta: vehiculo.querySelector('#vigencia-hasta').value,
-                tipoSeguro: vehiculo.querySelector('#tipo-seguro').value,
-                premioTotal: vehiculo.querySelector('#premio-total').value,
-                sumaAsegurada: vehiculo.querySelector('#suma-asegurada').value,
-                usoVehiculo: vehiculo.querySelector('#uso-vehiculo').value
-            };
-        });
+//         const vehiculosArray = Array.from(document.querySelectorAll('.vehiculo')).map(vehiculo => {
+//             return {
+//                 tipoVehiculo: vehiculo.querySelector('#tipo-vehiculo').value,
+//                 patente: vehiculo.querySelector('#patente').value,
+//                 anioVehiculo: vehiculo.querySelector('#anio-vehiculo').value,
+//                 vigenciaDesde: vehiculo.querySelector('#vigencia-desde').value,
+//                 vigenciaHasta: vehiculo.querySelector('#vigencia-hasta').value,
+//                 tipoSeguro: vehiculo.querySelector('#tipo-seguro').value,
+//                 premioTotal: vehiculo.querySelector('#premio-total').value,
+//                 sumaAsegurada: vehiculo.querySelector('#suma-asegurada').value,
+//                 usoVehiculo: vehiculo.querySelector('#uso-vehiculo').value
+//             };
+//         });
     
-        datos.vehiculos = vehiculosArray;
+//         datos.vehiculos = vehiculosArray;
     
-        fetch('/ruta', { // cambiar URL por la ruta del servidor !!!!!!!!!!!
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Datos guardados con éxito');
-            } else {
-                throw new Error('Error en la respuesta del servidor');
-            }
-        })
-        .catch(error => {
-            alert('Error al guardar datos: ' + error);
-        });
-    }
-});
+//         fetch('/ruta', { // cambiar URL por la ruta del servidor !!!!!!!!!!!
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify(datos)
+//         })
+//         .then(response => {
+//             if (response.ok) {
+//                 alert('Datos guardados con éxito');
+//             } else {
+//                 throw new Error('Error en la respuesta del servidor');
+//             }
+//         })
+//         .catch(error => {
+//             alert('Error al guardar datos: ' + error);
+//         });
+//     }
+// });
         
 // ------------------------------------------------------------------------------------------------
 // FUNCIONES PARA CARGAR FOTOS --------------------------------------------------------------------
@@ -499,3 +499,45 @@ function cargarFotos(vehiculoId) {
         }
     };
 }
+
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA CREAR USUARIOS ------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
+document.getElementById('cargar-usuario').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const contenedorDatos = document.querySelector('.contenedor-datos');
+
+    const cargarUsuario = `
+        <h2>Crear nuevo usuario</h2>
+        <div class="formulario-crear-usuario">
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" id="dni" name="dni" placeholder="Ingresar DNI">
+                <button type="button" id="buscar-usuario" class="activo">Buscar</button>
+            </div>
+            <div class="form-group">
+                <label for="email">Email asociado</label>
+                <input type="email" id="email" name="email" placeholder="anita@gmail.com" readonly>
+            </div>
+            <div class="form-group">
+                <label for="password">Generar contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Generar contraseña">
+                <button type="button" id="generar-password" class="activo">Generar</button>
+            </div>
+            <div class="form-group">
+                <label for="rol">Asignar rol</label>
+                <select id="rol" name="rol">
+                    <option value="" disabled selected>Seleccionar rol</option>
+                    <option value="admin">Administrador</option>
+                    <option value="usuario">Usuario</option>
+                </select>
+            </div>
+
+            <button type="button" id="crear-usuario" class="activo">Crear Usuario</button>
+        </div>
+    `;
+
+    contenedorDatos.innerHTML = cargarUsuario;
+});
