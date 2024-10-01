@@ -211,3 +211,50 @@ input[type="date" i] {
 .cancelar {
     background-color: red;
 }
+
+/* tabla en el formulario de creación de usuario ------------------------------ */
+.form-crear-usuario table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-crear-usuario .label-column {
+    width: 20%; 
+    padding: 12px;
+    text-align: left;
+    vertical-align: top; 
+}
+
+.form-crear-usuario .input-column {
+    width: 70%;
+    padding-right: 25px;
+}
+
+.form-crear-usuario .input-column input,
+.form-crear-usuario .input-column select {
+    width: 70%; 
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: black;
+    transition: border-color 0.3s ease;
+    margin-right: 21px;
+}
+
+.form-crear-usuario .input-column input:focus,
+.form-crear-usuario .input-column select:focus {
+    border-color: #2197a3;
+    outline: none;
+}
+
+.form-crear-usuario .input-column button {
+    margin-top: 8px; 
+}
+
+#crear-usuario {
+    margin-top: 20px; 
+    text-align: center;
+    left: 0;
+}

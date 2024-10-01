@@ -511,31 +511,40 @@ document.getElementById('cargar-usuario').addEventListener('click', function(eve
 
     const cargarUsuario = `
         <h2>Crear nuevo usuario</h2>
-        <div class="formulario-crear-usuario">
-            <div class="form-group">
-                <label for="dni">DNI</label>
-                <input type="text" id="dni" name="dni" placeholder="Ingresar DNI">
-                <button type="button" id="buscar-usuario" class="activo">Buscar</button>
-            </div>
-            <div class="form-group">
-                <label for="email">Email asociado</label>
-                <input type="email" id="email" name="email" placeholder="anita@gmail.com" readonly>
-            </div>
-            <div class="form-group">
-                <label for="password">Generar contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Generar contraseña">
-                <button type="button" id="generar-password" class="activo">Generar</button>
-            </div>
-            <div class="form-group">
-                <label for="rol">Asignar rol</label>
-                <select id="rol" name="rol">
-                    <option value="" disabled selected>Seleccionar rol</option>
-                    <option value="admin">Administrador</option>
-                    <option value="usuario">Usuario</option>
-                </select>
-            </div>
-
-            <button type="button" id="crear-usuario" class="activo">Crear Usuario</button>
+        <div class="form-crear-usuario">
+            <table>
+                <tr>
+                    <td class="label-column"><label for="dni">DNI</label></td>
+                    <td class="input-column">
+                        <input type="text" id="dni" name="dni" placeholder="Ingresar DNI">
+                        <button type="button" id="buscar-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">search</span>Buscar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="email">Email asociado</label></td>
+                    <td class="input-column">
+                        <input type="email" id="email" name="email" placeholder="anita@gmail.com" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="password">Generar contraseña</label></td>
+                    <td class="input-column">
+                        <input type="password" id="password" name="password" placeholder="Generar contraseña">
+                        <button type="button" id="generar-password" class="activo configBotones"><span class="material-symbols-outlined botones">lock_reset</span>Generar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="rol">Asignar rol</label></td>
+                    <td class="input-column">
+                        <select id="rol" name="rol">
+                            <option value="" disabled selected>Seleccionar rol</option>
+                            <option value="admin">Administrador</option>
+                            <option value="usuario">Usuario</option>
+                        </select>
+                    </td>
+                </tr>
+                </table>
+                <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
         </div>
     `;
 
