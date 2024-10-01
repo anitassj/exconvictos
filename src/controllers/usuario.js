@@ -26,10 +26,13 @@ class UsuarioController { //maneja la lógica de la aplicación relacionada con 
 			req.session.idUsuario = usuario.id; //...se guarda el ID del usuario...
 			req.session.idProyecto = usuario.id_proyecto;//... y el ID del proyecto asociado (usuario.id_proyecto)...
 			console.log(req.session);//... en la sesión (req.session)
-			res.json({
+			
+			res.redirect('/panel');
+			
+			/*json({
 				"idUsuario": usuario.id,
 				"error": 0 //Si la validación es exitosa, responde con un objeto JSON que incluye el ID del usuario y un código de error 0.
-			});
+			});*/
 
 
 		} else {
