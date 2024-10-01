@@ -1,9 +1,11 @@
 const express = require('express');
-const path = require('path'); 
 const router = express.Router();
 
-router.get('/panel', (req, res) => {
-    res.render(path.join(__dirname, '..', 'views', 'panel.ejs'));
-});
+const validarUsuario = require("../middleware/validarUsuario");
+
+const controllerPanel = require("../controllers/panel");
+const panelController = new controllerPanel();
+
+router.get('/panel', validarUsuario, panelController.mostrarListado);
 
 module.exports = router;
