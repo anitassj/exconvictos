@@ -211,7 +211,7 @@ async function guardarCambios() {
     }
 }
 
-// agregar nuevos vehículos -------------------------------
+// agregar y eliminar nuevos vehículos --------------------
 function agregarVehiculo() {
     const vehiculosContainer = document.querySelector('.vehiculos-asegurados');
 
