@@ -202,14 +202,35 @@ input[type="date" i] {
     cursor: pointer;
 }
 
-.eliminar-vehiculo{
-    margin-bottom: 30px;
-    background-color: red;
-    margin-left: 84%;    
-}
-
 .cancelar {
     background-color: red;
+}
+
+.oculto {
+    display: none;
+}
+
+.eliminar-vehiculo {
+    margin-bottom: 30px;
+    background-color: red;
+    margin-left: 84%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.eliminar-vehiculo:hover {
+    background-color: darkred;
+}
+
+.peligro {
+    background-color: red;
+}
+
+.peligro:hover {
+    background-color: darkred;
 }
 
 /* tabla en el formulario de creación de usuario ------------------------------ */
