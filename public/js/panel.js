@@ -324,7 +324,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
             usoVehiculo: document.getElementById('uso-vehiculo').value
         };
 
-        fetch('/cargar-cliente', {  // VER RUTA ???!!!!!!
+        fetch('/guardarDatos', {  // VER RUTA ???!!!!!!
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
