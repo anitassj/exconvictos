@@ -8,6 +8,6 @@ email varchar(200),
 celular varchar(10),
 direccion varchar(100),
 ciudad varchar(100),
-provincia varchar(100),
-id_vehiculo int);
+provincia varchar(100)
+);
 
