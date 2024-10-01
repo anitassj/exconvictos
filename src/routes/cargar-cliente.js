@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const agregarClienteModel = require('../models/cargar-clienteModel');
 
-/*router.post('/cargar_cliente', async (req, res) => {
+router.post('/cargar_cliente', async (req, res) => {
     const { nombre, apellido, dni, email, direccion, celular, ciudad, provincia, vehiculo } = req.body;
 
     try {
@@ -21,5 +21,5 @@ const agregarClienteModel = require('../models/cargar-clienteModel');
         console.error(error);
         res.status(500).json({ message: 'Error al agregar el cliente y los vehículos.' });
     }
-});*/
+});
 module.exports = router;
