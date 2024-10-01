@@ -70,10 +70,14 @@ datosPersonalesA.addEventListener('click', () => {
     datosPersonalesSection.classList.add('mostrar');
     vehiculosAseguradosSection.classList.add('ocultar');
     menu.classList.toggle('mostrar');
+    iconoX.classList.toggle('mostrar');
+    iconoBarras.classList.toggle('ocultar');
 })
 
 vehiculosAseguradosA.addEventListener('click', () => {
     vehiculosAseguradosSection.classList.remove('ocultar');
     datosPersonalesSection.classList.remove('mostrar');
     menu.classList.toggle('mostrar');
+    iconoX.classList.toggle('mostrar');
+    iconoBarras.classList.toggle('ocultar');
 })
