@@ -10,6 +10,6 @@ direccion varchar(100),
 ciudad varchar(100),
 provincia varchar(100));
 
-insert into perfil_usuario(nombre, apellido, dni, email, celular, direccion, ciudad, provincia, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, fotos, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo)values("Clara", "Martínez", 07777777, "cm@mail.com", 0303456, "Pellegrini 7", "Chivilcoy", "Buenos Aires", "Auto", "cc777cc", 2007, "2024/05/07", "2025/05/07", "www.google.com", "premium", 777777, 7777777, "particular");
+insert into perfil_usuario(nombre, apellido, dni, email, celular, direccion, ciudad, provincia)values("Clara", "Martínez", 07777777, "cm@mail.com", 0303456, "Pellegrini 7", "Chivilcoy", "Buenos Aires");
 
 select * from perfil_usuario;
