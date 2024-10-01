@@ -38,10 +38,21 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             const contenidoId = link.getAttribute("data-content");
 
+            
+            // Limpiar el contenedor de datos antes de cargar nuevo contenido
+            const contenedorDatos = document.querySelector(".contenedor-datos");
+            contenedorDatos.innerHTML = ""; // Limpiar contenido previo
+
             if (contenidoId === "Clientes") {
                 cargarTabla("Clientes");
             } else if (contenidoId === "Solicitudes") {
                 cargarTabla("Solicitudes");
+            } else if (contenidoId === "addCliente") {
+                FormularioCargarCliente();
+            } else if (contenidoId === "addUsuario") {
+                mostrarFormularioCrearUsuario();
+            } else if (contenidoId === "addCobertura") {
+                CrearCobertura();
             }
         });
     });
@@ -59,26 +70,12 @@ function cargarTabla(tipo) {
             { id: 4, nombre: "Solicitante 4", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 5, nombre: "Solicitante 5", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
         ];
-        
-
     } else {
         datos = [
             { id: 1, nombre: "Juan", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
             { id: 2, nombre: "Anita", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
             { id: 3, nombre: "Benjamin", vehiculos: "Bicicleta", email: "benja@gmail.com", celular: "123456789" },
             { id: 4, nombre: "Clara", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
-            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
             { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
         ];
     }
@@ -88,7 +85,7 @@ function cargarTabla(tipo) {
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Vehículos</th>
+                            <th>Tipo</th>
                             <th>Email</th>
                             <th>Celular</th>
                         </tr>
@@ -108,17 +105,14 @@ function cargarTabla(tipo) {
     document.querySelector(".contenedor-datos table").innerHTML = tablaHTML;
 }
 
-//--------------------------------------------------------------------------------------------------------------------------//
 // Función para cargar la tabla con datos desde una API
-//--------------------------------------------------------------------------------------------------------------------------//
-
 async function cargarDatosSolicitantes() {
     try {
         const respuesta = await fetch('api/solicitante');
-        if (!response.ok) {
+        if (!respuesta.ok) {
             throw new Error('Error al obtener datos');
         }
-        const datos = await response.json();
+        const datos = await respuesta.json();
         mostrarDatosEnTabla(datos);
     } catch (error) {
         console.error('Error al cargar los datos:', error);
@@ -133,7 +127,7 @@ function mostrarDatosEnTabla(datos) {
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Vehículos</th>
+                <th>Tipo</th>
                 <th>Email</th>
                 <th>Celular</th>
             </tr>
@@ -152,6 +146,7 @@ function mostrarDatosEnTabla(datos) {
     `;
 }
 
+// Cargar datos solicitantes al inicio
 document.addEventListener('DOMContentLoaded', cargarDatosSolicitantes);
 //--------------------------------------------------------------------------------------------------------------------//
 
@@ -198,11 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // función para mostrar el form cuando se apreta el botón 'agregar cliente' ---
 
-document.getElementById('cargar-cliente').addEventListener('click', function(event) {
-    event.preventDefault(); 
-
-    const contenedorDatos = document.querySelector('.contenedor-datos');
-
+function FormularioCargarCliente() {
     const formCliente = `
         <!-- sección de información personal ---------------------------------- -->
         <div class="info-personal">
@@ -297,6 +288,8 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
             </button>
         </div>
     `;
+    document.querySelector(".contenedor-datos").innerHTML = formCliente;
+}
 
     contenedorDatos.innerHTML = formCliente;
 
@@ -324,7 +317,7 @@ document.getElementById('cargar-cliente').addEventListener('click', function(eve
             usoVehiculo: document.getElementById('uso-vehiculo').value
         };
 
-        fetch('/guardarDatos', {  // VER RUTA ???!!!!!!
+        fetch('/cargar-cliente', {  // VER RUTA ???!!!!!!
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -446,9 +439,7 @@ function cargarFotos(vehiculoId) {
 // FUNCIONES PARA CREAR USUARIOS ------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
-document.getElementById('cargar-usuario').addEventListener('click', function(event) {
-    event.preventDefault();
-
+function mostrarFormularioCrearUsuario() {
     const contenedorDatos = document.querySelector('.contenedor-datos');
 
     const cargarUsuario = `
@@ -485,18 +476,23 @@ document.getElementById('cargar-usuario').addEventListener('click', function(eve
                         </select>
                     </td>
                 </tr>
-                </table>
-                <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
+            </table>
+            <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
         </div>
     `;
 
     contenedorDatos.innerHTML = cargarUsuario;
 
-    // buscar el usuario (email) a partir del DNI -----------------------------
+    // Eventos para el formulario de crear usuario
+    setupFormularioCrearUsuario();
+}
+
+// Función para configurar los eventos del formulario de crear usuario
+function setupFormularioCrearUsuario() {
+    // buscar el usuario (email) a partir del DNI
     document.getElementById('buscar-usuario').addEventListener('click', async () => {
         const dni = document.getElementById('dni').value;
 
-        // despues esto lo manejo con sweet alert
         if (!dni) {
             alert('Por favor, ingresa un DNI válido.');
             return;
@@ -519,13 +515,13 @@ document.getElementById('cargar-usuario').addEventListener('click', function(eve
         }
     });
 
-    // generar contraseña aleatoria -------------------------------------------
+    // generar contraseña aleatoria
     document.getElementById('generar-password').addEventListener('click', () => {
         const generatedPassword = Math.random().toString(36).slice(-8); 
         document.getElementById('password').value = generatedPassword;
     });
 
-    // crear el usuario -------------------------------------------------------
+    // crear el usuario
     document.getElementById('crear-usuario').addEventListener('click', async () => {
         const dni = document.getElementById('dni').value;
         const email = document.getElementById('email').value;
@@ -557,10 +553,97 @@ document.getElementById('cargar-usuario').addEventListener('click', function(eve
                 throw new Error('Error al crear el usuario');
             }
 
-            // despues hacerlo con sweet alert !!
             alert('Usuario creado con éxito');
         } catch (error) {
             alert('Error: ' + error.message);
         }
     });
-});
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA CREAR COBERTURA NUEVA -----------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
+function CrearCobertura() {
+    const contenedorDatos = document.querySelector('.contenedor-datos');
+
+    const cargarCobertura = `
+        <h2>Agregar nueva cobertura</h2>
+        <div class="form-nueva-cobertura">
+            <table>
+                <tr>
+                    <td class="label-column"><label for="tipo-vehiculo">Tipo de vehículo</label></td>
+                    <td class="input-column">
+                        <input type="text" id="tipo-vehiculo" name="tipo-vehiculo" placeholder="Ingresar tipo de vehículo">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="marca">Marca</label></td>
+                    <td class="input-column">
+                        <input type="text" id="marca" name="marca" placeholder="Ingresar marca">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="modelo">Modelo</label></td>
+                    <td class="input-column">
+                        <input type="text" id="modelo" name="modelo" placeholder="Ingresar modelo">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="anio">Año</label></td>
+                    <td class="input-column">
+                        <input type="number" id="anio" name="anio" placeholder="Ingresar año" min="1900" max="${new Date().getFullYear()}">
+                    </td>
+                </tr>
+            </table>
+            <button type="button" id="agregar-cobertura" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Agregar cobertura</button>
+        </div>
+    `;
+
+    contenedorDatos.innerHTML = cargarCobertura;
+
+    // Eventos para el formulario de nueva cobertura
+    setupFormularioNuevaCobertura();
+}
+
+// Función para configurar los eventos del formulario de nueva cobertura
+function setupFormularioNuevaCobertura() {
+    // Agregar la nueva cobertura
+    document.getElementById('agregar-cobertura').addEventListener('click', async () => {
+        const tipoVehiculo = document.getElementById('tipo-vehiculo').value;
+        const marca = document.getElementById('marca').value;
+        const modelo = document.getElementById('modelo').value;
+        const anio = document.getElementById('anio').value;
+
+        if (!tipoVehiculo || !marca || !modelo || !anio) {
+            alert('Por favor, completa todos los campos.');
+            return;
+        }
+
+        const coberturaDatos = {
+            tipoVehiculo,
+            marca,
+            modelo,
+            anio
+        };
+
+        try {
+            const response = await fetch('/agregar-cobertura', { // CAMBIAR RUTA !!!!!!!!!!!!!!!
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(coberturaDatos),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al agregar la cobertura');
+            }
+
+            alert('Cobertura agregada con éxito');
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    });
+}
