@@ -79,29 +79,31 @@ function editarPerfil() {
         input.disabled = false;
     });
 
-    // mostrar botón de eliminar cliente
-    document.getElementById('eliminar-cliente').classList.remove('oculto');
+    const botonEliminar = document.getElementById('eliminar-cliente');
+    botonEliminar.classList.remove('oculto');
+    botonEliminar.classList.add('activo');
 
-    // mostrar botón de agregar vehículo
-    document.getElementById('agregar-vehiculo').classList.remove('oculto');
+    const botonAgregarVehiculo = document.getElementById('agregar-vehiculo');
+    botonAgregarVehiculo.classList.remove('oculto');
+    botonAgregarVehiculo.classList.add('activo');
 
-    // mostrar boton guardar
-    document.getElementById('guardar').classList.remove('oculto');
+    const botonGuardar = document.getElementById('guardar');
+    botonGuardar.classList.remove('oculto');
+    botonGuardar.classList.add('activo');
 
-    // ocultar boton de emitir poliza
     const botonEmitirPoliza = document.getElementById('emitir-poliza'); 
     if (botonEmitirPoliza) {
         botonEmitirPoliza.classList.add('oculto');
     }
 
-    // ocultar boton de emitir poliza
     const botonEditar = document.getElementById('editar-perfil'); 
     if (botonEditar) {
         botonEditar.classList.add('oculto');
     }
 
-    // mostrar botón cancelar
-    document.getElementById('cancelar').classList.remove('oculto');
+    const botonCancelar = document.getElementById('cancelar');
+    botonCancelar.classList.remove('oculto');
+    botonCancelar.classList.add('activo');
 }
 
 // cancelar edicion del perfil ----------------------------
@@ -117,29 +119,31 @@ function cancelarEdicion() {
         input.disabled = true; 
     });
 
-    // ocultar botón de eliminar cliente
-    document.getElementById('eliminar-cliente').classList.add('oculto');
+    const botonEliminar = document.getElementById('eliminar-cliente');
+    botonEliminar.classList.add('oculto');
+    botonEliminar.classList.remove('activo');
 
-    // ocutar boton guardar
-    document.getElementById('guardar').classList.add('oculto');
+    const botonGuardar = document.getElementById('guardar');
+    botonGuardar.classList.add('oculto');
+    botonGuardar.classList.remove('activo');
 
-    // ocultar botón de agregar vehículo
-    document.getElementById('agregar-vehiculo').classList.add('oculto');
+    const botonAgregarVehiculo = document.getElementById('agregar-vehiculo');
+    botonAgregarVehiculo.classList.add('oculto');
+    botonAgregarVehiculo.classList.remove('activo');
 
-    // mostrar botón emitir póliza
     const botonEmitirPoliza = document.getElementById('emitir-poliza');
     if (botonEmitirPoliza) {
         botonEmitirPoliza.classList.remove('oculto'); 
     }
 
-    // mostrar botón editar
     const botonEditar = document.getElementById('editar-perfil'); 
     if (botonEditar) {
         botonEditar.classList.remove('oculto'); 
     }
 
-    // ccultar botón cancelar
-    document.getElementById('cancelar').classList.add('oculto');
+    const botonCancelar = document.getElementById('cancelar');
+    botonCancelar.classList.add('oculto');
+    botonCancelar.classList.remove('activo');
 }
 
 // guardar cambios ----------------------------------------

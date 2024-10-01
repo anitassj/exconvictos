@@ -225,6 +225,14 @@ input[type="date" i] {
     background-color: darkred;
 }
 
+.peligro {
+    background-color: red;
+}
+
+.peligro:hover {
+    background-color: darkred;
+}
+
 /* tabla en el formulario de creación de usuario ------------------------------ */
 .form-crear-usuario table {
     width: 100%;
