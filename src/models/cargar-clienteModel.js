@@ -19,7 +19,6 @@ class CargarCliente {
             const [results2] = await conexion.promise().query(sql2, [id_cliente, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, foto, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo]);
 
             return { clienteDatos: results, vehiculoDatos: results2 };
-
         } catch (error) {
             console.error('Error en la consulta:', error);
             throw error; 
