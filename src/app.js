@@ -44,6 +44,7 @@ const rutaRecover = require('./routes/rutas-views/recover_views');
 const rutaForm = require('./routes/rutas-views/solicitante_form_views'); 
 const rutaUsuario = require('./routes/rutas-views/usuario_views');
 const rutaPoliza = require('./routes/rutas-views/poliza_views');
+const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
 
 app.use('/', rutaCargaCliente);
 app.use('/', rutaInicio);
@@ -53,6 +54,8 @@ app.use('/', rutaRecover);
 app.use('/', rutaForm);
 app.use('/', rutaUsuario);
 app.use('/', rutaPoliza);
+app.use('/', rutaVehiculo);
+
 
 
 // rutas API (BACKEND) ------------------------------------

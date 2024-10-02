@@ -7,12 +7,42 @@ body {
 }
 
 .perfil {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 30px;
     max-width: 80%;
     margin: 40px auto;
-    border-radius: 10px;
+    margin-top: 0;
+    border-radius: 0px 10px 10px 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    padding: 9px 30px 10px 30px;
+    max-width: 80%;
+    margin: 40px auto;
+    margin-bottom: 0px;
+    border-radius: 10px 0px 0px 0px;
+    margin-right: 135px;
+}
+
+.tabs a{
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.tabActivo {
+    color: white;
+    background-color: #2197a3;
+    padding: 10px;
+    padding-left: 11px;
+    border-radius: 10px 10px 0 0;
+}
+
+.tabDesactivado {
+    background-color: #d0d2d5;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    color: #686262;
 }
 
 h2, h3 {
