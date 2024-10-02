@@ -35,39 +35,45 @@ app.use(session({
     }
 }));
 
-// rutas
-const rutaRecover = require('./routes/recover');
-const rutaLogin = require('./routes/login');
-const rutaInicio = require('./routes/inicio');
-const rutaForm = require('./routes/solicitante_form'); 
+// rutas de vistas (FRONTEND) -----------------------------
+const rutaCargaCliente = require('./routes/rutas-views/cargar_usuario_views');
+const rutaInicio = require('./routes/rutas-views/inicio_views');
+const rutaLogin = require('./routes/rutas-views/login_views');
+const rutaPerfil = require('./routes/rutas-views/perfil_usuario_views');
+const rutaRecover = require('./routes/rutas-views/recover_views');
+const rutaForm = require('./routes/rutas-views/solicitante_form_views'); 
+const rutaUsuario = require('./routes/rutas-views/usuario_views');
+const rutaPoliza = require('./routes/rutas-views/poliza_views');
+const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
+
+app.use('/', rutaCargaCliente);
+app.use('/', rutaInicio);
+app.use('/', rutaLogin);
+app.use('/', rutaPerfil);
+app.use('/', rutaRecover);
+app.use('/', rutaForm);
+app.use('/', rutaUsuario);
+app.use('/', rutaPoliza);
+app.use('/', rutaVehiculo);
+
+
+
+// rutas API (BACKEND) ------------------------------------
 const rutaDatos = require('./routes/guardar-datos');
 const rutaPanel = require('./routes/panel');
 const authRoutes = require('./routes/ruta_de_autenticacion');
 const marcasRoutes = require('./routes/marcas'); 
 const modelosRoutes = require('./routes/modelos'); 
-const rutaPerfil = require('./routes/perfil_usuario');
-const rutaPoliza = require('./routes/poliza');
-const rutaUsuario = require('./routes/usuario');
 const cargarCliente = require('./routes/cargar-cliente');
 const rutaSolicitudes = require('./routes/solicitudes_ruta');
-const rutaCargaCliente = require('./routes/cargar_usuario_ruta_views');
-
 
 app.use('/', authRoutes);
-app.use('/', rutaLogin);
-app.use('/', rutaInicio);
-app.use('/', rutaForm);
 app.use('/', rutaDatos);
-app.use('/', rutaRecover);
 app.use('/', rutaPanel);
 app.use('/', marcasRoutes);  
 app.use('/', modelosRoutes);  
-app.use('/', rutaPerfil);
-app.use('/', rutaPoliza);
-app.use('/', rutaUsuario);
 app.use('/', cargarCliente);
 app.use('/', rutaSolicitudes);
-app.use('/', rutaCargaCliente);
 
 
 // levantar el servidor 

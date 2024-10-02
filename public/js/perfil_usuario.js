@@ -4,14 +4,12 @@
 
 async function obtenerDatosPerfil() {
     try {
-        // obtener los datos del perfil
         const perfilResponse = await fetch('/ruta'); // cambiar la ruta !!!!!!!!!!!!!!!!!
         if (!perfilResponse.ok) {
             throw new Error('Error al obtener los datos del perfil');
         }
         const datosPersonales = await perfilResponse.json();
 
-        // llenar el form con los datos personales
         document.getElementById('nombre').value = datosPersonales.nombre || '';
         document.getElementById('apellido').value = datosPersonales.apellido || '';
         document.getElementById('dni').value = datosPersonales.dni || '';
@@ -21,14 +19,12 @@ async function obtenerDatosPerfil() {
         document.getElementById('ciudad').value = datosPersonales.ciudad || '';
         document.getElementById('provincia').value = datosPersonales.provincia || '';
 
-        // obtener los datos de los vehículos
         const vehiculosResponse = await fetch('/ruta'); // cambiar la ruta !!!!!!!!!!!!
         if (!vehiculosResponse.ok) {
             throw new Error('Error al obtener los datos de los vehículos');
         }
         const datosVehiculos = await vehiculosResponse.json();
 
-        // si hay vehículos, llenar los campos del primer vehículo
         const vehiculo = datosVehiculos[0];
         if (vehiculo) {
             document.getElementById('tipo-vehiculo').value = vehiculo.tipo || '';
@@ -49,13 +45,11 @@ async function obtenerDatosPerfil() {
 
 // inicializar la página con los datos del perfil ---------
 document.addEventListener('DOMContentLoaded', () => {
-    // desactivar el botón guardar y los campos al cargar la página
     document.querySelectorAll('input').forEach(input => {
         input.disabled = true;
     });
     document.getElementById('guardar').disabled = true;
 
-    // obtener los datos del perfil
     obtenerDatosPerfil();
 });
 
@@ -313,3 +307,57 @@ document.getElementById('guardar').addEventListener('click', guardarCambios);
 document.getElementById('eliminar-cliente').addEventListener('click', function() {
     // hacer logica para eliminar el cliente de la bd
 });
+
+
+// ----------------------------------------------------------------------------
+// mostrar y ocultar las secciones 'datos' y 'vehiculos' ----------------------
+// ----------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const datosPersonalesTab = document.getElementById('datos-personales-tab');
+    const vehiculosTab = document.getElementById('vehiculos-tab');
+
+    // click de 'datos personales'
+    datosPersonalesTab.addEventListener('click', function(event) {
+        // Muestra información de datos personales en la misma página
+        document.querySelector('.info-personal').classList.remove('oculto');
+        document.querySelector('.vehiculos-asegurados').classList.add('oculto');
+
+        // Cambiar clases
+        datosPersonalesTab.classList.add('tabActivo');
+        vehiculosTab.classList.remove('tabActivo');
+        vehiculosTab.classList.add('tabDesactivado');
+        datosPersonalesTab.classList.remove('tabDesactivado');
+    });
+
+    // click de vehículos
+    vehiculosTab.addEventListener('click', function(event) {
+        // Redirigir a la página ver-vehiculos.ejs
+        window.location.href = '/ver_vehiculo'; // Asegúrate de que esta ruta sea correcta en tu servidor
+    });
+});
+
+
+
+// Funciones para editar, guardar y cancelar cambios
+function editarPerfil() {
+    document.querySelectorAll('.info-personal input, .info-personal select').forEach(input => {
+        input.disabled = false;
+    });
+    document.querySelector('.botones-edicion').classList.remove('oculto');
+}
+
+function guardarCambios() {
+    // Implementar lógica para guardar cambios
+    document.querySelectorAll('.info-personal input, .info-personal select').forEach(input => {
+        input.disabled = true;
+    });
+    document.querySelector('.botones-edicion').classList.add('oculto');
+}
+
+function cancelarEdicion() {
+    // Implementar lógica para cancelar cambios
+    document.querySelectorAll('.info-personal input, .info-personal select').forEach(input => {
+        input.disabled = true;
+    });
+    document.querySelector('.botones-edicion').classList.add('oculto');
+}
