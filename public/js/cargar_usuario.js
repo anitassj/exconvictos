@@ -1,0 +1,90 @@
+// ------------------------------------------------------------------------------------------------
+// FUNCIONES PARA CARGAR NUEVOS CLIENTES ----------------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+
+// función para guardar los datos personales y vehículos --
+document.getElementById('guardarCambios').addEventListener('click', function() {
+    const datosPersonales = {
+        nombre: document.getElementById('nombre').value,
+        apellido: document.getElementById('apellido').value,
+        dni: document.getElementById('dni').value,
+        email: document.getElementById('email').value,
+        direccion: document.getElementById('direccion').value,
+        celular: document.getElementById('celular').value,
+        ciudad: document.getElementById('ciudad').value,
+        provincia: document.getElementById('provincia').value
+    };
+
+    const datosVehiculo = {
+        tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+        patente: document.getElementById('patente').value,
+        anioVehiculo: document.getElementById('anio-vehiculo').value,
+        vigenciaDesde: document.getElementById('vigencia-desde').value,
+        vigenciaHasta: document.getElementById('vigencia-hasta').value,
+        tipoSeguro: document.getElementById('tipo-seguro').value,
+        premioTotal: document.getElementById('premio-total').value,
+        sumaAsegurada: document.getElementById('suma-asegurada').value,
+        usoVehiculo: document.getElementById('uso-vehiculo').value
+    };
+
+    fetch('/guardarDatos', {  
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ datosPersonales, datosVehiculo })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Datos guardados con éxito');
+            window.location.href = '/panel';  
+        } else {
+            throw new Error('Error al guardar datos');
+        }
+    })
+    .catch(error => {
+        alert('Error al guardar datos: ' + error);
+    });
+});
+
+// funcionalidad para el boton 'cancelar' -----------------
+function cancelarCambios() {
+    window.location.href = '/panel'; 
+}
+
+// funcion para cargar las fotos --------------------------
+function cargarFotos(vehiculoId) {
+    const inputFile = document.getElementById(`foto-${vehiculoId}`);
+    inputFile.click();
+
+    inputFile.onchange = () => {
+        const file = inputFile.files[0]; 
+        if (file) {
+            const formData = new FormData();
+            formData.append('foto', file); 
+
+            fetch('/guardarDatos', {  
+                method: 'POST',
+                body: formData 
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Error en la carga de la foto');
+                }
+            })
+            .then(data => {
+                if (data.success) {
+                    alert('Foto cargada con éxito');
+                } else {
+                    throw new Error('Error en la respuesta al cargar la foto');
+                }
+            })
+            .catch(error => {
+                alert('Error al cargar la foto: ' + error);
+            });
+        }
+    };
+}
