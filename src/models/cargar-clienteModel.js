@@ -1,6 +1,6 @@
 const conexion = require('../models/db');
 
-class cargarCliente {
+class cargarCliente { 
 
     static async guardarDatos(cargarCliente) {
         const {nombre, apellido, dni, email, celular, direccion, ciudad, provincia, tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, foto, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo } = cargarCliente;
