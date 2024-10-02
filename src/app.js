@@ -49,6 +49,9 @@ const rutaPerfil = require('./routes/perfil_usuario');
 const rutaPoliza = require('./routes/poliza');
 const rutaUsuario = require('./routes/usuario');
 const cargarCliente = require('./routes/cargar-cliente');
+const rutaSolicitudes = require('./routes/solicitudes_ruta');
+
+
 app.use('/', authRoutes);
 app.use('/', rutaLogin);
 app.use('/', rutaInicio);
@@ -62,6 +65,7 @@ app.use('/', rutaPerfil);
 app.use('/', rutaPoliza);
 app.use('/', rutaUsuario);
 app.use('/', cargarCliente);
+app.use('/', rutaSolicitudes);
 // levantar el servidor 
 app.listen(port, () => {
     console.log(`El servidor corre en el puerto ${port}`);

@@ -38,21 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             const contenidoId = link.getAttribute("data-content");
 
-            
-            // Limpiar el contenedor de datos antes de cargar nuevo contenido
-            const contenedorDatos = document.querySelector(".contenedor-datos");
-            contenedorDatos.innerHTML = ""; // Limpiar contenido previo
-
             if (contenidoId === "Clientes") {
                 cargarTabla("Clientes");
             } else if (contenidoId === "Solicitudes") {
                 cargarTabla("Solicitudes");
-            } else if (contenidoId === "addCliente") {
-                FormularioCargarCliente();
-            } else if (contenidoId === "addUsuario") {
-                mostrarFormularioCrearUsuario();
-            } else if (contenidoId === "addCobertura") {
-                CrearCobertura();
             }
         });
     });
@@ -70,12 +59,26 @@ function cargarTabla(tipo) {
             { id: 4, nombre: "Solicitante 4", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
             { id: 5, nombre: "Solicitante 5", vehiculos: "Ejemplo", email: "ejemplo@gmail.com", celular: "123456789" },
         ];
+        
+
     } else {
         datos = [
             { id: 1, nombre: "Juan", vehiculos: "Moto", email: "juan@gmail.com", celular: "123456789" },
             { id: 2, nombre: "Anita", vehiculos: "Moto", email: "ana@gmail.com", celular: "123456789" },
             { id: 3, nombre: "Benjamin", vehiculos: "Bicicleta", email: "benja@gmail.com", celular: "123456789" },
             { id: 4, nombre: "Clara", vehiculos: "Auto", email: "clara@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
+            { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
             { id: 5, nombre: "Katherine", vehiculos: "Auto", email: "caty@gmail.com", celular: "123456789" },
         ];
     }
@@ -85,7 +88,7 @@ function cargarTabla(tipo) {
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Tipo</th>
+                            <th>Vehículos</th>
                             <th>Email</th>
                             <th>Celular</th>
                         </tr>
@@ -105,14 +108,17 @@ function cargarTabla(tipo) {
     document.querySelector(".contenedor-datos table").innerHTML = tablaHTML;
 }
 
+//--------------------------------------------------------------------------------------------------------------------------//
 // Función para cargar la tabla con datos desde una API
+//--------------------------------------------------------------------------------------------------------------------------//
+
 async function cargarDatosSolicitantes() {
     try {
         const respuesta = await fetch('api/solicitante');
-        if (!respuesta.ok) {
+        if (!response.ok) {
             throw new Error('Error al obtener datos');
         }
-        const datos = await respuesta.json();
+        const datos = await response.json();
         mostrarDatosEnTabla(datos);
     } catch (error) {
         console.error('Error al cargar los datos:', error);
@@ -127,7 +133,7 @@ function mostrarDatosEnTabla(datos) {
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Tipo</th>
+                <th>Vehículos</th>
                 <th>Email</th>
                 <th>Celular</th>
             </tr>
@@ -146,7 +152,6 @@ function mostrarDatosEnTabla(datos) {
     `;
 }
 
-// Cargar datos solicitantes al inicio
 document.addEventListener('DOMContentLoaded', cargarDatosSolicitantes);
 //--------------------------------------------------------------------------------------------------------------------//
 
@@ -194,155 +199,150 @@ document.addEventListener("DOMContentLoaded", function() {
 // función para mostrar el form cuando se apreta el botón 'agregar cliente' ---
 
 function FormularioCargarCliente() {
-    // document.getElementById('cargar-cliente').addEventListener('click', function(event) {
-    //     event.preventDefault(); 
-    
-        // const contenedorDatos = document.querySelector('.contenedor-datos');
-    
-        const formCliente = `
-            <!-- sección de información personal ---------------------------------- -->
-            <div class="info-personal">
-                <div class="logos"><span class="material-symbols-outlined">person</span></div>
-                <h2>Ingresar Información Personal</h2>
-                <div class="info-grid">
-                    <!-- primer colum -->
-                    <div class="colum1">
-                        <label for="nombre">Nombre </label>
-                        <input type="text" id="nombre" placeholder="Anita">
-                        <label for="apellido">Apellido </label>
-                        <input type="text" id="apellido" placeholder="Luz">
-                        <label for="dni">DNI </label>
-                        <input type="number" id="dni" placeholder="12345678">
-                        <label for="email">Email </label>
-                        <input type="email" id="email" placeholder="anita@gmail.com">
-                    </div>
-    
-                    <!-- segunda colum -->
-                    <div class="colum2">
-                        <label for="direccion">Dirección </label>
-                        <input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
-                        <label for="celular">Celular </label>
-                        <input type="text" id="celular" placeholder="2346303040">
-                        <label for="ciudad">Ciudad </label>
-                        <input type="text" id="ciudad" placeholder="Chivilcoy">
-                        <label for="provincia">Provincia </label>
-                        <input type="text" id="provincia" placeholder="Buenos Aires">
-                    </div>
+    const formCliente = `
+        <!-- sección de información personal ---------------------------------- -->
+        <div class="info-personal">
+            <div class="logos"><span class="material-symbols-outlined">person</span></div>
+            <h2>Ingresar Información Personal</h2>
+            <div class="info-grid">
+                <!-- primer colum -->
+                <div class="colum1">
+                    <label for="nombre">Nombre </label>
+                    <input type="text" id="nombre" placeholder="Anita">
+                    <label for="apellido">Apellido </label>
+                    <input type="text" id="apellido" placeholder="Luz">
+                    <label for="dni">DNI </label>
+                    <input type="number" id="dni" placeholder="12345678">
+                    <label for="email">Email </label>
+                    <input type="email" id="email" placeholder="anita@gmail.com">
+                </div>
+
+                <!-- segunda colum -->
+                <div class="colum2">
+                    <label for="direccion">Dirección </label>
+                    <input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
+                    <label for="celular">Celular </label>
+                    <input type="text" id="celular" placeholder="2346303040">
+                    <label for="ciudad">Ciudad </label>
+                    <input type="text" id="ciudad" placeholder="Chivilcoy">
+                    <label for="provincia">Provincia </label>
+                    <input type="text" id="provincia" placeholder="Buenos Aires">
                 </div>
             </div>
-    
-            <!-- sección de vehículos asegurados ---------------------------------- -->
-            <div class="vehiculos-asegurados">
-                <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
-                <h2>Ingresar el vehículo asegurado</h2>
-    
-                <!-- Contenedor para agregar vehículos -->
-                <div id="vehiculos-container">
-                    <div class="vehiculo">
-                        <div class="info-grid">
-                            <div class="colum1">
-                                <label for="tipo-vehiculo">Tipo de Vehículo </label>
-                                <select id="tipo-vehiculo">
-                                    <option value="" disabled selected>Selecciona un tipo de vehículo</option>
-                                    <option value="auto">Auto</option>
-                                    <option value="moto">Moto</option>
-                                </select>
-                                <label for="patente">Patente </label>
-                                <input type="text" id="patente" placeholder="123AAA">
-                                <label for="anio-vehiculo">Año </label>
-                                <input type="number" id="anio-vehiculo" placeholder="2024">
-                                <label for="vigencia-desde">Vigencia Desde </label>
-                                <input type="date" id="vigencia-desde">
-                                <label for="vigencia-hasta">Vigencia Hasta </label>
-                                <input type="date" id="vigencia-hasta">
-                            </div>
-    
-                            <div class="colum2">
-                                <label>Fotos del vehículo</label>
-                                <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none">
-                                <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">
-                                    <span class="material-symbols-outlined botones">upload</span>Subir
-                                </button>
-                                <label for="tipo-seguro">Tipo de Seguro </label>
-                                <select id="tipo-seguro">
-                                    <option value="" disabled selected>Selecciona un tipo de plan</option>
-                                    <option value="basico">Básico</option>
-                                    <option value="intermedio">Intermedio</option>
-                                    <option value="premiun">Premiun</option>
-                                </select>
-                                <label for="premio-total">Premio Total en pesos </label>
-                                <input type="number" id="premio-total" placeholder="10.000,00">
-                                <label for="suma-asegurada">Suma Asegurada en pesos </label>
-                                <input type="number" id="suma-asegurada" placeholder="1.000.000,00">
-                                <label for="uso-vehiculo">Uso del Vehículo </label>
-                                <select id="uso-vehiculo">
-                                    <option value="" disabled selected>Selecciona un tipo de uso</option>
-                                    <option value="particular">Particular</option>
-                                    <option value="profesional">Profesional</option>
-                                </select>
-                            </div>
+        </div>
+
+        <!-- sección de vehículos asegurados ---------------------------------- -->
+        <div class="vehiculos-asegurados">
+            <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
+            <h2>Ingresar el vehículo asegurado</h2>
+
+            <!-- Contenedor para agregar vehículos -->
+            <div id="vehiculos-container">
+                <div class="vehiculo">
+                    <div class="info-grid">
+                        <div class="colum1">
+                            <label for="tipo-vehiculo">Tipo de Vehículo </label>
+                            <select id="tipo-vehiculo">
+                                <option value="" disabled selected>Selecciona un tipo de vehículo</option>
+                                <option value="auto">Auto</option>
+                                <option value="moto">Moto</option>
+                            </select>
+                            <label for="patente">Patente </label>
+                            <input type="text" id="patente" placeholder="123AAA">
+                            <label for="anio-vehiculo">Año </label>
+                            <input type="number" id="anio-vehiculo" placeholder="2024">
+                            <label for="vigencia-desde">Vigencia Desde </label>
+                            <input type="date" id="vigencia-desde">
+                            <label for="vigencia-hasta">Vigencia Hasta </label>
+                            <input type="date" id="vigencia-hasta">
+                        </div>
+
+                        <div class="colum2">
+                            <label>Fotos del vehículo</label>
+                            <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none">
+                            <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">
+                                <span class="material-symbols-outlined botones">upload</span>Subir
+                            </button>
+                            <label for="tipo-seguro">Tipo de Seguro </label>
+                            <select id="tipo-seguro">
+                                <option value="" disabled selected>Selecciona un tipo de plan</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermedio">Intermedio</option>
+                                <option value="premiun">Premiun</option>
+                            </select>
+                            <label for="premio-total">Premio Total en pesos </label>
+                            <input type="number" id="premio-total" placeholder="10.000,00">
+                            <label for="suma-asegurada">Suma Asegurada en pesos </label>
+                            <input type="number" id="suma-asegurada" placeholder="1.000.000,00">
+                            <label for="uso-vehiculo">Uso del Vehículo </label>
+                            <select id="uso-vehiculo">
+                                <option value="" disabled selected>Selecciona un tipo de uso</option>
+                                <option value="particular">Particular</option>
+                                <option value="profesional">Profesional</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-    
-                <button id="guardarCambios" class="activo configBotones">
-                    <span class="material-symbols-outlined botones">check_small</span>Guardar
-                </button>
-                <button class="activo cancelar configBotones" onclick="cancelarCambios()">
-                    <span class="material-symbols-outlined botones">close</span>Cancelar
-                </button>
             </div>
-        `;
-    
-        contenedorDatos.innerHTML = formCliente;
-    
-        // Mueve el event listener de 'guardarCambios' aquí para asegurarte de que está registrado
-        document.getElementById('guardarCambios').addEventListener('click', function() {
-            const datosPersonales = {
-                nombre: document.getElementById('nombre').value,
-                apellido: document.getElementById('apellido').value,
-                dni: document.getElementById('dni').value,
-                email: document.getElementById('email').value,
-                direccion: document.getElementById('direccion').value,
-                celular: document.getElementById('celular').value,
-                ciudad: document.getElementById('ciudad').value,
-                provincia: document.getElementById('provincia').value
-            };
-    
-            const datosVehiculo = {
-                tipoVehiculo: document.getElementById('tipo-vehiculo').value,
-                patente: document.getElementById('patente').value,
-                anioVehiculo: document.getElementById('anio-vehiculo').value,
-                vigenciaDesde: document.getElementById('vigencia-desde').value,
-                vigenciaHasta: document.getElementById('vigencia-hasta').value,
-                tipoSeguro: document.getElementById('tipo-seguro').value,
-                premioTotal: document.getElementById('premio-total').value,
-                sumaAsegurada: document.getElementById('suma-asegurada').value,
-                usoVehiculo: document.getElementById('uso-vehiculo').value
-            };
-    
-            fetch('/cargar_cliente', {  // Cambiar aquí
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ datosPersonales, vehiculo: [datosVehiculo] }) // Asegúrate de enviar un array
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Datos guardados con éxito');
-                } else {
-                    throw new Error('Error al guardar datos');
-                }
-            })
-            .catch(error => {
-                alert('Error al guardar datos: ' + error);
-            });
-        });
-//     });
-    
+
+            <button id="guardarCambios" class="activo configBotones">
+                <span class="material-symbols-outlined botones">check_small</span>Guardar
+            </button>
+            <button class="activo cancelar configBotones" onclick="cancelarCambios()">
+                <span class="material-symbols-outlined botones">close</span>Cancelar
+            </button>
+        </div>
+    `;
+    document.querySelector(".contenedor-datos").innerHTML = formCliente;
 }
+
+    contenedorDatos.innerHTML = formCliente;
+
+    document.getElementById('guardarCambios').addEventListener('click', function() {
+        const datosPersonales = {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            dni: document.getElementById('dni').value,
+            email: document.getElementById('email').value,
+            direccion: document.getElementById('direccion').value,
+            celular: document.getElementById('celular').value,
+            ciudad: document.getElementById('ciudad').value,
+            provincia: document.getElementById('provincia').value
+        };
+
+        const datosVehiculo = {
+            tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+            patente: document.getElementById('patente').value,
+            anioVehiculo: document.getElementById('anio-vehiculo').value,
+            vigenciaDesde: document.getElementById('vigencia-desde').value,
+            vigenciaHasta: document.getElementById('vigencia-hasta').value,
+            tipoSeguro: document.getElementById('tipo-seguro').value,
+            premioTotal: document.getElementById('premio-total').value,
+            sumaAsegurada: document.getElementById('suma-asegurada').value,
+            usoVehiculo: document.getElementById('uso-vehiculo').value
+        };
+
+        fetch('/guardarDatos', {  // VER RUTA ???!!!!!!
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ datosPersonales, datosVehiculo })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Datos guardados con éxito');
+            } else {
+                throw new Error('Error al guardar datos');
+            }
+        })
+        .catch(error => {
+            alert('Error al guardar datos: ' + error);
+        });
+    });
+});
+
 
 // función para redirigir al panel principal ----------------------------------
 function cancelarCambios() {
@@ -444,7 +444,9 @@ function cargarFotos(vehiculoId) {
 // FUNCIONES PARA CREAR USUARIOS ------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
-function mostrarFormularioCrearUsuario() {
+document.getElementById('cargar-usuario').addEventListener('click', function(event) {
+    event.preventDefault();
+
     const contenedorDatos = document.querySelector('.contenedor-datos');
 
     const cargarUsuario = `
@@ -481,23 +483,18 @@ function mostrarFormularioCrearUsuario() {
                         </select>
                     </td>
                 </tr>
-            </table>
-            <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
+                </table>
+                <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
         </div>
     `;
 
     contenedorDatos.innerHTML = cargarUsuario;
 
-    // Eventos para el formulario de crear usuario
-    setupFormularioCrearUsuario();
-}
-
-// Función para configurar los eventos del formulario de crear usuario
-function setupFormularioCrearUsuario() {
-    // buscar el usuario (email) a partir del DNI
+    // buscar el usuario (email) a partir del DNI -----------------------------
     document.getElementById('buscar-usuario').addEventListener('click', async () => {
         const dni = document.getElementById('dni').value;
 
+        // despues esto lo manejo con sweet alert
         if (!dni) {
             alert('Por favor, ingresa un DNI válido.');
             return;
@@ -520,13 +517,13 @@ function setupFormularioCrearUsuario() {
         }
     });
 
-    // generar contraseña aleatoria
+    // generar contraseña aleatoria -------------------------------------------
     document.getElementById('generar-password').addEventListener('click', () => {
         const generatedPassword = Math.random().toString(36).slice(-8); 
         document.getElementById('password').value = generatedPassword;
     });
 
-    // crear el usuario
+    // crear el usuario -------------------------------------------------------
     document.getElementById('crear-usuario').addEventListener('click', async () => {
         const dni = document.getElementById('dni').value;
         const email = document.getElementById('email').value;
@@ -558,97 +555,10 @@ function setupFormularioCrearUsuario() {
                 throw new Error('Error al crear el usuario');
             }
 
+            // despues hacerlo con sweet alert !!
             alert('Usuario creado con éxito');
         } catch (error) {
             alert('Error: ' + error.message);
         }
     });
-}
-
-
-// ------------------------------------------------------------------------------------------------
-// FUNCIONES PARA CREAR COBERTURA NUEVA -----------------------------------------------------------
-// ------------------------------------------------------------------------------------------------
-
-function CrearCobertura() {
-    const contenedorDatos = document.querySelector('.contenedor-datos');
-
-    const cargarCobertura = `
-        <h2>Agregar nueva cobertura</h2>
-        <div class="form-nueva-cobertura">
-            <table>
-                <tr>
-                    <td class="label-column"><label for="tipo-vehiculo">Tipo de vehículo</label></td>
-                    <td class="input-column">
-                        <input type="text" id="tipo-vehiculo" name="tipo-vehiculo" placeholder="Ingresar tipo de vehículo">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="marca">Marca</label></td>
-                    <td class="input-column">
-                        <input type="text" id="marca" name="marca" placeholder="Ingresar marca">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="modelo">Modelo</label></td>
-                    <td class="input-column">
-                        <input type="text" id="modelo" name="modelo" placeholder="Ingresar modelo">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="anio">Año</label></td>
-                    <td class="input-column">
-                        <input type="number" id="anio" name="anio" placeholder="Ingresar año" min="1900" max="${new Date().getFullYear()}">
-                    </td>
-                </tr>
-            </table>
-            <button type="button" id="agregar-cobertura" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Agregar cobertura</button>
-        </div>
-    `;
-
-    contenedorDatos.innerHTML = cargarCobertura;
-
-    // Eventos para el formulario de nueva cobertura
-    setupFormularioNuevaCobertura();
-}
-
-// Función para configurar los eventos del formulario de nueva cobertura
-function setupFormularioNuevaCobertura() {
-    // Agregar la nueva cobertura
-    document.getElementById('agregar-cobertura').addEventListener('click', async () => {
-        const tipoVehiculo = document.getElementById('tipo-vehiculo').value;
-        const marca = document.getElementById('marca').value;
-        const modelo = document.getElementById('modelo').value;
-        const anio = document.getElementById('anio').value;
-
-        if (!tipoVehiculo || !marca || !modelo || !anio) {
-            alert('Por favor, completa todos los campos.');
-            return;
-        }
-
-        const coberturaDatos = {
-            tipoVehiculo,
-            marca,
-            modelo,
-            anio
-        };
-
-        try {
-            const response = await fetch('/agregar-cobertura', { // CAMBIAR RUTA !!!!!!!!!!!!!!!
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(coberturaDatos),
-            });
-
-            if (!response.ok) {
-                throw new Error('Error al agregar la cobertura');
-            }
-
-            alert('Cobertura agregada con éxito');
-        } catch (error) {
-            alert('Error: ' + error.message);
-        }
-    });
-}
+});
