@@ -14,7 +14,7 @@ router.post('/guardar-datos', async (req, res) => {
             return res.status(400).json({ error: 'Año inválido. Por favor ingrese un número válido para el año.' });
         }
 
-        //llamo al modelo
+        //llamo al modelo.
         const solicitanteForm = { tipo, patente, anio, idMarca, idModelo, nombre, apellido, email, celular };
         const results = await SolicitanteModelo.guardarDatos(solicitanteForm);
 
