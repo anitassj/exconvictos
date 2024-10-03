@@ -43,9 +43,6 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
             throw new Error('Error al guardar datos');
         }
     })
-    .catch(error => {
-        alert('Error al guardar datos: ' + error);
-    });
 });
 
 // funcionalidad para el boton 'cancelar' -----------------
@@ -54,8 +51,8 @@ function cancelarCambios() {
 }
 
 // funcion para cargar las fotos --------------------------
-function cargarFotos(vehiculoId) {
-    const inputFile = document.getElementById(`foto-${vehiculoId}`);
+function cargarFotos() {
+    const inputFile = document.getElementById('foto');
     inputFile.click();
 
     inputFile.onchange = () => {
