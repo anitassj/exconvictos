@@ -22,7 +22,7 @@ class vistaClientes {
 
     async obtenerClienteID(id) {
         const sql = `SELECT *
-                    FROM datosPersonales`;
+                    FROM datosPersonales WHERE id_cliente = ?`;
         
         //promesa para poder usar `await` en el controlador
         return new Promise((resolve, reject) => {
