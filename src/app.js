@@ -66,6 +66,7 @@ const marcasRoutes = require('./routes/marcas');
 const modelosRoutes = require('./routes/modelos'); 
 const cargarCliente = require('./routes/cargar-cliente');
 const rutaSolicitudes = require('./routes/solicitudes_ruta');
+const rutaVista = require('./routes/vista_ruta');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -74,6 +75,7 @@ app.use('/', marcasRoutes);
 app.use('/', modelosRoutes);  
 app.use('/', cargarCliente);
 app.use('/', rutaSolicitudes);
+app.use('/', rutaVista);
 
 
 // levantar el servidor 

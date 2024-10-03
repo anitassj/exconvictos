@@ -1,0 +1,97 @@
+
+<!--ARCHIVO DE PRUEBA!!!!!!!!!!!!!!-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/panel.css">
+    <link rel="stylesheet" href="/public/css/perfil_usuario.css">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <title>Clientes Prisma Seguros</title>
+    <link rel="icon" href="/public/img/logo.ico">
+</head>
+<body>
+    <header>
+        <button class="menu configBotones"><span class="material-symbols-outlined headIcon">menu</span></button>
+        <button class="usuario configBotones"><span class="material-symbols-outlined headIcon">account_circle</span>Tú</button>
+        
+        <div class="menu-hamburguesa">
+            <a href="#" data-content="Clientes" class="configBotones"><span class="material-symbols-outlined botones">format_list_bulleted</span>Clientes</a>
+            <a href="#" data-content="Solicitudes" class="configBotones"><span class="material-symbols-outlined botones">visibility</span>Solicitudes</a>
+            <a href="#" data-content="addCliente" id="cargar-cliente" class="configBotones"><span class="material-symbols-outlined botones">upgrade</span>Cargar cliente</a>
+            <a href="#" data-content="addUsuario" id="cargar-usuario" class="configBotones"><span class="material-symbols-outlined botones">add</span>Crear usuario</a>
+            <a href="#" data-content="addCobertura" id="cargar-coberturas" class="configBotones"><span class="material-symbols-outlined botones">open_run</span>Coberturas</a>
+        </div>
+        
+        <div class="menu-usuario">
+            <a href="/cerrar-sesion" class="btn btn-primary" id="cerrar-sesion">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <div class="contenedor-datos">
+        <!-- Contenedor para los filtros -->
+        <div class="filtros">
+            <div class="ordenar-menu">
+                <button class="ordenar configBotones"><span class="material-symbols-outlined botones">swap_vert</span>Ordenar por</button>
+                <div class="ordenar-menu-oculto">
+                    <a href="#" data-sort="nombre">Nombre</a>
+                    <a href="#" data-sort="fecha">Fecha</a>
+                </div>
+            </div>
+            <div class="filtrar-menu">
+                <button class="filtrar configBotones"><span class="material-symbols-outlined botones">sort</span>Filtrar</button>
+                <div class="filtrar-menu-oculto">
+                    <a href="#" data-filter="auto">Auto</a>
+                    <a href="#" data-filter="moto">Moto</a>
+                    <a href="#" data-filter="bicicleta">Bicicleta</a>
+                </div>
+            </div>
+            <div class="buscador">
+                <input type="text" placeholder="Buscar cliente...">
+                <div class="icono-busc">
+                    <i class="fi fi-rc-search"></i>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Vehículos</th>
+                    <th>Email</th>
+                    <th>Celular</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (clientes.length > 0) { %>
+                    <% clientes.forEach(function(cliente) { %>
+                        <tr>
+                            <td><%= cliente.id %></td>
+                            <td><a href="/perfil_usuario/<%= cliente.id %>"><%= cliente.nombre %></a></td>
+                            <td><%= cliente.vehiculos %></td>
+                            <td><%= cliente.email %></td>
+                            <td><%= cliente.celular %></td>
+                            <td><a href="/editar_cliente/<%= cliente.id %>">Editar</a></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6">No hay clientes disponibles</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
