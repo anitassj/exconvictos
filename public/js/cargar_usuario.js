@@ -34,7 +34,7 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         },
         body: JSON.stringify({ datosPersonales,datosVehiculo })
     })
-    /*.then(response => response.json())
+    .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert('Datos guardados con éxito');
@@ -45,7 +45,7 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     })
     .catch(error => {
         alert('Error al guardar datos: ' + error);
-    });*/
+    });
 });
 
 // funcionalidad para el boton 'cancelar' -----------------
