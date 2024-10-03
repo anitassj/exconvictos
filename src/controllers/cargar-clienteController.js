@@ -8,10 +8,11 @@ class CargarClienteController {
                 return res.status(400).json({ error: 'Datos incompletos' });
             }
 
-            const { nombre, apellido, dni, email, celular, direccion, ciudad, provincia } = req.body.datosPersonales;
+            const { nombre, apellido, dni, email, direccion, celular, ciudad, provincia } = req.body.datosPersonales;
             const { tipo_vehiculo, patente, anio, vigencia_desde, vigencia_hasta, tipo_seguro, premio_total, suma_asegurada, uso_vehiculo } = req.body.datosVehiculo;
             
-            console.log(req.body);
+            console.log("BODY", req.body);
+            console.log("FOTO", req.file);
            
             const foto = req.file ? "/" + req.file.path : null;
 
