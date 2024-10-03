@@ -1,4 +1,17 @@
 // ----------------------------------------------------------------------------
+// mostrar 'datos' y ocultar  'vehiculos' -------------------------------------
+// ----------------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const datosPersonalesTab = document.getElementById('datos-personales-tab');
+    const vehiculosTab = document.getElementById('vehiculos-tab');
+
+    datosPersonalesTab.classList.add('tabActivo');
+    vehiculosTab.classList.remove('tabActivo');
+    vehiculosTab.classList.add('tabDesactivado');
+    datosPersonalesTab.classList.remove('tabDesactivado');
+});
+
+// ----------------------------------------------------------------------------
 // obtener los datos del perfil y mostrarlos ----------------------------------
 // ----------------------------------------------------------------------------
 
@@ -307,36 +320,6 @@ document.getElementById('guardar').addEventListener('click', guardarCambios);
 document.getElementById('eliminar-cliente').addEventListener('click', function() {
     // hacer logica para eliminar el cliente de la bd
 });
-
-
-// ----------------------------------------------------------------------------
-// mostrar y ocultar las secciones 'datos' y 'vehiculos' ----------------------
-// ----------------------------------------------------------------------------
-document.addEventListener('DOMContentLoaded', function() {
-    const datosPersonalesTab = document.getElementById('datos-personales-tab');
-    const vehiculosTab = document.getElementById('vehiculos-tab');
-
-    // click de 'datos personales'
-    datosPersonalesTab.addEventListener('click', function(event) {
-        // Muestra información de datos personales en la misma página
-        document.querySelector('.info-personal').classList.remove('oculto');
-        document.querySelector('.vehiculos-asegurados').classList.add('oculto');
-
-        // Cambiar clases
-        datosPersonalesTab.classList.add('tabActivo');
-        vehiculosTab.classList.remove('tabActivo');
-        vehiculosTab.classList.add('tabDesactivado');
-        datosPersonalesTab.classList.remove('tabDesactivado');
-    });
-
-    // click de vehículos
-    vehiculosTab.addEventListener('click', function(event) {
-        // Redirigir a la página ver-vehiculos.ejs
-        window.location.href = '/ver_vehiculo'; // Asegúrate de que esta ruta sea correcta en tu servidor
-    });
-});
-
-
 
 // Funciones para editar, guardar y cancelar cambios
 function editarPerfil() {
