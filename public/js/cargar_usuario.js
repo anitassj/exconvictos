@@ -16,15 +16,15 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     };
 
     const datosVehiculo = {
-        tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+        tipo_vehiculo: document.getElementById('tipo_vehiculo').value,
         patente: document.getElementById('patente').value,
-        anioVehiculo: document.getElementById('anio-vehiculo').value,
-        vigenciaDesde: document.getElementById('vigencia-desde').value,
-        vigenciaHasta: document.getElementById('vigencia-hasta').value,
-        tipoSeguro: document.getElementById('tipo-seguro').value,
-        premioTotal: document.getElementById('premio-total').value,
-        sumaAsegurada: document.getElementById('suma-asegurada').value,
-        usoVehiculo: document.getElementById('uso-vehiculo').value
+        anio: document.getElementById('anio').value,
+        vigencia_desde: document.getElementById('vigencia_desde').value,
+        vigencia_hasta: document.getElementById('vigencia_hasta').value,
+        tipo_seguro: document.getElementById('tipo_seguro').value,
+        premio_total: document.getElementById('premio_total').value,
+        suma_asegurada: document.getElementById('suma_asegurada').value,
+        uso_vehiculo: document.getElementById('uso_vehiculo').value
     };
 
     fetch('/guardarDatos', {  
@@ -32,9 +32,9 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ datosPersonales, datosVehiculo })
+        body: JSON.stringify({ datosPersonales,datosVehiculo })
     })
-    .then(response => response.json())
+    /*.then(response => response.json())
     .then(data => {
         if (data.success) {
             alert('Datos guardados con éxito');
@@ -45,7 +45,7 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     })
     .catch(error => {
         alert('Error al guardar datos: ' + error);
-    });
+    });*/
 });
 
 // funcionalidad para el boton 'cancelar' -----------------
