@@ -27,25 +27,46 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         uso_vehiculo: document.getElementById('uso_vehiculo').value
     };
 
-    fetch('/guardarDatos', {  
+    const inputFile = document.getElementById('foto');
+    const file = inputFile.files[0];
+
+    const formData = new FormData(); 
+
+    formData.append('datosPersonales', JSON.stringify(datosPersonales));
+    formData.append('datosVehiculo', JSON.stringify(datosVehiculo));
+
+    if (file) {
+        formData.append('foto', file);
+    }
+    
+    //console.log(formData.get('datosPersonales'));
+    //console.log(formData.get('datosVehiculo'));
+    
+
+    fetch('/guardarDatos', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ datosPersonales,datosVehiculo })
+        body: formData 
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Datos guardados con éxito');
-            window.location.href = '/panel';  
+    .then(response => {
+        if (response.ok) {
+            return response.json();
         } else {
-            throw new Error('Error al guardar datos');
+            throw new Error('Error en el envío de los datos');
         }
     })
-    .catch(error => {
-        alert('Error al guardar datos: ' + error);
-    });
+    .then(data => {
+        console.log("data: respuesta del servidor", data);
+        
+        if (data.status === 'success') {
+            alert('Datos y foto guardados con éxito');
+            //window.location.href = '/panel';  
+        } else {
+            throw new Error('Error en la respuesta del servidor');
+        }
+    })
+    // .catch(error => {
+    //     alert('Error: ' + error);
+    // });
 });
 
 // funcionalidad para el boton 'cancelar' -----------------
@@ -54,37 +75,37 @@ function cancelarCambios() {
 }
 
 // funcion para cargar las fotos --------------------------
-function cargarFotos(vehiculoId) {
-    const inputFile = document.getElementById(`foto-${vehiculoId}`);
-    inputFile.click();
+// function cargarFotos() {
+//     const inputFile = document.getElementById('foto');
+//     inputFile.click();
 
-    inputFile.onchange = () => {
-        const file = inputFile.files[0]; 
-        if (file) {
-            const formData = new FormData();
-            formData.append('foto', file); 
+//     inputFile.onchange = () => {
+//         const file = inputFile.files[0]; 
+//         if (file) {
+//             const formData = new FormData();
+//             formData.append('foto', file); 
 
-            fetch('/guardarDatos', {  
-                method: 'POST',
-                body: formData 
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Error en la carga de la foto');
-                }
-            })
-            .then(data => {
-                if (data.success) {
-                    alert('Foto cargada con éxito');
-                } else {
-                    throw new Error('Error en la respuesta al cargar la foto');
-                }
-            })
-            .catch(error => {
-                alert('Error al cargar la foto: ' + error);
-            });
-        }
-    };
-}
+//             fetch('/guardarDatos', {  
+//                 method: 'POST',
+//                 body: formData 
+//             })
+//             .then(response => {
+//                 if (response.ok) {
+//                     return response.json();
+//                 } else {
+//                     throw new Error('Error en la carga de la foto');
+//                 }
+//             })
+//             .then(data => {
+//                 if (data.success) {
+//                     alert('Foto cargada con éxito');
+//                 } else {
+//                     throw new Error('Error en la respuesta al cargar la foto');
+//                 }
+//             })
+//             .catch(error => {
+//                 alert('Error al cargar la foto: ' + error);
+//             });
+//         }
+//     };
+// }
