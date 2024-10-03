@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const CargarClienteController = require('../controllers/cargar-clienteController');
-const multer = require('multer'); 
+const upload = require('../middleware/upload'); //configuracion de multer
 
-const upload = multer({ dest: 'uploads/' }); 
+//const upload = multer({ dest: 'uploads/' }); 
 
 router.post('/guardarDatos', upload.single('foto'), CargarClienteController.guardarDatos);
 
