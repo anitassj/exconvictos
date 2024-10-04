@@ -11,3 +11,6 @@ ciudad varchar(100),
 provincia varchar(100)
 );
 
+insert into datosPersonales(nombre,apellido,dni,email,celular,direccion,ciudad,provincia)
+values('Clara', 'Martínez', '77777777', 'clara@gmail.com', '0303456000', 'Pellegrini 7', 'Chivilcoy', 'Buenos Aires');
+

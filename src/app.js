@@ -46,7 +46,11 @@ const rutaUsuario = require('./routes/rutas-views/usuario_views');
 const rutaPoliza = require('./routes/rutas-views/poliza_views');
 const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
 const rutaCrearUsuario = require('./routes/rutas-views/crear_usuario_views');
+const rutaBuscarEmail = require('./routes/buscar_email-ruta');
+const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
 
+app.use('/api', rutaCrearUsuarioEmail);
+app.use('/api', rutaBuscarEmail);
 app.use('/', rutaCargaCliente);
 app.use('/', rutaInicio);
 app.use('/', rutaLogin);

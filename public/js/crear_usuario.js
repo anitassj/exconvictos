@@ -9,7 +9,7 @@ document.getElementById('buscar-usuario').addEventListener('click', async () => 
     }
 
     try {
-        const response = await fetch(`/buscar-usuario/${dni}`, { method: 'GET' }); // CAMBIAR RUTA!!!
+        const response = await fetch(`/api/buscar_email/${dni}`, { method: 'GET' }); // ruta lista
         if (!response.ok) {
             throw new Error('Error al buscar el usuario');
         }
