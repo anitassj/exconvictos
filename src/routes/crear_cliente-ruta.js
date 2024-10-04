@@ -1,7 +1,7 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
-const usuariosController = require('../controllers/crear_cliente-controlador');
+const crearUsuario = require('../controllers/crear_cliente-controlador');
 
-router.post('/crear_usuario', usuariosController.crearUsuario); // Asegúrate de que el método exista
+router.post('/crear_usuario', crearUsuario);
 
-module.exports = router;*/
+module.exports = router;

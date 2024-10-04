@@ -1,4 +1,4 @@
-/*const conexion = require('../models/db');
+const conexion = require('../models/db');
 
 const crearUsuario = async (usuario) => {
     const { nombre, apellido, dni, email, clave, rol_id } = usuario;
@@ -12,4 +12,4 @@ const crearUsuario = async (usuario) => {
     }
 };
 
-module.exports = { crearUsuario };*/
+module.exports = crearUsuario;
