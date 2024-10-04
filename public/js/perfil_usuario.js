@@ -32,25 +32,6 @@ async function obtenerDatosPerfil() {
         document.getElementById('ciudad').value = datosPersonales.ciudad || '';
         document.getElementById('provincia').value = datosPersonales.provincia || '';
 
-        const vehiculosResponse = await fetch('/ruta'); // cambiar la ruta !!!!!!!!!!!!
-        if (!vehiculosResponse.ok) {
-            throw new Error('Error al obtener los datos de los vehículos');
-        }
-        const datosVehiculos = await vehiculosResponse.json();
-
-        const vehiculo = datosVehiculos[0];
-        if (vehiculo) {
-            document.getElementById('tipo-vehiculo').value = vehiculo.tipo || '';
-            document.getElementById('patente').value = vehiculo.patente || '';
-            document.getElementById('anio-vehiculo').value = vehiculo.anio || '';
-            document.getElementById('vigencia-desde').value = vehiculo.vigenciaDesde || '';
-            document.getElementById('vigencia-hasta').value = vehiculo.vigenciaHasta || '';
-            document.getElementById('tipo-seguro').value = vehiculo.tipoSeguro || '';
-            document.getElementById('premio-total').value = vehiculo.premioTotal || '';
-            document.getElementById('suma-asegurada').value = vehiculo.sumaAsegurada || '';
-            document.getElementById('uso-vehiculo').value = vehiculo.usoVehiculo || '';
-        }
-
     } catch (error) {
         console.error('Error al obtener datos:', error);
     }
