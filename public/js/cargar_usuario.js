@@ -39,73 +39,61 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         formData.append('foto', file);
     }
     
-    //console.log(formData.get('datosPersonales'));
-    //console.log(formData.get('datosVehiculo'));
-    
-
     fetch('/guardarDatos', {
         method: 'POST',
         body: formData 
     })
     .then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error('Error en el envío de los datos');
-        }
+        return response.json().then(data => {
+            console.log("Respuesta del servidor:", data); 
+            
+            if (!response.ok) {
+                throw new Error(data.message || 'Error en el envío de los datos');
+            }
+            return data; 
+        });
     })
     .then(data => {
         console.log("data: respuesta del servidor", data);
         
-        if (data.status === 'success') {
-            alert('Datos y foto guardados con éxito');
-            //window.location.href = '/panel';  
+        if (data.message === 'Datos guardados') {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: 'Datos y foto guardados con éxito.',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                window.location.href = '/panel';  
+            });
         } else {
             throw new Error('Error en la respuesta del servidor');
         }
     })
-    // .catch(error => {
-    //     alert('Error: ' + error);
-    // });
+    .catch(error => {
+        console.error("Error capturado:", error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.message || 'No se pudieron guardar los datos. Por favor, intenta nuevamente.',
+            confirmButtonText: 'Aceptar'
+        });
+    });
 });
+
+// función para validar los datos ------------------------
+function validarDatos(datosPersonales, datosVehiculo) {
+    // verificar que todos los campos obligatorios estén llenos
+    for (const key in datosPersonales) {
+        if (!datosPersonales[key]) return false;
+    }
+    for (const key in datosVehiculo) {
+        if (!datosVehiculo[key]) return false;
+    }
+    return true;
+}
+
 
 // funcionalidad para el boton 'cancelar' -----------------
 function cancelarCambios() {
     window.location.href = '/panel'; 
 }
-
-// funcion para cargar las fotos --------------------------
-// function cargarFotos() {
-//     const inputFile = document.getElementById('foto');
-//     inputFile.click();
-
-//     inputFile.onchange = () => {
-//         const file = inputFile.files[0]; 
-//         if (file) {
-//             const formData = new FormData();
-//             formData.append('foto', file); 
-
-//             fetch('/guardarDatos', {  
-//                 method: 'POST',
-//                 body: formData 
-//             })
-//             .then(response => {
-//                 if (response.ok) {
-//                     return response.json();
-//                 } else {
-//                     throw new Error('Error en la carga de la foto');
-//                 }
-//             })
-//             .then(data => {
-//                 if (data.success) {
-//                     alert('Foto cargada con éxito');
-//                 } else {
-//                     throw new Error('Error en la respuesta al cargar la foto');
-//                 }
-//             })
-//             .catch(error => {
-//                 alert('Error al cargar la foto: ' + error);
-//             });
-//         }
-//     };
-// }
