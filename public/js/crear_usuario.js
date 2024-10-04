@@ -46,12 +46,12 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     const usuarioDatos = {
         dni,
         email,
-        password,
-        rol
+        clave,
+        rol_id
     };
 
     try {
-        const response = await fetch('/crear-usuario', { // CAMBIAR RUTA !!!!!!!!!!!!!!!
+        const response = await fetch('/api/crear-usuario', { // ruta cambiada
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
