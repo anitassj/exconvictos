@@ -20,11 +20,11 @@
         <button class="usuario configBotones"><span class="material-symbols-outlined headIcon">account_circle</span>Tú</button>
         
         <div class="menu-hamburguesa">
-            <a href="#" data-content="Clientes" class="configBotones"><span class="material-symbols-outlined botones">format_list_bulleted</span>Clientes</a>
-            <a href="#" data-content="Solicitudes" class="configBotones"><span class="material-symbols-outlined botones">visibility</span>Solicitudes</a>
-            <a href="#" data-content="addCliente" id="cargar-cliente" class="configBotones"><span class="material-symbols-outlined botones">upgrade</span>Cargar cliente</a>
-            <a href="/cargar_usuario" data-content="addUsuario" id="cargar-usuario" class="configBotones"><span class="material-symbols-outlined botones">add</span>Crear usuario</a>
-            <a href="#" data-content="addCobertura" id="cargar-coberturas" class="configBotones"><span class="material-symbols-outlined botones">open_run</span>Coberturas</a>
+            <a href="/panel" data-content="Clientes" class="configBotones"><span class="material-symbols-outlined botones">format_list_bulleted</span>Clientes</a>
+            <a href="/solicitudes" data-content="Solicitudes" class="configBotones"><span class="material-symbols-outlined botones">visibility</span>Solicitudes</a>
+            <a href="/cargar_usuario" data-content="addCliente" id="cargar-cliente" class="configBotones"><span class="material-symbols-outlined botones">upgrade</span>Cargar cliente</a>
+            <a href="" data-content="addUsuario" id="cargar-usuario" class="configBotones"><span class="material-symbols-outlined botones">add</span>Crear usuario</a>
+            <a href="" data-content="addCobertura" id="cargar-coberturas" class="configBotones"><span class="material-symbols-outlined botones">open_run</span>Coberturas</a>
         </div>
         
         <div class="menu-usuario">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class = "buscador">
-                <input type="text" placeholder="Buscar asegurado...">
+                <input type="text" placeholder="Buscar solicitante...">
             </div>
     </div>
         <table>
@@ -60,7 +60,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Vehiculos</th>
+                    <th>Vehiculo</th>
                     <th>Email</th>
                     <th>Celular</th>
                     <th>Opciones</th>
@@ -75,7 +75,10 @@
                             <td><%= solicitud.tipo_vehiculo %></td>
                             <td><%= solicitud.email %></td>
                             <td><%= solicitud.celular %></td>
-                            <td><a href="/solicitudes/<%= solicitud.id_solicitante %>">Editar</a></td>
+                            <td>
+                                <a class="configBotones" href="/solicitudes/<%= solicitud.id_solicitante %>"><span class="material-symbols-outlined opciones" title="Ver">visibility</span></a>
+                                <a class="configBotones" href="/solicitudes/<%= solicitud.id_solicitante %>"><span class="material-symbols-outlined opciones" title="Archivar">archive</span></a>
+                            </td>
                         </tr>
                     <% }); %>
                 <% } else { %>
@@ -87,6 +90,10 @@
         </table>
 
     </div>
+
+    <script src="/public/js/panel.js"></script>
+    <script src="/public/js/perfil_usuario.js"></script>
+    <script src="/public/js/solicitudes.js"></script>
 
 </body>
 </html> 

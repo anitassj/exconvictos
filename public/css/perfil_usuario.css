@@ -132,6 +132,17 @@ select:focus {
     margin-right: 8px;
 }
 
+.material-symbols-outlined.opciones {
+    color: rgb(0, 0, 0) !important;    
+    font-size: 19px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;     
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
 .material-symbols-outlined.headIcon{
     color: white;    
     font-size: 40px !important;
