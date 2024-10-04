@@ -31,6 +31,23 @@ class solicitudesController {
             res.status(500).send("Error al obtener los datos");
         }
     }
+
+    async marcarComoLeido(req, res) {
+        try {
+            const id = req.params.id;
+            const success = await SolicitudesModelo.marcarLeido(id);
+    
+            if (success) {
+                res.status(200).send({ message: "Solicitud marcada como leída", id: id });
+            } else {
+                res.status(500).send("Error al marcar la solicitud como leída");
+            }
+        } catch (error) {
+            console.log("Error al marcar como leído:", error);
+            res.status(500).send("Error al marcar la solicitud como leída");
+        }
+    }    
+    
 }
 
 module.exports = solicitudesController;

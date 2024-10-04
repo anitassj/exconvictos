@@ -70,15 +70,19 @@
             <tbody>
                 <% if (sSolicitudes.length > 0) { %>
                     <% sSolicitudes.forEach(function(solicitud) { %>
-                        <tr>
+                        <tr class="<%= solicitud.leido ? 'leido' : 'no-leido' %>">
                             <td><%= solicitud.id_solicitante %></td>
                             <td><%= solicitud.nombre %></td>
                             <td><%= solicitud.tipo_vehiculo %></td>
                             <td><%= solicitud.email %></td>
                             <td><%= solicitud.celular %></td>
                             <td>
-                                <a class="configBotones" href="/solicitudes/<%= solicitud.id_solicitante %>"><span class="material-symbols-outlined opciones" title="Ver">visibility</span></a>
-                                <a class="configBotones" href="/solicitudes/<%= solicitud.id_solicitante %>"><span class="material-symbols-outlined opciones" title="Archivar">archive</span></a>
+                                <a class="configBotones" href="#" data-id="<%= solicitud.id_solicitante %>" onclick="event.preventDefault(); marcarComoLeido(this.dataset.id);">
+                                    <span class="material-symbols-outlined opciones" title="Ver">visibility</span>
+                                </a>                               
+                                <a class="configBotones" href="/solicitudes/<%= solicitud.id_solicitante %>">
+                                    <span class="material-symbols-outlined opciones" title="Archivar">archive</span>
+                                </a>
                             </td>
                         </tr>
                     <% }); %>
@@ -87,7 +91,7 @@
                         <td colspan="5">No hay solicitudes disponibles</td>
                     </tr>
                 <% } %>
-            </tbody>
+            </tbody>            
         </table>
 
     </div>

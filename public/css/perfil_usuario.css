@@ -353,3 +353,17 @@ select option:disabled {
     text-align: center;
     left: 0;
 }
+
+/* .leido {
+    background-color: #e0e0e0; 
+} */
+
+.no-leido {
+    background-color: #c6e3e6; 
+    font-weight: bold;
+}
+
+.no-leido:hover {
+    background-color: #aadde3; 
+    font-weight: bold;
+}

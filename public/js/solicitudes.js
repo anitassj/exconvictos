@@ -43,3 +43,25 @@ function enviarCotizacion() {
         }
     });
 }
+
+function marcarComoLeido(id) {
+    fetch(`/solicitudes/${id}/marcar-leido`, {
+        method: 'PUT',
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json(); // Espera la respuesta JSON
+        } else {
+            throw new Error("Error al marcar la solicitud como leída.");
+        }
+    })
+    .then(data => {
+        // Redirige al formulario con el ID de la solicitud
+        window.location.href = `/solicitudes/${data.id}`; // Redirige a mostrarFormulario
+    })
+    .catch(error => {
+        console.error("Error al enviar la solicitud:", error);
+        alert("Error en la solicitud.");
+    });
+}
+

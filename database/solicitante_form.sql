@@ -14,6 +14,9 @@ CREATE TABLE solicitante_form (
   foreign key (id_modelo) references modelos(id_modelos)
 ); 
 
+-- AGREGUEN ESTO A LA TABLA !!
+use sistema_prismaseguros;
+ALTER TABLE solicitante_form ADD COLUMN leido BOOLEAN DEFAULT FALSE;
 
 -- inserciones de prueba
 insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
