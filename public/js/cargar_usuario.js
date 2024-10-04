@@ -95,5 +95,18 @@ function validarDatos(datosPersonales, datosVehiculo) {
 
 // funcionalidad para el boton 'cancelar' -----------------
 function cancelarCambios() {
-    window.location.href = '/panel'; 
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "No se guardarán los datos del cliente.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, salir',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/panel'; 
+        }
+    });
 }

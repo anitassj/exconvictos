@@ -247,7 +247,7 @@ select option:disabled {
     background-color: #2197a3;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 50px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;

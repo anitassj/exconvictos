@@ -58,36 +58,44 @@
             </div>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Vehículos</th>
-                    <th>Email</th>
-                    <th>Celular</th>
-                    <th>Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% if (clientes.length > 0) { %>
-                    <% clientes.forEach(function(cliente) { %>
-                        <tr>
-                            <td><%= cliente.id %></td>
-                            <td><a href="/perfil_usuario/<%= cliente.id %>"><%= cliente.nombre %></a></td>
-                            <td><%= cliente.vehiculos %></td>
-                            <td><%= cliente.email %></td>
-                            <td><%= cliente.celular %></td>
-                            <td><a href="/editar_cliente/<%= cliente.id %>">Editar</a></td>
-                        </tr>
-                    <% }); %>
-                <% } else { %>
+        <div>
+            <h3>Listado de clientes</h3>
+            <table>
+                <thead>
                     <tr>
-                        <td colspan="6">No hay clientes disponibles</td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Vehículos</th>
+                        <th>Email</th>
+                        <th>Celular</th>
+                        <th>Opciones</th>
                     </tr>
-                <% } %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% if (clientes.length > 0) { %>
+                        <% clientes.forEach(function(cliente) { %>
+                            <tr>
+                                <td><%= cliente.id %></td>
+                                <td><%= cliente.nombre %></td>
+                                <td><%= cliente.vehiculos %></td>
+                                <td><%= cliente.email %></td>
+                                <td><%= cliente.celular %></td>
+                                <td>
+                                    <a class="configBotones" href="/perfil_usuario/<%= cliente.id %>"><span class="material-symbols-outlined opciones" title="Ver">visibility</span></a>
+                                    <a class="configBotones" href="/crear_usuario/<%= cliente.id %>"><span class="material-symbols-outlined opciones" title="Crear usuario">person_add</span></a>
+                                </td>
+                                
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6">No hay clientes disponibles</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 
     <script src="/public/js/panel.js"></script>
