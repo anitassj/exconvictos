@@ -1,0 +1,14 @@
+const crearUsuario = require('../models/crear_cliente-modelo'); 
+const crearUsuarioController = async (req, res) => {
+    const { nombre, apellido, dni, email, clave, rol_id } = req.body;
+
+    try {
+        await crearUsuario({ nombre, apellido, dni, email, clave, rol_id });
+        res.json({ message: 'Usuario creado exitosamente' });
+    } catch (error) {
+        console.error('Error al crear el usuario:', error);
+        res.status(500).json({ error: 'Error en el servidor' });
+    }
+};
+
+module.exports = crearUsuarioController;
