@@ -28,25 +28,25 @@ document.querySelector(".menu").addEventListener("click", function() {
     document.querySelector(".menu-usuario").style.display = "none";
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Cargar la tabla principal cuando inicia la página
-    cargarTabla("Clientes");
+// document.addEventListener("DOMContentLoaded", function() {
+//     // Cargar la tabla principal cuando inicia la página
+//     cargarTabla("Clientes");
 
-    const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
+//     const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
 
-    menuLinks.forEach(link => {
-        link.addEventListener("click", function(event) {
-            event.preventDefault();
-            const contenidoId = link.getAttribute("data-content");
+//     menuLinks.forEach(link => {
+//         link.addEventListener("click", function(event) {
+//             event.preventDefault();
+//             const contenidoId = link.getAttribute("data-content");
 
-            if (contenidoId === "Clientes") {
-                cargarTabla("Clientes");
-            } else if (contenidoId === "Solicitudes") {
-                cargarTabla("Solicitudes");
-            }
-        });
-    });
-});
+//             if (contenidoId === "Clientes") {
+//                 cargarTabla("Clientes");
+//             } else if (contenidoId === "Solicitudes") {
+//                 cargarTabla("Solicitudes");
+//             }
+//         });
+//     });
+// });
 
 // Toggle para el menú de ordenar
 document.querySelector(".ordenar").addEventListener("click", function() {

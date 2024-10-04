@@ -135,172 +135,172 @@ function cancelarEdicion() {
 }
 
 // guardar cambios ----------------------------------------
-async function guardarCambios() {
-    if (editModo && !cambiosGuardados) {
+// async function guardarCambios() {
+//     if (editModo && !cambiosGuardados) {
 
-        const datosPersonales = {
-            nombre: document.getElementById('nombre').value,
-            apellido: document.getElementById('apellido').value,
-            dni: document.getElementById('dni').value,
-            email: document.getElementById('email').value,
-            direccion: document.getElementById('direccion').value,
-            celular: document.getElementById('celular').value,
-            ciudad: document.getElementById('ciudad').value,
-            provincia: document.getElementById('provincia').value
-        };
+//         const datosPersonales = {
+//             nombre: document.getElementById('nombre').value,
+//             apellido: document.getElementById('apellido').value,
+//             dni: document.getElementById('dni').value,
+//             email: document.getElementById('email').value,
+//             direccion: document.getElementById('direccion').value,
+//             celular: document.getElementById('celular').value,
+//             ciudad: document.getElementById('ciudad').value,
+//             provincia: document.getElementById('provincia').value
+//         };
 
-        const datosVehiculo = {
-            tipoVehiculo: document.getElementById('tipo-vehiculo').value,
-            patente: document.getElementById('patente').value,
-            anioVehiculo: document.getElementById('anio-vehiculo').value,
-            vigenciaDesde: document.getElementById('vigencia-desde').value,
-            vigenciaHasta: document.getElementById('vigencia-hasta').value,
-            tipoSeguro: document.getElementById('tipo-seguro').value,
-            premioTotal: document.getElementById('premio-total').value,
-            sumaAsegurada: document.getElementById('suma-asegurada').value,
-            usoVehiculo: document.getElementById('uso-vehiculo').value
-        };
+//         const datosVehiculo = {
+//             tipoVehiculo: document.getElementById('tipo-vehiculo').value,
+//             patente: document.getElementById('patente').value,
+//             anioVehiculo: document.getElementById('anio-vehiculo').value,
+//             vigenciaDesde: document.getElementById('vigencia-desde').value,
+//             vigenciaHasta: document.getElementById('vigencia-hasta').value,
+//             tipoSeguro: document.getElementById('tipo-seguro').value,
+//             premioTotal: document.getElementById('premio-total').value,
+//             sumaAsegurada: document.getElementById('suma-asegurada').value,
+//             usoVehiculo: document.getElementById('uso-vehiculo').value
+//         };
 
-        const datosGuardados = {
-            datosPersonales: datosPersonales,
-            datosVehiculo: datosVehiculo
-        };
+//         const datosGuardados = {
+//             datosPersonales: datosPersonales,
+//             datosVehiculo: datosVehiculo
+//         };
 
-        try {
-            const response = await fetch('/guardarCambios', { //CAMBIAR RUTA!!!!!!!!!!!
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(datosGuardados),
-            });
+//         try {
+//             const response = await fetch('/guardarCambios', { //CAMBIAR RUTA!!!!!!!!!!!
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(datosGuardados),
+//             });
 
-            if (!response.ok) {
-                throw new Error('Error al guardar cambios');
-            }
+//             if (!response.ok) {
+//                 throw new Error('Error al guardar cambios');
+//             }
 
-            const result = await response.json(); 
-            console.log('Cambios guardados exitosamente:', result);
+//             const result = await response.json(); 
+//             console.log('Cambios guardados exitosamente:', result);
 
-            cambiosGuardados = true;
-            document.getElementById('guardar').classList.remove('editar-modo');
-            document.getElementById('guardar').disabled = true;
+//             cambiosGuardados = true;
+//             document.getElementById('guardar').classList.remove('editar-modo');
+//             document.getElementById('guardar').disabled = true;
 
-            // deshabilitar todos los inputs
-            document.querySelectorAll('input').forEach(input => {
-                input.disabled = true;
-            });
+//             // deshabilitar todos los inputs
+//             document.querySelectorAll('input').forEach(input => {
+//                 input.disabled = true;
+//             });
 
-            // ocultar botón de eliminar cliente
-            document.getElementById('eliminar-cliente').classList.add('oculto');
+//             // ocultar botón de eliminar cliente
+//             document.getElementById('eliminar-cliente').classList.add('oculto');
 
-            // ocultar botón de agregar vehículo
-            document.getElementById('agregar-vehiculo').classList.add('oculto');
-        } catch (error) {
-            console.error('Error guardando cambios:', error);
-            alert('Hubo un problema al guardar los cambios. Intenta nuevamente.');
-        }
-    }
-}
+//             // ocultar botón de agregar vehículo
+//             document.getElementById('agregar-vehiculo').classList.add('oculto');
+//         } catch (error) {
+//             console.error('Error guardando cambios:', error);
+//             alert('Hubo un problema al guardar los cambios. Intenta nuevamente.');
+//         }
+//     }
+// }
 
 // agregar y eliminar nuevos vehículos --------------------
-function agregarVehiculo() {
-    const vehiculosContainer = document.querySelector('.vehiculos-asegurados');
+// function agregarVehiculo() {
+//     const vehiculosContainer = document.querySelector('.vehiculos-asegurados');
 
-    if (editModo) {
-        const nuevoVehiculo = document.createElement('div');
-        nuevoVehiculo.classList.add('vehiculo');
-        // nuevoVehiculo.setAttribute('data-id', vehiculoId); // ES PARA USAR CON LA FUNCION ELIMINAR Q TAMB ELIMINA EN LA BD, CUANDO SE IMPLEMENTA DESCOMENTAR ESTA LÍNEA
-        nuevoVehiculo.innerHTML = `
-            <h2>Ingresar el vehículo asegurado</h2>
-            <div class="info-grid">
-                <div class="colum1">
-                    <label for="tipo-vehiculo">Tipo de Vehículo </label>
-                    <select id="tipo-vehiculo">
-                        <option value="auto">Auto</option>
-                        <option value="moto">Moto</option>
-                    </select>
-                    <label for="patente">Patente </label>
-                    <input type="text" id="patente">
-                    <label for="anio-vehiculo">Año </label>
-                    <input type="number" id="anio-vehiculo">
-                    <label for="vigencia-desde">Vigencia Desde </label>
-                    <input type="date" id="vigencia-desde">
-                    <label for="vigencia-hasta">Vigencia Hasta </label>
-                    <input type="date" id="vigencia-hasta">
-                </div>
-                <div class="colum2">
-                    <label>Fotos del vehículo</label>
-                    <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none">
-                    <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">
-                        <span class="material-symbols-outlined botones">upload</span>Subir
-                    </button>
-                    <label for="tipo-seguro">Tipo de Seguro </label>
-                    <select id="tipo-seguro">
-                        <option value="basico">Básico</option>
-                        <option value="intermedio">Intermedio</option>
-                        <option value="premiun">Premiun</option>
-                    </select>
-                    <label for="premio-total">Premio Total (en pesos) </label>
-                    <input type="number" id="premio-total">
-                    <label for="suma-asegurada">Suma Asegurada </label>
-                    <input type="number" id="suma-asegurada">
-                    <label for="uso-vehiculo">Uso del Vehículo </label>
-                    <select id="uso-vehiculo">
-                        <option value="particular">Particular</option>
-                        <option value="profesional">Profesional</option>
-                    </select>
-                </div>
-            </div>
-            <button class="activo eliminar-vehiculo configBotones">
-                <span class="material-symbols-outlined botones">delete</span>Eliminar
-            </button>
-        `;
+//     if (editModo) {
+//         const nuevoVehiculo = document.createElement('div');
+//         nuevoVehiculo.classList.add('vehiculo');
+//         // nuevoVehiculo.setAttribute('data-id', vehiculoId); // ES PARA USAR CON LA FUNCION ELIMINAR Q TAMB ELIMINA EN LA BD, CUANDO SE IMPLEMENTA DESCOMENTAR ESTA LÍNEA
+//         nuevoVehiculo.innerHTML = `
+//             <h2>Ingresar el vehículo asegurado</h2>
+//             <div class="info-grid">
+//                 <div class="colum1">
+//                     <label for="tipo-vehiculo">Tipo de Vehículo </label>
+//                     <select id="tipo-vehiculo">
+//                         <option value="auto">Auto</option>
+//                         <option value="moto">Moto</option>
+//                     </select>
+//                     <label for="patente">Patente </label>
+//                     <input type="text" id="patente">
+//                     <label for="anio-vehiculo">Año </label>
+//                     <input type="number" id="anio-vehiculo">
+//                     <label for="vigencia-desde">Vigencia Desde </label>
+//                     <input type="date" id="vigencia-desde">
+//                     <label for="vigencia-hasta">Vigencia Hasta </label>
+//                     <input type="date" id="vigencia-hasta">
+//                 </div>
+//                 <div class="colum2">
+//                     <label>Fotos del vehículo</label>
+//                     <input type="file" id="foto-vehiculo1" accept="image/*" style="display:none">
+//                     <button onclick="cargarFotos('vehiculo1')" class="ver-fotos configBotones">
+//                         <span class="material-symbols-outlined botones">upload</span>Subir
+//                     </button>
+//                     <label for="tipo-seguro">Tipo de Seguro </label>
+//                     <select id="tipo-seguro">
+//                         <option value="basico">Básico</option>
+//                         <option value="intermedio">Intermedio</option>
+//                         <option value="premiun">Premiun</option>
+//                     </select>
+//                     <label for="premio-total">Premio Total (en pesos) </label>
+//                     <input type="number" id="premio-total">
+//                     <label for="suma-asegurada">Suma Asegurada </label>
+//                     <input type="number" id="suma-asegurada">
+//                     <label for="uso-vehiculo">Uso del Vehículo </label>
+//                     <select id="uso-vehiculo">
+//                         <option value="particular">Particular</option>
+//                         <option value="profesional">Profesional</option>
+//                     </select>
+//                 </div>
+//             </div>
+//             <button class="activo eliminar-vehiculo configBotones">
+//                 <span class="material-symbols-outlined botones">delete</span>Eliminar
+//             </button>
+//         `;
 
-        vehiculosContainer.appendChild(nuevoVehiculo);
-        console.log("agregado");
+//         vehiculosContainer.appendChild(nuevoVehiculo);
+//         console.log("agregado");
 
-        // eliminar vehículo ------------------------------
-        nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', function() {
-            vehiculosContainer.removeChild(nuevoVehiculo);
-        });
+//         // eliminar vehículo ------------------------------
+//         nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', function() {
+//             vehiculosContainer.removeChild(nuevoVehiculo);
+//         });
 
-        // FUNCION PARA ELIMINAR EL NUEVO VEHÍCULO EN EL BACK TMB, DESCOMENTAR CUANDO QUIERAN IMPLEMENTAR Y BORRAR LA FUNCION DE ARRIBA 
-        // nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', async function() {
-        //     const vehiculoId = nuevoVehiculo.getAttribute('data-id'); 
+//         // FUNCION PARA ELIMINAR EL NUEVO VEHÍCULO EN EL BACK TMB, DESCOMENTAR CUANDO QUIERAN IMPLEMENTAR Y BORRAR LA FUNCION DE ARRIBA 
+//         // nuevoVehiculo.querySelector('.eliminar-vehiculo').addEventListener('click', async function() {
+//         //     const vehiculoId = nuevoVehiculo.getAttribute('data-id'); 
 
-        //     try {
-        //         const response = await fetch(`/eliminarVehiculo/${vehiculoId}`, { // cambiar la ruta!!
-        //             method: 'DELETE',
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //             },
-        //         });
+//         //     try {
+//         //         const response = await fetch(`/eliminarVehiculo/${vehiculoId}`, { // cambiar la ruta!!
+//         //             method: 'DELETE',
+//         //             headers: {
+//         //                 'Content-Type': 'application/json',
+//         //             },
+//         //         });
 
-        //         if (!response.ok) {
-        //             throw new Error('Error al eliminar el vehículo');
-        //         }
+//         //         if (!response.ok) {
+//         //             throw new Error('Error al eliminar el vehículo');
+//         //         }
 
-        //         const result = await response.json(); 
-        //         console.log('Vehículo eliminado exitosamente:', result);
+//         //         const result = await response.json(); 
+//         //         console.log('Vehículo eliminado exitosamente:', result);
 
-        //         vehiculosContainer.removeChild(nuevoVehiculo);
-        //     } catch (error) {
-        //         console.error('Error eliminando el vehículo:', error);
-        //         alert('Hubo un problema al eliminar el vehículo. Intenta nuevamente.');
-        //     }
-        // });
+//         //         vehiculosContainer.removeChild(nuevoVehiculo);
+//         //     } catch (error) {
+//         //         console.error('Error eliminando el vehículo:', error);
+//         //         alert('Hubo un problema al eliminar el vehículo. Intenta nuevamente.');
+//         //     }
+//         // });
 
-    } else {
-        alert('Debes estar en modo de edición para agregar vehículos.');
-    }
-}
+//     } else {
+//         alert('Debes estar en modo de edición para agregar vehículos.');
+//     }
+// }
 
-document.getElementById('guardar').addEventListener('click', guardarCambios);
+// document.getElementById('guardar').addEventListener('click', guardarCambios);
 
-document.getElementById('eliminar-cliente').addEventListener('click', function() {
-    // hacer logica para eliminar el cliente de la bd
-});
+// document.getElementById('eliminar-cliente').addEventListener('click', function() {
+    
+// });
 
 // Funciones para editar, guardar y cancelar cambios
 function editarPerfil() {
