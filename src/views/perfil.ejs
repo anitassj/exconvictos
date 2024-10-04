@@ -38,31 +38,35 @@
         <a href="/ver_vehiculo" id="vehiculos-tab" class="tabDesactivado">Vehículos</a>
     </div>
 
-    <div class="perfil">
+    <div class="contenedor-datos">
 
         <div class="info-personal">
             <h2>Información Personal de </h2>
             <div class="info-grid">
                 <div class="colum1">
-                    <label for="nombre">Nombre </label><input type="text" id="nombre" placeholder="Anita" disabled>
-                    <label for="apellido">Apellido </label><input type="text" id="apellido" placeholder="Luz" disabled>
-                    <label for="dni">DNI </label><input type="number" id="dni" placeholder="12345678" disabled>
-                    <label for="email">Email </label><input type="email" id="email" placeholder="anita@gmail.com" disabled>
+                    <label for="nombre">Nombre </label>
+                    <input type="text" id="nombre" disabled>
+                    <label for="apellido">Apellido </label>
+                    <input type="text" id="apellido" disabled>
+                    <label for="dni">DNI </label>
+                    <input type="number" id="dni" disabled>
+                    <label for="email">Email </label>
+                    <input type="email" id="email" disabled>
                 </div>
                 <div class="colum2">
-                    <label for="direccion">Dirección </label><input type="text" id="direccion" placeholder="Av. Calixto Calderon 424" disabled>
-                    <label for="celular">Celular </label><input type="text" id="celular" placeholder="2346303040" disabled> 
-                    <label for="ciudad">Ciudad </label><input type="text" id="ciudad" placeholder="Chivilcoy" disabled>
-                    <label for="provincia">Provincia </label><input type="text" id="provincia" placeholder="Buenos Aires" disabled>
+                    <label for="direccion">Dirección </label>
+                    <input type="text" id="direccion" disabled>
+                    <label for="celular">Celular </label>
+                    <input type="text" id="celular" disabled> 
+                    <label for="ciudad">Ciudad </label>
+                    <input type="text" id="ciudad" disabled>
+                    <label for="provincia">Provincia </label>
+                    <input type="text" id="provincia" disabled>
                 </div>
             </div>
         </div>
-
-        <!-- activos -->
-        <button id="emitir-poliza" class="activo configBotones" onclick="window.location.href='/poliza'"><span class="material-symbols-outlined botones">download_for_offline</span>Emitir póliza</button>
         
-        <!-- ocultos -->
-        <button id="eliminar-cliente" class="oculto configBotones peligro"><span class="material-symbols-outlined botones">delete</span>Eliminar Cliente</button>
+        <button id="emitir-poliza" class="activo configBotones" onclick="window.location.href='/poliza'"><span class="material-symbols-outlined botones">download_for_offline</span>Emitir póliza</button>
     </div>
 
     <script src="/public/js/panel.js"></script>

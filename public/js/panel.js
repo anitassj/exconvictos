@@ -18,14 +18,15 @@ document.querySelector(".menu").addEventListener("click", function() {
     }
 });
 
+// mostrar / ocultar menu hamburg
+document.querySelector(".menu").addEventListener("click", function() {
+    var contenedorPanel = document.querySelector(".contenedor-datos");
+    var contenedorTabs = document.querySelector(".tabs");
+    contenedorPanel.classList.toggle("acomodar-margin-panel");
+    contenedorTabs.classList.toggle("acomodar-margin-tabs");
 
-/* Cerrar el menú de usuario si se hace clic fuera */
-document.addEventListener("click", function(event) {
-    if (!event.target.matches('.usuario') && !event.target.closest('.menu-usuario')) {
-        document.querySelector(".menu-usuario").style.display = "none";
-    }
+    document.querySelector(".menu-usuario").style.display = "none";
 });
-
 
 document.addEventListener("DOMContentLoaded", function() {
     // Cargar la tabla principal cuando inicia la página

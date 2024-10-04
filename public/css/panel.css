@@ -53,7 +53,7 @@ header .menu-hamburguesa {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #5d5959;
+    background-color: #275f65;
     padding: 15px;
     z-index: 1000;
     height: 885%;
@@ -99,17 +99,26 @@ header .menu-usuario a:hover {
     background-color: #1b7d88;
 }
 
-/* Estilos del contenedor de datos */
 .contenedor-datos {
     width: 70%;
-    height: 74vh;
+    /* height: 74vh; */
     margin: 20px auto;
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
+
+.acomodar-margin-panel {
+    margin: 20px auto !important;
+    margin-right: 137px !important;
+}
+
+.acomodar-margin-tabs {
+    margin-right: 110px !important;
+}
+
 
 /* Clases para ocultar y mostrar */
 .oculto {

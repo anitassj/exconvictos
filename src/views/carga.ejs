@@ -39,71 +39,100 @@
             <div class="info-grid">
                 <div class="colum1">
                     <label for="nombre">Nombre </label>
-                    <input type="text" id="nombre" placeholder="Anita">
+                    <small class="helper-text">Ingrese el/los nombres</small>
+                    <input type="text" id="nombre">
+    
                     <label for="apellido">Apellido </label>
-                    <input type="text" id="apellido" placeholder="Luz">
+                    <small class="helper-text">Ingresar el/los apellidos</small>
+                    <input type="text" id="apellido">
+    
                     <label for="dni">DNI </label>
-                    <input type="number" id="dni" placeholder="12345678">
+                    <small class="helper-text">Ingrese solo números, sin puntos ni guiones</small>
+                    <input type="number" id="dni">
+    
                     <label for="email">Email </label>
-                    <input type="email" id="email" placeholder="anita@gmail.com">
+                    <small class="helper-text">Ingrese un correo electrónico válido</small>
+                    <input type="email" id="email">
                 </div>
                 <div class="colum2">
                     <label for="direccion">Dirección </label>
-                    <input type="text" id="direccion" placeholder="Av. Calixto Calderon 424">
+                    <small class="helper-text">Ingrese la dirección completa, incluyendo calle y número</small>
+                    <input type="text" id="direccion">
+    
                     <label for="celular">Celular </label>
-                    <input type="text" id="celular" placeholder="2346303040">
+                    <small class="helper-text">Ingrese número de celular con código de área sin el 0 ni el 15</small>
+                    <input type="text" id="celular">
+    
                     <label for="ciudad">Ciudad </label>
-                    <input type="text" id="ciudad" placeholder="Chivilcoy">
+                    <small class="helper-text">Ingrese la ciudad donde reside</small>
+                    <input type="text" id="ciudad">
+    
                     <label for="provincia">Provincia </label>
-                    <input type="text" id="provincia" placeholder="Buenos Aires">
+                    <small class="helper-text">Ingrese la provincia donde reside</small>
+                    <input type="text" id="provincia">
                 </div>
             </div>
         </div>
-
+    
         <!-- Sección de vehículos asegurados -->
         <div class="vehiculos-asegurados">
             <div class="logos"><span class="material-symbols-outlined">directions_car</span></div>
             <h2>Ingresar el vehículo asegurado</h2>
-
+    
             <div id="vehiculos-container">
                 <div class="vehiculo">
                     <div class="info-grid">
                         <div class="colum1">
                             <label for="tipo_vehiculo">Tipo de Vehículo </label>
+                            <small class="helper-text">Seleccione el tipo de vehículo a asegurar</small>
                             <select id="tipo_vehiculo">
-                                <option value="" disabled selected>Selecciona un tipo de vehículo</option>
+                                <option value="" disabled selected>Seleccione un tipo de vehículo</option>
                                 <option value="auto">Auto</option>
                                 <option value="moto">Moto</option>
                             </select>
+    
                             <label for="patente">Patente </label>
-                            <input type="text" id="patente" placeholder="123AAA">
+                            <small class="helper-text">Ingrese la patente del vehículo sin espacios ni guiones</small>
+                            <input type="text" id="patente">
+    
                             <label for="anio_vehiculo">Año </label>
-                            <input type="number" id="anio" placeholder="2024">
+                            <small class="helper-text">Ingrese el año de fabricación del vehículo</small>
+                            <input type="number" id="anio">
+    
                             <label for="vigencia_desde">Vigencia Desde </label>
+                            <small class="helper-text">Seleccione la fecha desde que empieza la vigencia del seguro</small>
                             <input type="date" id="vigencia_desde">
+    
                             <label for="vigencia_hasta">Vigencia Hasta </label>
+                            <small class="helper-text">Seleccione la fecha hasta que termina la vigencia del seguro</small>
                             <input type="date" id="vigencia_hasta">
                         </div>
                         <div class="colum2">
                             <label>Fotos del vehículo</label>
+                            <small class="helper-text">Subi fotos claras del vehículo asegurado</small>
                             <input type="file" id="foto" accept="image/*" >
-                            <!-- <button class="ver-fotos configBotones">
-                                <span class="material-symbols-outlined botones">upload</span>Subir
-                            </button> -->
+    
                             <label for="tipo_seguro">Tipo de Seguro </label>
+                            <small class="helper-text">Seleccione el tipo de seguro que desea contratar</small>
                             <select id="tipo_seguro">
-                                <option value="" disabled selected>Selecciona un tipo de plan</option>
+                                <option value="" disabled selected>Seleccione un tipo de plan</option>
                                 <option value="basico">Básico</option>
                                 <option value="intermedio">Intermedio</option>
                                 <option value="premiun">Premium</option>
                             </select>
+    
                             <label for="premio_total">Premio Total en pesos </label>
-                            <input type="number" id="premio_total" placeholder="10.000,00">
+                            <small class="helper-text">Ingrese el premio total del seguro en pesos, sin puntos ni espacios</small>
+                            <input type="number" id="premio_total">
+    
                             <label for="suma_asegurada">Suma Asegurada en pesos </label>
-                            <input type="number" id="suma_asegurada" placeholder="1.000.000,00">
+                            <small class="helper-text">Ingrese la suma asegurada en pesos, sin puntos ni espacios</small>
+                            <input type="number" id="suma_asegurada">
+    
                             <label for="uso_vehiculo">Uso del Vehículo </label>
+                            <small class="helper-text">Seleccione el uso principal del vehículo</small>
                             <select id="uso_vehiculo">
-                                <option value="" disabled selected>Selecciona un tipo de uso</option>
+                                <option value="" disabled selected>Seleccione un tipo de uso</option>
                                 <option value="particular">Particular</option>
                                 <option value="profesional">Profesional</option>
                             </select>
@@ -111,13 +140,14 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             <button id="guardarCambios" class="activo configBotones">
                 <span class="material-symbols-outlined botones">check_small</span>Guardar
             </button>
             <button class="activo cancelar configBotones" onclick="cancelarCambios()">
                 <span class="material-symbols-outlined botones">close</span>Cancelar
             </button>
+        </div>
         </div>
     </div>
 
