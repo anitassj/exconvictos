@@ -2,21 +2,23 @@
 document.getElementById('buscar-usuario').addEventListener('click', async () => {
     const dni = document.getElementById('dni').value;
 
-    // despues esto lo manejo con sweet alert
     if (!dni) {
         alert('Por favor, ingresa un DNI válido.');
         return;
     }
 
     try {
-        const response = await fetch(`/api/buscar_email/${dni}`, { method: 'GET' }); // ruta lista
+        const response = await fetch(`/api/buscar_email/${dni}`, { method: 'GET' }); 
         if (!response.ok) {
             throw new Error('Error al buscar el usuario');
         }
 
         const data = await response.json();
         if (data.email) {
+            // establecer los valores del email, nombre y apellido
             document.getElementById('email').value = data.email;
+            document.getElementById('nombre').value = data.nombre; 
+            document.getElementById('apellido').value = data.apellido; 
         } else {
             alert('No se encontró un usuario con ese DNI.');
         }
@@ -28,17 +30,19 @@ document.getElementById('buscar-usuario').addEventListener('click', async () => 
 // generar contraseña aleatoria -------------------------------------------
 document.getElementById('generar-password').addEventListener('click', () => {
     const generatedPassword = Math.random().toString(36).slice(-8); 
-    document.getElementById('password').value = generatedPassword;
+    document.getElementById('clave').value = generatedPassword;
 });
 
 // crear el usuario -------------------------------------------------------
 document.getElementById('crear-usuario').addEventListener('click', async () => {
     const dni = document.getElementById('dni').value;
     const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const rol = document.getElementById('rol').value;
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const clave = document.getElementById('clave').value;
+    const rol_id = document.getElementById('rol_id').value;
 
-    if (!dni || !email || !password || !rol) {
+    if (!dni || !email || !nombre || !apellido || !clave || !rol_id) {
         alert('Por favor, completa todos los campos.');
         return;
     }
@@ -46,26 +50,31 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     const usuarioDatos = {
         dni,
         email,
+        nombre, 
+        apellido,
         clave,
         rol_id
     };
-
-    try {
-        const response = await fetch('/api/crear-usuario', { // ruta cambiada
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(usuarioDatos),
-        });
-
-        if (!response.ok) {
-            throw new Error('Error al crear el usuario');
-        }
-
-        // despues hacerlo con sweet alert !!
-        alert('Usuario creado con éxito');
-    } catch (error) {
-        alert('Error: ' + error.message);
+    
+    const response = await fetch('/api/crear-usuario', { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usuarioDatos),
+    });
+    
+    const contentType = response.headers.get("content-type");
+    if (!response.ok) {
+        const errorData = await response.text(); 
+        throw new Error(`Error: ${response.status} - ${errorData}`);
     }
+    
+    let responseData;
+    if (contentType && contentType.includes("application/json")) {
+        responseData = await response.json();
+    } else {
+        throw new Error("La respuesta no es un JSON válido");
+    }
+    
 });

@@ -1,5 +1,6 @@
 const crearUsuario = require('../models/crear_cliente-modelo'); 
 const crearUsuarioController = async (req, res) => {
+    console.log('req.body:', req.body);
     const { nombre, apellido, dni, email, clave, rol_id } = req.body;
 
     try {

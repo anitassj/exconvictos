@@ -3,6 +3,7 @@ const conexion = require('../models/db');
 const crearUsuario = async (usuario) => {
     const { nombre, apellido, dni, email, clave, rol_id } = usuario;
     try {
+        console.log({ nombre, apellido, dni, email, clave, rol_id });
         await conexion.promise().query(
             'INSERT INTO usuarios (nombre, apellido, dni, email, clave, rol_id) VALUES (?, ?, ?, ?, ?, ?)',
             [nombre, apellido, dni, email, clave, rol_id]

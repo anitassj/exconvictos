@@ -47,27 +47,39 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-column"><label for="email">Email asociado</label></td>
+                    <td class="label-column"><label for="nombre">Nombre</label></td>
                     <td class="input-column">
-                        <input type="email" id="email" name="email" placeholder="anita@gmail.com" readonly>
+                        <input type="text" id="nombre" name="nombre" required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-column"><label for="password">Generar contraseña</label></td>
+                    <td class="label-column"><label for="apellido">Apellido</label></td>
                     <td class="input-column">
-                        <input type="password" id="password" name="password" placeholder="Generar contraseña">
+                        <input type="text" id="apellido" name="apellido" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="email">Email asociado</label></td>
+                    <td class="input-column">
+                        <input type="email" id="email" name="email" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label-column"><label for="clave">Generar contraseña</label></td>
+                    <td class="input-column">
+                        <input type="password" id="clave" name="password" placeholder="Se generará una contraseña aleatoria">
                         <button type="button" id="generar-password" class="activo configBotones">
                             <span class="material-symbols-outlined botones">lock_reset</span>Generar
                         </button>
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-column"><label for="rol">Asignar rol</label></td>
+                    <td class="label-column"><label for="rol_id">Asignar rol</label></td>
                     <td class="input-column">
-                        <select id="rol" name="rol">
+                        <select id="rol_id" name="rol">
                             <option value="" disabled selected>Seleccionar rol</option>
-                            <option value="0">Administrador</option>
-                            <option value="1">Usuario</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Usuario</option>
                         </select>
                     </td>
                 </tr>
@@ -76,7 +88,7 @@
                 <span class="material-symbols-outlined botones">add_circle</span>Crear usuario
             </button>
         </div>
-    </div>
+    </div>    
 
     <!-- JS -->
     <script src="/public/js/panel.js"></script>
