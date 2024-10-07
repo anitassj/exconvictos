@@ -335,7 +335,7 @@ select option:disabled {
     font-size: 16px;
     color: black;
     transition: border-color 0.3s ease;
-    margin-right: 21px;
+    /* margin-right: 21px; */
 }
 
 .form-crear-usuario .input-column input:focus,
@@ -353,10 +353,6 @@ select option:disabled {
     text-align: center;
     left: 0;
 }
-
-/* .leido {
-    background-color: #e0e0e0; 
-} */
 
 .no-leido {
     background-color: #c6e3e6; 

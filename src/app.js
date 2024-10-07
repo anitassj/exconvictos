@@ -57,8 +57,8 @@ app.use('/', rutaUsuarioVehiculos);
 app.use('/', rutaPoliza);
 app.use('/', rutaVehiculo);
 app.use('/', rutaCrearUsuario);
-app.use('/', rutaUsuarioDatosPers);
-app.use('/', rutaUsuarioDenunciarSin);
+// app.use('/', rutaUsuarioDatosPers);
+// app.use('/', rutaUsuarioDenunciarSin);
 
 // rutas API (BACKEND) ------------------------------------
 const rutaDatos = require('./routes/guardar-datos');
