@@ -37,10 +37,45 @@
     </header>
 
     <div class="contenedor-datos">
-        <p>
-            ANITA: acá voy a ver q le invento,m algo así como botones q lleven a las funciones q se pueden hacer en el panel. Lo hago cuando termino mis tareas, por ahora dejarlo así
-        </p>
-    </div>
+        <h3>Acceso directo</h3>
+        <div class="tarjetas-container">
+            <div class="tarjeta">
+                <a href="/panel" data-content="Clientes" class="link-general">
+                    <span class="material-symbols-outlined icono-general">home</span>Inicio
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="/vistaClientes" data-content="Clientes" class="link-general">
+                    <span class="material-symbols-outlined icono-general">format_list_bulleted</span>Clientes
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="/solicitudes" data-content="Solicitudes" class="link-general">
+                    <span class="material-symbols-outlined icono-general">visibility</span>Solicitudes
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="/cargar_usuario" data-content="addCliente" id="cargar-cliente" class="link-general">
+                    <span class="material-symbols-outlined icono-general">upgrade</span>Cargar cliente
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="/crear_usuario" data-content="addUsuario" id="cargar-usuario" class="link-general">
+                    <span class="material-symbols-outlined icono-general">add</span>Crear usuario
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="" data-content="addCobertura" id="cargar-coberturas" class="link-general">
+                    <span class="material-symbols-outlined icono-general">open_run</span>Coberturas
+                </a>
+            </div>
+        </div>
+        <!-- VER SI LO DEJO O LO SACO: ANITAA -->
+        <!-- <div class="buscador-inicio">
+            <input type="text" placeholder="Buscar cliente..." class="buscador-inicio-input">
+            <button class="activo">Buscar</button>
+        </div> -->
+    </div>      
 
     <script src="/public/js/panel.js"></script>
     <script src="/public/js/perfil_usuario.js"></script>

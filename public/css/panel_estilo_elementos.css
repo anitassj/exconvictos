@@ -511,3 +511,64 @@ td {
     background-color: #aadde3; 
     font-weight: bold;
 }
+
+/* ESTILO TARJETAS INICIO ----------------------------------------------------- */
+/* contenedor de tarjetas -- */
+.tarjetas-container {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+    margin-top: 20px;
+}
+
+/* estilos tarjetas -- */
+.tarjeta {
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    padding: 15px; 
+    text-align: center; 
+    transition: box-shadow 0.3s ease; 
+}
+
+.tarjeta:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+/* enlaces e iconos -- */
+.link-general {
+    display: flex; 
+    align-items: center;
+    color: #2197a3;
+    text-decoration: none; 
+    font-size: 16px; 
+}
+
+.material-symbols-outlined.icono-general {
+    font-size: 36px; 
+    margin-right: 8px;
+}
+
+/* BUSCADOR DE INICIO --------------------------------------------------------- */
+
+/* contenedor del buscador */
+.buscador-inicio {
+    display: flex; 
+    margin-top: 30px; 
+    justify-content: center; 
+}
+
+.buscador-inicio-input {
+    padding: 12px; 
+    border: 1px solid #ddd; 
+    border-radius: 6px; 
+    width: 300px; 
+    font-size: 16px; 
+    margin-right: 10px; 
+    transition: border-color 0.3s ease; 
+}
+
+.buscador-inicio-input:focus {
+    border-color: #2197a3; 
+    outline: none;
+}
