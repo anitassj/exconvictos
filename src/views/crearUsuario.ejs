@@ -67,7 +67,10 @@
                 <tr>
                     <td class="label-column"><label for="clave">Generar contraseña</label></td>
                     <td class="input-column">
-                        <input type="password" id="clave" name="password" placeholder="Se generará una contraseña aleatoria">
+                        <div class="input-container">
+                            <input type="password" id="clave" name="password" placeholder="Se generará una contraseña aleatoria">
+                            <span class="material-symbols-outlined toggle-password">visibility</span>
+                        </div>
                         <button type="button" id="generar-password" class="activo configBotones">
                             <span class="material-symbols-outlined botones">lock_reset</span>Generar
                         </button>

@@ -6,7 +6,11 @@ body {
     padding: 0;
 }
 
+.oculto {
+    display: none;
+}
 
+/* ESTILOS DE LAS PESTAÑAS EN 'VER PERFIL' ------------------------------------ */
 .tabs {
     max-width: 75%;
     margin: 40px auto;
@@ -20,6 +24,7 @@ body {
     font-size: 18px;
 }
 
+/* pestaña activa --*/
 .tabActivo {
     color: white;
     background-color: #2197a3;
@@ -28,12 +33,15 @@ body {
     border-radius: 10px 10px 0 0;
 }
 
+/* pestaña descativada -- */
 .tabDesactivado {
     background-color: #d0d2d5;
     padding: 10px;
     border-radius: 10px 10px 0 0;
     color: #686262;
 }
+
+/* ESTILO DE LOS TÍTULOS ------------------------------------------------------ */
 
 h2, h3 {
     color: #444;
@@ -43,6 +51,8 @@ h2, h3 {
     text-align: center;
 }
 
+/* ESTILO DE LOS LABELS ------------------------------------------------------- */
+
 label {
     font-weight: 600;
     color: #555;
@@ -50,41 +60,40 @@ label {
     margin-bottom: 5px;
 }
 
-.perfil input, 
-.perfil select {
+/* ESTILO DE TABLAS GENERALES ------------------------------------------------- */
+
+/* opciones desabilitadas de los select -- */
+select option:disabled {
+    color: #999;
+    background-color: #f2f2f2;
+    font-style: italic;
+}
+
+/* texto chiquito informativo de los label -- */
+.helper-text {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input, 
+select {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.perfil input:hover,
-.perfil select:hover {
+input:hover,
+select:hover {
     border-color: #275f65;
 }
 
-.perfil input:focus,
-.perfil select:focus {
+input:focus,
+select:focus {
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    border-color: #2197a3;
+    outline: none;
 }
 
-/* secciones de info personal y vehículos -------------------------------------*/
-.perfil .info-personal,
-.perfil .vehiculos-asegurados {
-    margin-bottom: 25px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px; 
-    margin-bottom: 30px;
-}
-
-.info-grid .colum1, 
-.info-grid .colum2 {
-    display: flex;
-    flex-direction: column;
-}
-
-/* inputs de los campos -------------------------------------------------------*/
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -99,94 +108,7 @@ select {
     transition: border-color 0.3s ease;
 }
 
-input:focus, 
-select:focus {
-    border-color: #2197a3;
-    outline: none;
-}
-
-.logos,
-.material-symbols-outlined {
-    text-align: center;
-    color: #2197a3;    
-    font-size: 50px !important;
-}
-
-.material-symbols-outlined {
-    border-radius: 50%;
-    border: 4px solid #2197a3;   
-    padding: 5px; 
-}
-
-.configBotones{
-    line-height: 0;
-}
-
-.material-symbols-outlined.botones {
-    color: white;    
-    font-size: 19px !important;
-    border: 0;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;     
-    margin-right: 8px;
-}
-
-.material-symbols-outlined.opciones {
-    color: rgb(0, 0, 0) !important;    
-    font-size: 19px !important;
-    border: 0;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;     
-    margin-right: 8px;
-    margin-left: 8px;
-}
-
-.material-symbols-outlined.headIcon{
-    color: white;    
-    font-size: 40px !important;
-    border: 0;
-    padding: 0;
-    text-align: center;
-    vertical-align: middle;     
-    margin-left: -13px;
-}
-
-/* sección de vehículos -------------------------------------------------------*/
-.perfil .vehiculo {
-    background-color: #f7f9fc;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border-left: 4px solid #2197a3;
-}
-
-.perfil .vehiculo h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.perfil .vehiculo label {
-    margin-top: 10px;
-    font-size: 17px;
-    color: #444;
-}
-
-.vehiculo .ver-fotos {
-    width: 20%;
-    font-size: 17px;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #2197a3;
-    font-size: 16px;
-    color: white;
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
+/* config. para 'seleccionar archivo' -- */
 input[type="file"] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-inline-start: 1px;
@@ -226,88 +148,7 @@ input[type="date" i] {
     background-color: #f9f9f9;
 }
 
-.helper-text {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 10px;
-    display: block;
-}
-
-select option:disabled {
-    color: #999;
-    background-color: #f2f2f2;
-    font-style: italic;
-}
-
-/* botones de guardar y editar ------------------------------------------------*/
-.desactivado,
-.activo {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #2197a3;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-}
-
-.poliza{
-    text-decoration: none;
-}
-
-.desactivado {
-    background-color: #6c757d; 
-    cursor: default;
-}
-
-.activo:hover {
-    background-color: #275f65;
-}
-
-.desactivado.editar-modo {
-    background-color: #2197a3; 
-    cursor: pointer;
-}
-
-.cancelar {
-    background-color: red;
-}
-
-.cancelar:hover {
-    background-color: darkred;
-}
-
-.oculto {
-    display: none;
-}
-
-.eliminar-vehiculo {
-    margin-bottom: 30px;
-    background-color: red;
-    margin-left: 84%;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.eliminar-vehiculo:hover {
-    background-color: darkred;
-}
-
-.peligro {
-    background-color: red;
-}
-
-.peligro:hover {
-    background-color: darkred;
-}
-
-/* tabla en el formulario de creación de usuario ------------------------------ */
+/* ESTILOS TABLA 'CREAR USUARIO' ---------------------------------------------- */
 .form-crear-usuario table {
     width: 100%;
     border-collapse: collapse;
@@ -352,12 +193,220 @@ select option:disabled {
     margin-top: 8px; 
 }
 
+.input-container {
+    position: relative;
+    width: 100%; 
+}
+
+.input-container input {
+    width: 100%; 
+    padding-right: 50px;
+    padding-left: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: black;
+}
+
+.input-container .toggle-password {
+    position: absolute;
+    right: 185px;   
+    cursor: pointer;
+    color: #2197a3;
+    font-size: 35px !important; 
+    border: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* ESTILOS PARA LAS COLUMNAS CON GRID ----------------------------------------- */
+
+/* contenedor -- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+    margin-bottom: 30px;
+}
+
+/* columnas del contenedor -- */
+.info-grid .colum1, 
+.info-grid .colum2 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ESTILOS DE LOS ICONOS ------------------------------------------------------ */
+
+/* config. general de icons de google -- */
+.material-symbols-outlined {
+    border-radius: 50%;
+    border: 4px solid #2197a3;   
+    padding: 5px; 
+}
+
+/* contenedor de los iconos -- */
+.configBotones{
+    line-height: 0;
+}
+
+/* iconos grandes -- */
+.logos,
+.material-symbols-outlined {
+    text-align: center;
+    color: #2197a3;    
+    font-size: 50px !important;
+}
+
+/* iconos de los botones -- */
+.material-symbols-outlined.botones {
+    color: white;    
+    font-size: 19px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;     
+    margin-right: 8px;
+}
+
+/* iconos de los listados de clientes (ver y crear usuario) -- */
+.material-symbols-outlined.opciones {
+    color: rgb(0, 0, 0) !important;    
+    font-size: 19px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;     
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+/* iconos del header -- */
+.material-symbols-outlined.headIcon{
+    color: white;    
+    font-size: 40px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;     
+    margin-left: -13px;
+}
+
+/* ESTILOS DE SECCION VEHICULOS 'VEHICULOS.EJS' ------------------------------- */
+.vehiculo {
+    background-color: #f7f9fc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #2197a3;
+}
+
+.vehiculo h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.vehiculo label {
+    margin-top: 10px;
+    font-size: 17px;
+    color: #444;
+}
+
+.vehiculo .ver-fotos {
+    width: 20%;
+    font-size: 17px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #2197a3;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+/* CONFIG. BOTONES ------------------------------------------------------------ */
+
+/* botones activado y desactivado --  */
+.desactivado,
+.activo {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #2197a3;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.desactivado {
+    background-color: #6c757d; 
+    cursor: default;
+}
+
+.activo:hover {
+    background-color: #275f65;
+}
+
+.desactivado.editar-modo {
+    background-color: #2197a3; 
+    cursor: pointer;
+}
+
+/* boton poliza -- */
+.poliza{
+    text-decoration: none;
+}
+
+/* boton cancelar -- */
+.cancelar {
+    background-color: red;
+}
+
+.cancelar:hover {
+    background-color: darkred;
+}
+
+/*  boton 'eliminar vechiulo' -- */
+.eliminar-vehiculo {
+    margin-bottom: 30px;
+    background-color: red;
+    margin-left: 84%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.eliminar-vehiculo:hover {
+    background-color: darkred;
+}
+
+/* boton 'peligro' (ESTA REPETIDO CON 'CANCELAR' DESP. CAMBIAR CLASES EN EL HTML Y BORRAR) */
+.peligro {
+    background-color: red;
+}
+
+.peligro:hover {
+    background-color: darkred;
+}
+
+/* boton de crear usuario en crearUsuario.ejs -- */
 #crear-usuario {
     margin-top: 20px; 
     text-align: center;
     left: 0;
 }
 
+/* ESTILO SOLICITUDES LEIDAS O NO LEIDAS -------------------------------------- */
 .no-leido {
     background-color: #c6e3e6; 
     font-weight: bold;

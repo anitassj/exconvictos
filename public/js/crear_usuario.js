@@ -1,4 +1,4 @@
-// buscar el usuario (email) a partir del DNI -----------------------------
+// buscar el usuario (email) a partir del DNI ---------------------------------
 document.getElementById('buscar-usuario').addEventListener('click', async () => {
     const dni = document.getElementById('dni').value;
 
@@ -27,13 +27,13 @@ document.getElementById('buscar-usuario').addEventListener('click', async () => 
     }
 });
 
-// generar contraseña aleatoria -------------------------------------------
+// generar contraseña aleatoria -----------------------------------------------
 document.getElementById('generar-password').addEventListener('click', () => {
     const generatedPassword = Math.random().toString(36).slice(-8); 
     document.getElementById('clave').value = generatedPassword;
 });
 
-// crear el usuario -------------------------------------------------------
+// crear el usuario -----------------------------------------------------------
 document.getElementById('crear-usuario').addEventListener('click', async () => {
     const dni = document.getElementById('dni').value;
     const email = document.getElementById('email').value;
@@ -78,3 +78,18 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     }
     
 });
+
+// mostrar - ocultar contraseña -----------------------------------------------
+document.querySelector('.toggle-password').addEventListener('click', () => {
+    const passwordInput = document.getElementById('clave');
+    const toggleIcon = document.querySelector('.toggle-password');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'; 
+        toggleIcon.textContent = 'visibility_off'; 
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.textContent = 'visibility'; 
+    }
+});
+
