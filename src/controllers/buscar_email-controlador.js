@@ -9,7 +9,11 @@ exports.buscarEmailPorDni = async (req, res) => {
         );
         
         if (result.length > 0) {
-            res.json({ email: result[0].email });
+            res.json({ 
+                email: result[0].email,
+                nombre: result[0].nombre, 
+                apellido: result[0].apellido
+             });
         } else {
             res.status(404).json({ error: 'No se encontró el cliente con ese DNI' });
         }
