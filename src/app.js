@@ -47,6 +47,8 @@ const rutaPoliza = require('./routes/rutas-views/poliza_views');
 const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
 const rutaCrearUsuario = require('./routes/rutas-views/crear_usuario_views');
 const rutaCoberturas = require ('./routes/rutas-views/cobeturas-views')
+const rutaUsuarioDatosPers = require('./routes/rutas-views/usuario_datospersonales_views');
+const rutaUsuarioDenunciarSin = require('./routes/rutas-views/usuario_denunciarsiniestro_views');
 
 app.use('/', rutaCargaCliente);
 app.use('/', rutaInicio);
@@ -59,8 +61,8 @@ app.use('/', rutaPoliza);
 app.use('/', rutaVehiculo);
 app.use('/', rutaCrearUsuario);
 app.use('/', rutaCoberturas);
-// app.use('/', rutaUsuarioDatosPers);
-// app.use('/', rutaUsuarioDenunciarSin);
+app.use('/', rutaUsuarioDatosPers);
+app.use('/', rutaUsuarioDenunciarSin);
 
 // rutas API (BACKEND) ------------------------------------
 const rutaDatos = require('./routes/guardar-datos');
