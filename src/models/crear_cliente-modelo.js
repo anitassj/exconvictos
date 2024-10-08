@@ -9,8 +9,10 @@ const crearUsuario = async (usuario) => {
             [nombre, apellido, dni, email, clave, rol_id]
         );
     } catch (error) {
-        throw new Error('Error al crear el usuario');
+        console.error('Error en la consulta SQL:', error);
+        throw new Error('Error al crear el usuario: ' + error.message);
     }
+
 };
 
 module.exports = crearUsuario;
