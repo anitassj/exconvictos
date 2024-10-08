@@ -56,7 +56,7 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
         rol_id
     };
     
-    const response = await fetch('/api/crear-usuario', { 
+    const response = await fetch('/api/crear_usuario', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
