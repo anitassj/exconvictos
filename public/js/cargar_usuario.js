@@ -30,6 +30,22 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     const inputFile = document.getElementById('foto');
     const file = inputFile.files[0];
 
+    // llamada a la función de validación antes de continuar
+    if (!validarDatos(datosPersonales, datosVehiculo)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Campos incompletos',
+            text: 'Por favor, completa todos los campos antes de continuar.',
+            confirmButtonText: 'Aceptar'
+        });
+        return;
+    }
+
+    // llama a la función de validación del formato de los datos antes d continuar
+    if (!validarFormatoDatos(datosPersonales, datosVehiculo)) {
+        return;
+    }
+
     const formData = new FormData(); 
 
     formData.append('datosPersonales', JSON.stringify(datosPersonales));
@@ -80,7 +96,7 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     });
 });
 
-// función para validar los datos ------------------------
+// función para validar si existen los datos --------------
 function validarDatos(datosPersonales, datosVehiculo) {
     // verificar que todos los campos obligatorios estén llenos
     for (const key in datosPersonales) {
@@ -92,6 +108,88 @@ function validarDatos(datosPersonales, datosVehiculo) {
     return true;
 }
 
+// funcion para validar el formato de los datos -----------
+function validarFormatoDatos(datosPersonales, datosVehiculo) {
+    let esValido = true;
+    let mensajesDeError = [];
+
+    // eliminar las clases de error antes de una nueva validación
+    limpiarErrores();
+
+    // validación de nombre
+    if (!datosPersonales.nombre) {
+        mensajesDeError.push('Ingresa tu nombre.');
+        document.getElementById('nombre').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de apellido
+    if (!datosPersonales.apellido) {
+        mensajesDeError.push('Ingresa tu apellido.');
+        document.getElementById('apellido').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de DNI
+    if (!/^\d{7,8}$/.test(datosPersonales.dni)) {
+        mensajesDeError.push('El DNI debe ser un número de 7 u 8 dígitos.');
+        document.getElementById('dni').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de email
+    const emailVal = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailVal.test(datosPersonales.email)) {
+        mensajesDeError.push('Ingresa un email válido.');
+        document.getElementById('email').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de celular (10 dígitos, no debe empezar con 0)
+    const celularVal = /^[1-9][0-9]{9}$/;
+    if (!celularVal.test(datosPersonales.celular)) {
+        mensajesDeError.push('El celular debe ser un número de 10 dígitos y no debe empezar con 0.');
+        document.getElementById('celular').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de patente
+    const patenteVal = /^(?:[A-Z]{2}\d{3}[A-Z]{2}|\d{3}[A-Z]{3})$/i;
+    if (!patenteVal.test(datosVehiculo.patente)) {
+        mensajesDeError.push('La patente debe tener un formato válido: AA123BB o 123ABC.');
+        document.getElementById('patente').classList.add('input-error');
+        esValido = false;
+    }
+
+    // validación de año
+    const anioActual = new Date().getFullYear();
+    if (datosVehiculo.anio < 1900 || datosVehiculo.anio > anioActual) {
+        mensajesDeError.push('Ingresa un año válido.');
+        document.getElementById('anio').classList.add('input-error');
+        esValido = false;
+    }
+
+    // mostrar errores si hay alguno
+    if (!esValido) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Errores en la carga de datos',
+            text: mensajesDeError.join(' '),
+            confirmButtonText: 'Aceptar'
+        });
+    }
+
+    return esValido;
+}
+
+// función para limpiar los errores antes de una nueva validación
+function limpiarErrores() {
+    const campos = ['nombre', 'apellido', 'dni', 'email', 'celular', 'patente', 'anio'];
+    
+    campos.forEach(campo => {
+        document.getElementById(campo).classList.remove('input-error');
+    });
+}
 
 // funcionalidad para el boton 'cancelar' -----------------
 function cancelarCambios() {

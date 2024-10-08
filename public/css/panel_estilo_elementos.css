@@ -148,6 +148,11 @@ input[type="date" i] {
     background-color: #f9f9f9;
 }
 
+/* estilo input datos ingresados erroneos -- */
+.input-error {
+    border: 2px solid red !important;
+}
+
 /* ESTILOS TABLA 'CREAR USUARIO' ---------------------------------------------- */
 .form-crear-usuario table {
     width: 100%;

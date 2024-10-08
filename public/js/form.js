@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             esValido = false;
         }
 
-        // Si no es válido, mostrar el error y detener el envío
+        // si no es válido, mostrar el error y detener el envío
         if (!esValido) {
             Swal.fire({
                 icon: 'error',
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     confirmButton: 'btn-confirm'
                 }
             });
-            return;  // Salir si hay errores
+            return; 
         }
 
-        // Si es válido, proceder con el envío del formulario
+        // si es válido, continuar con el envío del formulario
         const formData = {
             tipo: tipo,
             patente: patente,
