@@ -75,6 +75,7 @@ const rutaSolicitudes = require('./routes/solicitudes_ruta');
 const rutaVista = require('./routes/vista_ruta');
 const rutaBuscarEmail = require('./routes/buscar_email-ruta');
 const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
+const rutaUsuarioVehiculoBack = require('./routes/usuarioVehiculoRuta');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -86,6 +87,7 @@ app.use('/', rutaSolicitudes);
 app.use('/', rutaVista);
 app.use('/api', rutaCrearUsuarioEmail);
 app.use('/api', rutaBuscarEmail);
+app.use('/', rutaUsuarioVehiculoBack);
 
 
 // levantar el servidor 
