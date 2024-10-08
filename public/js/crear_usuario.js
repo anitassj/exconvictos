@@ -3,12 +3,17 @@ document.getElementById('buscar-usuario').addEventListener('click', async () => 
     const dni = document.getElementById('dni').value;
 
     if (!dni) {
-        alert('Por favor, ingresa un DNI válido.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'DNI Inválido',
+            text: 'Por favor, debe ingresar un número de DNI',
+            confirmButtonText: 'Aceptar'
+        });
         return;
     }
 
     try {
-        const response = await fetch(`/api/buscar_email/${dni}`, { method: 'GET' }); 
+        const response = await fetch(`/api/buscar_email/${dni}`, { method: 'GET' });
         if (!response.ok) {
             throw new Error('Error al buscar el usuario');
         }
@@ -17,13 +22,30 @@ document.getElementById('buscar-usuario').addEventListener('click', async () => 
         if (data.email) {
             // establecer los valores del email, nombre y apellido
             document.getElementById('email').value = data.email;
-            document.getElementById('nombre').value = data.nombre; 
-            document.getElementById('apellido').value = data.apellido; 
+            document.getElementById('nombre').value = data.nombre;
+            document.getElementById('apellido').value = data.apellido;
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Usuario Encontrado',
+                text: 'Los datos del usuario se han cargado exitosamente.',
+                confirmButtonText: 'Aceptar'
+            });
         } else {
-            alert('No se encontró un usuario con ese DNI.');
+            Swal.fire({
+                icon: 'error',
+                title: 'No Encontrado',
+                text: 'No se encontró un usuario con ese DNI.',
+                confirmButtonText: 'Aceptar'
+            });
         }
     } catch (error) {
-        alert('Error: ' + error.message);
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error: ' + error.message,
+            confirmButtonText: 'Aceptar'
+        });
     }
 });
 
@@ -42,8 +64,14 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     const clave = document.getElementById('clave').value;
     const rol_id = document.getElementById('rol_id').value;
 
+    // Validar que todos los campos estén completos
     if (!dni || !email || !nombre || !apellido || !clave || !rol_id) {
-        alert('Por favor, completa todos los campos.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campos Incompletos',
+            text: 'Por favor, completa todos los campos.',
+            confirmButtonText: 'Aceptar'
+        });
         return;
     }
 
