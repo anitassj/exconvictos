@@ -64,17 +64,20 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
         body: JSON.stringify(usuarioDatos),
     });
     
-    const contentType = response.headers.get("content-type");
+    // verifica si la respuesta del servidor fue exitosa
     if (!response.ok) {
-        const errorData = await response.text(); 
-        throw new Error(`Error: ${response.status} - ${errorData}`);
+        const errorData = await response.json().catch(() => ({})); 
+        const errorMessage = errorData.message || 'Error al crear el usuario'; 
+        alert(`Error: ${response.status} - ${errorMessage}`); 
+        return; 
     }
-    
+
     let responseData;
-    if (contentType && contentType.includes("application/json")) {
+    try {
         responseData = await response.json();
-    } else {
-        throw new Error("La respuesta no es un JSON válido");
+    } catch (error) {
+        alert('La respuesta del servidor no es un JSON válido');
+        return; 
     }
     
 });
