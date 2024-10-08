@@ -9,6 +9,11 @@ const crearUsuarioController = async (req, res) => {
         res.json({ message: 'Usuario creado exitosamente' });
     } catch (error) {
         console.error('Error al crear el usuario:', error);
+
+        if (error.message.includes('Este usuario ya ha sido creado')) {
+            return res.status(400).json({ error: 'Este usuario ya ha sido creado.' });
+        }
+
         res.status(500).json({ error: 'Error en el servidor' });
     }
 };

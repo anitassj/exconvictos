@@ -9,3 +9,5 @@ CREATE TABLE usuarios (
     rol_id INT,
     FOREIGN KEY (rol_id) REFERENCES roles(id_roles)
 );
+
+select * from usuarios;
