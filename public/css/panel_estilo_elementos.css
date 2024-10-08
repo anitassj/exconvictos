@@ -12,11 +12,9 @@ body {
 
 /* ESTILOS DE LAS PESTAÑAS EN 'VER PERFIL' ------------------------------------ */
 .tabs {
-    max-width: 75%;
-    margin: 40px auto;
-    margin-bottom: -9px;
+    max-width: 100%;
+    margin: auto;
     border-radius: 10px 0px 0px 0px;
-    margin-right: 155px;
 }
 
 .tabs a{
