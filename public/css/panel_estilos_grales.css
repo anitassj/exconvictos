@@ -88,6 +88,18 @@ header .menu-usuario a:hover {
     background-color: #1b7d88;
 }
 
+/* ESTILOS GENERALES ---------------------------------------------------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #f0f2f5, #c0d9e7);
+    margin: 0;
+    padding: 0;
+}
+
+.oculto {
+    display: none;
+}
+
 /* ESTILOS DEL CONTENEDOR  PRINCIPAL ------------------------------------------ */
 .contenedor-datos {
     width: 70%;
