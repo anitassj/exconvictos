@@ -5,7 +5,7 @@ const crearUsuario = async (usuario) => {
     try {
         // esto es lo que verifica si ya existe un usuario con ese dni o email
         const [existeUsuario] = await conexion.promise().query(
-            'SELECT id FROM usuarios WHERE dni = ? OR email = ?',
+            'SELECT id_usuarios FROM usuarios WHERE dni = ? OR email = ?',
             [dni, email]
         );
         
