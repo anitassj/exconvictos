@@ -6,7 +6,11 @@ header {
     padding: 15px 30px;
     background-color: #2197a3; 
     color: white;
-    position: relative;
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
 }
 
 /* Estilos de botones -- */
@@ -36,14 +40,14 @@ header .menu:hover, .usuario:hover {
 
 /* ESTILOS DEL MENU HAMBURGUESA ----------------------------------------------- */
 header .menu-hamburguesa {
-    display: none;
-    position: absolute;
-    top: 100%;
+    display: none; 
+    position: absolute; 
+    top: 100%; 
     left: 0;
     background-color: #275f65;
     padding: 15px;
-    z-index: 1000;
-    height: 885%;
+    z-index: 999; 
+    height: 1000%;
 }
 
 /* enlaces -- */
@@ -62,14 +66,13 @@ header .menu-hamburguesa a:hover {
 
 /* ESTILOS DEL MENU DE USUARIO ------------------------------------------------ */
 header .menu-usuario {
-    display: none;
-    position: absolute;
-    top: 100%;
+    display: none; 
+    position: absolute; 
+    top: 100%; 
     right: 0;
     background-color: #5d5959;
     padding: 15px;
-    z-index: 1000;
-    width: 10%;
+    z-index: 999; 
 }
 
 header .menu-usuario a {
@@ -88,7 +91,7 @@ header .menu-usuario a:hover {
 /* ESTILOS DEL CONTENEDOR  PRINCIPAL ------------------------------------------ */
 .contenedor-datos {
     width: 70%;
-    margin: 20px auto;
+    margin: 120px auto;
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -96,7 +99,7 @@ header .menu-usuario a:hover {
 }
 
 .acomodar-margin-panel {
-    margin: 20px auto !important;
+    margin: 120px auto !important;
     margin-right: 137px !important;
 }
 
