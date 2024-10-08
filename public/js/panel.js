@@ -28,26 +28,6 @@ document.querySelector(".menu").addEventListener("click", function() {
     document.querySelector(".menu-usuario").style.display = "none";
 });
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Cargar la tabla principal cuando inicia la página
-//     cargarTabla("Clientes");
-
-//     const menuLinks = document.querySelectorAll(".menu-hamburguesa a");
-
-//     menuLinks.forEach(link => {
-//         link.addEventListener("click", function(event) {
-//             event.preventDefault();
-//             const contenidoId = link.getAttribute("data-content");
-
-//             if (contenidoId === "Clientes") {
-//                 cargarTabla("Clientes");
-//             } else if (contenidoId === "Solicitudes") {
-//                 cargarTabla("Solicitudes");
-//             }
-//         });
-//     });
-// });
-
 // Toggle para el menú de ordenar
 document.querySelector(".ordenar").addEventListener("click", function() {
     var menu = document.querySelector(".ordenar-menu-oculto");
@@ -83,58 +63,4 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = "/cerrar-sesion";
         });
     }
-});
-
-// ------------------------------------------------------------------------------------------------
-// FUNCIONES PARA CREAR USUARIOS ------------------------------------------------------------------
-// ------------------------------------------------------------------------------------------------
-
-document.getElementById('cargar-usuario').addEventListener('click', function(event) {
-    event.preventDefault();
-
-    const contenedorDatos = document.querySelector('.contenedor-datos');
-
-    const cargarUsuario = `
-        <h2>Crear nuevo usuario</h2>
-        <div class="form-crear-usuario">
-            <table>
-                <tr>
-                    <td class="label-column"><label for="dni">DNI</label></td>
-                    <td class="input-column">
-                        <input type="text" id="dni" name="dni" placeholder="Ingresar DNI">
-                        <button type="button" id="buscar-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">search</span>Buscar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="email">Email asociado</label></td>
-                    <td class="input-column">
-                        <input type="email" id="email" name="email" placeholder="anita@gmail.com" readonly>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="password">Generar contraseña</label></td>
-                    <td class="input-column">
-                        <input type="password" id="password" name="password" placeholder="Generar contraseña">
-                        <button type="button" id="generar-password" class="activo configBotones"><span class="material-symbols-outlined botones">lock_reset</span>Generar</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label-column"><label for="rol">Asignar rol</label></td>
-                    <td class="input-column">
-                        <select id="rol" name="rol">
-                            <option value="" disabled selected>Seleccionar rol</option>
-                            <option value="admin">Administrador</option>
-                            <option value="usuario">Usuario</option>
-                        </select>
-                    </td>
-                </tr>
-                </table>
-                <button type="button" id="crear-usuario" class="activo configBotones"><span class="material-symbols-outlined botones">add_circle</span>Crear usuario</button>
-        </div>
-    `;
-
-    contenedorDatos.innerHTML = cargarUsuario;
-
- 
-    
 });
