@@ -106,6 +106,22 @@ select {
     transition: border-color 0.3s ease;
 }
 
+/* config. para cehckbox 'mostrar contraseña' -- */
+.checkbox-contenedor {
+    margin-top: 10px !important; 
+    display: inline-block !important; 
+}
+
+.checkbox-contenedor input[type="checkbox"] {
+    width: auto !important;
+    margin-right: 5px !important; 
+}
+
+.checkbox-contenedor label {
+    font-size: 16px !important; 
+    color: rgb(93, 93, 93) !important; 
+}
+
 /* config. para 'seleccionar archivo' -- */
 input[type="file"] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

@@ -94,28 +94,37 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     Swal.fire({
         icon: 'success',
         title: '¡Excelente!',
-        text: responseData.message || 'Usuario creado con éxito', 
-        confirmButtonText: 'Aceptar'
+        text: responseData.message || 'Usuario creado con éxito',
+        confirmButtonText: 'Aceptar',
+        showCancelButton: true, 
+        cancelButtonText: 'Aceptar y enviar email', 
     }).then((result) => {
         if (result.isConfirmed) {
+            // redirigir después de aceptar sin enviar el correo
+            window.location.href = '/crear_usuario'; 
+        } else if (result.isDismissed) {
+            // enviar correo con la contraseña
+            const subject = "Bienvenido a Prisma Seguros";
+            const body = `Estimado ${nombre},\n\n¡Bienvenido a Prisma Seguros! Su cuenta ha sido creada exitosamente. Estas son tus credenciales:\n\nEmail: ${email}\nContraseña: ${clave}\n\nSi tenés alguna consulta, no dudes en contactarnos.\n\nSaludos,\nEl equipo de Prisma Seguros.`;
+
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(mailtoLink, '_blank');
+            
+            // redirigir después de enviar el correo
             window.location.href = '/crear_usuario'; 
         }
     });
 
-    
 });
 
-// mostrar - ocultar contraseña -----------------------------------------------
-document.querySelector('.toggle-password').addEventListener('click', () => {
+// mostrar - ocultar contraseña con checkbox --------------------------------
+document.getElementById('toggle-password-checkbox').addEventListener('change', function () {
     const passwordInput = document.getElementById('clave');
-    const toggleIcon = document.querySelector('.toggle-password');
 
-    if (passwordInput.type === 'password') {
+    // cambiar el tipo del input según el estado del checkbox
+    if (this.checked) {
         passwordInput.type = 'text'; 
-        toggleIcon.textContent = 'visibility_off'; 
     } else {
-        passwordInput.type = 'password';
-        toggleIcon.textContent = 'visibility'; 
+        passwordInput.type = 'password'; 
     }
 });
-

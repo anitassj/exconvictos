@@ -69,15 +69,18 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-column"><label for="clave">Generar contraseña</label></td>
+                    <td class="label-column">
+                        <label for="clave">Generar contraseña</label>
+                    </td>
                     <td class="input-column">
-                        <div class="input-container">
-                            <input type="password" id="clave" name="password" placeholder="Se generará una contraseña aleatoria">
-                            <span class="material-symbols-outlined toggle-password">visibility</span>
-                        </div>
+                        <input type="password" id="clave" name="password" placeholder="Se generará una contraseña aleatoria">
                         <button type="button" id="generar-password" class="activo configBotones">
                             <span class="material-symbols-outlined botones">lock_reset</span>Generar
                         </button>
+                        <div class="checkbox-contenedor">
+                            <input type="checkbox" id="toggle-password-checkbox">
+                            <label for="toggle-password-checkbox">Mostrar Contraseña</label>
+                        </div>
                     </td>
                 </tr>
                 <tr>
