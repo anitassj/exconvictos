@@ -111,6 +111,17 @@ body {
     border-radius: 15px;
 }
 
+.contenedor-datos-con-tabs {
+    width: 70%;
+    margin: 120px auto;
+}
+
+.contenedor-datos-con-tabs .contenedor-datos {
+    width: 100%;
+    margin: 0px;
+    border-radius: 0 10px 10px 10px;
+}
+
 .acomodar-margin-panel {
     margin: 120px auto !important;
     margin-right: 137px !important;
