@@ -5,6 +5,7 @@ const crearUsuarioController = async (req, res) => {
 
     try {
         await crearUsuario({ nombre, apellido, dni, email, clave, rol_id });
+        console.log('Controlador: usuario creado exitosamente');
         res.json({ message: 'Usuario creado exitosamente' });
     } catch (error) {
         console.error('Error al crear el usuario:', error);

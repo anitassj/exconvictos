@@ -68,7 +68,12 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     if (!response.ok) {
         const errorData = await response.json().catch(() => ({})); 
         const errorMessage = errorData.message || 'Error al crear el usuario'; 
-        alert(`Error: ${response.status} - ${errorMessage}`); 
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: errorMessage,
+            confirmButtonText: 'Aceptar'
+        });
         return; 
     }
 
@@ -76,9 +81,27 @@ document.getElementById('crear-usuario').addEventListener('click', async () => {
     try {
         responseData = await response.json();
     } catch (error) {
-        alert('La respuesta del servidor no es un JSON válido');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'La respuesta del servidor no es un JSON válido',
+            confirmButtonText: 'Aceptar'
+        });
         return; 
     }
+
+    // mostrar msj de éxito y recargar la pág 
+    Swal.fire({
+        icon: 'success',
+        title: '¡Excelente!',
+        text: responseData.message || 'Usuario creado con éxito', 
+        confirmButtonText: 'Aceptar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/crear_usuario'; 
+        }
+    });
+
     
 });
 
