@@ -3,7 +3,7 @@ const conexion = require('../models/db');
 const buscarEmailPorDni = async (dni) => {
     try {
         const [result] = await conexion.promise().query(
-            'SELECT email FROM datosPersonales WHERE dni = ?',
+            'SELECT email, nombre, apellido FROM datosPersonales WHERE dni = ?',
             [dni]
         );
         return result;
