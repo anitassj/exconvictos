@@ -4,7 +4,7 @@ class UsuarioModel {
 
 	validarUsuario(email, clave) {
 		return new Promise((resolve, reject) => {
-			let sql = `SELECT * FROM datos_usuarios WHERE email = ? AND clave = ?`;
+			let sql = `SELECT * FROM usuarios WHERE email = ? AND clave = ?`;
 			
 			console.log('Ejecutando consulta SQL:', sql); /*para ver si se esta ejecutando la consulta...*/
             console.log('Con parámetros:', [email, clave]); /*y ver los parametros q esta recibiendo.*/
