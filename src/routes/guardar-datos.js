@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const validarUsuario = require("../middleware/validarUsuario");
 const SolicitanteModelo = require('../models/SolicitanteModelo');
 
-router.post('/guardar-datos', async (req, res) => {
+router.post('/guardar-datos', validarUsuario, async (req, res) => {
     try {
         const { tipo, patente, anio, idMarca, idModelo, nombre, apellido, email, celular } = req.body;
 
