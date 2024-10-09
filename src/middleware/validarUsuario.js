@@ -1,7 +1,14 @@
 const validarUsuario = (req,res, next)=>{
-    console.log("middleware de validar usuario");
+    
+
     if(!req.session.idUsuario){
         return res.redirect('/login');
+    }
+    
+    if (req.session.usuario !== undefined) {
+        if (req.session.usuario.rol_id == 2) {
+            return res.redirect('/usuario/datospersonales');
+        }
     }
 
     next();

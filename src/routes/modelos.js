@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const ModelosModel = require('../models/modelos_models');
+const validarUsuario = require('../middleware/validarUsuario');
 
 const modelosModel = new ModelosModel();
 
-router.get('/obtener-modelos/:id_marca', async (req, res) => {
+router.get('/obtener-modelos/:id_marca', validarUsuario, async (req, res) => {
     const { id_marca } = req.params; 
     const tipo = req.query.tipo;
 
