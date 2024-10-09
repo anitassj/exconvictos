@@ -2,15 +2,7 @@ const pool = require('./db');
 
 class solicitudesModelo {
     async mostrarSolicitudes() {
-        const sql = `SELECT 
-                s.id_solicitante, 
-                s.nombre,
-                v.tipo_vehiculo,
-                s.email, 
-                s.celular,
-                s.leido 
-            FROM solicitante_form s
-            LEFT JOIN datosVehiculo v ON v.id_cliente = s.id_solicitante`;
+        const sql = `SELECT id_solicitante, nombre, tipo, email, celular, leido FROM solicitante_form`;
     
         return new Promise((resolve, reject) => {
             pool.query(sql, (error, results) => {
