@@ -89,11 +89,18 @@ header .menu-usuario a:hover {
 }
 
 /* ESTILOS GENERALES ---------------------------------------------------------- */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #f0f2f5, #c0d9e7);
+
+html, body {
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #f0f2f5, #c0d9e7) no-repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 .oculto {

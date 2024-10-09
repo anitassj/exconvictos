@@ -2,6 +2,118 @@
 // FUNCIONES PARA CARGAR NUEVOS CLIENTES ----------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
+// funcion para pedir los datos desde la bd -----------------------------------
+document.addEventListener('DOMContentLoaded', async () => {
+    const tipoSelect = document.getElementById('tipo_vehiculo');
+    const marcaSelect = document.getElementById('idMarca');
+    const modeloSelect = document.getElementById('idModelo');
+    const anioSelect = document.getElementById('anio');
+    const tipoSeguroSelect = document.getElementById('tipo_seguro');
+    const sumaAseguradaInput = document.getElementById('suma_asegurada');
+    const premioTotalInput = document.getElementById('premio_total');
+    const premioMensualInput = document.getElementById('premio_mensual');
+
+    // cargar marcas segun el tipo de vehiculo --
+    tipoSelect.addEventListener('change', async () => {
+        const tipo = tipoSelect.value;
+
+        const solicitudServer = await fetch(`/obtener-marcas?tipo=${tipo}`);
+        const respServer = await solicitudServer.json();
+  
+        if (respServer.error) {
+            console.error(respServer.error);
+            return;
+        }
+  
+        marcaSelect.innerHTML = '<option value="">Selecciona una marca</option>'; 
+  
+        respServer.forEach(marca => {
+            marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
+        });
+  
+        modeloSelect.innerHTML = '<option value="">Selecciona un modelo</option>';
+        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+    });
+  
+    // cargar modelos cuando se selecciona una marca --
+    marcaSelect.addEventListener('change', async () => {
+        const idMarca = marcaSelect.value;
+        const tipo = tipoSelect.value;
+  
+        const solicitudServer = await fetch(`/obtener-modelos/${idMarca}?tipo=${tipo}`);
+        const respServer = await solicitudServer.json();
+  
+        modeloSelect.innerHTML = '<option value="">Selecciona un modelo</option>'; 
+  
+        respServer.forEach(modelo => {
+            modeloSelect.innerHTML += `<option value="${modelo.id_modelos}">${modelo.nombre}</option>`;
+        });
+  
+        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+    });
+  
+    // cargar años cuando se selecciona un modelo --
+    modeloSelect.addEventListener('change', async () => {
+        const idModelo = modeloSelect.value;
+  
+        const solicitudServer = await fetch(`/obtener-anios?modelo=${idModelo}`); // CAMBIAR RUTAA !!!!!!! 
+        const respServer = await solicitudServer.json();
+  
+        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
+  
+        respServer.forEach(anio => {
+            anioSelect.innerHTML += `<option value="${anio}">${anio}</option>`;
+        });
+    });
+
+    // cargar tipos de seguros cuando se selecciona un año --
+    anioSelect.addEventListener('change', async () => {
+        const tipo = tipoSelect.value;
+        const marca = marcaSelect.value;
+        const modelo = modeloSelect.value;
+        const anio = anioSelect.value;
+
+        // CAMBIAR RUTAA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        const solicitudTiposSeguro = await fetch(`/obtener-tipos-seguro?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}`); 
+        const tiposSeguros = await solicitudTiposSeguro.json();
+
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+
+        tiposSeguros.forEach(seguro => {
+            tipoSeguroSelect.innerHTML += `<option value="${seguro.id}">${seguro.nombre}</option>`;
+        });
+    });
+
+    // cargar valores del premio y suma asegurada cuando se selecciona tipo de seguro --
+    tipoSeguroSelect.addEventListener('change', async () => {
+        const tipo = tipoSelect.value;
+        const marca = marcaSelect.value;
+        const modelo = modeloSelect.value;
+        const anio = anioSelect.value;
+        const tipoSeguro = tipoSeguroSelect.value;
+
+        // CAMBIAR RUTAA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (tipo && marca && modelo && anio && tipoSeguro) {
+            const solicitudServer = await fetch(`/obtener-premio?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}&tipoSeguro=${tipoSeguro}`);
+            const respServer = await solicitudServer.json();
+
+            if (respServer.error) {
+                console.error(respServer.error);
+                return;
+            }
+
+            premioTotalInput.value = respServer.premio_total;
+            sumaAseguradaInput.value = respServer.suma_asegurada;
+
+            // calcular y mostrar el premio mensual --
+            const premioMensual = (respServer.premio_total / 3).toFixed(2);
+            premioMensualInput.value = premioMensual;
+        }
+    });
+});
+
 // función para guardar los datos personales y vehículos --
 document.getElementById('guardarCambios').addEventListener('click', function() {
     const datosPersonales = {
@@ -24,7 +136,9 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         tipo_seguro: document.getElementById('tipo_seguro').value,
         premio_total: document.getElementById('premio_total').value,
         suma_asegurada: document.getElementById('suma_asegurada').value,
-        uso_vehiculo: document.getElementById('uso_vehiculo').value
+        uso_vehiculo: document.getElementById('uso_vehiculo').value,
+        marca: document.getElementById('idMarca').value, 
+        modelo: document.getElementById('idModelo').value
     };
 
     const inputFile = document.getElementById('foto');
