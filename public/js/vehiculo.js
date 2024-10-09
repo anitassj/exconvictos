@@ -13,30 +13,43 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ----------------------------------------------------------------------------
-// obtener datos de los vehiculos ---------------------------------------------
+// buscar las fotos y mostrarlas  ---------------------------------------------
 // ----------------------------------------------------------------------------
-async function obtenerDatosPerfil() {
-    try {
-        const vehiculosResponse = await fetch('/ruta'); // cambiar la ruta !!!!!!!!!!!!
-            if (!vehiculosResponse.ok) {
-                throw new Error('Error al obtener los datos de los vehículos');
-            }
-            const datosVehiculos = await vehiculosResponse.json();
-    
-            const vehiculo = datosVehiculos[0];
-            if (vehiculo) {
-                document.getElementById('tipo_vehiculo').value = vehiculo.tipo || '';
-                document.getElementById('patente').value = vehiculo.patente || '';
-                document.getElementById('anio').value = vehiculo.anio || '';
-                document.getElementById('vigencia_desde').value = vehiculo.vigenciaDesde || '';
-                document.getElementById('vigencia_hasta').value = vehiculo.vigenciaHasta || '';
-                document.getElementById('tipo_seguro').value = vehiculo.tipoSeguro || '';
-                document.getElementById('premio_total').value = vehiculo.premioTotal || '';
-                document.getElementById('suma_asegurada').value = vehiculo.sumaAsegurada || '';
-                document.getElementById('uso_vehiculo').value = vehiculo.usoVehiculo || '';
-            }
 
-    } catch (error) {
-        console.error('Error al obtener datos:', error);
-    }
+// REVISAR ESTO NO SE COMO HACERLOOOO soy ANITA desp sigoooo
+function verFotos(idCliente) {
+    fetch(`/fotos/${idCliente}`) //CAMBIAR LA RUTA !!!!!!!!!!!!!!!!!!!
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al cargar las fotos');
+            }
+            return response.json();
+        })
+        .then(data => {
+            mostrarFotos(data.fotos); 
+        })
+        .catch(error => {
+            console.error(error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudieron cargar las fotos',
+            });
+        });
+}
+
+function mostrarFotos(fotos) {
+    const contenido = fotos.map(foto => `<img src="${foto}" alt="Foto del vehículo" style="width: 100%; margin-bottom: 10px;">`).join('');
+
+    Swal.fire({
+        title: 'Fotos del Vehículo',
+        html: contenido,
+        showCloseButton: true,
+        showCancelButton: false,
+        focusConfirm: false,
+        confirmButtonText: 'Cerrar',
+        customClass: {
+            popup: 'my-swal-popup'
+        }
+    });
 }

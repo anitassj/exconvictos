@@ -26,13 +26,13 @@
             </div>
         </div>
         <div class="botones-edicion oculto">
-            <button id="guardar" class="configBotones" onclick="guardarCambios()">
+            <button id="guardar" class="configBotones">
                 <span class="material-symbols-outlined botones">check</span>Guardar
             </button>
-            <button id="cancelar" class="configBotones cancelar" onclick="cancelarEdicion()">
+            <button id="cancelar" class="configBotones cancelar">
                 <span class="material-symbols-outlined botones">close</span>Cancelar
             </button>
-            <button id="agregar-vehiculo" class="configBotones" onclick="agregarVehiculo()">
+            <button id="agregar-vehiculo" class="configBotones">
                 <span class="material-symbols-outlined botones">add_circle</span>Agregar vehículo
             </button>
         </div>
@@ -44,42 +44,64 @@
                 <div class="vehiculo">
                     <div class="info-grid">
                         <div class="colum1">
+                            <label>Fotos </label>
+                            <button onclick="verFotos('vehiculo1')" class="ver-fotos configBotones">
+                                <span class="material-symbols-outlined botones">visibility</span>Ver
+                            </button>
+
                             <label for="tipo_vehiculo">Tipo de Vehículo </label>
-                            <select id="tipo_vehiculo" disabled>
+                            <select id="tipo_vehiculo" value="<%= vehiculo.tipo_vehiculo %>">
                                 <option value="" disabled selected>Selecciona un tipo de vehículo</option>
-                                <option value="auto">Auto</option>
-                                <option value="moto">Moto</option>
                             </select>
+
                             <label for="patente">Patente </label>
-                            <input type="text" id="patente" disabled>
+                            <input type="text" id="patente" value="<%= vehiculo.patente %>">
+                            
+                            <label for="uso_vehiculo">Uso del Vehículo </label>
+                            <select id="uso_vehiculo" value="<%= vehiculo.uso_vehiculo %>">
+                                <option value="" disabled selected>Selecciona un tipo de uso</option>
+                            </select>
+
                             <label for="anio">Año </label>
-                            <input type="number" id="anio"  disabled>
+                            <input type="number" id="anio" value="<%= vehiculo.anio %>">
+                            
                             <label for="vigencia_desde">Vigencia Desde </label>
-                            <input type="date" id="vigencia_desde" disabled>
+                            <input type="date" id="vigencia_desde" value="<%= vehiculo.vigencia_desde %>">
+
                             <label for="vigencia_hasta">Vigencia Hasta </label>
-                            <input type="date" id="vigencia_hasta" disabled>
+                            <input type="date" id="vigencia_hasta" value="<%= vehiculo.vigencia_hasta %>">
                         </div>
     
                         <div class="colum2">
-                            <label>Fotos </label>
-                            <button onclick="verFotos('vehiculo1')" class="ver-fotos configBotones"><span class="material-symbols-outlined botones">visibility</span>Ver</button>
-                            <label for="tipo_seguro">Tipo de Seguro </label>
-                            <select id="tipo_seguro" disabled>
+                            <label for="marca">Selecciona la marca</label>
+                            <select id="idMarca" name="idMarca" autocomplete="off" value="<%= vehiculo.marca %>">
+                                <option value="" disabled selected>Selecciona una marca</option>
+                            </select>
+                                      
+                            <label for="modelo">Selecciona el modelo</label>
+                            <select id="idModelo" name="idModelo" autocomplete="off" value="<%= vehiculo.modelo %>">
+                                <option value="" disabled selected>Selecciona un modelo</option>
+                            </select>
+
+                            <label for="anio_vehiculo">Año </label>
+                            <select id="anio_vehiculo" name="anio" autocomplete="off" value="<%= vehiculo.anio_vehiculo %>">
+                                <option value="" disabled selected>Selecciona un año</option>
+                            </select>
+
+                            <label for="tipo_seguro">Tipo de seguro </label>
+                            <select id="tipo_seguro" value="<%= vehiculo.tipo_seguro %>">
                                 <option value="" disabled selected>Selecciona un plan</option>
-                                <option value="basico">Básico</option>
-                                <option value="intermedio">Intermedio</option>
-                                <option value="premiun">Premiun</option>
                             </select>
-                            <label for="premio_total">Premio Total (en pesos) </label>
-                            <input type="number" id="premio_total" disabled>
-                            <label for="suma_asegurada">Suma Asegurada </label>
-                            <input type="number" id="suma_asegurada" disabled>
-                            <label for="uso_vehiculo">Uso del Vehículo </label>
-                            <select id="uso_vehiculo" disabled>
-                                <option value="" disabled selected>Selecciona un tipo de uso</option>
-                                <option value="particular">Particular</option>
-                                <option value="profesional">Profesional</option>
-                            </select>
+
+                            <label for="suma_asegurada">Suma asegurada </label>
+                            <input type="number" id="suma_asegurada" value="<%= vehiculo.suma_asegurada %>">
+
+                            <label for="premio_total">Premio total trimestral (en pesos) </label>
+                            <input type="number" id="premio_total" value="<%= vehiculo.premio_total %>">
+
+                            <label for="premio_mensual">Premio en cuotas</label>
+                            <input type="number" id="premio_mensual" value="<%= vehiculo.premio_mensual %>">
+                            
                         </div>
                     </div>
                 </div>

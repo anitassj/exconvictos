@@ -12,44 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ----------------------------------------------------------------------------
-// obtener los datos del perfil y mostrarlos ----------------------------------
-// ----------------------------------------------------------------------------
-
-async function obtenerDatosPerfil() {
-    try {
-        const perfilResponse = await fetch('/ruta'); // cambiar la ruta !!!!!!!!!!!!!!!!!
-        if (!perfilResponse.ok) {
-            throw new Error('Error al obtener los datos del perfil');
-        }
-        const datosPersonales = await perfilResponse.json();
-
-        document.getElementById('nombre').value = datosPersonales.nombre || '';
-        document.getElementById('apellido').value = datosPersonales.apellido || '';
-        document.getElementById('dni').value = datosPersonales.dni || '';
-        document.getElementById('email').value = datosPersonales.email || '';
-        document.getElementById('direccion').value = datosPersonales.direccion || '';
-        document.getElementById('celular').value = datosPersonales.celular || '';
-        document.getElementById('ciudad').value = datosPersonales.ciudad || '';
-        document.getElementById('provincia').value = datosPersonales.provincia || '';
-
-    } catch (error) {
-        console.error('Error al obtener datos:', error);
-    }
-}
-
-// inicializar la página con los datos del perfil ---------
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('input').forEach(input => {
-        input.disabled = true;
-    });
-    document.getElementById('guardar').disabled = true;
-
-    obtenerDatosPerfil();
-});
-
-// ----------------------------------------------------------------------------
 // modo edición y gestión de cambios -----------------------------------------
 // ----------------------------------------------------------------------------
+
+// VER ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO! soy ANITA sigo desp 
 
 let editModo = false; 
 let cambiosGuardados = false; 
