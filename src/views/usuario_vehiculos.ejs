@@ -27,15 +27,15 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="/usuario/vehiculos" id="vehiculos-aseg">
-                        <i class="fa fa-car" aria-hidden="true"></i>
-                        <span>Vehículos Asegurados</span>
-                    </a>
-                </li>
-                <li>
                     <a href="/usuario/datospersonales" id="datos-pers">
                         <i class="fa fa-id-card" aria-hidden="true"></i>
                         <span>Datos Personales</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/usuario/vehiculos" id="vehiculos-aseg">
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <span>Vehículos Asegurados</span>
                     </a>
                 </li>
                 <li>
@@ -57,37 +57,35 @@
             </div>
             <section class="vehiculos-asegurados">
                 <h3 id="titulo-vehiculos-asegurados">Vehículos Asegurados</h3>
-                <% vehiculos.forEach(vehiculo => { %>
                     <article class="vehiculo">
                         <div class="datos-cuerpo">
                             <div class="datos1">
                                 <label for="tipo_vehiculo">Tipo de Vehículo</label>
-                                <input type="text" class="dato1" value="<%= vehiculo.tipo_vehiculo %>" disabled>
+                                <input type="text" class="dato1" id="tipo_vehiculo" disabled>
                                 <label for="patente">Patente</label>
-                                <input type="text" class="dato1" value="<%= vehiculo.patente %>" disabled>
+                                <input type="text" class="dato1" id="patente" disabled>
                                 <label for="anio">Año</label>
-                                <input type="number" class="dato1" value="<%= vehiculo.anio %>" disabled>
+                                <input type="number" class="dato1" id="anio" disabled>
                                 <label for="vigencia_desde">Vigencia Desde</label>
-                                <input type="date" class="dato1" value="<%= vehiculo.vigencia_desde.toISOString().split('T')[0] %>" disabled>
+                                <input type="date" class="dato1" id="vigencia_desde" disabled>
                                 <label for="vigencia_hasta">Vigencia Hasta</label>
-                                <input type="date" class="dato1" value="<%= vehiculo.vigencia_hasta.toISOString().split('T')[0] %>" disabled>
+                                <input type="date" class="dato1" id="vigencia_hasta" disabled>
                             </div>
                             <div class="datos2">
                                 <label for="tipo_seguro">Tipo de Seguro</label>
-                                <input type="text" class="dato1" value="<%= vehiculo.tipo_seguro %>" disabled>
+                                <input type="text" class="dato1" id="tipo_seguro" disabled>
                                 <label for="premio_total">Premio Total</label>
-                                <input type="number" class="dato1" value="<%= vehiculo.premio_total %>" disabled>
+                                <input type="number" class="dato1" id="premio_total" disabled>
                                 <label for="suma_asegurada">Suma Asegurada</label>
-                                <input type="number" class="dato1" value="<%= vehiculo.suma_asegurada %>" disabled>
+                                <input type="number" class="dato1" id="suma_asegurada" disabled>
                                 <label for="uso_vehiculo">Uso del Vehículo</label>
-                                <input type="text" class="dato1" value="<%= vehiculo.uso_vehiculo %>" disabled>
+                                <input type="text" class="dato1" id="uso_vehiculo" disabled>
                             </div>
                         </div>
                         <div class="vehiculo-limite">
                             <hr class="limite">
                         </div>
                     </article>
-                <% }); %>
             </section>
         </div>
     </div>

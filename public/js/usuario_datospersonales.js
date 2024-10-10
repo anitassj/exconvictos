@@ -59,33 +59,33 @@ menuHamburguesa.addEventListener('click', () => {
     iconoBarras.classList.toggle('ocultar');
 });
 
-// fetch para pedir datos -------------------------------------
-// document.addEventListener('DOMContentLoaded', () => {
-//     const id_cliente = /* Aquí debes asignar el ID del cliente */;
-//     const url = `/api/datos-personales/${id_cliente}`; // CAMBIAR RUTA !!!!!!!!!!!!!
+// usuario_datospersonales.js
+document.addEventListener('DOMContentLoaded', () => {
+    const id_cliente = 2; // falta dinamizar
+    const url = `/usuario/datospersonales/${id_cliente}`;
 
-//     fetch(url)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Error en la red');
-//             }
-//             return response.json(); 
-//         })
-//         .then(data => {
-//             document.getElementById('nombre').value = data.nombre;
-//             document.getElementById('apellido').value = data.apellido;
-//             document.getElementById('dni').value = data.dni;
-//             document.getElementById('email').value = data.email;
-//             document.getElementById('celular').value = data.celular;
-//             document.getElementById('direccion').value = data.direccion;
-//             document.getElementById('ciudad').value = data.ciudad;
-//             document.getElementById('provincia').value = data.provincia;
+    fetch(url)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error en la red');
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        document.getElementById('nombre').value = data.nombre;
+        document.getElementById('apellido').value = data.apellido;
+        document.getElementById('dni').value = data.dni;
+        document.getElementById('email').value = data.email;
+        document.getElementById('celular').value = data.celular;
+        document.getElementById('direccion').value = data.direccion;
+        document.getElementById('ciudad').value = data.ciudad;
+        document.getElementById('provincia').value = data.provincia;
 
-//             document.getElementById('nombre').innerText = data.nombre;
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             const contenedor = document.querySelector('.contenedor');
-//             contenedor.innerHTML = '<p>Error al cargar los datos personales.</p>';
-//         });
-// });
+        document.getElementById('nombre').innerText = data.nombre;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        const contenedor = document.querySelector('.contenedor');
+        contenedor.innerHTML = '<p>Error al cargar los datos personales.</p>';
+    });
+});
