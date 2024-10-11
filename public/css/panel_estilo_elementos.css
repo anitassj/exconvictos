@@ -411,6 +411,17 @@ td {
     margin-left: 8px;
 }
 
+.material-symbols-outlined.opcionesHead {
+    color: #2197a3 !important;
+    font-size: 49px !important;
+    border: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-left: 368px;
+}
+
 /* ESTILOS DE SECCION VEHICULOS 'VEHICULOS.EJS' ------------------------------- */
 .vehiculo {
     background-color: #f7f9fc;
@@ -503,15 +514,6 @@ td {
 }
 
 .eliminar-vehiculo:hover {
-    background-color: darkred;
-}
-
-/* boton 'peligro' (ESTA REPETIDO CON 'CANCELAR' DESP. CAMBIAR CLASES EN EL HTML Y BORRAR) */
-.peligro {
-    background-color: red;
-}
-
-.peligro:hover {
     background-color: darkred;
 }
 

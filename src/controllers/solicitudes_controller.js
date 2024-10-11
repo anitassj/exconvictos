@@ -1,11 +1,11 @@
-const solicitudesModelo = require('../models/solicitudes_modelo');
-const SolicitudesModelo = new solicitudesModelo();
+const SolicitudesModelo = require('../models/solicitudes_modelo');
+const solicitudesModelo = new SolicitudesModelo();
 
-class solicitudesController {
+class SolicitudesController {
     async mostrarDatos(req, res) {
         try {
             console.log('Ejecutando la consulta a la base de datos');
-            const datos = await SolicitudesModelo.mostrarSolicitudes() || [];
+            const datos = await solicitudesModelo.mostrarSolicitudes() || [];
             console.log('Datos obtenidos:', datos);
             res.render('solicitudes/listado', { sSolicitudes: datos });
         } catch (error) {
@@ -17,15 +17,15 @@ class solicitudesController {
     async mostrarFormulario(req, res) {
         try {
             console.log('Ejecutando la consulta a la base de datos');
-            const solicitud = await SolicitudesModelo.obtenerSolicitud(req.params.id);
+            const solicitud = await solicitudesModelo.obtenerSolicitud(req.params.id);
 
-            if (solicitud === null || solicitud === undefined) {
+            if (!solicitud) {
                 res.redirect("/solicitudes");
                 return;
             }
 
             console.log('Datos obtenidos:', solicitud);
-            res.render('solicitudes/formulario', { solicitud: solicitud });
+            res.render('solicitudes/formulario', { solicitud });
         } catch (error) {
             console.log("Error al obtener datos:", error);
             res.status(500).send("Error al obtener los datos");
@@ -35,10 +35,10 @@ class solicitudesController {
     async marcarComoLeido(req, res) {
         try {
             const id = req.params.id;
-            const success = await SolicitudesModelo.marcarLeido(id);
+            const success = await solicitudesModelo.marcarLeido(id);
     
             if (success) {
-                res.status(200).send({ message: "Solicitud marcada como leída", id: id });
+                res.status(200).send({ message: "Solicitud marcada como leída", id });
             } else {
                 res.status(500).send("Error al marcar la solicitud como leída");
             }
@@ -46,8 +46,36 @@ class solicitudesController {
             console.log("Error al marcar como leído:", error);
             res.status(500).send("Error al marcar la solicitud como leída");
         }
+    }
+
+    async archivarSolicitud(req, res) {
+        const { id } = req.params;
+    
+        try {
+            const success = await solicitudesModelo.archivarSolicitud(id);
+    
+            if (success) {
+                res.json({ success: true });
+            } else {
+                res.status(500).json({ success: false });
+            }
+        } catch (error) {
+            console.error('Error al archivar la solicitud:', error);
+            res.status(500).json({ success: false });
+        }
     }    
+
+    async mostrarSolicitudesArchivadas(req, res) {
+        try {
+            const datos = await solicitudesModelo.mostrarSolicitudesArchivadas();
+            console.log('Datos de solicitudes archivadas:', datos);
+            res.json(datos);
+        } catch (error) {
+            console.log("Error al obtener solicitudes archivadas:", error);
+            res.status(500).send("Error al obtener las solicitudes archivadas");
+        }
+    }
     
 }
 
-module.exports = solicitudesController;
+module.exports = SolicitudesController;

@@ -15,8 +15,15 @@ CREATE TABLE solicitante_form (
 ); 
 
 -- AGREGUEN ESTO A LA TABLA !!
+-- 1)
 use sistema_prismaseguros;
 ALTER TABLE solicitante_form ADD COLUMN leido BOOLEAN DEFAULT FALSE;
+
+-- 2)
+USE sistema_prismaseguros;
+ALTER TABLE solicitante_form
+ADD archivada TINYINT(1) DEFAULT 0 NOT NULL;
+
 
 -- inserciones de prueba
 insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 

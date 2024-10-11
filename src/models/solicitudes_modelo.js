@@ -1,9 +1,9 @@
 const pool = require('./db'); 
 
-class solicitudesModelo {
+class SolicitudesModelo {
     async mostrarSolicitudes() {
-        const sql = `SELECT id_solicitante, nombre, tipo, email, celular, leido FROM solicitante_form`;
-    
+        const sql = `SELECT id_solicitante, nombre, tipo, email, celular, leido FROM solicitante_form WHERE archivada = FALSE`;
+
         return new Promise((resolve, reject) => {
             pool.query(sql, (error, results) => {
                 if (error) {
@@ -13,10 +13,10 @@ class solicitudesModelo {
                 resolve(results || []);
             });
         });
-    }      
-    
+    }
+
     async obtenerSolicitud(id) {
-        const sql =   `
+        const sql = `
         SELECT 
             solicitante_form.id_solicitante,
             solicitante_form.tipo,
@@ -36,7 +36,7 @@ class solicitudesModelo {
             modelos ON solicitante_form.id_modelo = modelos.id_modelos
         WHERE 
             solicitante_form.id_solicitante = ?`;
-        
+
         return new Promise((resolve, reject) => {
             pool.query(sql, [id], (error, results) => {
                 if (error) {
@@ -46,11 +46,11 @@ class solicitudesModelo {
                 resolve(results[0]);
             });
         });
-    } 
+    }
 
     async marcarLeido(id) {
         const sql = `UPDATE solicitante_form SET leido = TRUE WHERE id_solicitante = ?`;
-        
+
         return new Promise((resolve, reject) => {
             pool.query(sql, [id], (error, results) => {
                 if (error) {
@@ -61,7 +61,36 @@ class solicitudesModelo {
             });
         });
     }
-    
+
+    // método para archivar una solicitud
+    async archivarSolicitud(id) {
+        const sql = `UPDATE solicitante_form SET archivada = TRUE WHERE id_solicitante = ?`;
+
+        return new Promise((resolve, reject) => {
+            pool.query(sql, [id], (error, results) => {
+                if (error) {
+                    console.error("Error al archivar la solicitud:", error);
+                    return resolve(false); 
+                }
+                resolve(true); 
+            });
+        });
+    }
+
+    async mostrarSolicitudesArchivadas() {
+    const sql = `SELECT id_solicitante, nombre, tipo, email, celular FROM solicitante_form WHERE archivada = TRUE`;
+
+    return new Promise((resolve, reject) => {
+        pool.query(sql, (error, results) => {
+            if (error) {
+                console.error("Error en la consulta de solicitudes archivadas:", error);
+                return resolve([]); 
+            }
+            resolve(results || []); 
+        });
+    });
 }
 
-module.exports = solicitudesModelo;
+}
+
+module.exports = SolicitudesModelo;

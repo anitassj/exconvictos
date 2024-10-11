@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// enviar cotización al solicitante  ------------------------------------------
+// ----------------------------------------------------------------------------
 function enviarCotizacion() {
     const emailField = document.getElementById('email');
     const celularField = document.getElementById('celular');
@@ -44,20 +47,22 @@ function enviarCotizacion() {
     });
 }
 
+// ----------------------------------------------------------------------------
+// marcar las solicitudes como leído / no leído  ------------------------------
+// ----------------------------------------------------------------------------
 function marcarComoLeido(id) {
     fetch(`/solicitudes/${id}/marcar-leido`, {
         method: 'PUT',
     })
     .then(response => {
         if (response.ok) {
-            return response.json(); // Espera la respuesta JSON
+            return response.json(); 
         } else {
             throw new Error("Error al marcar la solicitud como leída.");
         }
     })
     .then(data => {
-        // Redirige al formulario con el ID de la solicitud
-        window.location.href = `/solicitudes/${data.id}`; // Redirige a mostrarFormulario
+        window.location.href = `/solicitudes/${data.id}`; 
     })
     .catch(error => {
         console.error("Error al enviar la solicitud:", error);
@@ -65,3 +70,79 @@ function marcarComoLeido(id) {
     });
 }
 
+// ----------------------------------------------------------------------------
+// archivar las solicitudes  --------------------------------------------------
+// ----------------------------------------------------------------------------
+function archivarSolicitud(id) {
+    fetch(`/archivar/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                title: 'Solicitud archivada',
+                text: 'La solicitud ha sido archivada correctamente.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                window.location.reload();
+            });
+        } else {
+            Swal.fire({
+                title: 'Error',
+                text: 'Hubo un problema al archivar la solicitud.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: 'Hubo un error al archivar la solicitud.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    });
+}
+
+function mostrarSolicitudesArchivadas() {
+    fetch('/solicitudes/archivadas') 
+        .then(response => {
+            console.log('Respuesta del servidor:', response); 
+            if (!response.ok) {
+                throw new Error('Error al obtener las solicitudes archivadas.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Solicitudes archivadas:', data); 
+            const solicitudesLista = document.getElementById('solicitudes-lista');
+            solicitudesLista.innerHTML = ''; 
+
+            data.forEach(solicitud => {
+                const solicitudDiv = document.createElement('div');
+                solicitudDiv.innerHTML = `
+                    <p>ID: ${solicitud.id_solicitante}</p>
+                    <p>Nombre: ${solicitud.nombre}</p>
+                    <p>Email: ${solicitud.email}</p>
+                    <p>Celular: ${solicitud.celular}</p>
+                `;
+                solicitudesLista.appendChild(solicitudDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error en la llamada fetch:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'No se pudieron cargar las solicitudes archivadas.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+        });
+}
