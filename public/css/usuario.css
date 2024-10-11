@@ -510,6 +510,11 @@ form .boton-denunciar:hover {
     text-decoration: none;
 }
 
+.eleccion-cuerpo a:nth-child(2) {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .eleccion-cuerpo a:hover {
     transform: scale(1.05);
     border: 1px solid #2197a3;
@@ -522,15 +527,22 @@ form .boton-denunciar:hover {
     align-items: center;
     justify-content: center;
     padding: 30px;
-    font-size: 50px;
+    font-size: 35px;
     border-radius: 15px 0 0 15px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    max-width: 40px;
 }
 
 .datos-info {
-    font-size: 30px;
+    font-size: 25px;
     display: flex;
     align-items: center;
     margin-left: 10px;
-    text-align: center;
     color: #2197a3;
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    justify-content: center;
 }
