@@ -60,6 +60,7 @@ menuHamburguesa.addEventListener('click', () => {
 });
 
 // usuario_datospersonales.js
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const id_cliente = 2; // falta dinamizar
     const url = `/usuario/datospersonales/${id_cliente}`;
@@ -89,3 +90,4 @@ document.addEventListener('DOMContentLoaded', () => {
         contenedor.innerHTML = '<p>Error al cargar los datos personales.</p>';
     });
 });
+*/

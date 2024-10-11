@@ -42,12 +42,13 @@ const rutaLogin = require('./routes/rutas-views/login_views');
 const rutaPerfil = require('./routes/rutas-views/perfil_usuario_views');
 const rutaRecover = require('./routes/rutas-views/recover_views');
 const rutaForm = require('./routes/rutas-views/solicitante_form_views'); 
-const rutaUsuarioVehiculos = require('./routes/rutas-views/usuario_vehiculos_views');
 const rutaPoliza = require('./routes/rutas-views/poliza_views');
 const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
 const rutaCrearUsuario = require('./routes/rutas-views/crear_usuario_views');
 const rutaCoberturas = require ('./routes/rutas-views/cobeturas-views')
+const rutaUsuarioPanel = require('./routes/rutas-views/usuario_panel_views');
 const rutaUsuarioDatosPers = require('./routes/rutas-views/usuario_datospersonales_views');
+const rutaUsuarioVehiculos = require('./routes/rutas-views/usuario_vehiculos_views');
 const rutaUsuarioDenunciarSin = require('./routes/rutas-views/usuario_denunciarsiniestro_views');
 
 app.use('/', rutaCargaCliente);
@@ -56,13 +57,14 @@ app.use('/', rutaLogin);
 app.use('/', rutaPerfil);
 app.use('/', rutaRecover);
 app.use('/', rutaForm);
-app.use('/', rutaUsuarioVehiculos);
 app.use('/', rutaPoliza);
 app.use('/', rutaVehiculo);
 app.use('/', rutaCrearUsuario);
 app.use('/', rutaCoberturas);
-app.use('/', rutaUsuarioDatosPers);
-app.use('/', rutaUsuarioDenunciarSin);
+app.use('/', rutaUsuarioPanel);
+app.use('/usuario', rutaUsuarioDatosPers);
+app.use('/usuario', rutaUsuarioVehiculos);
+app.use('/usuario', rutaUsuarioDenunciarSin);
 
 // rutas API (BACKEND) ------------------------------------
 const rutaDatos = require('./routes/guardar-datos');
