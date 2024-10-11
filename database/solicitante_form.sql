@@ -20,13 +20,13 @@ ALTER TABLE solicitante_form ADD COLUMN leido BOOLEAN DEFAULT FALSE;
 
 -- inserciones de prueba
 insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
-values ('Auto', 'ABC123', 2023, 1, 1, 'Juan', 'Pérez', 'juan.perez@icloud.com', '1234567890');
+values ('Auto', 'ABC123', 2023, 1, 1, 'Clari', 'Marti', 'clar.martz@gmail.com', '1234567890');
 
 insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
-values ('Moto', 'XYZ789', 2022, 2, 2, 'Ana', 'García', 'ana.garcia@gmail.com', '0987654321');
+values ('Moto', 'XYZ789', 2022, 2, 2, 'Clara', 'Martin', 'clara.maratin@gmail.com', '0987654321');
 
 insert into solicitante_form (tipo, patente, anio, id_marca, id_modelo, nombre, apellido, email, celular) 
-values ('Auto', 'BI456ED', 2024, 10, 3, 'Carlos', 'Lopez', 'carlos.lopez@gmail.com', '1122334455');
+values ('Auto', 'BI456ED', 2024, 10, 3, 'Clar', 'Martinne', 'clarmartinne@gmail.com', '1122334455');
 
 
 select * from solicitante_form;
