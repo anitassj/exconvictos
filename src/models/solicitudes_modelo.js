@@ -16,7 +16,26 @@ class solicitudesModelo {
     }      
     
     async obtenerSolicitud(id) {
-        const sql = `SELECT * FROM solicitante_form WHERE id_solicitante = ?`;
+        const sql =   `
+        SELECT 
+            solicitante_form.id_solicitante,
+            solicitante_form.tipo,
+            solicitante_form.patente,
+            solicitante_form.anio,
+            solicitante_form.nombre,
+            solicitante_form.apellido,
+            solicitante_form.email,
+            solicitante_form.celular,
+            marcas.nombre AS nombre_marca, 
+            modelos.nombre AS nombre_modelo
+        FROM 
+            solicitante_form
+        JOIN 
+            marcas ON solicitante_form.id_marca = marcas.id_marcas
+        JOIN 
+            modelos ON solicitante_form.id_modelo = modelos.id_modelos
+        WHERE 
+            solicitante_form.id_solicitante = ?`;
         
         return new Promise((resolve, reject) => {
             pool.query(sql, [id], (error, results) => {
