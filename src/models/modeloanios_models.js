@@ -8,12 +8,11 @@ class ModelosAniosModel {
                 FROM modelos_anios
                 WHERE id_modelos = ?
             `;
-
             conexion.query(sql, [id_modelos], (err, results) => {
                 if (err) {
                     reject(err);
                 } else {
-                    console.log('Anios disponibles para el modelo', results);
+                    console.log('Anios disponibles para el modelo: ', results);
                     resolve(results);
                 }
             });
