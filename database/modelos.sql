@@ -8,10 +8,11 @@ CREATE TABLE modelos(
     FOREIGN KEY (id_marcas) REFERENCES marcas(id_marcas) -- Cambie id_marca por id_marcas
 );
 
+
 -- Inserciones para la tabla de modelos de AUTOS!!!
 
 -- Toyota
-INSERT INTO modelos (id_marcas, nombre) VALUES (1, 'Corolla');
+INSERT INTO modelos (id_marcas, nombre,anio) VALUES (1, 'Corolla');
 INSERT INTO modelos (id_marcas, nombre) VALUES (1, 'Hilux');
 INSERT INTO modelos (id_marcas, nombre) VALUES (1, 'Yaris');
 -- Volkswagen

@@ -13,9 +13,10 @@ class ModelosModel {
 
             conexion.query(sql, [id_marcas, tipo], (err, results) => {
                 if (err) {
+                    console.error('Error al obtener modelos:', err); 
                     reject(err);
                 } else {
-                    console.log('resultados de la consulta',results);
+                    console.log('Resultados de la consulta:', results);
                     resolve(results);
                 }
             });

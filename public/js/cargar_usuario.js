@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     modeloSelect.addEventListener('change', async () => {
         const idModelo = modeloSelect.value;
   
-        const solicitudServer = await fetch(`/obtener-anios?modelo=${idModelo}`); // CAMBIAR RUTAA !!!!!!! 
+        const solicitudServer = await fetch(`/obtener-anios/${idModelo}`); // CAMBIAR RUTAA !!!!!!! 
         const respServer = await solicitudServer.json();
   
         anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
