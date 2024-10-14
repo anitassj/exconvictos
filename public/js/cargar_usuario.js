@@ -2,7 +2,12 @@
 // FUNCIONES PARA CARGAR NUEVOS CLIENTES ----------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 
-// funcion para pedir los datos desde la bd -----------------------------------
+    /* 
+        SOLICITAR DATOS AL SERVIDOR Y MOSTRARLOS EN LA VENTANA 'CARGAR CLIENTE' --
+        esta función solicita las marcas de los vehiculos según el tipo seleccionado (auto o moto), 
+        los modelos según la marca seleccionada, los años según el modelo seleccionado, 
+    */
+
 document.addEventListener('DOMContentLoaded', async () => {
     const tipoSelect = document.getElementById('tipo_vehiculo');
     const marcaSelect = document.getElementById('idMarca');
@@ -13,109 +18,168 @@ document.addEventListener('DOMContentLoaded', async () => {
     const premioTotalInput = document.getElementById('premio_total');
     const premioMensualInput = document.getElementById('premio_mensual');
 
-    // cargar marcas segun el tipo de vehiculo --
-    tipoSelect.addEventListener('change', async () => {
-        const tipo = tipoSelect.value;
+    /* 
+        CARGAR MARCAS SEGÚN EL TIPO DE VEHÍCULO SELECCIONADO --
+        se activa cuando el usuario cambia la selección en el menú de 
+        "tipo de Vehículo" por 'auto' o 'moto'
+    */
 
-        const solicitudServer = await fetch(`/obtener-marcas?tipo=${tipo}`);
-        const respServer = await solicitudServer.json();
+    tipoSelect.addEventListener('change', async () => {
+        const tipo = tipoSelect.value; // se carga con auto o moto según lo que seleccione
+
+        const solicitudServidor = await fetch(`/obtener-marcas?tipo=${tipo}`); // solicitar marcas al servidor
+        const respServidor = await solicitudServidor.json();  // esperar la rta del servidor y convertirlo en JSON
   
-        if (respServer.error) {
-            console.error(respServer.error);
+        // si la respuesta tiene un error, detener la ejecución y mostrar en consola
+        if (respServidor.error) {
+            console.error(respServidor.error);
             return;
         }
   
-        marcaSelect.innerHTML = '<option value="">Selecciona una marca</option>'; 
+        // reiniciar el campo marcas, borra las marcas cargadas y agrega una opcion por defecto
+        marcaSelect.innerHTML = '<option value="" >Selecciona la marca</option>'; 
   
-        respServer.forEach(marca => {
+        // itera sobre el array de marcas y añade cada marca como una nueva opción
+        respServidor.forEach(marca => {
             marcaSelect.innerHTML += `<option value="${marca.id_marcas}">${marca.nombre}</option>`;
         });
   
-        modeloSelect.innerHTML = '<option value="">Selecciona un modelo</option>';
-        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
-        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+        // reiniciar los campos modelo, año y tipo de plan (borra lo que esté cargado)
+        modeloSelect.innerHTML = '<option value="">Selecciona el modelo</option>';
+        anioSelect.innerHTML = '<option value="">Selecciona el año</option>';
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona el tipo de plan</option>'; 
     });
   
-    // cargar modelos cuando se selecciona una marca --
+    /* 
+        CARGAR MODELOS SEGÚN LA MARCA SELECCIONADA --
+        se activa cuando el usuario selecciona una marca en el menú de "marca",
+        mostrando los modelos relacionados a cada marca
+    */
+
     marcaSelect.addEventListener('change', async () => {
-        const idMarca = marcaSelect.value;
-        const tipo = tipoSelect.value;
+        const idMarca = marcaSelect.value; // se carga con el ID de la marca seleccionada
+        const tipo = tipoSelect.value; 
   
-        const solicitudServer = await fetch(`/obtener-modelos/${idMarca}?tipo=${tipo}`);
-        const respServer = await solicitudServer.json();
+        const solicitudServidor = await fetch(`/obtener-modelos/${idMarca}?tipo=${tipo}`); // solicitar modelos al servidor según el ID de la marca y el tipo de vehiculo
+        const respServidor = await solicitudServidor.json(); 
+
+        if (respServidor.error) {
+            console.error(respServidor.error);
+            return;
+        }
   
-        modeloSelect.innerHTML = '<option value="">Selecciona un modelo</option>'; 
+        // reiniciar el campo modelos, borra los modelos cargados y agrega una opcion por defecto
+        modeloSelect.innerHTML = '<option value="">Selecciona el modelo</option>'; 
   
-        respServer.forEach(modelo => {
+        // itera sobre el array de modelos y añade cada modelo como una nueva opción
+        respServidor.forEach(modelo => {
             modeloSelect.innerHTML += `<option value="${modelo.id_modelos}">${modelo.nombre}</option>`;
         });
   
-        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
-        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+        // reiniciar los campos año y tipo de plan (borra lo que esté cargado)
+        anioSelect.innerHTML = '<option value="">Selecciona el año</option>';
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona el tipo de seguro</option>'; 
     });
   
-    // cargar años cuando se selecciona un modelo --
+    /* 
+        CARGAR LOS AÑOS SEGÚN EL MODELO SELECCIONADO --
+        se activa cuando el usuario selecciona un modelo en el menú de "modelos",
+        mostrando los años relacionados a ese modelo
+    */
+
     modeloSelect.addEventListener('change', async () => {
-        const idModelo = modeloSelect.value;
+        const idModelo = modeloSelect.value; // se carga con el ID del modelo seleccionado
   
-        const solicitudServer = await fetch(`/obtener-anios/${idModelo}`); 
-        const respServer = await solicitudServer.json();
+        const solicitudServidor = await fetch(`/obtener-anios/${idModelo}`);  // solicitar los años asociados al servidor según el ID del modelo seleccionado
+        const respServidor = await solicitudServidor.json(); 
+
+        if (respServidor.error) {
+            console.error(respServidor.error);
+            return;
+        }
   
-        anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
-  
-        respServer.forEach(anioObj => {
-            anioSelect.innerHTML += `<option value="${anioObj.anio}">${anioObj.anio}</option>`;
+        // reiniciar el campo años, borra los años cargados y agrega una opcion por defecto
+        anioSelect.innerHTML = '<option value="">Selecciona el año</option>';
+        
+        // itera sobre el array de años y añade cada año como una nueva opción
+        respServidor.forEach(anioArray => {
+            anioSelect.innerHTML += `<option value="${anioArray.anio}">${anioArray.anio}</option>`;
         });        
     });
 
-    // cargar tipos de seguros cuando se selecciona un año --
+    /* 
+        CARGAR TIPOS DE SEGURO SEGÚN EL TIPO, MARCA, MODELO Y AÑO SELECCIONADO --
+        esto solicita los tipos de planes asociados a cada vehículo junto con el precio 
+        total de la prima y la suma segurada del plan. 
+    */
+
     anioSelect.addEventListener('change', async () => {
-        const tipo = tipoSelect.value;
-        const marca = marcaSelect.value;
-        const modelo = modeloSelect.value;
-        const anio = anioSelect.value;
+        const tipo = tipoSelect.value; 
+        const marca = marcaSelect.value; 
+        const modelo = modeloSelect.value; 
+        const anio = anioSelect.value; 
 
         // CAMBIAR RUTAA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        const solicitudTiposSeguro = await fetch(`/obtener-tipos-seguro?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}`); 
-        const tiposSeguros = await solicitudTiposSeguro.json();
+        const solicitudServidor = await fetch(`/obtener-tipos-seguro?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}`);  // solicitar los planes asociados al servidor según el tipo, ID de la marca, el id del modelo y el id del año seleccionado
+        const respServidor = await solicitudServidor.json(); 
 
-        tipoSeguroSelect.innerHTML = '<option value="">Selecciona un tipo de seguro</option>'; 
+        if (respServidor.error) {
+            console.error(respServidor.error);
+            return;
+        }
 
-        tiposSeguros.forEach(seguro => {
+        // reiniciar el campo tipo de seguros, borra los tipos cargados y agrega una opcion por defecto
+        tipoSeguroSelect.innerHTML = '<option value="">Selecciona el tipo de seguro</option>'; 
+
+        // itera sobre el array de tipos de seguros y añade cada tipo como una nueva opción
+        respServidor.forEach(seguro => {
             tipoSeguroSelect.innerHTML += `<option value="${seguro.id}">${seguro.nombre}</option>`;
         });
     });
 
-    // cargar valores del premio y suma asegurada cuando se selecciona tipo de seguro --
+    /* 
+        MOSTRAR VALORES DEL PREMIO TOTAL, TRIMESTRAL Y SUMA ASEGURADA --
+        mostrarle al usuario, el valor total de la prima, el precio de la prima trimestral 
+        (dividido en 3 pagos) y la suma asegurada del vehículo según el 
+        tipo, marca, modelo y año seleccionado del vehiculo. Se activa cuando se selecciona
+        el tipo de plan que quiere el cliente (por ahora: básico, intermedio o premium)
+    */
+
     tipoSeguroSelect.addEventListener('change', async () => {
         const tipo = tipoSelect.value;
         const marca = marcaSelect.value;
         const modelo = modeloSelect.value;
         const anio = anioSelect.value;
-        const tipoSeguro = tipoSeguroSelect.value;
+        const tipoSeguro = tipoSeguroSelect.value; // se carga con el ID del tipo de seguro seleccionado
 
         // CAMBIAR RUTAA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (tipo && marca && modelo && anio && tipoSeguro) {
-            const solicitudServer = await fetch(`/obtener-premio?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}&tipoSeguro=${tipoSeguro}`);
-            const respServer = await solicitudServer.json();
+            const solicitudServidor = await fetch(`/obtener-premio?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}&tipoSeguro=${tipoSeguro}`); // solicitar al servidor el valor del premio según el tipo, ID de la marca, el id del modelo, el id del año y los planes asociados seleccionado
+            const respServidor = await solicitudServidor.json();
 
-            if (respServer.error) {
-                console.error(respServer.error);
+            if (respServidor.error) {
+                console.error(respServidor.error);
                 return;
             }
 
-            premioTotalInput.value = respServer.premio_total;
-            sumaAseguradaInput.value = respServer.suma_asegurada;
+            // cargar los campos premio total y suma asegurada con los datos enviados por el servidor
+            premioTotalInput.value = respServidor.premio_total;
+            sumaAseguradaInput.value = respServidor.suma_asegurada;
 
-            // calcular y mostrar el premio mensual --
-            const premioMensual = (respServer.premio_total / 3).toFixed(2);
+            // calcular y mostrar el premio mensual de forma trimestral
+            const premioMensual = (respServidor.premio_total / 3).toFixed(2);
             premioMensualInput.value = premioMensual;
         }
     });
 });
 
-// función para guardar los datos personales y vehículos --
-document.getElementById('guardarCambios').addEventListener('click', function() {
+/* 
+    ENVIAR LOS DATOS DEL CLIENTE AL SERVIDOR PARA GUARDARLOS EN LA BD --
+    esta función async envía los datos personales y del vehículo al servidor para guardarlos 
+    en la base de datos, incluyendo la validación previa y el manejo de la respuesta del servidor
+*/
+
+document.getElementById('guardarCambios').addEventListener('click', async function() {
     const datosPersonales = {
         nombre: document.getElementById('nombre').value,
         apellido: document.getElementById('apellido').value,
@@ -144,7 +208,7 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
     const inputFile = document.getElementById('foto');
     const file = inputFile.files[0];
 
-    // llamada a la función de validación antes de continuar
+    // llamada a la función de validación antes de continuar para verificar que todos los campos estén completos
     if (!validarDatos(datosPersonales, datosVehiculo)) {
         Swal.fire({
             icon: 'error',
@@ -155,37 +219,44 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         return;
     }
 
-    // llama a la función de validación del formato de los datos antes d continuar
+    // llama a la función de validación del formato de los datos antes d continuar para verificar que los campos tengan el formato correcto
     if (!validarFormatoDatos(datosPersonales, datosVehiculo)) {
         return;
     }
 
+    // los datos son convertidos en un objeto FormData
     const formData = new FormData(); 
-
+    // a este objeto se le incluyen los datos personales y los del vehículo y se convierten en JSON
     formData.append('datosPersonales', JSON.stringify(datosPersonales));
     formData.append('datosVehiculo', JSON.stringify(datosVehiculo));
 
+    // y en caso de haberse cargado una foto, se la incluye al objeto el archivo multipart/form-data
     if (file) {
         formData.append('foto', file);
     }
     
-    fetch('/guardarDatos', {
-        method: 'POST',
-        body: formData 
-    })
-    .then(response => {
-        return response.json().then(data => {
-            console.log("Respuesta del servidor:", data); 
-            
-            if (!response.ok) {
-                throw new Error(data.message || 'Error en el envío de los datos');
-            }
-            return data; 
+    // envíar los datos al servidor para guardar la info. del form y manejar la rta del servidor 
+    try {
+        const response = await fetch('/guardarDatos', 
+        {
+            method: 'POST', // enviar datos al servidor
+            body: formData  // objeto que incluye datos en formato JSON y archivos (foto)
         });
-    })
-    .then(data => {
-        console.log("data: respuesta del servidor", data);
+
+        const data = await response.json(); 
+        // debugg -- BORRAR ESTAS 2 LÍNEAS CUANDO ANDE
+        // console.log("Respuesta del servidor:", data); 
         
+        // si la rta del servidor no es exitosa, muestra un mensaje de error
+        if (!response.ok) {
+            throw new Error(data.message || 'Error en el envío de los datos');
+        }
+        
+        // debugg -- BORRAR ESTAS 2 LÍNEAS CUANDO ANDE
+        // console.log("data: respuesta del servidor", data);
+        
+        // si los datos se guardan bien, muestra un mensaje de exito y redirije a la pág. principal
+        // sino, muestra un error
         if (data.message === 'Datos guardados') {
             Swal.fire({
                 icon: 'success',
@@ -198,8 +269,8 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
         } else {
             throw new Error('Error en la respuesta del servidor');
         }
-    })
-    .catch(error => {
+    // si hay un error en try, se captura acá y se muestra el error en consola y con sweet alert al usuario 
+    } catch (error) {
         console.error("Error capturado:", error);
         Swal.fire({
             icon: 'error',
@@ -207,22 +278,31 @@ document.getElementById('guardarCambios').addEventListener('click', function() {
             text: error.message || 'No se pudieron guardar los datos. Por favor, intenta nuevamente.',
             confirmButtonText: 'Aceptar'
         });
-    });
+    }
 });
 
-// función para validar si existen los datos --------------
+/* 
+    VALIDAR SI LOS CAMPOS ESTÁN COMPLETOS ANTES DE ENVIAR AL SERVIDOR --
+    con el fin de evitar el envío de un formulario incompleto, se valida con esta función 
+    que todos los campos obligatorios estén con contenido
+*/
+
 function validarDatos(datosPersonales, datosVehiculo) {
-    // verificar que todos los campos obligatorios estén llenos
-    for (const key in datosPersonales) {
-        if (!datosPersonales[key]) return false;
+    for (const propiedad in datosPersonales) {
+        if (!datosPersonales[propiedad]) return false;
     }
-    for (const key in datosVehiculo) {
-        if (!datosVehiculo[key]) return false;
+    for (const propiedad in datosVehiculo) {
+        if (!datosVehiculo[propiedad]) return false;
     }
     return true;
 }
 
-// funcion para validar el formato de los datos -----------
+/* 
+    VALIDAR EL FORMATO DE LOS DATOS A ENVIAR AL SERVIDOR --
+    con el fin de evitar el envío de datos erroneos, esta función valida el formato de 
+    campos específicos
+*/
+
 function validarFormatoDatos(datosPersonales, datosVehiculo) {
     let esValido = true;
     let mensajesDeError = [];
@@ -296,7 +376,13 @@ function validarFormatoDatos(datosPersonales, datosVehiculo) {
     return esValido;
 }
 
-// función para limpiar los errores antes de una nueva validación
+/* 
+    LIMPIAR ESTILOS DE ERROR EN LOS INPUTS --
+    función para limpiar los estilos de error de los campos de entrada.
+    Elimina la clase 'input-error' (CSS) de cada campo especificado en la lista 
+    para prepararlos para una nueva validación
+*/
+
 function limpiarErrores() {
     const campos = ['nombre', 'apellido', 'dni', 'email', 'celular', 'patente', 'anio'];
     
@@ -305,7 +391,14 @@ function limpiarErrores() {
     });
 }
 
-// funcionalidad para el boton 'cancelar' -----------------
+/* 
+    BOTON PARA CANCELAR CARGA DE CLIENTE --
+    esta función muestra una alerta de confirmación consSweet
+    para preguntar al usuario si está seguro de cancelar los cambios realizados en el formulario. 
+    Si el usuario confirma, se redirige a la página del panel. 
+    Si elige cancelar, no se realiza ninguna acción.
+*/
+
 function cancelarCambios() {
     Swal.fire({
         title: '¿Estás seguro?',
