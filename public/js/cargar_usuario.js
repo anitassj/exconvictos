@@ -58,14 +58,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     modeloSelect.addEventListener('change', async () => {
         const idModelo = modeloSelect.value;
   
-        const solicitudServer = await fetch(`/obtener-anios/${idModelo}`); // CAMBIAR RUTAA !!!!!!! 
+        const solicitudServer = await fetch(`/obtener-anios/${idModelo}`); 
         const respServer = await solicitudServer.json();
   
         anioSelect.innerHTML = '<option value="">Selecciona un año</option>';
   
-        respServer.forEach(anio => {
-            anioSelect.innerHTML += `<option value="${anio}">${anio}</option>`;
-        });
+        respServer.forEach(anioObj => {
+            anioSelect.innerHTML += `<option value="${anioObj.anio}">${anioObj.anio}</option>`;
+        });        
     });
 
     // cargar tipos de seguros cuando se selecciona un año --
