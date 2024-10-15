@@ -9,6 +9,7 @@ header{
     position: fixed;
     top: 0;
     z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos del logo ------------------- */
@@ -145,7 +146,7 @@ h2 {
 
 .form .form-boton-cotizar {
     background-color: #2197a3;
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 12px;
     width: 35%;
     font-weight: bold;
@@ -159,10 +160,10 @@ h2 {
 
 /* Estilo del carrusel ---------------- */
 .swiper-container {
-    --swiper-navigation-size: 16px; 
-    --swiper-navigation-sides-offset: -31px;
+    /* --swiper-navigation-size: 16px; 
+    --swiper-navigation-sides-offset: -31px; */
     --swiper-pagination-bottom: auto;
-    --swiper-pagination-top: 105%;
+    --swiper-pagination-top: 97%;
 }
 
 .swiper-container {
@@ -182,12 +183,7 @@ h2 {
 .swiper-container .swiper-wrapper .swiper-slide img {
     width: 100%; 
     height: auto;
-    filter: grayscale(100%); 
     transition: filter 0.3s ease;
-}
-
-.swiper-container .swiper-wrapper .swiper-slide-active img {
-    filter: grayscale(0%); 
 }
 
 .swiper-container .swiper-pagination {
@@ -195,38 +191,25 @@ h2 {
 }
 
 .swiper-pagination-bullets {
-    bottom: 20px; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet {
-    background: rgba(0,0,0,0.5); 
-    width: 10px; 
-    height: 10px; 
-    margin: 0 20px; 
-    opacity: 0.7; 
-    transition: opacity 0.3s;
+    background: rgba(0, 0, 0, 0.7); 
+    width: 12px; 
+    height: 12px; 
+    margin: 0 10px; 
+    opacity: 0.9; 
+    transition: opacity 0.3s, transform 0.3s; 
 }
 
 .swiper-pagination-bullets .swiper-pagination-bullet-active {
     background: #2197a3; 
     opacity: 1; 
+    transform: scale(1.2); 
 }
-
-/* .swiper-container .swiper-button-prev { 
-    right: 120%;
-    color: black;
-    width: 30px;
-    top: 50%; 
-}
-
-.swiper-container .swiper-button-next {
-    left: 100%;
-    color: black;
-    width: 30px; 
-    top: 50%; 
-} */
 
 /* Estilo coberturas ------------------ */
 .coberturas {
@@ -268,7 +251,7 @@ h2 {
     width: 90%;
     padding: 20px 0;
     border-radius: 15px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .tarjeta {
@@ -276,7 +259,7 @@ h2 {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    /* overflow: hidden; */
     text-align: left;
 }
 
@@ -534,3 +517,148 @@ footer .copiright .img-copi img{
     display: flex;
     margin: 0 auto;
 }
+
+/* Media Queries para pantallas grandes */
+@media (min-width: 1024px) {
+    /* CABECERA -------------------------------------------------------------------*/
+    header {
+        height: 80px; 
+        padding: 0 20px; 
+        display: flex; 
+        align-items: center;
+    }
+
+    header .logo {
+        flex: 0 0 15%; 
+        max-width: 150px; 
+    }
+
+    header .logo img {
+        width: 100%;
+        height: auto; 
+    }
+
+    header .icono-menu {
+        display: none; 
+    }
+
+    header .menu {
+        display: flex; 
+        flex: 1; 
+        justify-content: flex-end; 
+        gap: 30px; 
+    }
+
+    header .menu ul {
+        display: flex; 
+        padding: 0;
+        margin: 0; 
+        list-style: none; 
+        gap: 30px; 
+    }
+
+    header .menu li {
+        margin-bottom: 0; 
+        border-bottom: none; 
+        margin: 0 5px; 
+    }
+
+    /* CUERPO --------------------------------------------------------------------- */
+    body {
+        margin-top: 80px; 
+        font-size: 18px; 
+    }
+
+    /* Estilos formulario ----------------- */
+    .form {
+        width: 60%; 
+        margin: 50px auto; 
+    }
+
+    .form .form-boton-cotizar {
+        width: 20%;
+        border-radius: 50px;
+    }
+
+    /* Estilo del carrusel ---------------- */
+    .swiper-container {
+        max-width: 1000px; 
+        margin: 20px auto; 
+    }
+    
+    .swiper-container .swiper-wrapper {
+        display: flex; 
+    }
+    
+    .swiper-container .swiper-wrapper .swiper-slide {
+        flex: 0 0 33.33%; 
+        box-sizing: border-box; 
+        padding: 10px; 
+    }
+    
+    .swiper-container .swiper-wrapper .swiper-slide img {
+        width: 100%; 
+        height: auto; 
+    }
+    
+    .swiper-pagination-bullets {
+        bottom: 30px; 
+    }
+
+    /* Estilo coberturas ------------------ */
+    .coberturas {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: flex-start; 
+    }
+    
+    .coberturas .cobertura-titulo {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .coberturas .tipo {
+        display: flex;
+        width: 100%; 
+        margin: 10px; 
+        flex-direction: column; 
+        padding: 60px 70px 60px 70px;
+    }
+    
+    .coberturas-filas {
+        display: flex; 
+        justify-content: center; 
+        margin: 0 auto;
+    }    
+
+    /* Estilo nosotros -------------------- */
+    .nosotros .contenedor {
+        width: 100%; 
+    }
+
+    /* Estilo footer ---------------------- */
+    footer {
+        flex-direction: column;
+        flex-wrap: wrap; 
+        justify-content: space-between;
+    }
+
+    footer .contactos,
+    footer .preguntas,
+    footer .ubicacion {
+        width: 100%;
+        margin: 10px; 
+    }
+
+    footer .copiright .img-copi img{
+        width: 5%;
+    }
+
+    footer .copiright .texto-copi {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+}
+

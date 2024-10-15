@@ -1,3 +1,7 @@
+body {
+    background-color: #f7f7f7 !important;
+}
+
 /* Estilos del título */
 h2 {
     text-align: center;
@@ -13,7 +17,7 @@ form {
     padding: 20px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -56,21 +60,23 @@ small.form-text {
 
 /* Estilos del botón */
 button {
-    width: 100%;
+    width: 50%;
     padding: 10px;
     background-color: #2197a3;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px; 
     cursor: pointer;
     font-size: 20px;
     text-align: center;
     font-weight: bold;
-    margin-top: 10px; 
+    margin: 10px auto; 
+    display: block; 
 }
 
+
 button:hover {
-    background-color: #45a049;
+    background-color: #1b7d88;
 }
 
 /* Estilos para los menu desplegables */
@@ -87,4 +93,37 @@ button:hover {
     background-color: #2197a3; 
     color: white; 
     font-size: 20px; 
+}
+
+/* Media Queries para pantallas grandes */
+@media (min-width: 1024px) {
+    h2 {
+        font-size: 2.5em; 
+        margin: 120px 60px auto !important; 
+    }
+
+    form {
+        max-width: 600px; 
+        margin: 40px auto; 
+        padding: 30px; 
+    }
+
+    label {
+        font-size: 24px; 
+    }
+
+    input,
+    select {
+        font-size: 24px; 
+        padding: 12px; 
+    }
+
+    small.form-text {
+        font-size: 16px; 
+    }
+
+    button {
+        font-size: 22px;
+        padding: 12px; 
+    }
 }

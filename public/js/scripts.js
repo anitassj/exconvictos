@@ -26,26 +26,23 @@ document.addEventListener("DOMContentLoaded", function() {
 // función de carrusel promos -------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.swiper-container', {
-    speed: 1000,
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true, 
-    effect: 'coverflow', 
-    autoplay: {
-      delay: 4000, 
-      disableOnInteraction: false, 
-    },
-    // navigation: {
-    //   nextEl: '.swiper-button-next',
-    //   prevEl: '.swiper-button-prev',
-    // },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets', 
-      clickable: true,
-    }
+      speed: 1500,
+      slidesPerView: 3, 
+      spaceBetween: 10, 
+      loop: true, 
+      effect: 'slide', 
+      autoplay: {
+          delay: 4000, 
+          disableOnInteraction: false, 
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets', 
+          clickable: true,
+      }
   });
 });
+
 
 // función de carrusel planes -------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
