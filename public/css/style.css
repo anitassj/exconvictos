@@ -134,6 +134,10 @@ h2 {
     font-weight: bold;
 }
 
+h3 {
+    display: none;
+}
+
 /* Estilos formulario ----------------- */
 .form {
     display: flex;
@@ -160,13 +164,6 @@ h2 {
 
 /* Estilo del carrusel ---------------- */
 .swiper-container {
-    /* --swiper-navigation-size: 16px; 
-    --swiper-navigation-sides-offset: -31px; */
-    --swiper-pagination-bottom: auto;
-    --swiper-pagination-top: 97%;
-}
-
-.swiper-container {
     height: auto; 
     max-width: 600px;
     margin: 20px auto;
@@ -184,31 +181,6 @@ h2 {
     width: 100%; 
     height: auto;
     transition: filter 0.3s ease;
-}
-
-.swiper-container .swiper-pagination {
-    text-align: center;
-}
-
-.swiper-pagination-bullets {
-    bottom: 30px; 
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.swiper-pagination-bullets .swiper-pagination-bullet {
-    background: rgba(0, 0, 0, 0.7); 
-    width: 12px; 
-    height: 12px; 
-    margin: 0 10px; 
-    opacity: 0.9; 
-    transition: opacity 0.3s, transform 0.3s; 
-}
-
-.swiper-pagination-bullets .swiper-pagination-bullet-active {
-    background: #2197a3; 
-    opacity: 1; 
-    transform: scale(1.2); 
 }
 
 /* Estilo coberturas ------------------ */
@@ -560,13 +532,28 @@ footer .copiright .img-copi img{
     header .menu li {
         margin-bottom: 0; 
         border-bottom: none; 
-        margin: 0 5px; 
+        /* margin: 0 5px;  */
+    }
+
+    header .menu a {
+        font-size: 17px;
+    }
+
+    header .menu a.inicio {
+        margin-left: 25px;
+        font-size: 18px;
     }
 
     /* CUERPO --------------------------------------------------------------------- */
     body {
         margin-top: 80px; 
         font-size: 18px; 
+    }
+
+    h3 {
+        display: block;
+        font-size: 20px;
+        background-color: #dbeef0;
     }
 
     /* Estilos formulario ----------------- */
@@ -599,10 +586,6 @@ footer .copiright .img-copi img{
     .swiper-container .swiper-wrapper .swiper-slide img {
         width: 100%; 
         height: auto; 
-    }
-    
-    .swiper-pagination-bullets {
-        bottom: 30px; 
     }
 
     /* Estilo coberturas ------------------ */
@@ -651,6 +634,10 @@ footer .copiright .img-copi img{
         margin: 10px; 
     }
 
+    footer .preguntas .pregunta-frecuente {
+        cursor: pointer;
+    }
+
     footer .copiright .img-copi img{
         width: 5%;
     }
@@ -659,6 +646,5 @@ footer .copiright .img-copi img{
         font-size: 15px;
         margin-bottom: 0;
     }
-
 }
 
