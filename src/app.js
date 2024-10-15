@@ -80,6 +80,7 @@ const rutaVista = require('./routes/vista_ruta');
 const rutaBuscarEmail = require('./routes/buscar_email-ruta');
 const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
 const rutaUsuarioDatosPersBack = require('./routes/usuarioDatosPersRuta');
+const rutaPerfilUsuario = require('.routes/perfil_usuario_ruta');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -94,6 +95,7 @@ app.use('/', rutaVista);
 app.use('/api', rutaCrearUsuarioEmail);
 app.use('/api', rutaBuscarEmail);
 app.use('/', rutaUsuarioDatosPersBack);
+app.use('/', rutaPerfilUsuario);
 
 // levantar el servidor 
 app.listen(port, () => {
