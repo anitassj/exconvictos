@@ -73,6 +73,9 @@ async function obtenerDatosPersonales() {
         }
         const datosPersonales = await response.json();
 
+        console.log(datosPersonales);
+        
+
         // Reemplazar los valores de los inputs
         document.getElementById('nombre').value = datosPersonales.nombre;
         document.getElementById('apellido').value = datosPersonales.apellido;

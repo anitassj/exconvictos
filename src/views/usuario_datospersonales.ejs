@@ -59,34 +59,44 @@
     <div class="fondo">
         <div class="contenedor">
             <div class="saludo-usuario">
-                <p>¡Hola, <b id="nombre">Usuario</b>!</p>
+                <p>¡Hola, <b id="nombre-usuario"><%= usuario.nombre %></b>!</p>
             </div>
             <!-- usuario_datospersonales.ejs -->
             <section class="datos-personales">
                 <h3 id="titulo-datos-personales">Datos Personales</h3>
                 <div class="datos-cuerpo">
                     <div class="datos1">
-                        <label for="nombre">Nombre</label><input type="text" class="dato1" id="nombre" disabled>
-                        <label for="apellido">Apellido</label><input type="text" class="dato1" id="apellido" disabled>
-                        <label for="dni">DNI</label><input type="number" class="dato1" id="dni" disabled>
-                        <label for="email">Email</label><input type="email" class="dato" id="email" disabled>
-                        <label for="clave">Contraseña</label><input type="password" class="dato" id="clave" disabled>
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="dato1" id="nombre" value="<%= usuario.nombre %>" disabled>
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="dato1" id="apellido" value="<%= usuario.apellido %>" disabled>
+                        <label for="dni">DNI</label>
+                        <input type="number" class="dato1" id="dni" value="<%= usuario.dni %>" disabled>
+                        <label for="email">Email</label>
+                        <input type="email" class="dato" id="email" value="<%= usuario.email %>" disabled>
+                        <label for="clave">Contraseña</label>
+                        <input type="password" class="dato" id="clave" value="<%= usuario.clave %>" disabled>
                     </div>
                     <div class="datos2">
-                        <label for="celular">Celular</label><input type="tel" class="dato" id="celular" disabled>
-                        <label for="direccion">Dirección</label><input type="text" class="dato" id="direccion" disabled>
-                        <label for="ciudad">Ciudad</label><input type="text" class="dato" id="ciudad" disabled>
-                        <label for="provincia">Provincia</label><input type="text" class="dato" id="provincia" disabled>
+                        <label for="celular">Celular</label>
+                        <input type="tel" class="dato" id="celular" value="<%= usuario.celular %>" disabled>
+                        <label for="direccion">Dirección</label>
+                        <input type="text" class="dato" id="direccion" value="<%= usuario.direccion %>" disabled>
+                        <label for="ciudad">Ciudad</label>
+                        <input type="text" class="dato" id="ciudad" value="<%= usuario.ciudad %>" disabled>
+                        <label for="provincia">Provincia</label>
+                        <input type="text" class="dato" id="provincia" value="<%= usuario.provincia %>" disabled>
                     </div>
                 </div>
                 <div class="input-editar">
-                    <input class="editar" value="Editar" type="submit">
-                    <input class="guardar" value="Guardar" type="submit">
-                    <input class="cancelar" value="Cancelar" type="submit">
+                    <input class="editar" value="Editar" type="button">
+                    <input class="guardar" value="Guardar" type="button">
+                    <input class="cancelar" value="Cancelar" type="button">
                 </div>
             </section>
         </div>
     </div>
+    
     <script src="/public/js/usuario_datospersonales.js" type="text/javascript"></script>
 </body>
 </html>
