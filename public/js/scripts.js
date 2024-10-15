@@ -35,14 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
           delay: 4000, 
           disableOnInteraction: false, 
       },
-      pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets', 
-          clickable: true,
-      }
   });
 });
-
 
 // función de carrusel planes -------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
