@@ -1,15 +1,21 @@
 //usuarioDatosPersModel.js
-const conexion = require('./db');
+const db = require('./db');
 
-const obtenerDatosPersonales = (callback) => {
-    const datosPersonales = 'SELECT * FROM datosPersonales';
-    conexion.query(datosPersonales, (error, datos) => {
-        if(error) {
-            return callback(error, null);
-        } else {
-            return callback(null, datos);
-        }
-    });
-};
+class DatosPersonalesModel {
+    obtenerTodos(id_cliente) {
+        return new Promise((resolve, reject) => {
+            const sql = `SELECT * FROM datosPersonales WHERE id_cliente = ?`;
+            db.query(sql, [id_cliente], (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                if (results.length === 0) {
+                    return resolve(null);
+                }
+                resolve(results[0]);
+            });
+        });
+    }
+}
 
-module.exports = { obtenerDatosPersonales };
+module.exports = new DatosPersonalesModel();

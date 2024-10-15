@@ -60,34 +60,33 @@ menuHamburguesa.addEventListener('click', () => {
 });
 
 // usuario_datospersonales.js
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    const id_cliente = 2; // falta dinamizar
-    const url = `/usuario/datospersonales/${id_cliente}`;
+// Obtener el ID del cliente de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const id_cliente = urlParams.get('id_cliente'); // Suponiendo que el ID se pasa como query param
 
-    fetch(url)
-    .then(response => {
+// Función para obtener datos personales
+async function obtenerDatosPersonales() {
+    try {
+        const response = await fetch(`/usuario/datos-personales/${id_cliente}`);
         if (!response.ok) {
-            throw new Error('Error en la red');
+            throw new Error('Error al obtener los datos personales.');
         }
-        return response.json(); 
-    })
-    .then(data => {
-        document.getElementById('nombre').value = data.nombre;
-        document.getElementById('apellido').value = data.apellido;
-        document.getElementById('dni').value = data.dni;
-        document.getElementById('email').value = data.email;
-        document.getElementById('celular').value = data.celular;
-        document.getElementById('direccion').value = data.direccion;
-        document.getElementById('ciudad').value = data.ciudad;
-        document.getElementById('provincia').value = data.provincia;
+        const datosPersonales = await response.json();
 
-        document.getElementById('nombre').innerText = data.nombre;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        const contenedor = document.querySelector('.contenedor');
-        contenedor.innerHTML = '<p>Error al cargar los datos personales.</p>';
-    });
-});
-*/
+        // Reemplazar los valores de los inputs
+        document.getElementById('nombre').value = datosPersonales.nombre;
+        document.getElementById('apellido').value = datosPersonales.apellido;
+        document.getElementById('dni').value = datosPersonales.dni;
+        document.getElementById('email').value = datosPersonales.email;
+        document.getElementById('celular').value = datosPersonales.celular;
+        document.getElementById('direccion').value = datosPersonales.direccion;
+        document.getElementById('ciudad').value = datosPersonales.ciudad;
+        document.getElementById('provincia').value = datosPersonales.provincia;
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Llamar a la función cuando la página se carga
+window.onload = obtenerDatosPersonales;
