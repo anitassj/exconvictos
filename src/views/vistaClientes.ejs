@@ -45,17 +45,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (clientes.length > 0) { %>
-                        <% clientes.forEach(function(cliente) { %>
+                    <% if (usuarios.length > 0) { %>
+                        <% usuarios.forEach(function(usuario) { %>
                             <tr>
-                                <td><%= cliente.id_cliente %></td>
-                                <td><%= cliente.nombre %></td>
-                                <td><%= cliente.tipo_vehiculo %></td>
-                                <td><%= cliente.email %></td>
-                                <td><%= cliente.celular %></td>
+                                <td><%= usuario.id_cliente %></td>
+                                <td><%= usuario.nombre %></td>
+                                <td><%= usuario.tipo_vehiculo %></td>
+                                <td><%= usuario.email %></td>
+                                <td><%= usuario.celular %></td>
                                 <td>
-                                    <a class="configBotones" href="/perfil_usuario/<%= cliente.dni %>" ><span class="material-symbols-outlined opciones" title="Ver">visibility</span></a>
-                                    <a class="configBotones" href="/crear_usuario/<%= cliente.id %>"><span class="material-symbols-outlined opciones" title="Crear usuario">person_add</span></a>
+                                    <a class="configBotones" href="/perfil_usuario/<%= usuario.id_cliente %>" ><span class="material-symbols-outlined opciones" title="Ver">visibility</span></a>
+                                    <a class="configBotones" href="/crear_usuario/<%= usuario.id %>"><span class="material-symbols-outlined opciones" title="Crear usuario">person_add</span></a>
                                 </td>
                                 
                             </tr>

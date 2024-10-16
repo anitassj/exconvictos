@@ -1,13 +1,12 @@
-const db = require('./db');
+const conexion = require('../models/db');
 
-async function obtenerClienteID(dni) {
-    try {
-        const [rows] = await db.query('SELECT * FROM datosPersonales WHERE dni = ?', [dni]);
-        return rows[0]; 
-    } catch (error) {
-        console.error('Error al obtener datos:', error);
-        throw error;
-    }
-}
 
-module.exports = obtenerClienteID;
+const obtenerUsuarioPorDNI = async (dni) => {
+    const query = 'SELECT * FROM datosPersonales WHERE dni = ?';
+    const [rows] = await conexion.execute(query, [dni]);
+    return rows[0];
+};
+
+module.exports = {
+    obtenerUsuarioPorDNI
+};

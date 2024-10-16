@@ -1,20 +1,21 @@
-const vistaClientes = require('../models/perfil_usuario_modelo'); 
+const perfil_usuario_modelo = require('../models/perfil_usuario_modelo');
 
-async function obtenerDatos(req, res) {
-    const dni = req.params.dni;
-    try {
-        
-        const cliente = await vistaClientes.obtenerClienteID(dni); 
+class PerfilUsuarioController {
+    async mostrarPerfil(req, res) {
+        try {
+            const dni = req.params.dni; 
+            const usuario = await perfil_usuario_modelo.obtenerUsuarioPorDNI(dni); 
 
-        if (!cliente) {
-            return res.status(404).send('Cliente no encontrado');
+            if (usuario) {
+                res.render('perfil', { usuario: usuario }); 
+            } else {
+                res.status(404).send('Usuario no encontrado');
+            }
+        } catch (error) {
+            console.error('Error al obtener los datos:', error);
+            res.status(500).send('Error al obtener los datos');
         }
-        res.render('perfil', { perfil: cliente });
-    } catch (error) {
-        console.error('Error al obtener datos:', error);
-        return res.status(500).send('Error al obtener los datos');
     }
 }
 
-
-module.exports = obtenerDatos;
+module.exports = new PerfilUsuarioController();

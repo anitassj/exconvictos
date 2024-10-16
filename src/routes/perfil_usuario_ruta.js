@@ -1,10 +1,7 @@
 const express = require('express');
-const path = require('path');
-const perfilUsuarioController = require('../controllers/perfil_usuario_controller');
 const router = express.Router();
+const perfilUsuarioController = require('../controllers/perfil_usuario_controller');
 
-// Ruta para mostrar el perfil del usuario utilizando el DNI
-router.get('/perfil_usuario/:dni', perfilUsuarioController.mostrarPerfilPorDni);
+router.get('/perfil/:dni', perfilUsuarioController.mostrarPerfil);
 
 module.exports = router;
-

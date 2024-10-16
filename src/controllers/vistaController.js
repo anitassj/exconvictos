@@ -1,14 +1,14 @@
 const vistaClientes = require('../models/vistaModel');
 
-const vistaCliente = new vistaClientes();
+// const vistaCliente = new vistaClientes();
 
 class vistaControlador {
     async mostrarLista(req, res) {
         try {
             console.log('Ejecutando la consulta a la base de datos');
-            const clientes = await vistaClientes.mostrarLista() || [];
-            console.log('Datos obtenidos:', clientes);
-            res.render('vistaClientes', { clientes }); //panel? o vistaClientes VERRR, y los datos de que for each?
+            const usuarios = await vistaClientes.mostrarLista() || [];
+            console.log('Datos obtenidos:', usuarios);
+            res.render('vistaClientes', { usuarios }); //panel? o vistaClientes VERRR, y los datos de que for each?
         } catch (error) {
             console.log("Error al obtener datos:", error);
             res.status(500).send("Error al obtener los datos");
@@ -18,15 +18,15 @@ class vistaControlador {
     async obtenerClienteID(req, res) {
         try {
             console.log('Ejecutando la consulta a la base de datos');
-            const clientes = await vistaClientes.obtenerClienteID(req.params.id);
+            const usuarios = await vistaClientes.obtenerClienteID(req.params.id);
 
-            if (clientes === null || clientes === undefined) {
+            if (usuarios === null || usuarios === undefined) {
                 res.redirect("/vistaClientes"); //seria a vistaClientes, listado general 
                 return;
             }
 
-            console.log('Datos obtenidos:', clientes);
-            res.render('perfil', { clientes}); //comodin, del lado izquiero va el nombre de la variable 
+            console.log('Datos obtenidos:', usuarios);
+            res.render('perfil', { usuarios}); //comodin, del lado izquiero va el nombre de la variable 
                                                                   //que usan en la vista para referenciar los datos del cliente <% clientes.forEach
         } catch (error) {
             console.log("Error al obtener datos:", error);

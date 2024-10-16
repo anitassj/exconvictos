@@ -40,27 +40,27 @@
 
         <div class="contenedor-datos">
             <div class="info-personal">
-                <h2>Información Personal de <%= perfil.nombre %> <%= perfil.apellido %></h2>
+                <h2>Información Personal de <%= usuario.nombre %> <%= usuario.apellido %></h2>
                 <div class="info-grid">
                     <div class="colum1">
                         <label for="nombre">Nombre </label>
-                        <input type="text" id="nombre" value="<%= perfil.nombre %>" disabled>
+                        <input type="text" id="nombre" value=" <%= usuario.nombre %>" disabled>
                         <label for="apellido">Apellido </label>
-                        <input type="text" id="apellido" value="<%= perfil.apellido %>" disabled>
+                        <input type="text" id="apellido" value=" <%= usuario.apellido %>" disabled>
                         <label for="dni">DNI </label>
-                        <input type="number" id="dni" value="<%= perfil.dni %>" disabled>
+                        <input type="number" id="dni" value=" <%= usuario.dni %>" disabled>
                         <label for="email">Email </label>
-                        <input type="email" id="email" value="<%= perfil.email %>" disabled>
+                        <input type="email" id="email" value="<%= usuario.email %>" disabled>
                     </div>
                     <div class="colum2">
                         <label for="direccion">Dirección </label>
-                        <input type="text" id="direccion" value="<%= perfil.direccion %>" disabled>
+                        <input type="text" id="direccion" value="<%= usuario.direccion %>" disabled>
                         <label for="celular">Celular </label>
-                        <input type="text" id="celular" value="<%= perfil.celular %>" disabled> 
+                        <input type="text" id="celular" value="<%= usuario.celular %>" disabled> 
                         <label for="ciudad">Ciudad </label>
-                        <input type="text" id="ciudad" value="<%= perfil.ciudad %>" disabled>
+                        <input type="text" id="ciudad" value="<%= usuario.ciudad %>" disabled>
                         <label for="provincia">Provincia </label>
-                        <input type="text" id="provincia" value="<%= perfil.provincia %>" disabled>
+                        <input type="text" id="provincia" value="<%= usuario.provincia %>" disabled>
                     </div>
                 </div>
             </div>

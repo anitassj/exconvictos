@@ -20,7 +20,7 @@ class vistaClientes {
         })
     }
 
-    async obtenerClienteID(id) {
+    static async obtenerClienteID(id) {
         const sql = `SELECT *
                     FROM datosPersonales WHERE id_cliente = ?`;
         
