@@ -47,8 +47,10 @@ const rutaVehiculo = require('./routes/rutas-views/ver_vehiculos_views');
 const rutaCrearUsuario = require('./routes/rutas-views/crear_usuario_views');
 const rutaCoberturas = require ('./routes/rutas-views/cobeturas-views')
 const rutaUsuarioPanel = require('./routes/rutas-views/usuario_panel_views');
+const rutaUsuarioDatosPers = require('./routes/rutas-views/usuario_datospersonales_views');
 const rutaUsuarioVehiculos = require('./routes/rutas-views/usuario_vehiculos_views');
 const rutaUsuarioDenunciarSin = require('./routes/rutas-views/usuario_denunciarsiniestro_views');
+const rutaUsuarioCambiarContr =  require('./routes/rutas-views/usuario_cambiarcontrasena_views');
 
 app.use('/', rutaCargaCliente);
 app.use('/', rutaInicio);
@@ -61,8 +63,10 @@ app.use('/', rutaVehiculo);
 app.use('/', rutaCrearUsuario);
 app.use('/', rutaCoberturas);
 app.use('/', rutaUsuarioPanel);
+app.use('/usuario', rutaUsuarioDatosPers);
 app.use('/usuario', rutaUsuarioVehiculos);
 app.use('/usuario', rutaUsuarioDenunciarSin);
+app.use('/usuario', rutaUsuarioCambiarContr);
 
 // rutas API (BACKEND) ------------------------------------
 const rutaDatos = require('./routes/guardar-datos');
@@ -77,7 +81,6 @@ const rutaSolicitudes = require('./routes/solicitudes_ruta');
 const rutaVista = require('./routes/vista_ruta');
 const rutaBuscarEmail = require('./routes/buscar_email-ruta');
 const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
-const rutaUsuarioDatosPers = require('./routes/usuario_datospersonales_ruta');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -91,7 +94,6 @@ app.use('/', rutaSolicitudes);
 app.use('/', rutaVista);
 app.use('/api', rutaCrearUsuarioEmail);
 app.use('/api', rutaBuscarEmail);
-app.use('/usuario', rutaUsuarioDatosPers);
 
 // levantar el servidor 
 app.listen(port, () => {

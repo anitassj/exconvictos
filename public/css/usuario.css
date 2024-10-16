@@ -495,10 +495,13 @@ form .boton-denunciar:hover {
     border-radius: 0 0 15px 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .eleccion-cuerpo a {
     display: flex;
+    flex: 0 1 350px;
     border: 1px solid #c5c5c5;
     border-radius: 15px;
     width: 350px;
