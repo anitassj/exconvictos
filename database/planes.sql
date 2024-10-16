@@ -1,11 +1,12 @@
 CREATE TABLE planes (
 id_planes int auto_increment primary key,
-tipo varchar(100),
-premio_total decimal);
+tipo varchar(100)
+);
 
-INSERT INTO planes (tipo, premio_total) VALUES 
-('Plan Básico', 15000),
-('Plan Intermedio', 30000),
-('Plan Premium', 60000);
+INSERT INTO planes (tipo) VALUES 
+('Plan básico'),
+('Plan intermedio'),
+('Plan premium');
 
 SELECT * FROM planes;
+
