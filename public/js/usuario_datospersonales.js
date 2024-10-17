@@ -93,3 +93,5 @@ async function obtenerDatosPersonales() {
 
 // Llamar a la función cuando la página se carga
 window.onload = obtenerDatosPersonales;
+
+// nota: este archivo .js no se usa más (al menos temporalmente), por las dudas de que tenga que usar codigo de acá lo dejo. mas tarde lo elimino (benja)
