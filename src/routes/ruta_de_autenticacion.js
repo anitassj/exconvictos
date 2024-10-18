@@ -20,7 +20,7 @@ router.post('/ruta_de_autenticacion', async (req, res) => { /*cambio de ruta*/
             req.session.usuario = usuario; // Esto guarda toda la información del usuario si lo necesitas
             
             if (usuario.rol_id == 2) {
-                res.redirect('/usuario'); // Redirige a la página principal
+                res.redirect('/inicio-usuario'); // Redirige a la página principal
             } else {
                 res.redirect('/panel'); // Redirige a la página principal
             }

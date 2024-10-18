@@ -83,6 +83,8 @@ const rutaBuscarEmail = require('./routes/buscar_email-ruta');
 const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
 const rutaPerfilUsuario = require('./routes/perfil_usuario_ruta');
 const datosPersonales = require('./routes/datospersonales');
+const datosVehiculos = require('./routes/vehiculos_asegurados');
+const usuarioInicio = require('./routes/usuario_inicio');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -98,6 +100,8 @@ app.use('/api', rutaCrearUsuarioEmail);
 app.use('/api', rutaBuscarEmail);
 app.use('/', rutaPerfilUsuario);
 app.use('/', datosPersonales);
+app.use('/', datosVehiculos);
+app.use('/', usuarioInicio);
 
 // levantar el servidor 
 app.listen(port, () => {
