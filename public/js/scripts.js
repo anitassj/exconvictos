@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.swiper-container', {
       speed: 1500,
-      slidesPerView: 1, 
+      slidesPerView: 3, 
       spaceBetween: 10, 
       loop: true, 
       effect: 'slide', 
