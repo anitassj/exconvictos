@@ -55,14 +55,13 @@ function marcarComoLeido(id) {
         method: 'PUT',
     })
     .then(response => {
-        if (response.ok) {
-            return response.json(); 
-        } else {
-            throw new Error("Error al marcar la solicitud como leída.");
+        if (!response.ok) {
+            throw new Error('Error al marcar la solicitud como leída.');
         }
+        return response.json();
     })
     .then(data => {
-        window.location.href = `/solicitudes/${data.id}`; 
+        window.location.href = `/solicitudes/${id}`; 
     })
     .catch(error => {
         console.error("Error al enviar la solicitud:", error);
@@ -89,7 +88,7 @@ function archivarSolicitud(id) {
                 icon: 'success',
                 confirmButtonText: 'Aceptar'
             }).then(() => {
-                window.location.reload();
+                window.location.href = '/solicitudes';
             });
         } else {
             Swal.fire({
@@ -111,38 +110,32 @@ function archivarSolicitud(id) {
     });
 }
 
-function mostrarSolicitudesArchivadas() {
-    fetch('/solicitudes/archivadas') 
-        .then(response => {
-            console.log('Respuesta del servidor:', response); 
-            if (!response.ok) {
-                throw new Error('Error al obtener las solicitudes archivadas.');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Solicitudes archivadas:', data); 
-            const solicitudesLista = document.getElementById('solicitudes-lista');
-            solicitudesLista.innerHTML = ''; 
-
-            data.forEach(solicitud => {
-                const solicitudDiv = document.createElement('div');
-                solicitudDiv.innerHTML = `
-                    <p>ID: ${solicitud.id_solicitante}</p>
-                    <p>Nombre: ${solicitud.nombre}</p>
-                    <p>Email: ${solicitud.email}</p>
-                    <p>Celular: ${solicitud.celular}</p>
-                `;
-                solicitudesLista.appendChild(solicitudDiv);
-            });
-        })
-        .catch(error => {
-            console.error('Error en la llamada fetch:', error);
-            Swal.fire({
-                title: 'Error',
-                text: 'No se pudieron cargar las solicitudes archivadas.',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            });
+// ----------------------------------------------------------------------------
+// desarchivar las solicitudes  -----------------------------------------------
+// ----------------------------------------------------------------------------
+function desarchivarSolicitud(id) {
+    fetch(`/solicitudes/${id}/desarchivar`, {
+        method: 'PUT',
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Error al desarchivar la solicitud');
+        }
+        return response.json();
+    })
+    .then(data => {
+        Swal.fire({
+            title: 'Solicitud desarchivada',
+            text: 'La solicitud ha sido desarchivada correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        }).then(() => {
+            window.location.href = `/solicitudes/archivadas`;
         });
+    })
+    .catch(error => {
+        console.error("Error al desarchivar la solicitud:", error);
+        alert("Error en la solicitud.");
+    });
 }
+

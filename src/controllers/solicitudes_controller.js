@@ -65,11 +65,30 @@ class SolicitudesController {
         }
     }    
 
-    async mostrarSolicitudesArchivadas(req, res) {
+    async desarchivarSolicitud(req, res) {
         try {
-            const datos = await solicitudesModelo.mostrarSolicitudesArchivadas();
-            console.log('Datos de solicitudes archivadas:', datos);
-            res.json(datos);
+            const id = req.params.id;
+            const success = await solicitudesModelo.desarchivarSolicitud(id);
+    
+            if (success) {
+                res.status(200).send({ message: "Solicitud desarchivada correctamente", id });
+            } else {
+                res.status(500).send("Error al desarchivar la solicitud");
+            }
+        } catch (error) {
+            console.log("Error al desarchivar la solicitud:", error);
+            res.status(500).send("Error al desarchivar la solicitud");
+        }
+    }
+    
+
+    async mostrarSolicitudesArchivadas(req, res) {
+        console.log('Ejecutando mostrarSolicitudesArchivadas'); 
+        try {
+            console.log('Ejecutando la consulta de solicitudes archivadas');
+            const datosArchivados = await solicitudesModelo.mostrarSolicitudesArchivadas() || [];
+            console.log('Solicitudes archivadas obtenidas:', datosArchivados);
+            res.render('solicitudes/listado_archivado', { sSolicitudesArchivadas: datosArchivados });
         } catch (error) {
             console.log("Error al obtener solicitudes archivadas:", error);
             res.status(500).send("Error al obtener las solicitudes archivadas");

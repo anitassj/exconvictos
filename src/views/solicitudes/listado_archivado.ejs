@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../commons/head.ejs'); %>
+</head>
+<body>
+    <%- include('../commons/header.ejs'); %>
+
+    <div class="contenedor-datos">
+        <!-- Contenedor para los filtros y buscador -->
+        <div class="filtros">
+            <div class="ordenar-menu">
+                <button class="ordenar configBotones"><span class="material-symbols-outlined botones">swap_vert</span>Ordenar por</button>
+                <div class="ordenar-menu-oculto">
+                    <a href="#" data-sort="nombre">Nombre</a>
+                    <a href="#" data-sort="fecha">Fecha</a>
+                </div>
+            </div>
+            <div class="filtrar-menu">
+                <button class="filtrar configBotones"><span class="material-symbols-outlined botones">sort</span>Filtrar</button>
+                <div class="filtrar-menu-oculto">
+                    <a href="#" data-filter="auto">Auto</a>
+                    <a href="#" data-filter="moto">Moto</a>
+                </div>
+            </div>
+            <a id="archivar-link" class="configBotones" title="Ver solicitudes" href="/solicitudes">
+                <span class="material-symbols-outlined opcionesHead">folder</span>
+            </a>
+                       
+            <div class="buscador">
+                <input type="text" placeholder="Buscar solicitante...">
+            </div>
+        </div>
+        <h3>Solicitudes archivadas</h3>
+        <div id="solicitudes-lista">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="thArchivado">ID</th>
+                        <th class="thArchivado">Nombre</th>
+                        <th class="thArchivado">Vehículo</th>
+                        <th class="thArchivado">Email</th>
+                        <th class="thArchivado">Celular</th>
+                        <th class="thArchivado">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (sSolicitudesArchivadas.length > 0) { %>
+                        <% sSolicitudesArchivadas.forEach(function(solicitud) { %>
+                            <tr class="<%= solicitud.leido ? 'leido' : 'no-leido' %>" data-id="<%= solicitud.id_solicitante %>">
+                                <td><%= solicitud.id_solicitante %></td>
+                                <td><%= solicitud.nombre %></td>
+                                <td><%= solicitud.tipo %></td>
+                                <td><%= solicitud.email %></td>
+                                <td><%= solicitud.celular %></td>
+                                <td>
+                                    <a class="configBotones" href="#" data-id="<%= solicitud.id_solicitante %>" onclick="event.preventDefault(); marcarComoLeido(this.dataset.id);">
+                                        <span class="material-symbols-outlined opciones" title="Ver">visibility</span>
+                                    </a>
+                                    <a class="configBotones" href="#" data-id="<%= solicitud.id_solicitante %>" onclick="event.preventDefault(); desarchivarSolicitud(this.dataset.id);">
+                                        <span class="material-symbols-outlined opciones" title="Desarchivar">unarchive</span>
+                                    </a>                                    
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="6">No hay solicitudes archivadas disponibles</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+
+    <script src="/public/js/panel.js"></script>
+    <script src="/public/js/perfil_usuario.js"></script>
+    <script src="/public/js/solicitudes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>
