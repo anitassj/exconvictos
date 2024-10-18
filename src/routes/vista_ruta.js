@@ -5,6 +5,6 @@ const vistaControlador = require('../controllers/vistaController');
 const controller = new vistaControlador();
 
 router.get('/vistaClientes', controller.mostrarLista); 
-router.get('/perfil_usuario/:id', controller.obtenerClienteID)
+router.get('/perfil_usuario/:id', controller.obtenerClienteID) //al final se cambió a ID
 
 module.exports = router;
