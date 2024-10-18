@@ -27,19 +27,19 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="/usuario" id="datos-pers">
+                    <a href="/inicio-usuario" id="datos-pers">
                         <i class="fa fa-home" aria-hidden="true"></i>
                         <span>Inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/usuario/datos-personales" id="datos-pers">
+                    <a href="/obtener-usuario" id="datos-pers">
                         <i class="fa fa-id-card" aria-hidden="true"></i>
                         <span>Datos Personales</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/usuario/vehiculos-asegurados" id="vehiculos-aseg">
+                    <a href="/obtener-vehiculos" id="vehiculos-aseg">
                         <i class="fa fa-car" aria-hidden="true"></i>
                         <span>Vehículos Asegurados</span>
                     </a>
@@ -65,7 +65,7 @@
     <div class="fondo">
         <div class="contenedor">
             <div class="saludo-usuario">
-                <p>¡Estos son tus vehículos <b id="nombre">Usuario</b>!</p>
+                <p>¡Estos son tus vehículos <b id="nombre"><%= usuario.nombre %></b>!</p>
             </div>
             <section class="vehiculos-asegurados">
                 <h3 id="titulo-vehiculos-asegurados">Vehículos Asegurados</h3>
@@ -73,25 +73,25 @@
                         <div class="datos-cuerpo">
                             <div class="datos1">
                                 <label for="tipo_vehiculo">Tipo de Vehículo</label>
-                                <input type="text" class="dato1" id="tipo_vehiculo" disabled>
+                                <input type="text" class="dato1" id="tipo_vehiculo" value="<%= usuario.tipo_vehiculo %>" disabled>
                                 <label for="patente">Patente</label>
-                                <input type="text" class="dato1" id="patente" disabled>
+                                <input type="text" class="dato1" id="patente" value="<%= usuario.patente %>" disabled>
                                 <label for="anio">Año</label>
-                                <input type="number" class="dato1" id="anio" disabled>
+                                <input type="number" class="dato1" id="anio" value="<%= usuario.anio %>" disabled>
                                 <label for="vigencia_desde">Vigencia Desde</label>
-                                <input type="date" class="dato1" id="vigencia_desde" disabled>
+                                <input type="date" class="dato1" id="vigencia_desde" value="<%= usuario.vigencia_desde %>" disabled>
                                 <label for="vigencia_hasta">Vigencia Hasta</label>
-                                <input type="date" class="dato1" id="vigencia_hasta" disabled>
+                                <input type="date" class="dato1" id="vigencia_hasta" value="<%= usuario.vigencia_hasta %>" disabled>
                             </div>
                             <div class="datos2">
                                 <label for="tipo_seguro">Tipo de Seguro</label>
-                                <input type="text" class="dato1" id="tipo_seguro" disabled>
+                                <input type="text" class="dato1" id="tipo_seguro" value="<%= usuario.tipo_seguro %>" disabled>
                                 <label for="premio_total">Premio Total</label>
-                                <input type="number" class="dato1" id="premio_total" disabled>
+                                <input type="number" class="dato1" id="premio_total" value="<%= usuario.premio_total %>" disabled>
                                 <label for="suma_asegurada">Suma Asegurada</label>
-                                <input type="number" class="dato1" id="suma_asegurada" disabled>
+                                <input type="number" class="dato1" id="suma_asegurada" value="<%= usuario.suma_asegurada %>" disabled>
                                 <label for="uso_vehiculo">Uso del Vehículo</label>
-                                <input type="text" class="dato1" id="uso_vehiculo" disabled>
+                                <input type="text" class="dato1" id="uso_vehiculo" value="<%= usuario.uso_vehiculo %>" disabled>
                             </div>
                         </div>
                         <div class="vehiculo-limite">
@@ -101,6 +101,6 @@
             </section>
         </div>
     </div>
-    <script src="/public/js/usuario.js" type="text/javascript"></script>
+    <script src="/public/js/usuario_vehiculos.js" type="text/javascript"></script>
 </body>
 </html>

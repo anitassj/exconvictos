@@ -39,7 +39,7 @@ app.use(session({
 const rutaCargaCliente = require('./routes/rutas-views/cargar_usuario_views');
 const rutaInicio = require('./routes/rutas-views/inicio_views');
 const rutaLogin = require('./routes/rutas-views/login_views');
-const rutaPerfil = require('./routes/rutas-views/perfil_usuario_views');
+// const rutaPerfil = require('./routes/rutas-views/perfil_usuario_views');
 const rutaRecover = require('./routes/rutas-views/recover_views');
 const rutaForm = require('./routes/rutas-views/solicitante_form_views'); 
 const rutaPoliza = require('./routes/rutas-views/poliza_views');
@@ -55,7 +55,7 @@ const rutaUsuarioCambiarContr =  require('./routes/rutas-views/usuario_cambiarco
 app.use('/', rutaCargaCliente);
 app.use('/', rutaInicio);
 app.use('/', rutaLogin);
-app.use('/', rutaPerfil);
+// app.use('/', rutaPerfil);
 app.use('/', rutaRecover);
 app.use('/', rutaForm);
 app.use('/', rutaPoliza);
@@ -81,6 +81,10 @@ const rutaSolicitudes = require('./routes/solicitudes_ruta');
 const rutaVista = require('./routes/vista_ruta');
 const rutaBuscarEmail = require('./routes/buscar_email-ruta');
 const rutaCrearUsuarioEmail = require('./routes/crear_cliente-ruta');
+const rutaPerfilUsuario = require('./routes/perfil_usuario_ruta');
+const datosPersonales = require('./routes/datospersonales');
+const datosVehiculos = require('./routes/vehiculos_asegurados');
+const usuarioInicio = require('./routes/usuario_inicio');
 
 app.use('/', authRoutes);
 app.use('/', rutaDatos);
@@ -94,6 +98,10 @@ app.use('/', rutaSolicitudes);
 app.use('/', rutaVista);
 app.use('/api', rutaCrearUsuarioEmail);
 app.use('/api', rutaBuscarEmail);
+app.use('/', rutaPerfilUsuario);
+app.use('/', datosPersonales);
+app.use('/', datosVehiculos);
+app.use('/', usuarioInicio);
 
 // levantar el servidor 
 app.listen(port, () => {

@@ -11,7 +11,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/public/css/style.css" type="text/css">
-    
+    <!-- CSS icons google -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS de la librería Swiper (carrusel) -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     
@@ -25,7 +26,7 @@
     <!-- Fuente del body -->
     <link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <!-- ICONOS -->
+    <!-- ICONOS flaticon -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-brands/css/uicons-brands.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.2/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -60,7 +61,7 @@
                 <li><a href="#titulo-5">Contactos</a></li>
                 <li class="inicio"><a href="/login" class="inicio">Iniciar sesión</a></li>
             </ul>
-        </nav>
+        </nav>        
         
     </header>
 
@@ -85,199 +86,68 @@
           <div class="swiper-slide"><img src="/public/img/promo1.png" alt="Promoción"></div>
           <div class="swiper-slide"><img src="/public/img/promo2.png" alt="Promoción"></div>
         </div>
-        <!-- Paginación -->
-        <!-- <div class="swiper-pagination"></div> -->
       </div>      
 
     <!-- Contenedor coberturas ------------------------ -->
-    <div class="coberturas">
+    <div class="coberturas" id="titulo-2">
         <div class="cobertura-titulo">
             <h2>¡Elegí tu seguro con Prisma!</h2>
         </div>
         <div class="coberturas-filas">
-            <div class="tipo">
+            <div class="tipo" id="moto">
                 <div class="icono">
                     <i class="fi fi-tr-moped"></i>
                 </div>
                 <h2>Moto</h2>
-        
-                <div class="swiper-container carrusel-planes" id="carrusel-planes">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="tarjeta">
-                                <div class="tarjeta-header">
-                                    <h3>Plan Básico</h3>
-                                    <p>Desde $10.000/mes</p>
-                                </div>
-                                <div class="tarjeta-body">
-                                    <ul>
-                                        <li>Responsabilidad Civil</li>
-                                        <li>Robo Total</li>
-                                        <li>Asistencia en Ruta</li>
-                                        <li>Asistencia en Infracciones</li>
-                                    </ul>
-                                </div>
-                                <div class="tarjeta-footer">
-                                    <a href="/solicitante_form">COTIZAR</a>
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tarjeta">
-                                <div class="tarjeta-header">
-                                    <h3>Plan Estándar</h3>
-                                    <p>Desde $20.000/mes</p>
-                                </div>
-                                <div class="tarjeta-body">
-                                    <ul>
-                                        <li>Responsabilidad Civil</li>
-                                        <li>Robo Total y Parcial</li>
-                                        <li>Daños por Accidentes</li>
-                                        <li>Asistencia en Ruta Mejorada</li>
-                                    </ul>
-                                </div>
-                                <div class="tarjeta-footer">
-                                    <a href="/solicitante_form">COTIZAR</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="tarjeta">
-                                <div class="tarjeta-header">
-                                    <h3>Plan Premium</h3>
-                                    <p>Desde $30.000/mes</p>
-                                </div>
-                                <div class="tarjeta-body">
-                                    <ul>
-                                        <li>Responsabilidad Civil Ampliada</li>
-                                        <li>Robo Total, Parcial y Daños por Intento de Robo</li>
-                                        <li>Daños por Accidentes Completos</li>
-                                        <li>Asistencia en Ruta Completa</li>
-                                        <li>Cobertura por Eventos Climáticos</li>
-                                    </ul>
-                                </div>
-                                <div class="tarjeta-footer">
-                                    <a href="/solicitante_form">COTIZAR</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- paginación -->
-                    <div class="swiper-pagination"></div>
-                </div> 
             </div>
-            <div class="tipo">
+            <div class="tipo" id="auto">
                 <div class="icono">
-                <i class="fi fi-tr-car-alt"></i>
+                    <i class="fi fi-tr-car-alt"></i>
+                </div>
                 <h2>Auto</h2>
             </div>
-
-            <div class="swiper-container carrusel-planes" id="carrusel-planes">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="tarjeta">
-                            <div class="tarjeta-header">
-                                <h3>Plan Básico</h3>
-                                <p>Desde $10.000/mes</p>
-                            </div>
-                            <div class="tarjeta-body">
-                                <ul>
-                                    <li>Responsabilidad Civil</li>
-                                    <li>Robo Total</li>
-                                    <li>Asistencia en Ruta</li>
-                                    <li>Asistencia en Infracciones</li>
-                                </ul>
-                            </div>
-                            <div class="tarjeta-footer">
-                                <a href="/solicitante_form">COTIZAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tarjeta">
-                            <div class="tarjeta-header">
-                                <h3>Plan Estándar</h3>
-                                <p>Desde $20.000/mes</p>
-                            </div>
-                            <div class="tarjeta-body">
-                                <ul>
-                                    <li>Responsabilidad Civil</li>
-                                    <li>Robo Total y Parcial</li>
-                                    <li>Daños por Accidentes</li>
-                                    <li>Asistencia en Ruta Mejorada</li>
-                                </ul>
-                            </div>
-                            <div class="tarjeta-footer">
-                                <a href="/solicitante_form">COTIZAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="tarjeta">
-                            <div class="tarjeta-header">
-                                <h3>Plan Premium</h3>
-                                <p>Desde $30.000/mes</p>
-                            </div>
-                            <div class="tarjeta-body">
-                                <ul>
-                                    <li>Responsabilidad Civil Ampliada</li>
-                                    <li>Robo Total, Parcial y Daños por Intento de Robo</li>
-                                    <li>Daños por Accidentes Completos</li>
-                                    <li>Asistencia en Ruta Completa</li>
-                                    <li>Cobertura por Eventos Climáticos</li>
-                                </ul>
-                            </div>
-                            <div class="tarjeta-footer">
-                                <a href="/solicitante_form">COTIZAR</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- paginación -->
-                <!-- <div class="swiper-pagination"></div> -->
-            </div> 
-            </div>
         </div>
     </div>
 
-    <div class="nosotros">
+    <section class="nosotros" id="titulo-3">
         <div class="contenedor">
-            <div class="icono-info">
-                <i class="fi fi-rs-comment-info"></i>
-            </div>
-            <h2>Quiénes Somos</h2>
+            <h2>Quienes somos</h2>
+    
             <div class="introduccion">
-                <p>En <strong>Prisma Seguros</strong>, no solo aseguramos vehículos, aseguramos tranquilidad. Somos una empresa apasionada por la protección, con el compromiso de ofrecer seguros que se ajusten a cada ruta y a cada estilo de vida.</p>
-            </div>
-            <!-- <div class="filosofia">
-                <h3>Nuestra Filosofía</h3>
-                <p><em>"Viajar seguro es viajar feliz."</em></p>
-                <p>Creemos que cada viaje es una aventura, y que cada aventura merece la mejor protección. Es por eso que, en Prisma Seguros, cada póliza está diseñada para brindar no solo cobertura, sino también confianza y tranquilidad.</p>
-            </div>
-            <div class="equipo">
-                <h3>Nuestro Equipo</h3>
-                <p><strong>¡Somos un equipo de apasionados de la seguridad y la tecnología!</strong></p>
-                <p>Cada miembro de nuestro equipo comparte una visión común: proteger lo que más valoras con la máxima dedicación. Con años de experiencia en el sector y una constante búsqueda de la excelencia, nuestro equipo está siempre listo para asistirte.</p>
-            </div>
-            <div class="innovacion">
-                <h3>Innovación y Compromiso</h3>
-                <p><strong>La tecnología está en nuestro ADN.</strong></p>
-                <p>Nos enorgullece estar a la vanguardia, utilizando las últimas tecnologías para ofrecerte seguros más personalizados y eficientes. Con herramientas digitales intuitivas, te brindamos acceso rápido y sencillo a tu información, cotizaciones en tiempo real y un soporte continuo.</p>
-            </div> -->
-            <div class="porque-elegirnos">
-                <h3>¿Por Qué Elegirnos?</h3>
-                <p><strong>Cobertura Integral:</strong> protegemos cada aspecto de tu vehículo, desde robos hasta daños por accidentes, con planes diseñados a medida.</p>
-                <p><strong>Asistencia 24/7:</strong> siempre estamos aquí cuando más nos necesitas, con un servicio de asistencia en ruta disponible en todo momento.</p>
-                <p><strong>Transparencia y Confianza:</strong> sin letras pequeñas ni sorpresas, nuestro compromiso es brindarte seguridad y claridad en cada paso.</p>
-            </div>
-            <div class="mensaje-cotiza">
-                <h3>Tu Viaje Comienza Aquí</h3>
-                <p>¿Listo para andar con la seguridad que mereces? Únite a <strong>Prisma Seguros</strong> y deja que te acompañemos en cada trayecto, desde el momento en que pones el motor en marcha hasta que llegas a tu destino.</p>
+                <h3 class="titulo-principal">En Prisma Seguros, no solo aseguramos vehículos, aseguramos tranquilidad.</h3>
+                <p class="descripcion-principal">Somos una empresa apasionada por la protección, con el compromiso de ofrecer seguros que se ajusten a cada ruta y a cada estilo de vida.</p>
                 <a href="/solicitante_form" class="boton-form">¡Conoce más sobre nuestros planes y empieza a viajar con confianza hoy mismo!</a>
             </div>
-        </div>
-    </div>
     
+            <div class="caracteristicas">
+                <div class="caracteristica">
+                    <span class="material-icons icono-info">lightbulb</span>
+                    <h4>Nuestra Filosofía</h4>
+                    <p><strong>"Viajar seguro es viajar feliz"</strong></p>
+                    <p>que cada viaje es una aventura, y que cada aventura merece la mejor protección. Es por eso que, en Prisma Seguros, cada póliza está diseñada para brindar no solo cobertura, sino también confianza y tranquilidad.</p>
+                </div>
+                <div class="caracteristica">
+                    <span class="material-icons icono-info">group</span>
+                    <h4>Nuestro Equipo</h4>
+                    <p> <strong>¡Somos un equipo de apasionados de la seguridad y la tecnología! </strong></p>
+                    <p> miembro de nuestro equipo comparte una visión común: proteger lo que más valoras con la máxima dedicación. Con años de experiencia en el sector y una constante búsqueda de la excelencia, nuestro equipo está siempre listo para asistirte.</p>
+                </div>
+                <div class="caracteristica">
+                    <span class="material-icons icono-info">rocket</span>
+                    <h4>Innovación</h4>
+                    <p><strong> tecnología está en nuestro ADN </strong></p>
+                    <p>Nos enorgullece estar a la vanguardia, utilizando las últimas tecnologías para ofrecerte seguros más personalizados y eficientes. Con herramientas digitales intuitivas, te brindamos acceso rápido y sencillo a tu información, cotizaciones en tiempo real y un soporte continuo.</p>
+                </div>
+                <div class="caracteristica">
+                    <span class="material-icons icono-info">task_alt</span>
+                    <h4>¿Por Qué Elegirnos?</h4>
+                    <p><strong>Cobertura integral:</strong> protegemos cada aspecto de tu vehículo con planes diseñados a medida.</p>
+                    <p><strong>Asistencia 24/7:</strong> servicio de asistencia en ruta disponible en todo momento.</p>
+                    <p><strong>Transparencia y confianza:</strong>  nuestro compromiso es brindarte seguridad y claridad en cada paso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="preguntas" id="titulo-4">
@@ -361,6 +231,9 @@
         </div>
     </footer>
 
+    <!-- JS -->
     <script src="/public/js/scripts.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>

@@ -1,3 +1,59 @@
+// Menú interactivo
+const menuHamburguesa = document.querySelector('.icon-menu');
+const menu = document.querySelector('.menu');
+
+const iconoBarras = document.querySelector('#icono-barras');
+const iconoX = document.querySelector('#icono-x');
+
+menuHamburguesa.addEventListener('click', () => {
+    menu.classList.toggle('mostrar');
+    iconoX.classList.toggle('mostrar');
+    iconoBarras.classList.toggle('ocultar');
+});
+
+// ------------------------------------------------------------------------------------------
+//                                 SECCIÓN: DATOS PERSONALES
+//-------------------------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const nombre = document.getElementById('nombre');
+    const apellido = document.getElementById('apellido');
+    const dni = document.getElementById('dni');
+    const email = document.getElementById('email');
+    const celular = document.getElementById('celular');
+    const direccion = document.getElementById('direccion');
+    const ciudad = document.getElementById('ciudad');
+    const provincia = document.getElementById('provincia');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const idUsuario = urlParams.get('idUsuario');
+    console.log(idUsuario);
+
+    try {
+        const solicitudServidor = await fetch(`/obtener-usuario?idUsuario=${idUsuario}`);
+        const respServidor = await solicitudServidor.json();
+        console.log(respServidor);
+
+        if (respServidor.error) {
+            console.log(respServidor.error);
+            return;
+        }
+
+        nombre.value = respServidor.nombre || '';
+        apellido.value = respServidor.apellido || '';
+        dni.value = respServidor.dni || '';
+        email.value = respServidor.email || '';
+        celular.value = respServidor.celular || '';
+        direccion.value = respServidor.direccion || '';
+        ciudad.value = respServidor.ciudad || '';
+        provincia.value = respServidor.provincia || ''; 
+
+
+    } catch (error) {
+        console.error('Error en la solicitud al servidor:', error);
+    }
+});
+
 // Edición de datos
 const editar = document.querySelector('.editar');
 const guardar = document.querySelector('.guardar');
@@ -44,54 +100,3 @@ guardar.addEventListener('click', () => {
         dato.disabled = true;
     });
 });
-
-// Menú interactivo
-const menuHamburguesa = document.querySelector('.icon-menu');
-const menu = document.querySelector('.menu');
-
-const iconoBarras = document.querySelector('#icono-barras');
-const iconoX = document.querySelector('#icono-x');
-
-menuHamburguesa.addEventListener('click', () => {
-    console.log('Menú clickeado');
-    menu.classList.toggle('mostrar');
-    iconoX.classList.toggle('mostrar');
-    iconoBarras.classList.toggle('ocultar');
-});
-
-// usuario_datospersonales.js
-// Obtener el ID del cliente de la URL
-const urlParams = new URLSearchParams(window.location.search);
-const id_cliente = urlParams.get('id_cliente'); // Suponiendo que el ID se pasa como query param
-
-// Función para obtener datos personales
-async function obtenerDatosPersonales() {
-    try {
-        const response = await fetch(`/usuario/datos-personales/${id_cliente}`);
-        if (!response.ok) {
-            throw new Error('Error al obtener los datos personales.');
-        }
-        const datosPersonales = await response.json();
-
-        console.log(datosPersonales);
-        
-
-        // Reemplazar los valores de los inputs
-        document.getElementById('nombre').value = datosPersonales.nombre;
-        document.getElementById('apellido').value = datosPersonales.apellido;
-        document.getElementById('dni').value = datosPersonales.dni;
-        document.getElementById('email').value = datosPersonales.email;
-        document.getElementById('celular').value = datosPersonales.celular;
-        document.getElementById('direccion').value = datosPersonales.direccion;
-        document.getElementById('ciudad').value = datosPersonales.ciudad;
-        document.getElementById('provincia').value = datosPersonales.provincia;
-
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-// Llamar a la función cuando la página se carga
-window.onload = obtenerDatosPersonales;
-
-// nota: este archivo .js no se usa más (al menos temporalmente), por las dudas de que tenga que usar codigo de acá lo dejo. mas tarde lo elimino (benja)

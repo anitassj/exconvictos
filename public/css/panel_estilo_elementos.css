@@ -260,6 +260,11 @@ th {
     color: white;
 }
 
+th.thArchivado {
+    background-color: #00535d;
+    color: white;
+}
+
 tr:hover {
     background-color: #f5f5f5;
 }

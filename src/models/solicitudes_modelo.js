@@ -65,7 +65,7 @@ class SolicitudesModelo {
     // método para archivar una solicitud
     async archivarSolicitud(id) {
         const sql = `UPDATE solicitante_form SET archivada = TRUE WHERE id_solicitante = ?`;
-
+        
         return new Promise((resolve, reject) => {
             pool.query(sql, [id], (error, results) => {
                 if (error) {
@@ -76,10 +76,25 @@ class SolicitudesModelo {
             });
         });
     }
+    
+    // método para desarchivar una solicitud
+    async desarchivarSolicitud(id) {
+        const sql = `UPDATE solicitante_form SET archivada = FALSE WHERE id_solicitante = ?`;
+    
+        return new Promise((resolve, reject) => {
+            pool.query(sql, [id], (error, results) => {
+                if (error) {
+                    console.error("Error al desarchivar la solicitud:", error);
+                    return resolve(false); 
+                }
+                resolve(true); 
+            });
+        });
+    }
+    
 
     async mostrarSolicitudesArchivadas() {
-    const sql = `SELECT id_solicitante, nombre, tipo, email, celular FROM solicitante_form WHERE archivada = TRUE`;
-
+    const sql = `SELECT id_solicitante, nombre, tipo, email, celular, leido FROM solicitante_form WHERE archivada = TRUE`;
     return new Promise((resolve, reject) => {
         pool.query(sql, (error, results) => {
             if (error) {

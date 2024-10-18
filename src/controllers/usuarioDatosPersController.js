@@ -1,3 +1,4 @@
+/*
 // usuarioDatosPersController.js
 const express = require('express');
 const router = express.Router();
@@ -30,3 +31,4 @@ const obtenerDatosPersonales = async (req, res) => {
 router.get('/datos-personales', obtenerDatosPersonales); 
 
 module.exports = { obtenerDatosPersonales };
+*/

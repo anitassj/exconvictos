@@ -1,11 +1,9 @@
-// ruta usuario_datospersonales.js
 const express = require('express');
+const path = require('path'); 
 const router = express.Router();
-//const validarUsuario = require("../middleware/validarUsuario");
-const { obtenerDatosPersonales } = require('../../controllers/usuarioDatosPersController');
 
-router.get('/datos-personales/:id_cliente', obtenerDatosPersonales);
-router.get('/datos-personales' , obtenerDatosPersonales);
-
+router.get('/datos-personales', (req, res) => {
+    res.redirect('/obtener-usuario');
+});
 
 module.exports = router;
