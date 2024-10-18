@@ -1,3 +1,4 @@
+/*
 //usuarioDatosPersModel.js
 const db = require('./db');
 
@@ -21,3 +22,4 @@ class DatosPersonalesModel {
 }
 
 module.exports = new DatosPersonalesModel();
+*/
