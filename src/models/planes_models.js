@@ -4,20 +4,16 @@ class planesModel {
 
     obtenerValorPorTipo(tipo) {
         return new Promise((resolve,reject) => {
-            const sql = `SELECT tipo, premio_total 
-            FROM planes 
-            WHERE tipo = ?`;
+            const sql = `SELECT id_planes, tipo FROM planes`;
     
-       
         conexion.query(sql, [tipo], (err, results) => {
             if(err) {
                 reject(err);
             }
             else {
-                console.log('Planes: ',results);
+                //console.log('Planes: ',results);
                 resolve(results);
             }
-        
         })
     })
     };

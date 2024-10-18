@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const anio = anioSelect.value; 
 
         // CAMBIAR RUTAA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        const solicitudServidor = await fetch(`/obtener-tipos-seguro?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}`);  // solicitar los planes asociados al servidor según el tipo, ID de la marca, el id del modelo y el id del año seleccionado
+        const solicitudServidor = await fetch(`/obtener-planes?tipo=${tipo}&marca=${marca}&modelo=${modelo}&anio=${anio}`);  // solicitar los planes asociados al servidor según el tipo, ID de la marca, el id del modelo y el id del año seleccionado
         const respServidor = await solicitudServidor.json(); 
 
         if (respServidor.error) {
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // itera sobre el array de tipos de seguros y añade cada tipo como una nueva opción
         respServidor.forEach(seguro => {
-            tipoSeguroSelect.innerHTML += `<option value="${seguro.id}">${seguro.nombre}</option>`;
+            tipoSeguroSelect.innerHTML += `<option value="${seguro.id_planes}">${seguro.tipo}</option>`;
         });
     });
 
