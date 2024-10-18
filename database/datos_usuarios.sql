@@ -1,3 +1,5 @@
+-- ESTO HAY QUE BORRARLO????????
+
 use sistema_prismaseguros;
 create table datos_usuarios (
 id_usuarios int auto_increment primary key, 
